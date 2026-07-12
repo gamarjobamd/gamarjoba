@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(rsync -a --delete --exclude .claude /Users/alexandrutsoy/Desktop/project/Gamarjoba/ /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/site/)",
+      "Bash(which pdftoppm *)",
+      "Bash(brew install *)",
+      "Bash(pdftoppm -v)",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 60 -f 1 -l 8 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/p)",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 120 -f 2 -l 4 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/hi)",
+      "Bash(rsync -a --delete --exclude '.claude' \"/Users/alexandrutsoy/Desktop/project/Gamarjoba/\" \"/private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/site/\")",
+      "Bash(/opt/homebrew/bin/pdftotext -layout /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu.txt)",
+      "Bash(/opt/homebrew/bin/pdftotext /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu-plain.txt)",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 40 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/all)",
+      "Bash(/opt/homebrew/bin/pdfinfo \"/Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf\")",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 110 -f 22 -l 24 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/big)",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 110 -f 11 -l 11 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/sal)",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 110 -f 6 -l 7 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/cold)",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 110 -f 16 -l 19 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/gr)",
+      "Bash(/opt/homebrew/bin/pdfimages -list \"/Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf\")",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 150 -f 3 -l 3 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/ph)",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 150 -f 9 -l 9 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/ph)",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 150 -f 14 -l 15 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/ph)",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 150 -f 21 -l 21 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/ph)",
+      "Bash(/opt/homebrew/bin/pdftoppm -png -r 150 -f 25 -l 26 /Users/alexandrutsoy/Library/Containers/ru.keepcoder.Telegram/Data/tmp/15апр-compressed.pdf /private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/menu/ph)",
+      "Bash(python3 -)",
+      "Bash(curl -s http://localhost:4173/js/menu-data.js)"
+    ]
+  }
+}

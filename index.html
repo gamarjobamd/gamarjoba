@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamarjoba — грузинский ресторан в Кишинёве</title>
+  <meta name="description" content="Gamarjoba — ресторан традиционной грузинской кухни в Кишинёве. Хачапури, хинкали, мцвади на углях и вино из квеври. Гость — это подарок от Бога." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
+</head>
+<body>
+
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="page-transition" id="pageTransition" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__logo" href="#top">
+      <span class="logo-text"><b>Gamarjoba</b><i>georgian cuisine</i></span>
+      <svg class="logo-flag" viewBox="0 0 60 40" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="59" height="39" fill="#fff" stroke="#c9c9c9" stroke-width="1"/>
+        <rect x="26" y="0" width="8" height="40" fill="#d40e2f"/>
+        <rect x="0" y="16" width="60" height="8" fill="#d40e2f"/>
+        <path d="M12 5 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M45 5 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M12 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M45 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+      </svg>
+    </a>
+    <nav class="nav__links">
+      <a href="#dishes" data-i18n="navDishes">Блюда</a>
+      <a href="menu.html" data-i18n="navMenu">Меню</a>
+      <a href="#visit" data-i18n="navFind">Найти нас</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang-switch" aria-label="Language"></div>
+      <a class="nav__phone" href="tel:+37369904304">+373 69 904 304</a>
+    </div>
+    <button class="nav__burger" id="navBurger" aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#dishes" data-i18n="navDishes">Блюда</a>
+    <a href="menu.html" data-i18n="navMenu">Меню</a>
+    <a href="menu.html#bar" data-i18n="navBar">Бар</a>
+    <a href="#visit" data-i18n="navFind">Найти нас</a>
+    <div class="lang-switch lang-switch--big" aria-label="Language"></div>
+    <div class="ornament-band ornament-band--inline" aria-hidden="true"></div>
+    <a class="mobile-menu__phone" href="tel:+37369904304">+373 69 904 304</a>
+  </div>
+
+  <main id="top">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <!-- акварельный пейзаж из печатного меню: башня, горы, арба с квеври -->
+        <div class="hero__landscape" data-parallax="0.14">
+          <img src="assets/landscape.jpg" alt="" loading="eager" />
+        </div>
+      </div>
+      <p class="hero__eyebrow reveal" data-i18n="heroEyebrow">Грузинская кухня · Кишинёв</p>
+      <h1 class="hero__title" id="heroTitle" data-fit="shrink" aria-label="Gamarjoba">
+        <span>G</span><span>a</span><span>m</span><span>a</span><span>r</span><span>j</span><span>o</span><span>b</span><span>a</span>
+      </h1>
+      <p class="hero__sub reveal" data-i18n="heroSub"></p>
+      <a class="hero__cta reveal" href="#dishes">
+        <span data-i18n="heroCta">Смотреть блюда</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="hero__scrollhint" aria-hidden="true"></div>
+    </section>
+
+    <div class="ornament-band" aria-hidden="true"></div>
+
+    <!-- ═══ MARQUEE ═══ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Гость — это подарок от Бога&ensp;✕&ensp;A guest is a gift from God&ensp;✕&ensp;Oaspetul este un dar de la Dumnezeu&ensp;✕&ensp;</span>
+        <span>Гость — это подарок от Бога&ensp;✕&ensp;A guest is a gift from God&ensp;✕&ensp;Oaspetul este un dar de la Dumnezeu&ensp;✕&ensp;</span>
+      </div>
+    </div>
+
+    <!-- ═══ INTRO ═══ -->
+    <section class="intro">
+      <p class="intro__text reveal-lines" data-i18n="introText"></p>
+    </section>
+
+    <!-- ═══ DISHES ═══ -->
+    <section class="dishes" id="dishes">
+      <div class="dishes__head reveal">
+        <p class="section-label" data-i18n="dishesLabel">01 — Выбор шеф-повара</p>
+        <h2 class="section-title mask-reveal" data-i18n="dishesTitle">Знаковые<br /><em>блюда</em></h2>
+        <p class="dishes__hint" data-i18n="dishesHint">Нажмите на блюдо, чтобы узнать о нём больше</p>
+      </div>
+      <div class="dishes__grid" id="dishGrid"><!-- карточки рендерит main.js --></div>
+      <div class="dishes__more reveal">
+        <a class="hero__cta" href="menu.html">
+          <span data-i18n="dishesMore">Смотреть всё меню</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══ VISIT ═══ -->
+    <section class="visit" id="visit">
+      <p class="section-label reveal" data-i18n="visitLabel">02 — Найти нас</p>
+      <h2 class="section-title mask-reveal" data-i18n="visitTitle">Приходите<br /><em>в гости</em></h2>
+      <div class="visit__grid">
+        <div class="visit__item reveal">
+          <h3 data-i18n="visitAddress">Адрес</h3>
+          <p data-i18n="visitAddressVal"></p>
+        </div>
+        <div class="visit__item reveal">
+          <h3 data-i18n="visitHours">Часы</h3>
+          <p data-i18n="visitHoursVal"></p>
+        </div>
+        <div class="visit__item reveal">
+          <h3 data-i18n="visitBook">Бронь стола</h3>
+          <p><a href="tel:+37369904304">+373 69 904 304</a></p>
+        </div>
+        <div class="visit__item reveal">
+          <h3>Instagram</h3>
+          <p><a href="https://instagram.com/gamarjoba.md" target="_blank" rel="noopener">@gamarjoba.md</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="ornament-band" aria-hidden="true"></div>
+    <p class="footer__big" id="footerBig" data-fit="fill" aria-hidden="true">Gamarjoba</p>
+    <div class="footer__row">
+      <span data-i18n="footerCopy">© 2026 Gamarjoba · Кишинёв</span>
+      <span>RO · RU · EN</span>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/data.js?v=7"></script>
+  <script src="js/cart.js?v=7"></script>
+  <script src="js/main.js?v=7"></script>
+</body>
+</html>

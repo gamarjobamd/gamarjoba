@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Меню — Gamarjoba</title>
+  <meta name="description" content="Полное меню ресторана Gamarjoba: хачапури, хинкали, мангал, супы, салаты и десерты. Все цены в леях." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
+</head>
+<body class="menu-page">
+
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="page-transition page-transition--out" id="pageTransition" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__logo" href="index.html">
+      <span class="logo-text"><b>Gamarjoba</b><i>georgian cuisine</i></span>
+      <svg class="logo-flag" viewBox="0 0 60 40" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="59" height="39" fill="#fff" stroke="#c9c9c9" stroke-width="1"/>
+        <rect x="26" y="0" width="8" height="40" fill="#d40e2f"/>
+        <rect x="0" y="16" width="60" height="8" fill="#d40e2f"/>
+        <path d="M12 5 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M45 5 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M12 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M45 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+      </svg>
+    </a>
+    <div class="nav__right">
+      <div class="lang-switch" aria-label="Language"></div>
+      <a class="nav__back" href="index.html" data-i18n="navHome">← На главную</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="menu-hero">
+      <p class="hero__eyebrow reveal" data-i18n="menuEyebrow">Все цены — в леях · RO · RU · EN</p>
+      <h1 class="menu-hero__title" id="menuTitle" data-fit="shrink" aria-label="Meniu">
+        <span>M</span><span>e</span><span>n</span><span>i</span><span>u</span>
+      </h1>
+      <p class="menu-hero__sub reveal" data-i18n="menuSub"></p>
+    </section>
+
+    <div class="ornament-band" aria-hidden="true"></div>
+
+    <div class="menu-tabs" role="tablist" aria-label="Кухня или бар">
+      <button type="button" data-group="kitchen" class="is-active" data-i18n="tabKitchen">Кухня</button>
+      <button type="button" data-group="bar" data-i18n="tabBar">Бар</button>
+    </div>
+
+    <nav class="menu-nav" id="menuNav" aria-label="Разделы меню">
+      <!-- чипы рендерит menu.js -->
+    </nav>
+
+    <div class="menu-sections" id="menuSections">
+      <!-- секции рендерит menu.js -->
+    </div>
+
+    <section class="menu-outro">
+      <p class="menu-outro__text reveal-lines" data-i18n="menuOutro"></p>
+      <a class="hero__cta reveal" href="tel:+37369904304"><span data-i18n="menuOutroCta">Забронировать · +373 69 904 304</span></a>
+    </section>
+  </main>
+
+  <footer class="footer footer--compact">
+    <div class="ornament-band" aria-hidden="true"></div>
+    <div class="footer__row">
+      <span data-i18n="footerCopy">© 2026 Gamarjoba · Кишинёв</span>
+      <a href="index.html" data-i18n="footerHome">gamarjoba — на главную</a>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/menu-data.js?v=7"></script>
+  <script src="js/cart.js?v=7"></script>
+  <script src="js/menu.js?v=7"></script>
+</body>
+</html>

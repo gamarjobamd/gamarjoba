@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Блюдо — Gamarjoba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
+</head>
+<body class="dish-page">
+
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="page-transition page-transition--out" id="pageTransition" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__logo" href="index.html">
+      <span class="logo-text"><b>Gamarjoba</b><i>georgian cuisine</i></span>
+      <svg class="logo-flag" viewBox="0 0 60 40" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="59" height="39" fill="#fff" stroke="#c9c9c9" stroke-width="1"/>
+        <rect x="26" y="0" width="8" height="40" fill="#d40e2f"/>
+        <rect x="0" y="16" width="60" height="8" fill="#d40e2f"/>
+        <path d="M12 5 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M45 5 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M12 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M45 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+      </svg>
+    </a>
+    <nav class="nav__links">
+      <a href="index.html#dishes" data-i18n="navDishes">Блюда</a>
+      <a href="menu.html" data-i18n="navAllMenu">Всё меню</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang-switch" aria-label="Language"></div>
+      <a class="nav__back" href="index.html#dishes" data-i18n="navBack">← Назад</a>
+    </div>
+  </header>
+
+  <main id="dishMain">
+    <!-- контент рендерит dish.js -->
+  </main>
+
+  <footer class="footer footer--compact">
+    <div class="ornament-band" aria-hidden="true"></div>
+    <div class="footer__row">
+      <span data-i18n="footerCopy">© 2026 Gamarjoba · Кишинёв</span>
+      <a href="tel:+37369904304">+373 69 904 304</a>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/data.js?v=7"></script>
+  <script src="js/menu-data.js?v=7"></script>
+  <script src="js/cart.js?v=7"></script>
+  <script src="js/dish.js?v=7"></script>
+</body>
+</html>

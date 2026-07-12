@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "gamarjoba",
+      "runtimeExecutable": "ruby",
+      "runtimeArgs": ["-run", "-e", "httpd", "/private/tmp/claude-501/-Users-alexandrutsoy-Desktop-project-Gamarjoba/20e25fee-d006-4581-9f3c-7643c6fcd2bf/scratchpad/site", "-p", "4173"],
+      "port": 4173
+    }
+  ]
+}
