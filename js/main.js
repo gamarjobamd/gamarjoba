@@ -56,10 +56,8 @@ document.querySelectorAll(".dish-card").forEach((card, i) => {
   card.style.transitionDelay = `${(i % 3) * 90}ms`;
 });
 
-/* ── Прогресс-бар + параллакс hero ── */
+/* ── Прогресс-бар (hero-раскрытие живёт в reveal.js) ── */
 const progressBar = document.getElementById("progressBar");
-const heroTitle = document.getElementById("heroTitle");
-const landscape = document.querySelector(".hero__landscape");
 let ticking = false;
 
 function onScroll() {
@@ -70,16 +68,6 @@ function onScroll() {
     const max = doc.scrollHeight - window.innerHeight;
     if (progressBar && max > 0) {
       progressBar.style.transform = `scaleX(${window.scrollY / max})`;
-    }
-    if (!REDUCED) {
-      const y = window.scrollY;
-      if (heroTitle) {
-        heroTitle.style.transform = `translateY(${y * 0.28}px)`;
-        heroTitle.style.opacity = Math.max(0, 1 - y / (window.innerHeight * 0.7));
-      }
-      if (landscape) {
-        landscape.style.transform = `translateX(-50%) translateY(${y * 0.14}px)`;
-      }
     }
     ticking = false;
   });

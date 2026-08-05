@@ -86,6 +86,8 @@ main, footer, header { position: relative; z-index: 3; }
 .nav__logo {
   display: flex; align-items: center; gap: 0.7rem;
 }
+/* логотип: прежний шрифт, подпись по центру под названием, флаг справа во всю высоту */
+.logo-text { text-align: center; }
 .logo-text b {
   display: block;
   font-family: var(--serif);
@@ -107,7 +109,7 @@ main, footer, header { position: relative; z-index: 3; }
   margin-top: 0.15rem;
 }
 .logo-flag {
-  width: 40px; height: auto;
+  height: 2.5rem; width: auto; /* по высоте всего логотипа */
   display: block;
   filter: drop-shadow(0 1px 2px rgba(35, 4, 12, 0.25));
 }
@@ -129,9 +131,28 @@ main, footer, header { position: relative; z-index: 3; }
   transform: scaleX(1); transform-origin: left;
 }
 .nav__phone, .nav__back { font-size: 0.85rem; letter-spacing: 0.06em; font-weight: 400; }
-/* на странице меню шапка уезжает со скроллом, чтобы не накрывать липкие чипы */
-.menu-page .nav { position: absolute; }
+/* на странице меню шапка уезжает со скроллом и прокручивается вбок, если не влезает */
+.menu-page .nav {
+  position: absolute;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 1rem;
+}
+.menu-page .nav::-webkit-scrollbar { display: none; }
+.menu-page .nav > * { flex: 0 0 auto; }
 .nav a { transition: color 0.3s; }
+
+/* кнопка «На главную» / «Назад» — крупнее на десктопе */
+@media (min-width: 1024px) {
+  .nav__back {
+    font-size: 1rem;
+    padding: 0.65rem 1.5rem;
+    border: 1px solid var(--red);
+    border-radius: 999px;
+  }
+  .nav__back::after { display: none; }
+}
 
 /* ── Переключатель языков ── */
 .nav__right { display: flex; align-items: center; gap: 1.4rem; }
@@ -176,7 +197,11 @@ main, footer, header { position: relative; z-index: 3; }
 
 .mobile-menu {
   position: fixed; inset: 0; z-index: 45;
-  background: var(--cream);
+  background-color: var(--cream);
+  background-image: linear-gradient(180deg, var(--cream) 0%, var(--cream-soft) 100%);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 0 100vmax var(--cream);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 1.6rem;
@@ -214,7 +239,7 @@ main, footer, header { position: relative; z-index: 3; }
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center;
-  padding: 6rem 1.5rem 4rem;
+  padding: 6rem clamp(0.6rem, 1.5vw, 1rem) 4rem;
   position: relative;
   overflow: hidden;
 }
@@ -315,6 +340,144 @@ main, footer, header { position: relative; z-index: 3; }
 @keyframes scrollHint {
   0% { transform: translateY(-100%); }
   60%, 100% { transform: translateY(100%); }
+}
+
+/* ── GEO-REVEAL: раскрытие hero через силуэт Грузии ── */
+.gr { position: relative; }
+.gr__track { position: relative; }
+.gr__stage {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--cream);
+}
+.gr__media { position: absolute; inset: 0; }
+.gr__media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  transform: scale(var(--gr-img, 1));
+  transform-origin: center;
+  will-change: transform;
+}
+/* полупрозрачное затемнение поверх фото — чтобы читался текст */
+.gr__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.46));
+}
+/* «паспарту» — кремовая заливка с вырезом-Грузией, зумируется по скроллу */
+.gr__frame {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  transform: scale(var(--gr-s, 1));
+  transform-origin: center;
+  opacity: var(--gr-frame-op, 1);
+  will-change: transform, opacity;
+  pointer-events: none;
+  display: none; /* по умолчанию (no-JS / reduced-motion) маски нет — открытый hero */
+}
+.gr__mat { fill: var(--cream); }
+.gr__content {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 6rem clamp(0.6rem, 1.5vw, 1rem) 4rem;
+  opacity: var(--gr-content-op, 1);
+  transform: translateY(var(--gr-content-y, 0px));
+  will-change: opacity, transform;
+}
+/* текст поверх фото — светлый, с мягкой тенью; размеры под «окно»-Грузию */
+.gr__content .hero__eyebrow {
+  color: #f4ede1;
+  letter-spacing: 0.34em;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+}
+/* логотип ресторана поверх фото */
+.gr__logo {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.45rem;
+}
+.gr__logo-flag {
+  width: clamp(48px, 6vw, 74px); height: auto;
+  filter: drop-shadow(0 3px 14px rgba(0, 0, 0, 0.55));
+}
+.gr__logo-word {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fdf8f0;
+  text-shadow: 0 3px 28px rgba(0, 0, 0, 0.6);
+}
+.gr__logo-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(0.85rem, 1.7vw, 1.3rem);
+  letter-spacing: 0.34em;
+  color: #ece2d2;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+}
+.gr__subtitle {
+  margin-top: 1.2rem;
+  max-width: 30ch;
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: #f2ece2;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.65);
+}
+.gr__content .hero__cta {
+  margin-top: 2rem;
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+.gr__content .hero__scrollhint { background: rgba(247, 239, 227, 0.7); }
+
+/* плавное появление текста при загрузке */
+.gr__content .fade-up {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: heroFadeUp 0.9s var(--ease) forwards;
+}
+.gr__content .fade-up:nth-child(1) { animation-delay: 0.15s; }
+.gr__content .fade-up:nth-child(2) { animation-delay: 0.30s; }
+.gr__content .fade-up:nth-child(3) { animation-delay: 0.45s; }
+.gr__content .fade-up:nth-child(4) { animation-delay: 0.60s; }
+@keyframes heroFadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* включённая scroll-driven анимация */
+.gr.is-armed .gr__track { height: 260vh; }
+.gr.is-armed .gr__stage { position: sticky; top: 0; }
+.gr.is-armed .gr__frame { display: block; }
+
+/* шапка над тёмной фазой раскрытия — светлая */
+body.gr-dark .nav { mix-blend-mode: normal; }
+body.gr-dark .logo-text b,
+body.gr-dark .nav__links a,
+body.gr-dark .nav__phone { color: var(--cream); }
+body.gr-dark .logo-text i { color: #e8dccb; }
+body.gr-dark .nav__burger span { background: var(--cream); }
+
+/* на узких экранах «окно» ниже — прячем eyebrow, чтобы он не падал на кремовый фон */
+@media (max-width: 600px) {
+  .gr__content .hero__eyebrow { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gr.is-armed .gr__track { height: auto; }
+  .gr.is-armed .gr__stage { position: relative; }
+  .gr.is-armed .gr__frame { display: none; }
+  .gr__content .fade-up { opacity: 1; transform: none; animation: none; }
 }
 
 /* ── Бегущая строка ── */
@@ -481,8 +644,62 @@ main, footer, header { position: relative; z-index: 3; }
 }
 .menu-tabs { margin-top: 1.6rem; }
 
+/* ── Story: про Грузию, ресторан и блюда ── */
+.story {
+  padding: clamp(5rem, 13vh, 9rem) clamp(1.4rem, 6vw, 5rem);
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.story__body {
+  margin-top: clamp(2.2rem, 6vh, 4rem);
+  display: grid;
+  gap: 1.6rem;
+  max-width: 46rem;
+}
+.story__lead {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.7vw, 2.15rem);
+  line-height: 1.4;
+  color: var(--wine);
+}
+.story__text {
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  line-height: 1.8;
+  color: var(--red-deep);
+  max-width: 42rem;
+}
+.story__features {
+  margin-top: clamp(2.6rem, 7vh, 4.2rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: clamp(1.8rem, 4vw, 3rem);
+}
+.story__feature { border-top: 2px solid var(--red); padding-top: 1.4rem; }
+.story__feature h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+  line-height: 1.15;
+  color: var(--red-dark);
+  margin-bottom: 0.9rem;
+}
+.story__feature p {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--red-deep);
+}
+.story__cta { margin-top: clamp(2.6rem, 6vh, 3.6rem); }
+.story__book {
+  margin-top: 0;
+  font-size: 0.86rem;
+  padding: 1.15rem 2.4rem;
+}
+
 /* ── Visit ── */
-.visit { padding: clamp(6rem, 14vh, 10rem) clamp(1.2rem, 4vw, 3rem); position: relative; }
+.visit { padding: clamp(6rem, 14vh, 10rem) clamp(0.8rem, 2vw, 1.5rem); position: relative; }
+.visit__link { border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+.visit__link:hover { border-color: var(--red); }
 .visit__grid {
   margin-top: clamp(3rem, 7vh, 5rem);
   display: grid;

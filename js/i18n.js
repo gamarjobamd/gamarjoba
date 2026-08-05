@@ -24,6 +24,7 @@ const UI = {
   navMenu: L("Меню", "Meniu", "Menu"),
   navBar: L("Бар", "Bar", "Bar"),
   navFind: L("Найти нас", "Unde suntem", "Find us"),
+  navAbout: L("О нас", "Despre noi", "About"),
   navHome: L("← На главную", "← Acasă", "← Home"),
   navBack: L("← Назад", "← Înapoi", "← Back"),
   navAllMenu: L("Всё меню", "Tot meniul", "Full menu"),
@@ -34,7 +35,52 @@ const UI = {
     "În georgiană — <em>„bună ziua”</em>. Literal — <em>„victorie ție”</em>.<br />Așa întâmpinăm fiecare oaspete.",
     "In Georgian it means <em>“hello”</em>. Literally — <em>“victory to you”</em>.<br />That is how we greet every guest."
   ),
-  heroCta: L("Смотреть блюда", "Vezi bucatele", "See the dishes"),
+  heroTitle2: L(
+    "Откройте для себя Грузию",
+    "Descoperă Georgia",
+    "Discover Georgia"
+  ),
+  heroSub2: L(
+    "Земля древних гор, гостеприимства и бесконечного вкуса вина",
+    "Ținutul munților străvechi, al ospitalității și al gustului nesfârșit de vin",
+    "A land of ancient mountains, hospitality and the endless taste of wine"
+  ),
+  heroCta: L("Смотреть меню", "Vezi meniul", "See the menu"),
+
+  storyLabel: L("Наша история", "Povestea noastră", "Our story"),
+  storyTitle: L(
+    "Грузия<br /><em>на одном столе</em>",
+    "Georgia<br /><em>la o singură masă</em>",
+    "Georgia<br /><em>on one table</em>"
+  ),
+  storyLead: L(
+    "Gamarjoba по-грузински значит «здравствуй» — и с этого слова начинается каждый вечер у нас. Мы привезли в Кишинёв дух супры, грузинского застолья: тёплый хлеб из глиняной печи, щедрые порции и вино, которое льётся, пока звучат тосты.",
+    "Gamarjoba în georgiană înseamnă „bună ziua” — și cu acest cuvânt începe fiecare seară la noi. Am adus la Chișinău spiritul suprei, ospățul georgian: pâine caldă din cuptor de lut, porții generoase și vin care curge cât se rostesc toasturile.",
+    "Gamarjoba means “hello” in Georgian — and every evening here begins with that word. We brought the spirit of the supra, the Georgian feast, to Chișinău: warm bread from a clay oven, generous plates, and wine that keeps flowing as the toasts are made."
+  ),
+  storyText: L(
+    "Каждое блюдо здесь — маленькая история. Аджарули пекут в форме лодочки, чтобы удержать солнце из сыра и яйца. Хинкали лепят вручную и едят руками, сначала выпивая горячий бульон. Мцвади жарят только на живых углях, без спешки. А вино мы наливаем из квеври — глиняных сосудов, что вызревают в земле, как тысячу лет назад. Приходите — и Грузия окажется ближе, чем кажется.",
+    "Fiecare fel de mâncare e o mică poveste. Adjaruli se coace în formă de luntre, ca să țină soarele din brânză și ou. Hinkali se modelează manual și se mănâncă cu mâna, sorbind mai întâi zeama fierbinte. Mtsvadi se frige doar pe cărbuni, fără grabă. Iar vinul îl turnăm din kvevri — vase de lut ce se maturează în pământ, ca acum o mie de ani. Veniți — și Georgia va fi mai aproape decât pare.",
+    "Every dish here is a small story. Adjaruli is baked boat-shaped to cradle its sun of cheese and egg. Khinkali are folded by hand and eaten with your fingers, the hot broth sipped first. Mtsvadi is grilled over live coals alone, unhurried. And the wine we pour from qvevri — clay vessels that ripen in the earth as they did a thousand years ago. Come, and Georgia will feel closer than you thought."
+  ),
+
+  aboutTitle: L("О ресторане", "Despre restaurant", "About the restaurant"),
+  aboutText: L(
+    "Gamarjoba — это про настоящую Грузию: щедрый стол, живой огонь и рецепты, которые передаются в семьях из поколения в поколение. Мы не имитируем грузинскую кухню — мы её проживаем. Каждое блюдо готовит наш шеф-повар по традиционным рецептам, а гости уходят с ощущением, что побывали в гостях у большой грузинской семьи.",
+    "Gamarjoba înseamnă Georgia adevărată: masă îmbelșugată, foc viu și rețete transmise în familii din generație în generație. Nu imităm bucătăria georgiană — o trăim. Fiecare fel de mâncare e gătit de bucătarul nostru după rețete tradiționale, iar oaspeții pleacă cu senzația că au fost în ospeție la o mare familie georgiană.",
+    "Gamarjoba is about the real Georgia: a generous table, live fire and recipes passed down in families from generation to generation. We don't imitate Georgian cuisine — we live it. Every dish is cooked by our chef to traditional recipes, and guests leave feeling they've been welcomed into a big Georgian family."
+  ),
+  sourceTitle: L(
+    "Продукты, которым можно доверять",
+    "Produse în care poți avea încredere",
+    "Ingredients you can trust"
+  ),
+  sourceText: L(
+    "Мы сами ездим за продуктами. Мясо для мцвади и хинкали — с проверенных ферм, зелень и овощи — свежие, специи — привезённые. Прежде чем блюдо попадёт к вам на стол, мы знаем, откуда оно. Именно поэтому вкус получается таким, каким он должен быть.",
+    "Mergem noi înșine după produse. Carnea pentru mtsvadi și hinkali — de la ferme verificate, verdeața și legumele — proaspete, mirodeniile — aduse special. Înainte ca un fel de mâncare să ajungă pe masa voastră, știm de unde vine. De aceea gustul iese exact așa cum trebuie.",
+    "We go for the ingredients ourselves. The meat for mtsvadi and khinkali comes from trusted farms, the herbs and vegetables are fresh, the spices are brought in. Before a dish reaches your table, we know where it came from. That's why the taste turns out exactly as it should."
+  ),
+  bookCta: L("Забронировать стол", "Rezervă o masă", "Book a table"),
 
   introText: L(
     "<strong>Хачапури</strong> из глиняной печи, <strong>хинкали</strong> с горячим бульоном, <strong>мясо на живых углях</strong> и вино из квеври. Мы готовим так, как готовят дома в Грузии, — <em>щедро и без спешки.</em>",
