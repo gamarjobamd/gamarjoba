@@ -26,6 +26,22 @@ function findMenuItem(mi) {
 
 const main = document.getElementById("dishMain");
 
+/* ── Полное описание из печатного меню: RO / RU / EN подряд ── */
+function fullBlock(data) {
+  if (!data) return "";
+  const rows = [["RO", data.ro], ["RU", data.ru], ["EN", data.en]]
+    .filter(([, text]) => text)
+    .map(
+      ([code, text]) => `
+        <div class="dish-full__row">
+          <span class="dish-full__lang">${code}</span>
+          <p class="dish-full__text">${text}</p>
+        </div>`
+    )
+    .join("");
+  return rows ? `<div class="dish-full reveal">${rows}</div>` : "";
+}
+
 /* ── Режим 1: фирменное блюдо с полным описанием ── */
 function renderRich(dish) {
   document.title = `${dish.name} — Gamarjoba`;
@@ -44,6 +60,7 @@ function renderRich(dish) {
       <h1 class="dish-hero__name reveal">${dish.name}</h1>
       <p class="dish-hero__ru reveal" lang="ka">${dish.ka}</p>
       <p class="dish-hero__tagline reveal">${T(dish.tagline)}</p>
+      ${fullBlock(typeof DISH_FULL !== "undefined" ? DISH_FULL[dish.id] : null)}
       <div class="dish-hero__meta reveal">
         <div><span>${tr("dishWeight")}</span><strong>${dish.weight}</strong></div>
         <div><span>${tr("dishPrice")}</span><strong>${dish.price}</strong></div>
@@ -84,6 +101,9 @@ function renderMenuItem(sec, item, idx) {
   const name = T(item.name);
   document.title = `${name} — Gamarjoba`;
   const desc = T(item.ru);
+  /* ключ полного описания — «раздел:название», как в menu-full.js */
+  const fullKey = `${sec.id}:${typeof item.name === "string" ? item.name : name}`;
+  const full = typeof MENU_FULL !== "undefined" ? MENU_FULL[fullKey] : null;
 
   /* следующее блюдо с фото в этом же разделе */
   let nextHtml = "";
@@ -138,6 +158,7 @@ function renderMenuItem(sec, item, idx) {
       <p class="dish-hero__cat reveal">${T(sec.title)}</p>
       <h1 class="dish-hero__name reveal">${name}</h1>
       ${desc ? `<p class="dish-hero__tagline reveal">${desc}</p>` : ""}
+      ${fullBlock(full)}
       ${meta}
       ${addBtn}
     </div>

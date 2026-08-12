@@ -150,6 +150,26 @@ const UI = {
   ),
   cartCall: L("Позвонить и заказать · +373 69 904 304", "Sună și comandă · +373 69 904 304", "Call to order · +373 69 904 304"),
   cartClear: L("Очистить корзину", "Golește coșul", "Clear cart"),
+
+  /* ── оформление заказа через WhatsApp ── */
+  cartOrder: L("Заказать в WhatsApp", "Comandă pe WhatsApp", "Order via WhatsApp"),
+  cartOrderNote: L(
+    "Заполните имя и телефон — заказ откроется готовым сообщением в WhatsApp, останется нажать «Отправить».",
+    "Completați numele și telefonul — comanda se va deschide ca mesaj gata în WhatsApp, rămâne doar să apăsați „Trimite”.",
+    "Fill in your name and phone — the order opens as a ready message in WhatsApp, just press Send."
+  ),
+  cartName: L("Имя", "Nume", "Name"),
+  cartPhone: L("Телефон", "Telefon", "Phone"),
+  cartComment: L("Комментарий (время, адрес, пожелания)", "Comentariu (oră, adresă, dorințe)", "Note (time, address, wishes)"),
+  cartOrEmpty: L("Добавьте блюда, чтобы оформить заказ", "Adăugați bucate pentru a comanda", "Add dishes to place an order"),
+
+  /* текст самого сообщения в WhatsApp */
+  waTitle: L("Новый заказ с сайта Gamarjoba", "Comandă nouă de pe site-ul Gamarjoba", "New order from the Gamarjoba website"),
+  waOrder: L("Заказ", "Comanda", "Order"),
+  waTotal: L("Итого", "Total", "Total"),
+  waName: L("Имя", "Nume", "Name"),
+  waPhone: L("Телефон", "Telefon", "Phone"),
+  waComment: L("Комментарий", "Comentariu", "Note"),
 };
 
 function tr(key) {
