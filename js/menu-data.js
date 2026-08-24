@@ -9,10 +9,10 @@ const MENU = [
     title: L("Выбор шеф-повара", "Recomandările șefului", "Chef's choice"),
     ro: "Recomandările șefului",
     items: [
-      { img: "assets/menu/shurpa.jpg", name: "Shurpa", ru: L("Шурпа — густой суп из ягнёнка", "Supă groasă de miel", "Thick lamb soup"), w: "400 g", p: 120 },
-      { img: "assets/menu/adjaruli.jpg", name: "Adjaruli", ru: L("Хачапури-лодочка с яйцом", "Luntre khachapuri cu ou", "Boat khachapuri with egg"), w: "450 g", p: 155, link: "adjaruli" },
-      { img: "assets/menu/badrijani.jpg", name: "Badrijani", ru: L("Рулетики из баклажана с орехом", "Rulouri de vinete cu nuci", "Aubergine rolls with walnuts"), w: "200 g", p: 80, link: "badrijani" },
-      { img: "assets/menu/mtsvadi.jpg", name: "Mtsvari Vițel", ru: L("Телятина на углях", "Vițel pe cărbuni", "Charcoal-grilled veal"), w: "250 g", p: 190, link: "mtsvadi" },
+      { img: "assets/menu/shurpa.jpg", name: "Shurpa", badge: "premium", ru: L("Шурпа — густой суп из ягнёнка", "Supă groasă de miel", "Thick lamb soup"), w: "400 g", p: 120 },
+      { img: "assets/menu/adjaruli.jpg", name: "Adjaruli", badge: "legend", ru: L("Хачапури-лодочка с яйцом", "Luntre khachapuri cu ou", "Boat khachapuri with egg"), w: "450 g", p: 155, link: "adjaruli" },
+      { img: "assets/menu/badrijani.jpg", name: "Badrijani", badge: "classic", ru: L("Рулетики из баклажана с орехом", "Rulouri de vinete cu nuci", "Aubergine rolls with walnuts"), w: "200 g", p: 80, link: "badrijani" },
+      { img: "assets/menu/mtsvadi.jpg", name: "Mtsvari Vițel", badge: "bestseller", ru: L("Телятина на углях", "Vițel pe cărbuni", "Charcoal-grilled veal"), w: "250 g", p: 180, link: "mtsvadi" },
     ],
   },
   {
@@ -21,7 +21,7 @@ const MENU = [
     ro: "Platouri pentru companii",
     items: [
       { img: "assets/menu/set-mix.jpg", name: "Set din carne Mix", ru: L("Ягнёнок, телятина, свинина: рёбрышки, кебаб, шашлык, абхазура", "Miel, vițel, porc: costițe, kebab, frigărui, abhazura", "Lamb, veal, pork: ribs, kebab, skewers, abkhazura"), w: "1800 g", p: 1350 },
-      { img: "assets/menu/set-miel.jpg", name: "Set din carne de miel", ru: L("Пир из ягнёнка: каре, шашлык, люля, вырезка", "Ospăț de miel: cotlete, frigărui, liulea, mușchi", "A lamb feast: rack, skewers, kebab, tenderloin"), w: "1150 g", p: 1400 },
+      { img: "assets/menu/set-miel.jpg", name: "Set din carne de miel", badge: "bestseller", ru: L("Пир из ягнёнка: каре, шашлык, люля, вырезка", "Ospăț de miel: cotlete, frigărui, liulea, mușchi", "A lamb feast: rack, skewers, kebab, tenderloin"), w: "1150 g", p: 1400 },
       { img: "assets/menu/set-porc.jpg", name: "Set din carne de porc", ru: L("Свиной сет: рёбрышки, шашлык, люля-кебаб", "Set de porc: costițe, frigărui, liulea-kebab", "Pork set: ribs, skewers, lula kebab"), w: "1450 g", p: 900 },
       { img: "assets/menu/set-pui.jpg", name: "Set din carne de pui", ru: L("Куриный сет: крылышки, голени, бёдра с овощами гриль", "Set de pui: aripioare, pulpe, copane cu legume la grătar", "Chicken set: wings, drumsticks, thighs with grilled vegetables"), w: "1600 g", p: 850 },
     ],
@@ -35,6 +35,8 @@ const MENU = [
       { img: "assets/menu/kveli.jpg", name: "Kveli", ru: L("Тарелка крафтовых сыров: сулугуни, имеретинский, копчёный, с орехами", "Selecție de brânzeturi: suluguni, imereti, afumată, cu nuci", "Craft cheese board: sulguni, Imeretian, smoked, with walnuts"), w: "300 g", p: 220 },
       { img: "assets/menu/tevzis.jpg", name: "Tevzis Assorti", ru: L("Рыбное ассорти: лосось, масляная, скумбрия", "Platou de pește: somon, pește-unt, macrou", "Fish platter: salmon, butterfish, mackerel"), w: "300 g", p: 230 },
       { img: "assets/menu/khortcis.jpg", name: "Khortcis Assorti", ru: L("Мясная тарелка: сало, колбаска, пастрома, почеревка", "Platou cu carne: slănină, cârnăciori, pastramă, piept de porc", "Meat plate: lard, sausage, pastrami, pork belly"), w: "250 g", p: 190 },
+      { img: "assets/menu/mokharshuli.jpg", name: "Mokharshuli Ena", ru: L("Отварной говяжий язык с хреном и горчицей", "Limbă de vită fiartă cu hrean și muștar", "Boiled beef tongue with horseradish and mustard"), w: "200 g", p: 160 },
+      { img: "assets/menu/bulgaruli.jpg", name: "Bulgaruli", ru: L("Запечённый перец с ореховой начинкой", "Ardei copți umpluți cu pastă de nuci", "Roasted peppers stuffed with walnut paste"), w: "250 g", p: 150 },
       { name: "Heringi Kartophilit", ru: L("Сельдь с золотистым запечённым картофелем", "Hering cu cartofi copți aurii", "Herring with golden roasted potatoes"), w: "250 g", p: 110 },
       { name: "Bostneulis Assorti", ru: L("Свежие садовые овощи и много зелени", "Legume proaspete de grădină și multă verdeață", "Fresh garden vegetables and lots of greens"), w: "400 g", p: 100 },
     ],
@@ -92,7 +94,7 @@ const MENU = [
       "A portion is 3 pcs. Any khinkali can be pan-fried — +5 lei."
     ),
     items: [
-      { img: "assets/menu/mama-hinkali.jpg", name: "Mama Hinkali", ru: L("Гигантский хинкали на всю компанию", "Hinkali gigant pentru toată compania", "A giant khinkali for the whole table"), w: "800 g", p: 150, link: "mama-hinkali" },
+      { img: "assets/menu/mama-hinkali.jpg", name: "Mama Hinkali", badge: "premium", ru: L("Гигантский хинкали на всю компанию", "Hinkali gigant pentru toată compania", "A giant khinkali for the whole table"), w: "800 g", p: 150, link: "mama-hinkali" },
       { img: "assets/menu/hinkali-vita.jpg", name: "Hinkali cu carne de vită", ru: L("С говядиной", "Cu carne de vită", "With beef"), w: "270 g · 3 x", p: 80, alt: L("жареные — 85", "la tigaie — 85", "pan-fried — 85") },
       { img: "assets/menu/hinkali-mixt.jpg", name: "Hinkali mixt porc-vită", ru: L("Свинина-говядина", "Porc-vită", "Pork and beef"), w: "270 g · 3 x", p: 80, alt: L("жареные — 85", "la tigaie — 85", "pan-fried — 85") },
       { img: "assets/menu/hinkali-miel.jpg", name: "Hinkali cu carne de miel", ru: L("С ягнёнком", "Cu carne de miel", "With lamb"), w: "270 g · 3 x", p: 80, alt: L("жареные — 85", "la tigaie — 85", "pan-fried — 85") },
@@ -104,10 +106,10 @@ const MENU = [
     title: L("Хачапури", "Haceapuri", "Khachapuri"),
     ro: "Haceapuri",
     items: [
-      { img: "assets/menu/adjaruli.jpg", name: "Adjaruli", ru: L("Лодочка с сыром, яйцом и маслом", "Luntre cu brânză, ou și unt", "Boat with cheese, egg and butter"), w: "450 g", p: 155, alt: L("гигант 1700 г — 680", "gigant 1700 g — 680", "giant 1700 g — 680"), link: "adjaruli" },
+      { img: "assets/menu/adjaruli.jpg", name: "Adjaruli", badge: "legend", ru: L("Лодочка с сыром, яйцом и маслом", "Luntre cu brânză, ou și unt", "Boat with cheese, egg and butter"), w: "450 g", p: 155, alt: L("гигант 1700 г — 680", "gigant 1700 g — 680", "giant 1700 g — 680"), link: "adjaruli" },
       { img: "assets/menu/megruli.jpg", name: "Megruli", ru: L("Мегрули — с сыром сверху и внутри", "Megruli — cu brânză deasupra și în interior", "Megruli — cheese on top and inside"), w: "450 g", p: 175, alt: L("большой 750 г — 250", "mare 750 g — 250", "large 750 g — 250") },
       { img: "assets/menu/regal.jpg", name: "Regal", ru: L("Королевское: двойная порция сыра", "Regal: porție dublă de brânză", "Royal: a double portion of cheese"), w: "650 g", p: 240 },
-      { img: "assets/menu/kubdari.jpg", name: "Kubdari", ru: L("Кубдари — сванский, с мясом", "Kubdari — din Svaneti, cu carne", "Kubdari — Svanetian, with meat"), w: "550 g", p: 230 },
+      { img: "assets/menu/kubdari.jpg", name: "Kubdari", ru: L("Кубдари — сванский, с мясом", "Kubdari — din Svaneti, cu carne", "Kubdari — Svanetian, with meat"), w: "550 g", p: 190 },
       { img: "assets/menu/imeruli.jpg", name: "Imeruli", ru: L("Имерули — классический круглый", "Imeruli — clasic, rotund", "Imeruli — the round classic"), w: "650 g", p: 225 },
       { img: "assets/menu/adjaruli-ceashushuli.jpg", name: "Adjaruli cu ceashushuli", ru: L("Лодочка с чашушули из телятины или ягнёнка", "Luntre cu ceashushuli de vițel sau miel", "Boat filled with veal or lamb chashushuli"), w: "550 g", p: 200 },
       { img: "assets/menu/phlovani.jpg", name: "Phlovani", ru: L("Пховани — со шпинатом и сыром", "Phlovani — cu spanac și brânză", "Phlovani — with spinach and cheese"), w: "400 g", p: 190 },
@@ -123,7 +125,7 @@ const MENU = [
         img: "assets/menu/mtsvadi.jpg", name: "Mtsvadi", ru: L("Шашлык на живых углях", "Frigărui pe cărbuni încinși", "Skewers over live coals"), w: "250 g", link: "mtsvadi",
         variants: [
           { v: L("Курица", "Pui", "Chicken"), p: 140 },
-          { v: L("Свинина", "Porc", "Pork"), p: 185 },
+          { v: L("Свинина", "Porc", "Pork"), p: 140 },
           { v: L("Телятина", "Vițel", "Veal"), p: 190 },
           { v: L("Ягнёнок", "Miel", "Lamb"), p: 195 },
         ],
@@ -131,12 +133,12 @@ const MENU = [
       {
         img: "assets/menu/liulea.jpg", name: "Liulea-kebab", ru: L("Рубленое мясо с травами, на шампуре", "Carne tocată cu ierburi, la frigăruie", "Minced meat with herbs, on a skewer"),
         variants: [
-          { v: L("Курица · 250 г", "Pui · 250 g", "Chicken · 250 g"), p: 140 },
-          { v: L("Курица с сыром · 300 г", "Pui cu cașcaval · 300 g", "Chicken with cheese · 300 g"), p: 170 },
-          { v: L("Свинина-телятина · 250 г", "Porc-vițel · 250 g", "Pork-veal · 250 g"), p: 165 },
-          { v: L("Свинина-телятина с сыром · 250 г", "Porc-vițel cu cașcaval · 250 g", "Pork-veal with cheese · 250 g"), p: 185 },
-          { v: L("Ягнёнок · 250 г", "Miel · 250 g", "Lamb · 250 g"), p: 185 },
-          { v: L("By Chef · 400 г", "By Chef · 400 g", "By Chef · 400 g"), p: 210 },
+          { v: L("Курица · 250 г", "Pui · 250 g", "Chicken · 250 g"), p: 130 },
+          { v: L("Ягнёнок · 250 г", "Miel · 250 g", "Lamb · 250 g"), p: 140 },
+          { v: L("Свинина-телятина · 250 г", "Porc-vițel · 250 g", "Pork-veal · 250 g"), p: 140 },
+          { v: L("Свинина-телятина с сыром · 250 г", "Porc-vițel cu cașcaval · 250 g", "Pork-veal with cheese · 250 g"), p: 140 },
+          { v: L("Курица с сыром · 300 г", "Pui cu cașcaval · 300 g", "Chicken with cheese · 300 g"), p: 190 },
+          { v: L("By Chef · 400 г", "By Chef · 400 g", "By Chef · 400 g"), p: 180 },
         ],
       },
     ],
@@ -147,7 +149,7 @@ const MENU = [
     ro: "Pește la grătar",
     items: [
       { img: "assets/menu/sturion.jpg", name: "Steak Sturion", ru: L("Стейк из осетра", "Steak de sturion", "Sturgeon steak"), w: "250/60 g", p: 340 },
-      { img: "assets/menu/dorada.jpg", name: "Dorada", ru: L("Дорада", "Doradă", "Sea bream"), w: "330/60 g", p: 320 },
+      { img: "assets/menu/dorada.jpg", name: "Dorada", ru: L("Дорада", "Doradă", "Sea bream"), w: "330/60 g", p: 190 },
       { img: "assets/menu/somon.jpg", name: "Steak Somon", ru: L("Стейк из сёмги", "Steak de somon", "Salmon steak"), w: "150/60 g", p: 240 },
       { img: "assets/menu/pastrav.jpg", name: "Păstrăv", ru: L("Форель", "Păstrăv", "Trout"), w: "250/60 g", p: 225 },
     ],
@@ -158,8 +160,8 @@ const MENU = [
     ro: "Specialități la grătar",
     items: [
       { img: "assets/menu/costite-miel.jpg", name: "Costițe de miel", ru: L("Каре ягнёнка", "Cotlete de miel", "Rack of lamb"), w: "220 g", p: 385 },
-      { name: "Pui la grătar cu legume", ru: L("Целый цыплёнок с овощами гриль", "Pui întreg cu legume la grătar", "Whole chicken with grilled vegetables"), w: "650 g", p: 350 },
-      { img: "assets/menu/costite-porc.jpg", name: "Costițe de porc", ru: L("Свиные рёбрышки с хрустящей корочкой", "Costițe de porc cu crustă crocantă", "Crispy pork ribs"), w: "400 g", p: 225 },
+      { name: "Pui la grătar cu legume", ru: L("Целый цыплёнок с овощами гриль", "Pui întreg cu legume la grătar", "Whole chicken with grilled vegetables"), w: "650 g", p: 270 },
+      { img: "assets/menu/costite-porc.jpg", name: "Costițe de porc", ru: L("Свиные рёбрышки с хрустящей корочкой", "Costițe de porc cu crustă crocantă", "Crispy pork ribs"), w: "400 g", p: 200 },
       { img: "assets/menu/abhazura.jpg", name: "Abhazura", ru: L("Абхазура — пикантные мясные шарики в жировой сетке", "Abhazura — chiftele picante în prapure", "Abkhazura — spicy meatballs in caul fat"), w: "220 g", p: 160 },
     ],
   },
@@ -168,25 +170,25 @@ const MENU = [
     title: L("Горячие блюда", "Feluri principale", "Main courses"),
     ro: "Feluri principale",
     items: [
-      { name: "Chakapuli", ru: L("Ягнёнок с тархуном и ткемали", "Miel cu tarhon și tkemali", "Lamb with tarragon and tkemali"), w: "300 g", p: 210, link: "chakapuli" },
+      { name: "Chakapuli", ru: L("Ягнёнок с тархуном и ткемали", "Miel cu tarhon și tkemali", "Lamb with tarragon and tkemali"), w: "300 g", p: 180, link: "chakapuli" },
       {
         img: "assets/menu/odjahuri.jpg", name: "Odjahuri", ru: L("Оджахури — жаркое «по-домашнему»", "Odjahuri — mâncare „ca acasă”", "Ojakhuri — a homestyle roast"), w: "250 g",
         variants: [
           { v: L("Свинина", "Porc", "Pork"), p: 170 },
-          { v: L("Телятина", "Vițel", "Veal"), p: 190 },
-          { v: L("Ягнёнок", "Miel", "Lamb"), p: 210 },
+          { v: L("Телятина", "Vițel", "Veal"), p: 180 },
+          { v: L("Ягнёнок", "Miel", "Lamb"), p: 220 },
           { v: L("Грибы", "Ciuperci", "Mushrooms"), p: 130 },
         ],
       },
       {
         name: "Ceashushuli", ru: L("Чашушули — острое томлёное мясо", "Ceashushuli — carne înăbușită picantă", "Chashushuli — spicy stewed meat"), w: "250 g",
         variants: [
-          { v: L("Телятина", "Vițel", "Veal"), p: 165 },
-          { v: L("Ягнёнок", "Miel", "Lamb"), p: 180 },
+          { v: L("Телятина", "Vițel", "Veal"), p: 155 },
+          { v: L("Ягнёнок", "Miel", "Lamb"), p: 150 },
         ],
       },
       { img: "assets/menu/chakhokhbili.jpg", name: "Chakhokhbili", ru: L("Чахохбили — курица в томатах с зеленью", "Chakhokhbili — pui în roșii cu verdeață", "Chakhokhbili — chicken in tomatoes with herbs"), w: "300 g", p: 150 },
-      { name: "Tvini", ru: L("Твини — мозги, томлённые в масле", "Tvini — creier gătit în unt", "Tvini — brains simmered in butter"), w: "300 g", p: 145 },
+      { name: "Tvini", ru: L("Твини — мозги, томлённые в масле", "Tvini — creier gătit în unt", "Tvini — brains simmered in butter"), w: "320 g", p: 135 },
     ],
   },
   {

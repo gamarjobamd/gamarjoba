@@ -28,6 +28,7 @@
 html { scroll-behavior: smooth; }
 
 body {
+  position: relative;   /* точка отсчёта для декоративного слоя во всю высоту страницы */
   background: var(--cream);
   color: var(--red-deep);
   font-family: var(--sans);
@@ -1502,6 +1503,266 @@ body.gr-dark .nav__burger span { background: var(--cream); }
 .mask-reveal.is-visible {
   clip-path: inset(0 0 -8% 0);
   transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════
+   ПЕЧАТНОЕ МЕНЮ — вёрстка под полиграфический макет:
+   бордовая плашка-заголовок, вышивка крестиком,
+   засечки в названиях, крупные фото рядом с текстом.
+   ═══════════════════════════════════════════════ */
+
+:root {
+  /* вышивка крестиком — как бордюры в печатном меню */
+  --stitch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='18'%3E%3Cg stroke-width='2' fill='none'%3E%3Cpath d='M4 9 L10 3 L16 9 L10 15 Z' stroke='%23a3152b'/%3E%3Cpath d='M28 9 L34 3 L40 9 L34 15 Z' stroke='%233e7a3f'/%3E%3C/g%3E%3Crect x='8' y='7' width='4' height='4' fill='%23c9a227'/%3E%3Crect x='32' y='7' width='4' height='4' fill='%23a3152b'/%3E%3Crect x='20' y='7' width='4' height='4' fill='%23a3152b'/%3E%3Crect x='44' y='7' width='4' height='4' fill='%233e7a3f'/%3E%3Crect x='-2' y='7' width='4' height='4' fill='%233e7a3f'/%3E%3C/svg%3E");
+}
+
+/* ── Задний план как в печатном меню ──
+   Льняное полотно снято со стр. 21 макета: альфа-текстура поверх
+   кремового, поэтому палитра сайта не смещается. По краям —
+   вертикальная вышивка с полей печатных страниц (период 405px @300dpi). */
+body.menu-page,
+body.dish-page {
+  background-color: var(--cream);
+  background-image: url("../assets/linen.png");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+.menu-page::before, .menu-page::after,
+.dish-page::before, .dish-page::after {
+  content: "";
+  position: fixed;
+  top: 0; bottom: 0;
+  width: 42px;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("../assets/ornament-vert.png");
+  background-repeat: repeat-y;
+  background-size: 42px 100px;
+  opacity: 0.88;
+}
+.menu-page::before, .dish-page::before { left: 0; }
+.menu-page::after,  .dish-page::after  { right: 0; transform: scaleX(-1); }
+
+/* полосы показываем, только когда рядом с контентом есть свободные поля */
+@media (max-width: 1179px) {
+  .menu-page::before, .menu-page::after,
+  .dish-page::before, .dish-page::after { display: none; }
+}
+
+/* ── Декоративный слой: грузинские продукты ──
+   Отдельный слой под контентом. Гранат, перец, зелень, орехи,
+   чеснок, виноград, черри — вырезаны заливкой от краёв кадра.
+   Позиции в % высоты страницы и vw, привязаны к полям: центральная
+   колонка с текстом остаётся чистой, поэтому контраст не страдает. */
+.decor {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.decor__item {
+  position: absolute;
+  top: var(--t);
+  width: var(--w);
+  height: auto;
+  opacity: var(--o);
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+.decor__item--l { left: var(--x); }
+.decor__item--r { right: var(--x); }
+
+/* Планшет: меньше элементов и мельче.
+   Диапазон закрыт снизу — иначе на мобильном сработали бы оба правила
+   и элемент с одним is-mobile спрятался бы планшетным :not(.is-tablet). */
+@media (min-width: 768px) and (max-width: 1179px) {
+  .decor__item { width: calc(var(--w) * 0.72); opacity: calc(var(--o) * 0.85); }
+  .decor__item:not(.is-tablet) { display: none; }
+}
+/* Мобильный: 3 мелких элемента по краям. Полей здесь нет, элементы
+   неизбежно попадают под колонку текста — поэтому уводим их в
+   «фоновую» прозрачность 0.12–0.25, где контраст текста не страдает. */
+@media (max-width: 767px) {
+  .decor__item { width: calc(var(--w) * 0.55); opacity: 0.16; }
+  .decor__item:not(.is-mobile) { display: none; }
+}
+/* Параллакс отключаем, если система просит меньше движения */
+@media (prefers-reduced-motion: reduce) {
+  .decor__item { transform: none !important; transition: none !important; }
+}
+
+/* ── Разделитель между разделами: вышивка, как в печати ── */
+.menu-page .menu-section + .menu-section::before {
+  content: "";
+  display: block;
+  height: 18px;
+  margin: 0 auto clamp(1.8rem, 4vw, 3rem);
+  max-width: 420px;
+  background-image: var(--stitch);
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.7;
+}
+
+/* ── Заголовок раздела: бордовая плашка ── */
+.menu-page .menu-section__head {
+  display: block;
+  border-bottom: none;
+  padding: 0;
+  margin-bottom: 2.2rem;
+}
+.menu-page .menu-section__band {
+  position: relative;
+  background: linear-gradient(95deg, #7d0f1c 0%, #8e1220 62%, rgba(142, 18, 32, 0.82) 100%);
+  padding: 0.9rem clamp(1.1rem, 3vw, 2.2rem) 1rem;
+  box-shadow: 0 2px 14px rgba(90, 8, 20, 0.16);
+}
+.menu-page .menu-section__band .menu-section__num {
+  position: absolute;
+  top: 0.55rem; right: clamp(1rem, 3vw, 2rem);
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.menu-page .menu-section__title {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 4vw, 2.65rem);
+  line-height: 1.02;
+  letter-spacing: 0.012em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.menu-page .menu-section__ro {
+  margin-top: 0.3rem;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(0.68rem, 1.5vw, 0.9rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+.menu-section--bar .menu-section__band {
+  background: linear-gradient(95deg, #22386f 0%, #2e4f9e 62%, rgba(46, 79, 158, 0.82) 100%);
+}
+
+/* ── Позиция меню: фото + текстовый блок ── */
+.menu-page .menu-section__items {
+  display: flex; flex-direction: column;
+  gap: clamp(1.6rem, 3vw, 2.6rem);
+}
+.menu-page .menu-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1rem, 2.4vw, 2rem);
+  align-items: center;
+  padding: 0;
+  border-bottom: 1px solid rgba(200, 16, 46, 0.16);
+  padding-bottom: clamp(1.4rem, 2.6vw, 2.2rem);
+}
+.menu-page .menu-item--has-img {
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+}
+/* чётные — фото справа, как в печатном коллаже.
+   Меняем сами колонки, а не порядок: иначе фото уедет в широкую колонку. */
+.menu-page .menu-item--has-img:nth-child(even) {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+}
+.menu-page .menu-item--has-img:nth-child(even) .menu-item__media {
+  grid-column: 2; grid-row: 1;
+}
+.menu-page .menu-item--has-img:nth-child(even) .menu-item__body {
+  grid-column: 1; grid-row: 1;
+}
+
+.menu-page .menu-item__media { margin: 0; }
+.menu-page .menu-item__thumb {
+  width: 100%; height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: none; border-radius: 3px;
+  box-shadow: 0 8px 26px rgba(90, 8, 20, 0.14);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.menu-page .menu-item--photo:hover .menu-item__thumb,
+.menu-page .menu-item--link:hover .menu-item__thumb {
+  transform: scale(1.02);
+  box-shadow: 0 14px 34px rgba(90, 8, 20, 0.22);
+}
+.menu-page .menu-item--photo:hover,
+.menu-page .menu-item--link:hover { background: none; transform: none; }
+
+/* название + тянущийся орнамент-вышивка */
+.menu-item__head { display: flex; align-items: center; gap: 0.7rem; }
+.menu-page .menu-item__name {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(1.1rem, 2.1vw, 1.5rem);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #8b1019;
+  white-space: normal;
+}
+.menu-item__orn {
+  flex: 1; min-width: 2rem; height: 18px;
+  background-image: var(--stitch);
+  background-repeat: repeat-x;
+  background-position: left center;
+  opacity: 0.85;
+}
+.menu-item__badge {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.66rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: #8b1019;
+}
+.menu-page .menu-item__ru {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #33272a;
+  max-width: 44em;
+}
+/* нижняя строка: вес · цена · «в корзину» */
+.menu-item__foot {
+  display: flex; align-items: baseline; gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+.menu-page .menu-item__foot .menu-item__meta {
+  font-family: var(--serif); font-weight: 600;
+  font-size: 0.92rem; letter-spacing: 0;
+  text-transform: none;
+  color: #8b1019;
+  opacity: 1;
+}
+.menu-page .menu-item__foot .menu-item__price {
+  font-family: var(--serif); font-weight: 900;
+  font-size: 1.5rem;
+  color: #8b1019;
+  min-width: 0;
+}
+.menu-page .menu-item__foot .menu-item__price small {
+  font-family: var(--serif); font-weight: 600;
+  font-size: 0.62em; letter-spacing: 0; text-transform: lowercase;
+  margin-left: 0.15em;
+}
+.menu-item__foot .add-btn { margin-left: auto; }
+
+@media (max-width: 700px) {
+  .menu-page .menu-item--has-img,
+  .menu-page .menu-item--has-img:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
+  .menu-page .menu-item--has-img:nth-child(even) .menu-item__media,
+  .menu-page .menu-item--has-img:nth-child(even) .menu-item__body {
+    grid-column: 1; grid-row: auto;
+  }
+  .menu-page .menu-item__thumb { aspect-ratio: 4 / 3; }
+  .menu-page .menu-item__foot .menu-item__meta { font-size: 0.85rem; }
 }
 
 /* ── Мобильная адаптация ── */

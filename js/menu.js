@@ -4,6 +4,16 @@ const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const GROUPS = { kitchen: MENU, bar: BAR };
 let activeGroup = location.hash === "#bar" ? "bar" : "kitchen";
 
+/* Подзаголовок плашки: два других языка через «•», как в печатном меню,
+   где под названием раздела идут остальные две строки. */
+function otherLangs(title, roFallback) {
+  if (!title || typeof title === "string") return roFallback || "";
+  return I18N_LANGS.filter((l) => l !== LANG)
+    .map((l) => title[l])
+    .filter(Boolean)
+    .join(" • ");
+}
+
 /* ── Рендер одной позиции ── */
 function renderItem(item, sectionTitle, itemIdx) {
   const linkAttr = item.link ? ` data-href="dish.html?id=${item.link}"` : "";
@@ -30,20 +40,29 @@ function renderItem(item, sectionTitle, itemIdx) {
   const photoAttrs = item.img && !item.link
     ? ` data-mi="${sectionTitle}:${itemIdx}"`
     : "";
-  const thumb = item.img
-    ? `<img class="menu-item__thumb" src="${item.img}" alt="${name}" loading="lazy" />`
+  const media = item.img
+    ? `<div class="menu-item__media"><img class="menu-item__thumb" src="${item.img}" alt="${name}" loading="lazy" /></div>`
+    : "";
+  /* бейдж-отличие из печатного меню: особый выбор, легенда, классика, хит */
+  const badge = item.badge && BADGE_T[item.badge]
+    ? `<span class="menu-item__badge">${tr(BADGE_T[item.badge])}</span>`
     : "";
   return `
-    <div${linkAttr}${photoAttrs} class="menu-item reveal${item.link ? " menu-item--link" : ""}${item.img && !item.link ? " menu-item--photo" : ""}">
-      <div class="menu-item__row">
-        ${thumb}
-        <span class="menu-item__name">${name}${item.link ? '<span class="menu-item__star">✳</span>' : ""}</span>
-        <i class="menu-item__dots"></i>
-        <span class="menu-item__meta">${item.w || ""}</span>
-        ${price}
+    <div${linkAttr}${photoAttrs} class="menu-item reveal${item.link ? " menu-item--link" : ""}${item.img && !item.link ? " menu-item--photo" : ""}${item.img ? " menu-item--has-img" : ""}">
+      ${media}
+      <div class="menu-item__body">
+        <div class="menu-item__head">
+          <span class="menu-item__name">${name}${item.link ? '<span class="menu-item__star">✳</span>' : ""}</span>
+          <i class="menu-item__orn" aria-hidden="true"></i>
+        </div>
+        ${badge}
+        ${ru || alt ? `<p class="menu-item__ru">${ru}${alt}</p>` : ""}
+        ${variants}
+        ${item.w || price ? `<div class="menu-item__foot">
+          <span class="menu-item__meta">${item.w || ""}</span>
+          ${price}
+        </div>` : ""}
       </div>
-      ${ru || alt ? `<p class="menu-item__ru">${ru}${alt}</p>` : ""}
-      ${variants}
     </div>`;
 }
 
@@ -70,10 +89,10 @@ function renderGroup(group) {
       (s, i) => `
     <section class="menu-section${isBar ? " menu-section--bar" : ""}" id="${s.id}">
       <header class="menu-section__head reveal">
-        <span class="menu-section__num">${String(i + 1).padStart(2, "0")}</span>
-        <div>
+        <div class="menu-section__band">
+          <span class="menu-section__num">${String(i + 1).padStart(2, "0")}</span>
           <h2 class="menu-section__title">${T(s.title)}</h2>
-          <p class="menu-section__ro">${s.ro}</p>
+          <p class="menu-section__ro">${otherLangs(s.title, s.ro)}</p>
         </div>
       </header>
       ${s.note ? `<p class="menu-section__note reveal">${T(s.note)}</p>` : ""}
@@ -219,3 +238,55 @@ window.addEventListener(
   { passive: true }
 );
 
+
+/* ── Параллакс декоративного слоя ──
+   Двигаем только transform, амплитуда до 6% высоты экрана.
+   При prefers-reduced-motion не трогаем элементы вовсе. */
+(() => {
+  if (REDUCED) return;
+  const items = [...document.querySelectorAll(".decor__item")];
+  if (!items.length) return;
+
+  let anchors = [];
+  const measure = () => {
+    anchors = items.map((el) => {
+      el.style.transform = "";
+      return el.getBoundingClientRect().top + window.scrollY;
+    });
+  };
+
+  let queued = false;
+  const apply = () => {
+    queued = false;
+    const vh = window.innerHeight;
+    const mid = window.scrollY + vh / 2;
+    items.forEach((el, i) => {
+      if (!el.offsetParent) return; /* скрыт на этой ширине */
+      /* rel = 0, когда элемент по центру экрана; ±1 — экран в сторону.
+         Ограничиваем одним экраном, иначе сдвиг сразу упирается в потолок. */
+      const rel = Math.max(-1, Math.min(1, (mid - anchors[i]) / vh));
+      const amp = vh * (parseFloat(el.dataset.speed) || 0.03); /* 2–6% высоты экрана */
+      el.style.transform = `translate3d(0, ${(rel * amp).toFixed(1)}px, 0)`;
+    });
+  };
+  const onScroll = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(apply);
+  };
+
+  measure();
+  apply();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", () => {
+    clearTimeout(window.__decorT);
+    window.__decorT = setTimeout(() => {
+      measure();
+      apply();
+    }, 150);
+  });
+  /* позиции зависят от высоты страницы — пересчитываем после смены вкладки */
+  document.querySelectorAll(".menu-tabs button").forEach((b) =>
+    b.addEventListener("click", () => setTimeout(measure, 60))
+  );
+})();

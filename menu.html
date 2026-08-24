@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=19" />
+  <link rel="stylesheet" href="css/style.css?v=29" />
 </head>
 <body class="menu-page">
 
@@ -33,6 +33,96 @@
       <a class="nav__back" href="index.html" data-i18n="navHome">← На главную</a>
     </div>
   </header>
+
+  <!-- Декоративный слой: продукты грузинской кухни.
+       aria-hidden + pointer-events:none — не читается скринридерами
+       и не перехватывает клики. -->
+  <div class="decor" aria-hidden="true">
+      <picture>
+        <source srcset="assets/deco/chili-5.webp" type="image/webp" />
+        <img class="decor__item decor__item--r" src="assets/deco/chili-5.png" alt="" width="216" height="133"
+             loading="lazy" decoding="async" data-speed="0.045"
+             style="--t:3.0%; --x:1.5vw; --w:170px; --o:0.8" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/parsley.webp" type="image/webp" />
+        <img class="decor__item decor__item--l is-tablet is-mobile" src="assets/deco/parsley.png" alt="" width="190" height="221"
+             loading="lazy" decoding="async" data-speed="0.03"
+             style="--t:6.5%; --x:1.0vw; --w:150px; --o:0.75" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/grapes.webp" type="image/webp" />
+        <img class="decor__item decor__item--r" src="assets/deco/grapes.png" alt="" width="235" height="317"
+             loading="lazy" decoding="async" data-speed="0.055"
+             style="--t:11.5%; --x:2.0vw; --w:130px; --o:0.78" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/walnuts.webp" type="image/webp" />
+        <img class="decor__item decor__item--l" src="assets/deco/walnuts.png" alt="" width="204" height="215"
+             loading="lazy" decoding="async" data-speed="0.035"
+             style="--t:16.5%; --x:2.0vw; --w:130px; --o:0.68" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/pomegranate-half.webp" type="image/webp" />
+        <img class="decor__item decor__item--r is-tablet" src="assets/deco/pomegranate-half.png" alt="" width="251" height="256"
+             loading="lazy" decoding="async" data-speed="0.04"
+             style="--t:21.0%; --x:1.0vw; --w:165px; --o:0.8" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/chili-1.webp" type="image/webp" />
+        <img class="decor__item decor__item--l" src="assets/deco/chili-1.png" alt="" width="117" height="188"
+             loading="lazy" decoding="async" data-speed="0.05"
+             style="--t:27.0%; --x:1.5vw; --w:95px; --o:0.75" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/tomatoes.webp" type="image/webp" />
+        <img class="decor__item decor__item--r is-tablet" src="assets/deco/tomatoes.png" alt="" width="302" height="241"
+             loading="lazy" decoding="async" data-speed="0.03"
+             style="--t:33.0%; --x:1.5vw; --w:175px; --o:0.76" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/garlic.webp" type="image/webp" />
+        <img class="decor__item decor__item--l" src="assets/deco/garlic.png" alt="" width="225" height="191"
+             loading="lazy" decoding="async" data-speed="0.045"
+             style="--t:39.5%; --x:1.0vw; --w:140px; --o:0.7" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/chili-green.webp" type="image/webp" />
+        <img class="decor__item decor__item--r" src="assets/deco/chili-green.png" alt="" width="242" height="129"
+             loading="lazy" decoding="async" data-speed="0.038"
+             style="--t:46.0%; --x:2.0vw; --w:175px; --o:0.74" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/walnut-half.webp" type="image/webp" />
+        <img class="decor__item decor__item--l" src="assets/deco/walnut-half.png" alt="" width="421" height="126"
+             loading="lazy" decoding="async" data-speed="0.05"
+             style="--t:53.0%; --x:1.0vw; --w:190px; --o:0.62" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/pomegranate.webp" type="image/webp" />
+        <img class="decor__item decor__item--r is-tablet is-mobile" src="assets/deco/pomegranate.png" alt="" width="173" height="173"
+             loading="lazy" decoding="async" data-speed="0.035"
+             style="--t:60.0%; --x:1.5vw; --w:120px; --o:0.8" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/chili-2.webp" type="image/webp" />
+        <img class="decor__item decor__item--l" src="assets/deco/chili-2.png" alt="" width="140" height="143"
+             loading="lazy" decoding="async" data-speed="0.055"
+             style="--t:67.5%; --x:2.0vw; --w:110px; --o:0.75" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/tomatoes2.webp" type="image/webp" />
+        <img class="decor__item decor__item--r is-tablet" src="assets/deco/tomatoes2.png" alt="" width="186" height="165"
+             loading="lazy" decoding="async" data-speed="0.04"
+             style="--t:75.0%; --x:1.0vw; --w:145px; --o:0.76" />
+      </picture>
+      <picture>
+        <source srcset="assets/deco/chili-3.webp" type="image/webp" />
+        <img class="decor__item decor__item--l is-tablet is-mobile" src="assets/deco/chili-3.png" alt="" width="86" height="200"
+             loading="lazy" decoding="async" data-speed="0.045"
+             style="--t:83.0%; --x:1.5vw; --w:75px; --o:0.8" />
+      </picture>
+  </div>
 
   <main>
     <section class="menu-hero">
@@ -72,9 +162,9 @@
     </div>
   </footer>
 
-  <script src="js/i18n.js?v=19"></script>
-  <script src="js/menu-data.js?v=19"></script>
-  <script src="js/cart.js?v=19"></script>
-  <script src="js/menu.js?v=19"></script>
+  <script src="js/i18n.js?v=29"></script>
+  <script src="js/menu-data.js?v=29"></script>
+  <script src="js/cart.js?v=29"></script>
+  <script src="js/menu.js?v=29"></script>
 </body>
 </html>

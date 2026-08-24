@@ -44,6 +44,16 @@ const MENU_FULL = {
     "ru": "Всё лучшее из курицы: крылышки, голени, бёдра, люля-кебаб с сыром и шашлык из курицы. Подается с овощами гриль и дольками картофеля.",
     "en": "The best of chicken: wings, drumsticks, thighs, chicken kebab with cheese, and shish kebab. Served with grilled vegetables and potato wedges."
   },
+  "cold:Mokharshuli Ena": {
+    "ro": "Limbă de vită fragedă, fiartă cu mirodenii, servită cu hrean și muștar.",
+    "ru": "Нежный отварной говяжий язык со специями, подается с хреном и горчицей.",
+    "en": "Tender boiled beef tongue with spices, served with horseradish and mustard."
+  },
+  "cold:Bulgaruli": {
+    "ro": "Ardei grași copți, umpluți cu o pastă fină de nuci, usturoi și ierburi aromatice.",
+    "ru": "Запеченный болгарский перец с пикантной начинкой из грецкого ореха, чеснока и зелени.",
+    "en": "Roasted bell peppers stuffed with a savory walnut paste, garlic, and aromatic herbs."
+  },
   "grill-special:Abhazura": {
     "ro": "Chiftelute picante învelite în prapure, o delicatesă tradițională din regiunea Abhazia.",
     "ru": "Пикантные мясные шарики в жировой сетке — традиционный деликатес из Абхазии.",

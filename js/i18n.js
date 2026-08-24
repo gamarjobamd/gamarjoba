@@ -136,6 +136,12 @@ const UI = {
   dishNoAllergens: L("без аллергенов", "fără alergeni", "no allergens"),
   dishVariants: L("Варианты", "Variante", "Options"),
 
+  /* ── бейджи-отличия из печатного меню ── */
+  badgePremium: L("Особый выбор", "Premium", "Premium"),
+  badgeLegend: L("Легенда Грузии", "Legendar", "Legendary"),
+  badgeClassic: L("Вечная классика", "Clasic", "Timeless classic"),
+  badgeBestseller: L("Хит продаж", "Best seller", "Best seller"),
+
   cartTitle: L("Корзина", "Coș", "Cart"),
   cartEmpty: L(
     "Пока пусто.<br /><em>Загляните в меню — там хачапури.</em>",
@@ -175,6 +181,14 @@ const UI = {
 function tr(key) {
   return T(UI[key]);
 }
+
+/* соответствие badge → ключ подписи */
+const BADGE_T = {
+  premium: "badgePremium",
+  legend: "badgeLegend",
+  classic: "badgeClassic",
+  bestseller: "badgeBestseller",
+};
 
 /* аллергены (данные хранятся по-русски) */
 const ALLERGEN_T = {
