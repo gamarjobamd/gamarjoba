@@ -405,6 +405,12 @@ main, footer, header { position: relative; z-index: 3; }
   width: clamp(48px, 6vw, 74px); height: auto;
   filter: drop-shadow(0 3px 14px rgba(0, 0, 0, 0.55));
 }
+/* h1 обёртывает вордмарку и подпись: повторяет колонку .gr__logo,
+   чтобы семантика заголовка не меняла раскладку логотипа */
+.gr__logo-h1 {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.45rem;
+}
 .gr__logo-word {
   font-family: var(--serif);
   font-weight: 900;
@@ -441,6 +447,31 @@ main, footer, header { position: relative; z-index: 3; }
   border-color: var(--red);
 }
 .gr__content .hero__scrollhint { background: rgba(247, 239, 227, 0.7); }
+
+/* пара кнопок в hero: «Смотреть меню» + «Забронировать стол» */
+.hero__actions {
+  margin-top: 3rem;
+  display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: center;
+  gap: 0.9rem;
+}
+.hero__actions .hero__cta { margin-top: 0; }
+.gr__content .hero__actions { margin-top: 2rem; }
+.gr__content .hero__cta--ghost {
+  color: var(--cream);
+  /* тёмная полупрозрачная заливка: кнопка может оказаться и на фото,
+     и на кремовом фоне за силуэтом — читается в обоих случаях */
+  background: rgba(58, 8, 18, 0.72);
+  border-color: rgba(247, 239, 227, 0.6);
+  backdrop-filter: blur(3px);
+}
+.hero__cta--ghost::before { background: var(--cream); }
+.gr__content .hero__cta--ghost:hover { color: var(--red-deep); }
+.hero__cta--ghost:hover svg { transform: none; }
+@media (max-width: 560px) {
+  .hero__actions { gap: 0.7rem; width: 100%; }
+  .hero__actions .hero__cta { flex: 1 1 100%; justify-content: center; }
+}
 
 /* плавное появление текста при загрузке */
 .gr__content .fade-up {

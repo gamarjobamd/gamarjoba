@@ -29,6 +29,7 @@ const UI = {
   navBack: L("← Назад", "← Înapoi", "← Back"),
   navAllMenu: L("Всё меню", "Tot meniul", "Full menu"),
 
+  logoSub: L("Грузинский ресторан", "Restaurant georgian", "Georgian restaurant"),
   heroEyebrow: L("Грузинская кухня · Кишинёв", "Bucătărie georgiană · Chișinău", "Georgian cuisine · Chișinău"),
   heroSub: L(
     "По-грузински — <em>«здравствуй»</em>. Буквально — <em>«победа тебе»</em>.<br />Здесь так встречают каждого гостя.",

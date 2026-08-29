@@ -5,11 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gamarjoba — грузинский ресторан в Кишинёве</title>
   <meta name="description" content="Gamarjoba — ресторан традиционной грузинской кухни в Кишинёве. Хачапури, хинкали, мцвади на углях и вино из квеври. Гость — это подарок от Бога." />
+  <link rel="canonical" href="https://gamarjoba.md/" />
+
+  <!-- Open Graph — превью при отправке ссылки в мессенджеры и соцсети -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gamarjoba — грузинский ресторан в Кишинёве" />
+  <meta property="og:description" content="Gamarjoba — ресторан традиционной грузинской кухни в Кишинёве. Хачапури, хинкали, мцвади на углях и вино из квеври. Гость — это подарок от Бога." />
+  <meta property="og:url" content="https://gamarjoba.md/" />
+  <meta property="og:image" content="https://gamarjoba.md/assets/hero-georgia.jpg" />
+  <meta property="og:locale" content="ru_RU" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gamarjoba — грузинский ресторан в Кишинёве" />
+  <meta name="twitter:description" content="Gamarjoba — ресторан традиционной грузинской кухни в Кишинёве. Хачапури, хинкали, мцвади на углях и вино из квеври. Гость — это подарок от Бога." />
+  <meta name="twitter:image" content="https://gamarjoba.md/assets/hero-georgia.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/hero-georgia.jpg" />
-  <link rel="stylesheet" href="css/style.css?v=31" />
+  <link rel="stylesheet" href="css/style.css?v=32" />
 </head>
 <body>
 
@@ -30,7 +45,7 @@
       </svg>
     </a>
     <nav class="nav__links">
-      <a href="menu.html" data-i18n="navMenu">Меню</a>
+      <a href="/menu" data-i18n="navMenu">Меню</a>
       <a href="#story" data-i18n="navAbout">О нас</a>
       <a href="#visit" data-i18n="navFind">Найти нас</a>
     </nav>
@@ -44,8 +59,8 @@
   </header>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="menu.html" data-i18n="navMenu">Меню</a>
-    <a href="menu.html#bar" data-i18n="navBar">Бар</a>
+    <a href="/menu" data-i18n="navMenu">Меню</a>
+    <a href="/menu#bar" data-i18n="navBar">Бар</a>
     <a href="#story" data-i18n="navAbout">О нас</a>
     <a href="#visit" data-i18n="navFind">Найти нас</a>
     <div class="lang-switch lang-switch--big" aria-label="Language"></div>
@@ -91,14 +106,22 @@
                 <path d="M12 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
                 <path d="M45 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
               </svg>
-              <h1 class="gr__logo-word">Gamarjoba</h1>
-              <span class="gr__logo-sub">georgian cuisine</span>
+              <h1 class="gr__logo-h1">
+                <span class="gr__logo-word">Gamarjoba</span>
+                <span class="gr__logo-sub" data-i18n="logoSub">Грузинский ресторан</span>
+              </h1>
             </div>
             <p class="gr__subtitle fade-up" data-i18n="heroSub2">Земля древних гор, гостеприимства и бесконечного вкуса вина</p>
-            <a class="hero__cta fade-up" href="menu.html">
-              <span data-i18n="heroCta">Смотреть меню</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <div class="hero__actions fade-up">
+              <a class="hero__cta" href="/menu">
+                <span data-i18n="heroCta">Смотреть меню</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a class="hero__cta hero__cta--ghost" href="tel:+37369904304">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <span data-i18n="bookCta">Забронировать стол</span>
+              </a>
+            </div>
             <div class="hero__scrollhint" aria-hidden="true"></div>
           </div>
 
@@ -121,18 +144,18 @@
       <p class="section-label reveal" data-i18n="storyLabel">Наша история</p>
       <h2 class="section-title mask-reveal" data-i18n="storyTitle">Грузия<br /><em>на одном столе</em></h2>
       <div class="story__body">
-        <p class="story__lead reveal-lines" data-i18n="storyLead"></p>
-        <p class="story__text reveal" data-i18n="storyText"></p>
+        <p class="story__lead reveal-lines" data-i18n="storyLead">Gamarjoba по-грузински значит «здравствуй» — и с этого слова начинается каждый вечер у нас. Мы привезли в Кишинёв дух супры, грузинского застолья: тёплый хлеб из глиняной печи, щедрые порции и вино, которое льётся, пока звучат тосты.</p>
+        <p class="story__text reveal" data-i18n="storyText">Каждое блюдо здесь — маленькая история. Аджарули пекут в форме лодочки, чтобы удержать солнце из сыра и яйца. Хинкали лепят вручную и едят руками, сначала выпивая горячий бульон. Мцвади жарят только на живых углях, без спешки. А вино мы наливаем из квеври — глиняных сосудов, что вызревают в земле, как тысячу лет назад. Приходите — и Грузия окажется ближе, чем кажется.</p>
       </div>
 
       <div class="story__features">
         <div class="story__feature reveal">
           <h3 data-i18n="aboutTitle">О ресторане</h3>
-          <p data-i18n="aboutText"></p>
+          <p data-i18n="aboutText">Gamarjoba — это про настоящую Грузию: щедрый стол, живой огонь и рецепты, которые передаются в семьях из поколения в поколение. Мы не имитируем грузинскую кухню — мы её проживаем. Каждое блюдо готовит наш шеф-повар по традиционным рецептам, а гости уходят с ощущением, что побывали в гостях у большой грузинской семьи.</p>
         </div>
         <div class="story__feature reveal">
           <h3 data-i18n="sourceTitle">Продукты, которым можно доверять</h3>
-          <p data-i18n="sourceText"></p>
+          <p data-i18n="sourceText">Мы сами ездим за продуктами. Мясо для мцвади и хинкали — с проверенных ферм, зелень и овощи — свежие, специи — привезённые. Прежде чем блюдо попадёт к вам на стол, мы знаем, откуда оно. Именно поэтому вкус получается таким, каким он должен быть.</p>
         </div>
       </div>
 
@@ -151,11 +174,11 @@
       <div class="visit__grid">
         <div class="visit__item reveal">
           <h3 data-i18n="visitAddress">Адрес</h3>
-          <p><a class="visit__link" href="https://www.google.com/maps/place/gamarjoba/data=!4m2!3m1!1s0x40c97dc7f6e2e23d:0xa38037009f737e63?sa=X&amp;ved=1t:242&amp;ictx=111" target="_blank" rel="noopener noreferrer" data-i18n="visitAddressVal"></a></p>
+          <p><a class="visit__link" href="https://www.google.com/maps/place/gamarjoba/data=!4m2!3m1!1s0x40c97dc7f6e2e23d:0xa38037009f737e63?sa=X&amp;ved=1t:242&amp;ictx=111" target="_blank" rel="noopener noreferrer" data-i18n="visitAddressVal">Aleea Mircea cel Bătrân 6,<br />Кишинёв, Молдова</a></p>
         </div>
         <div class="visit__item reveal">
           <h3 data-i18n="visitHours">Часы</h3>
-          <p data-i18n="visitHoursVal"></p>
+          <p data-i18n="visitHoursVal">Ежедневно<br />11:00 — 23:00</p>
         </div>
         <div class="visit__item reveal">
           <h3 data-i18n="visitBook">Бронь стола</h3>
@@ -179,10 +202,39 @@
     </div>
   </footer>
 
-  <script src="js/i18n.js?v=31"></script>
-  <script src="js/data.js?v=31"></script>
-  <script src="js/cart.js?v=31"></script>
-  <script src="js/reveal.js?v=31"></script>
-  <script src="js/main.js?v=31"></script>
+  <script src="js/i18n.js?v=32"></script>
+  <script src="js/data.js?v=32"></script>
+  <script src="js/cart.js?v=32"></script>
+  <script src="js/reveal.js?v=32"></script>
+  <script src="js/main.js?v=32"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Gamarjoba",
+    "url": "https://gamarjoba.md/",
+    "image": "https://gamarjoba.md/assets/hero-georgia.jpg",
+    "telephone": "+37369904304",
+    "servesCuisine": "Georgian",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Aleea Mircea cel B\u0103tr\u00e2n 6",
+      "addressLocality": "Chi\u0219in\u0103u",
+      "addressCountry": "MD"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday", "Thursday",
+          "Friday", "Saturday", "Sunday"
+        ],
+        "opens": "11:00",
+        "closes": "23:00"
+      }
+    ],
+    "sameAs": ["https://instagram.com/gamarjoba.md"]
+  }
+  </script>
 </body>
 </html>
