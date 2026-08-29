@@ -37,8 +37,8 @@ const MENU = [
       { img: "assets/menu/khortcis.jpg", name: "Khortcis Assorti", ru: L("Мясная тарелка: сало, колбаска, пастрома, почеревка", "Platou cu carne: slănină, cârnăciori, pastramă, piept de porc", "Meat plate: lard, sausage, pastrami, pork belly"), w: "250 g", p: 190 },
       { img: "assets/menu/mokharshuli.jpg", name: "Mokharshuli Ena", ru: L("Отварной говяжий язык с хреном и горчицей", "Limbă de vită fiartă cu hrean și muștar", "Boiled beef tongue with horseradish and mustard"), w: "200 g", p: 160 },
       { img: "assets/menu/bulgaruli.jpg", name: "Bulgaruli", ru: L("Запечённый перец с ореховой начинкой", "Ardei copți umpluți cu pastă de nuci", "Roasted peppers stuffed with walnut paste"), w: "250 g", p: 150 },
-      { name: "Heringi Kartophilit", ru: L("Сельдь с золотистым запечённым картофелем", "Hering cu cartofi copți aurii", "Herring with golden roasted potatoes"), w: "250 g", p: 110 },
-      { name: "Bostneulis Assorti", ru: L("Свежие садовые овощи и много зелени", "Legume proaspete de grădină și multă verdeață", "Fresh garden vegetables and lots of greens"), w: "400 g", p: 100 },
+      { img: "assets/menu/heringi.jpg", name: "Heringi Kartophilit", ru: L("Сельдь с золотистым запечённым картофелем", "Hering cu cartofi copți aurii", "Herring with golden roasted potatoes"), w: "250 g", p: 110 },
+      { img: "assets/menu/bostneulis.jpg", name: "Bostneulis Assorti", ru: L("Свежие садовые овощи и много зелени", "Legume proaspete de grădină și multă verdeață", "Fresh garden vegetables and lots of greens"), w: "400 g", p: 100 },
     ],
   },
   {
@@ -95,10 +95,22 @@ const MENU = [
     ),
     items: [
       { img: "assets/menu/mama-hinkali.jpg", name: "Mama Hinkali", badge: "premium", ru: L("Гигантский хинкали на всю компанию", "Hinkali gigant pentru toată compania", "A giant khinkali for the whole table"), w: "800 g", p: 150, link: "mama-hinkali" },
-      { img: "assets/menu/hinkali-vita.jpg", name: "Hinkali cu carne de vită", ru: L("С говядиной", "Cu carne de vită", "With beef"), w: "270 g · 3 x", p: 80, alt: L("жареные — 85", "la tigaie — 85", "pan-fried — 85") },
-      { img: "assets/menu/hinkali-mixt.jpg", name: "Hinkali mixt porc-vită", ru: L("Свинина-говядина", "Porc-vită", "Pork and beef"), w: "270 g · 3 x", p: 80, alt: L("жареные — 85", "la tigaie — 85", "pan-fried — 85") },
-      { img: "assets/menu/hinkali-miel.jpg", name: "Hinkali cu carne de miel", ru: L("С ягнёнком", "Cu carne de miel", "With lamb"), w: "270 g · 3 x", p: 80, alt: L("жареные — 85", "la tigaie — 85", "pan-fried — 85") },
-      { img: "assets/menu/hinkali-cascaval.jpg", name: "Hinkali cu cașcaval", ru: L("С сыром", "Cu cașcaval", "With cheese"), w: "270 g · 3 x", p: 80, alt: L("жареные — 85", "la tigaie — 85", "pan-fried — 85") },
+      { img: "assets/menu/hinkali-vita.jpg", name: "Hinkali cu carne de vită", ru: L("С говядиной", "Cu carne de vită", "With beef"), w: "270 g · 3 x", variants: [
+          { v: L("Отварные", "Fierte", "Boiled"), p: 80 },
+          { v: L("Жареные", "La tigaie", "Pan-fried"), p: 85 },
+        ] },
+      { img: "assets/menu/hinkali-mixt.jpg", name: "Hinkali mixt porc-vită", ru: L("Свинина-говядина", "Porc-vită", "Pork and beef"), w: "270 g · 3 x", variants: [
+          { v: L("Отварные", "Fierte", "Boiled"), p: 80 },
+          { v: L("Жареные", "La tigaie", "Pan-fried"), p: 85 },
+        ] },
+      { img: "assets/menu/hinkali-miel.jpg", name: "Hinkali cu carne de miel", ru: L("С ягнёнком", "Cu carne de miel", "With lamb"), w: "270 g · 3 x", variants: [
+          { v: L("Отварные", "Fierte", "Boiled"), p: 80 },
+          { v: L("Жареные", "La tigaie", "Pan-fried"), p: 85 },
+        ] },
+      { img: "assets/menu/hinkali-cascaval.jpg", name: "Hinkali cu cașcaval", ru: L("С сыром", "Cu cașcaval", "With cheese"), w: "270 g · 3 x", variants: [
+          { v: L("Отварные", "Fierte", "Boiled"), p: 80 },
+          { v: L("Жареные", "La tigaie", "Pan-fried"), p: 85 },
+        ] },
     ],
   },
   {
@@ -160,7 +172,7 @@ const MENU = [
     ro: "Specialități la grătar",
     items: [
       { img: "assets/menu/costite-miel.jpg", name: "Costițe de miel", ru: L("Каре ягнёнка", "Cotlete de miel", "Rack of lamb"), w: "220 g", p: 385 },
-      { name: "Pui la grătar cu legume", ru: L("Целый цыплёнок с овощами гриль", "Pui întreg cu legume la grătar", "Whole chicken with grilled vegetables"), w: "650 g", p: 270 },
+      { img: "assets/menu/pui-gratar.jpg", name: "Pui la grătar cu legume", ru: L("Целый цыплёнок с овощами гриль", "Pui întreg cu legume la grătar", "Whole chicken with grilled vegetables"), w: "650 g", p: 270 },
       { img: "assets/menu/costite-porc.jpg", name: "Costițe de porc", ru: L("Свиные рёбрышки с хрустящей корочкой", "Costițe de porc cu crustă crocantă", "Crispy pork ribs"), w: "400 g", p: 200 },
       { img: "assets/menu/abhazura.jpg", name: "Abhazura", ru: L("Абхазура — пикантные мясные шарики в жировой сетке", "Abhazura — chiftele picante în prapure", "Abkhazura — spicy meatballs in caul fat"), w: "220 g", p: 160 },
     ],
@@ -181,14 +193,14 @@ const MENU = [
         ],
       },
       {
-        name: "Ceashushuli", ru: L("Чашушули — острое томлёное мясо", "Ceashushuli — carne înăbușită picantă", "Chashushuli — spicy stewed meat"), w: "250 g",
+        img: "assets/menu/ceashushuli.jpg", name: "Ceashushuli", ru: L("Чашушули — острое томлёное мясо", "Ceashushuli — carne înăbușită picantă", "Chashushuli — spicy stewed meat"), w: "250 g",
         variants: [
           { v: L("Телятина", "Vițel", "Veal"), p: 155 },
           { v: L("Ягнёнок", "Miel", "Lamb"), p: 150 },
         ],
       },
       { img: "assets/menu/chakhokhbili.jpg", name: "Chakhokhbili", ru: L("Чахохбили — курица в томатах с зеленью", "Chakhokhbili — pui în roșii cu verdeață", "Chakhokhbili — chicken in tomatoes with herbs"), w: "300 g", p: 150 },
-      { name: "Tvini", ru: L("Твини — мозги, томлённые в масле", "Tvini — creier gătit în unt", "Tvini — brains simmered in butter"), w: "320 g", p: 135 },
+      { img: "assets/menu/tvini.jpg", name: "Tvini", ru: L("Твини — мозги, томлённые в масле", "Tvini — creier gătit în unt", "Tvini — brains simmered in butter"), w: "320 g", p: 135 },
     ],
   },
   {
@@ -196,10 +208,10 @@ const MENU = [
     title: L("Гарниры", "Garnituri", "Side dishes"),
     ro: "Garnituri",
     items: [
-      { name: "Legume la grătar", ru: L("Сезонные овощи на открытом огне", "Legume de sezon la foc deschis", "Seasonal vegetables over an open flame"), w: "300 g", p: 150 },
-      { name: "Gomi", ru: L("Гоми — кукурузная каша, символ гостеприимства", "Gomi — terci de porumb, simbol al ospitalității", "Gomi — cornmeal porridge, a symbol of hospitality"), w: "200 g", p: 65 },
-      { name: "Felii de cartofi cu usturoi", ru: L("Дольки картофеля с чесноком и зеленью", "Felii de cartofi cu usturoi și verdeață", "Potato wedges with garlic and herbs"), w: "150 g", p: 55 },
-      { name: "Cartofi pai", ru: L("Картофель пай", "Cartofi pai", "Shoestring fries"), w: "150 g", p: 50 },
+      { img: "assets/menu/legume.jpg", name: "Legume la grătar", ru: L("Сезонные овощи на открытом огне", "Legume de sezon la foc deschis", "Seasonal vegetables over an open flame"), w: "300 g", p: 150 },
+      { img: "assets/menu/gomi.jpg", name: "Gomi", ru: L("Гоми — кукурузная каша, символ гостеприимства", "Gomi — terci de porumb, simbol al ospitalității", "Gomi — cornmeal porridge, a symbol of hospitality"), w: "200 g", p: 65 },
+      { img: "assets/menu/cartofi-felii.jpg", name: "Felii de cartofi cu usturoi", ru: L("Дольки картофеля с чесноком и зеленью", "Felii de cartofi cu usturoi și verdeață", "Potato wedges with garlic and herbs"), w: "150 g", p: 55 },
+      { img: "assets/menu/cartofi-pai.jpg", name: "Cartofi pai", ru: L("Картофель пай", "Cartofi pai", "Shoestring fries"), w: "150 g", p: 50 },
     ],
   },
   {

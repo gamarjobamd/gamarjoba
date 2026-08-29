@@ -1596,6 +1596,18 @@ body.dish-page {
   .decor__item { transform: none !important; transition: none !important; }
 }
 
+/* ── Гарниры: фото мельче и квадратные ──
+   Гарнир — простое блюдо в круглой тарелке, крупный портретный кадр
+   ему не нужен: даём квадрат поменьше, чтобы раздел читался легче. */
+.menu-page #garnish .menu-item--has-img { grid-template-columns: minmax(0, 210px) minmax(0, 1fr); }
+.menu-page #garnish .menu-item--has-img:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 210px); }
+.menu-page #garnish .menu-item__thumb { aspect-ratio: 1 / 1; }
+@media (max-width: 700px) {
+  .menu-page #garnish .menu-item--has-img,
+  .menu-page #garnish .menu-item--has-img:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
+  .menu-page #garnish .menu-item__thumb { aspect-ratio: 4 / 3; }
+}
+
 /* ── Разделитель между разделами: вышивка, как в печати ── */
 .menu-page .menu-section + .menu-section::before {
   content: "";
