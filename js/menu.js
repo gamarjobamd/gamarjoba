@@ -4,71 +4,9 @@ const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const GROUPS = { kitchen: MENU, bar: BAR };
 let activeGroup = location.hash === "#bar" ? "bar" : "kitchen";
 
-/* Подзаголовок плашки: два других языка через «•», как в печатном меню,
-   где под названием раздела идут остальные две строки. */
-function otherLangs(title, roFallback) {
-  if (!title || typeof title === "string") return roFallback || "";
-  return I18N_LANGS.filter((l) => l !== LANG)
-    .map((l) => title[l])
-    .filter(Boolean)
-    .join(" • ");
-}
-
-/* ── Рендер одной позиции ── */
-function renderItem(item, sectionTitle, itemIdx) {
-  /* канонический адрес страницы блюда — по стабильному слагу, а не по индексу.
-     Один источник и для data-href, и для настоящей <a> на названии. */
-  const slug = item.slug || item.link || "";
-  const dishHref = slug ? `/dish?item=${slug}` : "";
-  const linkAttr = item.link ? ` data-href="${dishHref}"` : "";
-  const name = T(item.name);
-  const ru = T(item.ru);
-  const alt = item.alt ? " · " + T(item.alt) : "";
-  const itemId = `${sectionTitle}:${name}`;
-  const variants = item.variants
-    ? `<ul class="menu-item__variants">${item.variants
-        .map((v) => {
-          const vv = T(v.v);
-          return `<li>
-            <span>${vv}</span><i class="menu-item__dots"></i><b>${v.p}</b>
-            <button class="add-btn" data-id="${itemId} — ${vv}" data-name="${name}" data-detail="${vv}" data-price="${v.p}" aria-label="+">+</button>
-          </li>`;
-        })
-        .join("")}</ul>`
-    : "";
-  const price =
-    item.p != null
-      ? `<span class="menu-item__price">${item.p}<small> mdl</small></span>
-         <button class="add-btn" data-id="${itemId}" data-name="${name}" data-detail="${item.w || ""}" data-price="${item.p}" aria-label="+">+</button>`
-      : "";
-  const photoAttrs = item.img && !item.link
-    ? ` data-href="${dishHref}"`
-    : "";
-  const media = item.img
-    ? `<div class="menu-item__media"><img class="menu-item__thumb" src="${item.img}" alt="${name}" loading="lazy" /></div>`
-    : "";
-  /* бейдж-отличие из печатного меню: особый выбор, легенда, классика, хит */
-  const badge = item.badge && BADGE_T[item.badge]
-    ? `<span class="menu-item__badge">${tr(BADGE_T[item.badge])}</span>`
-    : "";
-  return `
-    <div${linkAttr}${photoAttrs} class="menu-item reveal${item.link ? " menu-item--link" : ""}${item.img && !item.link ? " menu-item--photo" : ""}${item.img ? " menu-item--has-img" : ""}">
-      ${media}
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name">${dishHref ? `<a href="${dishHref}">${name}</a>` : name}${item.link ? '<span class="menu-item__star">✳</span>' : ""}</span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        ${badge}
-        ${ru || alt ? `<p class="menu-item__ru">${ru}${alt}</p>` : ""}
-        ${variants}
-        ${item.w || price ? `<div class="menu-item__foot">
-          <span class="menu-item__meta">${item.w || ""}</span>
-          ${price}
-        </div>` : ""}
-      </div>
-    </div>`;
-}
+/* разметку строит общий модуль menu-template.js — тот же код,
+   что использует сборка статики; здесь только язык и словари */
+const TPL = createMenuTemplate({ lang: LANG, langs: I18N_LANGS, ui: UI, badges: BADGE_T });
 
 /* ── Рендер группы (кухня или бар) ── */
 const navEl = document.getElementById("menuNav");
@@ -84,28 +22,8 @@ function renderGroup(group) {
     b.classList.toggle("is-active", b.dataset.group === group)
   );
 
-  navEl.innerHTML = data
-    .map((s) => `<a class="menu-nav__chip${isBar ? " menu-nav__chip--bar" : ""}" href="#${s.id}" data-section="${s.id}">${T(s.title)}</a>`)
-    .join("");
-
-  sectionsEl.innerHTML = data
-    .map(
-      (s, i) => `
-    <section class="menu-section${isBar ? " menu-section--bar" : ""}" id="${s.id}">
-      <header class="menu-section__head reveal">
-        <div class="menu-section__band">
-          <span class="menu-section__num">${String(i + 1).padStart(2, "0")}</span>
-          <h2 class="menu-section__title">${T(s.title)}</h2>
-          <p class="menu-section__ro">${otherLangs(s.title, s.ro)}</p>
-        </div>
-      </header>
-      ${s.note ? `<p class="menu-section__note reveal">${T(s.note)}</p>` : ""}
-      <div class="menu-section__items">
-        ${s.items.map((it, ii) => renderItem(it, s.id, ii)).join("")}
-      </div>
-    </section>`
-    )
-    .join("");
+  navEl.innerHTML = TPL.renderNav(data, isBar);
+  sectionsEl.innerHTML = TPL.renderSections(data, isBar);
 
   wireObservers();
 }
