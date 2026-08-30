@@ -11,7 +11,7 @@ const backSuffix = fromMenu ? "&back=menu" : "";
 /* «Назад» — в меню, если пришли из меню */
 if (fromMenu) {
   const backLink = document.querySelector(".nav__back");
-  if (backLink) backLink.href = "menu.html";
+  if (backLink) backLink.href = "/menu";
 }
 
 const ALL_SECTIONS = [...MENU, ...BAR];
@@ -22,6 +22,22 @@ function findMenuItem(mi) {
   if (!sec) return null;
   const item = sec.items[Number(idxStr)];
   return item ? { sec, item, idx: Number(idxStr) } : null;
+}
+
+/* стабильный идентификатор позиции: своё поле slug либо id фирменного блюда */
+function itemSlug(item) {
+  return (item && (item.slug || item.link)) || "";
+}
+
+/* поиск позиции по слагу — первое совпадение; дубли (Shurpa, Adjaruli,
+   Mtsvadi встречаются в двух разделах) намеренно ведут на одну страницу */
+function findBySlug(slug) {
+  if (!slug) return null;
+  for (const sec of ALL_SECTIONS) {
+    const idx = sec.items.findIndex((it) => itemSlug(it) === slug);
+    if (idx !== -1) return { sec, item: sec.items[idx], idx };
+  }
+  return null;
 }
 
 const main = document.getElementById("dishMain");
@@ -81,7 +97,7 @@ function renderRich(dish) {
     </div>
   </section>
 
-  <a class="dish-next" href="dish.html?id=${next.id}${backSuffix}">
+  <a class="dish-next" href="/dish?item=${next.id}${backSuffix}">
     <span>${tr("dishNext")}</span>
     <strong>${next.name} →</strong>
   </a>`;
@@ -112,7 +128,7 @@ function renderMenuItem(sec, item, idx) {
     const j = (idx + step) % n;
     if (sec.items[j].img) {
       nextHtml = `
-      <a class="dish-next" href="dish.html?mi=${sec.id}:${j}${backSuffix}">
+      <a class="dish-next" href="/dish?item=${itemSlug(sec.items[j])}${backSuffix}">
         <span>${tr("dishNext")}</span>
         <strong>${T(sec.items[j].name)} →</strong>
       </a>`;
@@ -179,12 +195,33 @@ function renderMenuItem(sec, item, idx) {
   }
 }
 
-/* ── Выбор режима ── */
-const found = params.get("mi") ? findMenuItem(params.get("mi")) : null;
-if (found) {
+/* ── Выбор режима ──
+   ?item=<slug>       — канонический адрес
+   ?id=<slug>         — прежний адрес фирменных блюд, работает как раньше
+   ?mi=<раздел:номер> — прежний нестабильный адрес: находим позицию по индексу,
+                        определяем её слаг и подменяем адрес на канонический */
+let slug = params.get("item") || params.get("id") || "";
+let byIndex = null;
+
+if (!slug && params.get("mi")) {
+  byIndex = findMenuItem(params.get("mi"));
+  if (byIndex) slug = itemSlug(byIndex.item);
+}
+
+/* старая ссылка ?mi= — чистим адресную строку без перезагрузки страницы */
+if (params.get("mi") && slug) {
+  history.replaceState(null, "", `${location.pathname}?item=${encodeURIComponent(slug)}${backSuffix}`);
+}
+
+const rich = slug ? getDish(slug) : null;
+const found = rich ? null : findBySlug(slug) || byIndex;
+
+if (rich) {
+  renderRich(rich);
+} else if (found) {
   renderMenuItem(found.sec, found.item, found.idx);
 } else {
-  renderRich(getDish(params.get("id")) || DISHES[0]);
+  renderRich(DISHES[0]);
 }
 
 /* ── Клики по «+» у вариантов ── */

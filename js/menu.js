@@ -16,7 +16,11 @@ function otherLangs(title, roFallback) {
 
 /* ── Рендер одной позиции ── */
 function renderItem(item, sectionTitle, itemIdx) {
-  const linkAttr = item.link ? ` data-href="dish.html?id=${item.link}"` : "";
+  /* канонический адрес страницы блюда — по стабильному слагу, а не по индексу.
+     Один источник и для data-href, и для настоящей <a> на названии. */
+  const slug = item.slug || item.link || "";
+  const dishHref = slug ? `/dish?item=${slug}` : "";
+  const linkAttr = item.link ? ` data-href="${dishHref}"` : "";
   const name = T(item.name);
   const ru = T(item.ru);
   const alt = item.alt ? " · " + T(item.alt) : "";
@@ -38,7 +42,7 @@ function renderItem(item, sectionTitle, itemIdx) {
          <button class="add-btn" data-id="${itemId}" data-name="${name}" data-detail="${item.w || ""}" data-price="${item.p}" aria-label="+">+</button>`
       : "";
   const photoAttrs = item.img && !item.link
-    ? ` data-mi="${sectionTitle}:${itemIdx}"`
+    ? ` data-href="${dishHref}"`
     : "";
   const media = item.img
     ? `<div class="menu-item__media"><img class="menu-item__thumb" src="${item.img}" alt="${name}" loading="lazy" /></div>`
@@ -52,7 +56,7 @@ function renderItem(item, sectionTitle, itemIdx) {
       ${media}
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name">${name}${item.link ? '<span class="menu-item__star">✳</span>' : ""}</span>
+          <span class="menu-item__name">${dishHref ? `<a href="${dishHref}">${name}</a>` : name}${item.link ? '<span class="menu-item__star">✳</span>' : ""}</span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         ${badge}
@@ -191,11 +195,12 @@ document.addEventListener("click", (e) => {
     addBtn.classList.add("is-added");
     return;
   }
-  const clickable = e.target.closest(".menu-item--photo, .menu-item--link[data-href]");
+  const clickable = e.target.closest(".menu-item--photo[data-href], .menu-item--link[data-href]");
   if (!clickable) return;
-  const href = clickable.dataset.href
-    ? `${clickable.dataset.href}&back=menu`
-    : `dish.html?mi=${clickable.dataset.mi}&back=menu`;
+  /* на названии блюда теперь настоящая <a> — гасим её переход, иначе браузер
+     уйдёт сразу и мы потеряем анимацию и запоминание позиции скролла */
+  e.preventDefault();
+  const href = `${clickable.dataset.href}&back=menu`;
   /* запоминаем вкладку и позицию скролла для возврата */
   sessionStorage.setItem(
     "gamarjoba-menu-return",

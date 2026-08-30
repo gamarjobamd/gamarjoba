@@ -19,7 +19,7 @@ const MENU_FULL = {
     "ru": "Рулетики из баклажанов с ореховой пастой, грузинскими специями и зернами граната.",
     "en": "Fried eggplant rolls with rich walnut paste, Georgian spices, and pomegranate."
   },
-  "chef:Mtsvari Vițel": {
+  "chef:Mtsvadi Vițel": {
     "ro": "Carne de vițel selectă, marinată cu mirodenii și friptă pe cărbuni până la frăgezime.",
     "ru": "Отборная телятина, маринованная со специями и обжаренная на углях до идеальной нежности.",
     "en": "Select veal, marinated with spices and charcoal-grilled to perfect tenderness."
