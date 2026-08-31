@@ -211,7 +211,7 @@ const MENU_FULL = {
   },
   "salads:Salată Gamarjoba": {
     "ro": "Salată caldă cu carne de vițel fragedă, verdețuri mixte și sosul special de autor „Gamarjoba\".",
-    "ru": "Тёплый салат с нежной телятиной, миксом свежей зелени и фирменным соусом «Гамарджоба».",
+    "ru": "Тёплый салат с нежной телятиной, миксом свежей зелени и фирменным соусом «Gamarjoba».",
     "en": "Warm salad with tender veal, mixed greens, and the signature \"Gamarjoba\" special sauce."
   },
   "salads:Salată Georgiană": {

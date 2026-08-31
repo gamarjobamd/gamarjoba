@@ -117,8 +117,10 @@ function renderMenuItem(sec, item, idx) {
   const name = T(item.name);
   document.title = `${name} — Gamarjoba`;
   const desc = T(item.ru);
-  /* ключ полного описания — «раздел:название», как в menu-full.js */
-  const fullKey = `${sec.id}:${typeof item.name === "string" ? item.name : name}`;
+  /* ключ полного описания — «раздел:название», как в menu-full.js.
+     Берём исходное (румынское) написание, а не перевод: ключ не должен
+     зависеть от выбранного языка. */
+  const fullKey = `${sec.id}:${typeof item.name === "string" ? item.name : item.name.ro}`;
   const full = typeof MENU_FULL !== "undefined" ? MENU_FULL[fullKey] : null;
 
   /* следующее блюдо с фото в этом же разделе */

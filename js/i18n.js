@@ -30,6 +30,32 @@ const UI = {
   navAllMenu: L("Всё меню", "Tot meniul", "Full menu"),
 
   logoSub: L("Грузинский ресторан", "Restaurant georgian", "Georgian restaurant"),
+  menuWordmark: L("Меню", "Meniu", "Menu"),
+
+  /* ── SEO: заголовок и описание страницы по языкам.
+     Бренд Gamarjoba во всех языках остаётся Gamarjoba. ── */
+  seoHomeTitle: L(
+    "Gamarjoba — грузинский ресторан в Кишинёве",
+    "Gamarjoba — restaurant georgian în Chișinău",
+    "Gamarjoba — Georgian restaurant in Chișinău"
+  ),
+  seoHomeDesc: L(
+    "Gamarjoba — ресторан традиционной грузинской кухни в Кишинёве. Хачапури, хинкали, мцвади на углях и вино из квеври. Гость — это подарок от Бога.",
+    "Gamarjoba — restaurant de bucătărie georgiană tradițională în Chișinău. Hachapuri, hinkali, mtsvadi pe cărbuni și vin din kvevri. Oaspetele e un dar de la Dumnezeu.",
+    "Gamarjoba — traditional Georgian restaurant in Chișinău. Khachapuri, khinkali, charcoal-grilled mtsvadi and qvevri wine. A guest is a gift from God."
+  ),
+  seoMenuTitle: L(
+    "Меню — Gamarjoba",
+    "Meniu — Gamarjoba",
+    "Menu — Gamarjoba"
+  ),
+  seoMenuDesc: L(
+    "Полное меню ресторана Gamarjoba: хачапури, хинкали, мангал, супы, салаты и десерты. Все цены в леях.",
+    "Meniul complet al restaurantului Gamarjoba: hachapuri, hinkali, grătar, supe, salate și deserturi. Toate prețurile în lei.",
+    "The full Gamarjoba menu: khachapuri, khinkali, grill, soups, salads and desserts. All prices in lei."
+  ),
+  seoDishTitle: L("Блюдо — Gamarjoba", "Preparat — Gamarjoba", "Dish — Gamarjoba"),
+  seoLocale: L("ru_RU", "ro_RO", "en_US"),
   heroEyebrow: L("Грузинская кухня · Кишинёв", "Bucătărie georgiană · Chișinău", "Georgian cuisine · Chișinău"),
   heroSub: L(
     "По-грузински — <em>«здравствуй»</em>. Буквально — <em>«победа тебе»</em>.<br />Здесь так встречают каждого гостя.",
@@ -204,6 +230,43 @@ const ALLERGEN_T = {
 document.querySelectorAll("[data-i18n]").forEach((el) => {
   el.innerHTML = tr(el.dataset.i18n);
 });
+
+/* ── Вордмарки, разбитые на буквы: переводим текст, разбивку сохраняем.
+   Бренд Gamarjoba такой разметкой не помечен и не затрагивается. ── */
+document.querySelectorAll("[data-wordmark]").forEach((el) => {
+  const text = tr(el.dataset.wordmark);
+  if (!text) return;
+  el.setAttribute("aria-label", text);
+  el.innerHTML = [...text].map((ch) => `<span>${ch}</span>`).join("");
+});
+
+/* ── SEO по языку: <title>, description, Open Graph, Twitter.
+   Страницу определяем по классу body, который уже есть в разметке.
+   На странице блюда dish.js позже подставит название блюда. ── */
+(() => {
+  const page = document.body.classList.contains("menu-page")
+    ? "Menu"
+    : document.body.classList.contains("dish-page")
+      ? "Dish"
+      : "Home";
+  const title = tr("seo" + page + "Title");
+  const desc = tr("seo" + page + "Desc");
+  const set = (sel, value) => {
+    const el = document.querySelector(sel);
+    if (el && value) el.setAttribute("content", value);
+  };
+  if (title) {
+    document.title = title;
+    set('meta[property="og:title"]', title);
+    set('meta[name="twitter:title"]', title);
+  }
+  if (desc) {
+    set('meta[name="description"]', desc);
+    set('meta[property="og:description"]', desc);
+    set('meta[name="twitter:description"]', desc);
+  }
+  set('meta[property="og:locale"]', tr("seoLocale"));
+})();
 
 /* ── Переключатель языков ── */
 document.querySelectorAll(".lang-switch").forEach((sw) => {

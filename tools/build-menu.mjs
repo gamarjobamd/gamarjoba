@@ -31,6 +31,9 @@ function makeSandbox() {
     localStorage: { getItem: () => null, setItem: noop },
     document: {
       documentElement: el,
+      /* i18n.js определяет страницу по классу body — в сборке это «не меню» */
+      body: { classList: { contains: () => false } },
+      title: "",
       querySelectorAll: () => emptyList,
       querySelector: () => null,
       addEventListener: noop,

@@ -7,7 +7,7 @@ const grid = document.getElementById("dishGrid");
 if (grid) {
   grid.innerHTML = DISHES.map(
     (d, i) => `
-    <a class="dish-card" href="dish.html?id=${d.id}" data-dish="${d.id}">
+    <a class="dish-card" href="/dish?item=${d.id}" data-dish="${d.id}">
       <span class="dish-card__num">№ ${String(i + 1).padStart(2, "0")}</span>
       <span class="dish-card__go" aria-hidden="true">→</span>
       <div class="dish-card__art"><img src="${d.img}" alt="${d.name} — ${T(d.tagline)}" loading="lazy" /></div>

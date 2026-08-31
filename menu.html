@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=33" />
+  <link rel="stylesheet" href="css/style.css?v=37" />
 </head>
 <body class="menu-page">
 
@@ -30,7 +30,7 @@
     </a>
     <div class="nav__right">
       <div class="lang-switch" aria-label="Language"></div>
-      <a class="nav__back" href="index.html" data-i18n="navHome">← На главную</a>
+      <a class="nav__back" href="/" data-i18n="navHome">← На главную</a>
     </div>
   </header>
 
@@ -127,7 +127,7 @@
   <main>
     <section class="menu-hero">
       <p class="hero__eyebrow reveal" data-i18n="menuEyebrow">Все цены — в леях · RO · RU · EN</p>
-      <h1 class="menu-hero__title" id="menuTitle" data-fit="shrink" aria-label="Meniu">
+      <h1 class="menu-hero__title" id="menuTitle" data-fit="shrink" data-wordmark="menuWordmark" aria-label="Meniu">
         <span>M</span><span>e</span><span>n</span><span>i</span><span>u</span>
       </h1>
       <p class="menu-hero__sub reveal" data-i18n="menuSub"></p>
@@ -209,10 +209,10 @@
       </div>
     </div>
     <div data-href="/dish?item=mtsvadi" class="menu-item reveal is-visible menu-item--link menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/mtsvadi.jpg" alt="Mtsvadi Vițel" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/mtsvadi.jpg" alt="Mtsvadi из телятины" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=mtsvadi">Mtsvadi Vițel</a><span class="menu-item__star">✳</span></span>
+          <span class="menu-item__name"><a href="/dish?item=mtsvadi">Mtsvadi из телятины</a><span class="menu-item__star">✳</span></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         <span class="menu-item__badge">Хит продаж</span>
@@ -221,7 +221,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">250 g</span>
           <span class="menu-item__price">180<small> mdl</small></span>
-         <button class="add-btn" data-id="chef:Mtsvadi Vițel" data-name="Mtsvadi Vițel" data-detail="250 g" data-price="180" aria-label="+">+</button>
+         <button class="add-btn" data-id="chef:Mtsvadi из телятины" data-name="Mtsvadi из телятины" data-detail="250 g" data-price="180" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -239,10 +239,10 @@
       <div class="menu-section__items">
         
     <div data-href="/dish?item=set-din-carne-mix" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-mix.jpg" alt="Set din carne Mix" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-mix.jpg" alt="Мясной сет «Микс»" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=set-din-carne-mix">Set din carne Mix</a></span>
+          <span class="menu-item__name"><a href="/dish?item=set-din-carne-mix">Мясной сет «Микс»</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -251,15 +251,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">1800 g</span>
           <span class="menu-item__price">1350<small> mdl</small></span>
-         <button class="add-btn" data-id="sets:Set din carne Mix" data-name="Set din carne Mix" data-detail="1800 g" data-price="1350" aria-label="+">+</button>
+         <button class="add-btn" data-id="sets:Мясной сет «Микс»" data-name="Мясной сет «Микс»" data-detail="1800 g" data-price="1350" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=set-din-carne-de-miel" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-miel.jpg" alt="Set din carne de miel" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-miel.jpg" alt="Сет из ягнёнка" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=set-din-carne-de-miel">Set din carne de miel</a></span>
+          <span class="menu-item__name"><a href="/dish?item=set-din-carne-de-miel">Сет из ягнёнка</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         <span class="menu-item__badge">Хит продаж</span>
@@ -268,15 +268,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">1150 g</span>
           <span class="menu-item__price">1400<small> mdl</small></span>
-         <button class="add-btn" data-id="sets:Set din carne de miel" data-name="Set din carne de miel" data-detail="1150 g" data-price="1400" aria-label="+">+</button>
+         <button class="add-btn" data-id="sets:Сет из ягнёнка" data-name="Сет из ягнёнка" data-detail="1150 g" data-price="1400" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=set-din-carne-de-porc" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-porc.jpg" alt="Set din carne de porc" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-porc.jpg" alt="Сет из свинины" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=set-din-carne-de-porc">Set din carne de porc</a></span>
+          <span class="menu-item__name"><a href="/dish?item=set-din-carne-de-porc">Сет из свинины</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -285,15 +285,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">1450 g</span>
           <span class="menu-item__price">900<small> mdl</small></span>
-         <button class="add-btn" data-id="sets:Set din carne de porc" data-name="Set din carne de porc" data-detail="1450 g" data-price="900" aria-label="+">+</button>
+         <button class="add-btn" data-id="sets:Сет из свинины" data-name="Сет из свинины" data-detail="1450 g" data-price="900" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=set-din-carne-de-pui" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-pui.jpg" alt="Set din carne de pui" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-pui.jpg" alt="Сет из курицы" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=set-din-carne-de-pui">Set din carne de pui</a></span>
+          <span class="menu-item__name"><a href="/dish?item=set-din-carne-de-pui">Сет из курицы</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -302,7 +302,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">1600 g</span>
           <span class="menu-item__price">850<small> mdl</small></span>
-         <button class="add-btn" data-id="sets:Set din carne de pui" data-name="Set din carne de pui" data-detail="1600 g" data-price="850" aria-label="+">+</button>
+         <button class="add-btn" data-id="sets:Сет из курицы" data-name="Сет из курицы" data-detail="1600 g" data-price="850" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -469,10 +469,10 @@
       <div class="menu-section__items">
         
     <div data-href="/dish?item=creveti-cu-spanac" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/creveti.jpg" alt="Creveți cu spanac" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/creveti.jpg" alt="Креветки со шпинатом" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=creveti-cu-spanac">Creveți cu spanac</a></span>
+          <span class="menu-item__name"><a href="/dish?item=creveti-cu-spanac">Креветки со шпинатом</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -481,7 +481,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">300 g</span>
           <span class="menu-item__price">250<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Creveți cu spanac" data-name="Creveți cu spanac" data-detail="300 g" data-price="250" aria-label="+">+</button>
+         <button class="add-btn" data-id="hot-starters:Креветки со шпинатом" data-name="Креветки со шпинатом" data-detail="300 g" data-price="250" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -540,7 +540,7 @@
       
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name">Semințe de miel</span>
+          <span class="menu-item__name">Бараньи семенники</span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -549,7 +549,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">250 g</span>
           <span class="menu-item__price">145<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Semințe de miel" data-name="Semințe de miel" data-detail="250 g" data-price="145" aria-label="+">+</button>
+         <button class="add-btn" data-id="hot-starters:Бараньи семенники" data-name="Бараньи семенники" data-detail="250 g" data-price="145" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -588,10 +588,10 @@
       </div>
     </div>
     <div data-href="/dish?item=lobio-cu-nuci" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/lobio-nuci.jpg" alt="Lobio cu nuci" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/lobio-nuci.jpg" alt="Lobio с орехами" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=lobio-cu-nuci">Lobio cu nuci</a></span>
+          <span class="menu-item__name"><a href="/dish?item=lobio-cu-nuci">Lobio с орехами</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -600,7 +600,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">300 g</span>
           <span class="menu-item__price">85<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Lobio cu nuci" data-name="Lobio cu nuci" data-detail="300 g" data-price="85" aria-label="+">+</button>
+         <button class="add-btn" data-id="hot-starters:Lobio с орехами" data-name="Lobio с орехами" data-detail="300 g" data-price="85" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -652,10 +652,10 @@
       <div class="menu-section__items">
         
     <div data-href="/dish?item=salata-gamarjoba" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-gamarjoba.jpg" alt="Salată Gamarjoba" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-gamarjoba.jpg" alt="Салат «Gamarjoba»" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=salata-gamarjoba">Salată Gamarjoba</a></span>
+          <span class="menu-item__name"><a href="/dish?item=salata-gamarjoba">Салат «Gamarjoba»</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -664,15 +664,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">250 g</span>
           <span class="menu-item__price">210<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Salată Gamarjoba" data-name="Salată Gamarjoba" data-detail="250 g" data-price="210" aria-label="+">+</button>
+         <button class="add-btn" data-id="salads:Салат «Gamarjoba»" data-name="Салат «Gamarjoba»" data-detail="250 g" data-price="210" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=salata-cu-limba" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-limba.jpg" alt="Salată cu limbă" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-limba.jpg" alt="Салат с языком" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=salata-cu-limba">Salată cu limbă</a></span>
+          <span class="menu-item__name"><a href="/dish?item=salata-cu-limba">Салат с языком</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -681,15 +681,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">250 g</span>
           <span class="menu-item__price">170<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Salată cu limbă" data-name="Salată cu limbă" data-detail="250 g" data-price="170" aria-label="+">+</button>
+         <button class="add-btn" data-id="salads:Салат с языком" data-name="Салат с языком" data-detail="250 g" data-price="170" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=salata-kahetiana" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-kahetiana.jpg" alt="Salată Kahetiană" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-kahetiana.jpg" alt="Кахетинский салат" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=salata-kahetiana">Salată Kahetiană</a></span>
+          <span class="menu-item__name"><a href="/dish?item=salata-kahetiana">Кахетинский салат</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -698,15 +698,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">250 g</span>
           <span class="menu-item__price">100<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Salată Kahetiană" data-name="Salată Kahetiană" data-detail="250 g" data-price="100" aria-label="+">+</button>
+         <button class="add-btn" data-id="salads:Кахетинский салат" data-name="Кахетинский салат" data-detail="250 g" data-price="100" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=atsatsili-de-vinete" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/atsatsili.jpg" alt="Atsatsili de vinete" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/atsatsili.jpg" alt="Atsatsili из баклажанов" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=atsatsili-de-vinete">Atsatsili de vinete</a></span>
+          <span class="menu-item__name"><a href="/dish?item=atsatsili-de-vinete">Atsatsili из баклажанов</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -715,15 +715,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">250 g</span>
           <span class="menu-item__price">90<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Atsatsili de vinete" data-name="Atsatsili de vinete" data-detail="250 g" data-price="90" aria-label="+">+</button>
+         <button class="add-btn" data-id="salads:Atsatsili из баклажанов" data-name="Atsatsili из баклажанов" data-detail="250 g" data-price="90" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=salata-guriana" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-guriana.jpg" alt="Salată Guriană" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-guriana.jpg" alt="Гурийский салат" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=salata-guriana">Salată Guriană</a></span>
+          <span class="menu-item__name"><a href="/dish?item=salata-guriana">Гурийский салат</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -732,15 +732,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">250 g</span>
           <span class="menu-item__price">85<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Salată Guriană" data-name="Salată Guriană" data-detail="250 g" data-price="85" aria-label="+">+</button>
+         <button class="add-btn" data-id="salads:Гурийский салат" data-name="Гурийский салат" data-detail="250 g" data-price="85" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=salata-georgiana" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-georgiana.jpg" alt="Salată Georgiană" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-georgiana.jpg" alt="Грузинский салат" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=salata-georgiana">Salată Georgiană</a></span>
+          <span class="menu-item__name"><a href="/dish?item=salata-georgiana">Грузинский салат</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -749,7 +749,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">250 g</span>
           <span class="menu-item__price">75<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Salată Georgiană" data-name="Salată Georgiană" data-detail="250 g" data-price="75" aria-label="+">+</button>
+         <button class="add-btn" data-id="salads:Грузинский салат" data-name="Грузинский салат" data-detail="250 g" data-price="75" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -784,10 +784,10 @@
       </div>
     </div>
     <div data-href="/dish?item=bors-rosu" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/bors.jpg" alt="Borș roșu" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/bors.jpg" alt="Красный борщ" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=bors-rosu">Borș roșu</a></span>
+          <span class="menu-item__name"><a href="/dish?item=bors-rosu">Красный борщ</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -796,15 +796,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">400 g</span>
           <span class="menu-item__price">120<small> mdl</small></span>
-         <button class="add-btn" data-id="soups:Borș roșu" data-name="Borș roșu" data-detail="400 g" data-price="120" aria-label="+">+</button>
+         <button class="add-btn" data-id="soups:Красный борщ" data-name="Красный борщ" data-detail="400 g" data-price="120" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=chikhirtma-cu-hinkali" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/chikh-hinkali.jpg" alt="Chikhirtma cu hinkali" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/chikh-hinkali.jpg" alt="Chikhirtma с хинкали" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=chikhirtma-cu-hinkali">Chikhirtma cu hinkali</a></span>
+          <span class="menu-item__name"><a href="/dish?item=chikhirtma-cu-hinkali">Chikhirtma с хинкали</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -813,7 +813,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">400 g</span>
           <span class="menu-item__price">105<small> mdl</small></span>
-         <button class="add-btn" data-id="soups:Chikhirtma cu hinkali" data-name="Chikhirtma cu hinkali" data-detail="400 g" data-price="105" aria-label="+">+</button>
+         <button class="add-btn" data-id="soups:Chikhirtma с хинкали" data-name="Chikhirtma с хинкали" data-detail="400 g" data-price="105" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -835,10 +835,10 @@
       </div>
     </div>
     <div data-href="/dish?item=chikhirtma-cu-carne-de-pui" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/chikh-pui.jpg" alt="Chikhirtma cu carne de pui" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/chikh-pui.jpg" alt="Chikhirtma с курицей" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=chikhirtma-cu-carne-de-pui">Chikhirtma cu carne de pui</a></span>
+          <span class="menu-item__name"><a href="/dish?item=chikhirtma-cu-carne-de-pui">Chikhirtma с курицей</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -847,7 +847,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">400 g</span>
           <span class="menu-item__price">100<small> mdl</small></span>
-         <button class="add-btn" data-id="soups:Chikhirtma cu carne de pui" data-name="Chikhirtma cu carne de pui" data-detail="400 g" data-price="100" aria-label="+">+</button>
+         <button class="add-btn" data-id="soups:Chikhirtma с курицей" data-name="Chikhirtma с курицей" data-detail="400 g" data-price="100" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -899,20 +899,20 @@
       </div>
     </div>
     <div data-href="/dish?item=hinkali-cu-carne-de-vita" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-vita.jpg" alt="Hinkali cu carne de vită" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-vita.jpg" alt="Hinkali с говядиной" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=hinkali-cu-carne-de-vita">Hinkali cu carne de vită</a></span>
+          <span class="menu-item__name"><a href="/dish?item=hinkali-cu-carne-de-vita">Hinkali с говядиной</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
         <p class="menu-item__ru">С говядиной</p>
         <ul class="menu-item__variants"><li>
             <span>Отварные</span><i class="menu-item__dots"></i><b>80</b>
-            <button class="add-btn" data-id="hinkali:Hinkali cu carne de vită — Отварные" data-name="Hinkali cu carne de vită" data-detail="Отварные" data-price="80" aria-label="+">+</button>
+            <button class="add-btn" data-id="hinkali:Hinkali с говядиной — Отварные" data-name="Hinkali с говядиной" data-detail="Отварные" data-price="80" aria-label="+">+</button>
           </li><li>
             <span>Жареные</span><i class="menu-item__dots"></i><b>85</b>
-            <button class="add-btn" data-id="hinkali:Hinkali cu carne de vită — Жареные" data-name="Hinkali cu carne de vită" data-detail="Жареные" data-price="85" aria-label="+">+</button>
+            <button class="add-btn" data-id="hinkali:Hinkali с говядиной — Жареные" data-name="Hinkali с говядиной" data-detail="Жареные" data-price="85" aria-label="+">+</button>
           </li></ul>
         <div class="menu-item__foot">
           <span class="menu-item__meta">270 g · 3 x</span>
@@ -921,20 +921,20 @@
       </div>
     </div>
     <div data-href="/dish?item=hinkali-mixt-porc-vita" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-mixt.jpg" alt="Hinkali mixt porc-vită" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-mixt.jpg" alt="Hinkali из свинины и говядины" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=hinkali-mixt-porc-vita">Hinkali mixt porc-vită</a></span>
+          <span class="menu-item__name"><a href="/dish?item=hinkali-mixt-porc-vita">Hinkali из свинины и говядины</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
         <p class="menu-item__ru">Свинина-говядина</p>
         <ul class="menu-item__variants"><li>
             <span>Отварные</span><i class="menu-item__dots"></i><b>80</b>
-            <button class="add-btn" data-id="hinkali:Hinkali mixt porc-vită — Отварные" data-name="Hinkali mixt porc-vită" data-detail="Отварные" data-price="80" aria-label="+">+</button>
+            <button class="add-btn" data-id="hinkali:Hinkali из свинины и говядины — Отварные" data-name="Hinkali из свинины и говядины" data-detail="Отварные" data-price="80" aria-label="+">+</button>
           </li><li>
             <span>Жареные</span><i class="menu-item__dots"></i><b>85</b>
-            <button class="add-btn" data-id="hinkali:Hinkali mixt porc-vită — Жареные" data-name="Hinkali mixt porc-vită" data-detail="Жареные" data-price="85" aria-label="+">+</button>
+            <button class="add-btn" data-id="hinkali:Hinkali из свинины и говядины — Жареные" data-name="Hinkali из свинины и говядины" data-detail="Жареные" data-price="85" aria-label="+">+</button>
           </li></ul>
         <div class="menu-item__foot">
           <span class="menu-item__meta">270 g · 3 x</span>
@@ -943,20 +943,20 @@
       </div>
     </div>
     <div data-href="/dish?item=hinkali-cu-carne-de-miel" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-miel.jpg" alt="Hinkali cu carne de miel" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-miel.jpg" alt="Hinkali с ягнёнком" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=hinkali-cu-carne-de-miel">Hinkali cu carne de miel</a></span>
+          <span class="menu-item__name"><a href="/dish?item=hinkali-cu-carne-de-miel">Hinkali с ягнёнком</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
         <p class="menu-item__ru">С ягнёнком</p>
         <ul class="menu-item__variants"><li>
             <span>Отварные</span><i class="menu-item__dots"></i><b>80</b>
-            <button class="add-btn" data-id="hinkali:Hinkali cu carne de miel — Отварные" data-name="Hinkali cu carne de miel" data-detail="Отварные" data-price="80" aria-label="+">+</button>
+            <button class="add-btn" data-id="hinkali:Hinkali с ягнёнком — Отварные" data-name="Hinkali с ягнёнком" data-detail="Отварные" data-price="80" aria-label="+">+</button>
           </li><li>
             <span>Жареные</span><i class="menu-item__dots"></i><b>85</b>
-            <button class="add-btn" data-id="hinkali:Hinkali cu carne de miel — Жареные" data-name="Hinkali cu carne de miel" data-detail="Жареные" data-price="85" aria-label="+">+</button>
+            <button class="add-btn" data-id="hinkali:Hinkali с ягнёнком — Жареные" data-name="Hinkali с ягнёнком" data-detail="Жареные" data-price="85" aria-label="+">+</button>
           </li></ul>
         <div class="menu-item__foot">
           <span class="menu-item__meta">270 g · 3 x</span>
@@ -965,20 +965,20 @@
       </div>
     </div>
     <div data-href="/dish?item=hinkali-cu-cascaval" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-cascaval.jpg" alt="Hinkali cu cașcaval" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-cascaval.jpg" alt="Hinkali с сыром" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=hinkali-cu-cascaval">Hinkali cu cașcaval</a></span>
+          <span class="menu-item__name"><a href="/dish?item=hinkali-cu-cascaval">Hinkali с сыром</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
         <p class="menu-item__ru">С сыром</p>
         <ul class="menu-item__variants"><li>
             <span>Отварные</span><i class="menu-item__dots"></i><b>80</b>
-            <button class="add-btn" data-id="hinkali:Hinkali cu cașcaval — Отварные" data-name="Hinkali cu cașcaval" data-detail="Отварные" data-price="80" aria-label="+">+</button>
+            <button class="add-btn" data-id="hinkali:Hinkali с сыром — Отварные" data-name="Hinkali с сыром" data-detail="Отварные" data-price="80" aria-label="+">+</button>
           </li><li>
             <span>Жареные</span><i class="menu-item__dots"></i><b>85</b>
-            <button class="add-btn" data-id="hinkali:Hinkali cu cașcaval — Жареные" data-name="Hinkali cu cașcaval" data-detail="Жареные" data-price="85" aria-label="+">+</button>
+            <button class="add-btn" data-id="hinkali:Hinkali с сыром — Жареные" data-name="Hinkali с сыром" data-detail="Жареные" data-price="85" aria-label="+">+</button>
           </li></ul>
         <div class="menu-item__foot">
           <span class="menu-item__meta">270 g · 3 x</span>
@@ -1085,10 +1085,10 @@
       </div>
     </div>
     <div data-href="/dish?item=adjaruli-cu-ceashushuli" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/adjaruli-ceashushuli.jpg" alt="Adjaruli cu ceashushuli" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/adjaruli-ceashushuli.jpg" alt="Adjaruli с Ceashushuli" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=adjaruli-cu-ceashushuli">Adjaruli cu ceashushuli</a></span>
+          <span class="menu-item__name"><a href="/dish?item=adjaruli-cu-ceashushuli">Adjaruli с Ceashushuli</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1097,7 +1097,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">550 g</span>
           <span class="menu-item__price">200<small> mdl</small></span>
-         <button class="add-btn" data-id="khachapuri:Adjaruli cu ceashushuli" data-name="Adjaruli cu ceashushuli" data-detail="550 g" data-price="200" aria-label="+">+</button>
+         <button class="add-btn" data-id="khachapuri:Adjaruli с Ceashushuli" data-name="Adjaruli с Ceashushuli" data-detail="550 g" data-price="200" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -1221,10 +1221,10 @@
       <div class="menu-section__items">
         
     <div data-href="/dish?item=steak-sturion" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sturion.jpg" alt="Steak Sturion" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sturion.jpg" alt="Стейк из осетра" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=steak-sturion">Steak Sturion</a></span>
+          <span class="menu-item__name"><a href="/dish?item=steak-sturion">Стейк из осетра</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1233,7 +1233,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">250/60 g</span>
           <span class="menu-item__price">340<small> mdl</small></span>
-         <button class="add-btn" data-id="fish:Steak Sturion" data-name="Steak Sturion" data-detail="250/60 g" data-price="340" aria-label="+">+</button>
+         <button class="add-btn" data-id="fish:Стейк из осетра" data-name="Стейк из осетра" data-detail="250/60 g" data-price="340" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -1255,10 +1255,10 @@
       </div>
     </div>
     <div data-href="/dish?item=steak-somon" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/somon.jpg" alt="Steak Somon" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/somon.jpg" alt="Стейк из лосося" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=steak-somon">Steak Somon</a></span>
+          <span class="menu-item__name"><a href="/dish?item=steak-somon">Стейк из лосося</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1267,15 +1267,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">150/60 g</span>
           <span class="menu-item__price">240<small> mdl</small></span>
-         <button class="add-btn" data-id="fish:Steak Somon" data-name="Steak Somon" data-detail="150/60 g" data-price="240" aria-label="+">+</button>
+         <button class="add-btn" data-id="fish:Стейк из лосося" data-name="Стейк из лосося" data-detail="150/60 g" data-price="240" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=pastrav" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/pastrav.jpg" alt="Păstrăv" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/pastrav.jpg" alt="Форель" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=pastrav">Păstrăv</a></span>
+          <span class="menu-item__name"><a href="/dish?item=pastrav">Форель</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1284,7 +1284,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">250/60 g</span>
           <span class="menu-item__price">225<small> mdl</small></span>
-         <button class="add-btn" data-id="fish:Păstrăv" data-name="Păstrăv" data-detail="250/60 g" data-price="225" aria-label="+">+</button>
+         <button class="add-btn" data-id="fish:Форель" data-name="Форель" data-detail="250/60 g" data-price="225" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -1302,10 +1302,10 @@
       <div class="menu-section__items">
         
     <div data-href="/dish?item=costite-de-miel" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/costite-miel.jpg" alt="Costițe de miel" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/costite-miel.jpg" alt="Рёбрышки ягнёнка" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=costite-de-miel">Costițe de miel</a></span>
+          <span class="menu-item__name"><a href="/dish?item=costite-de-miel">Рёбрышки ягнёнка</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1314,15 +1314,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">220 g</span>
           <span class="menu-item__price">385<small> mdl</small></span>
-         <button class="add-btn" data-id="grill-special:Costițe de miel" data-name="Costițe de miel" data-detail="220 g" data-price="385" aria-label="+">+</button>
+         <button class="add-btn" data-id="grill-special:Рёбрышки ягнёнка" data-name="Рёбрышки ягнёнка" data-detail="220 g" data-price="385" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=pui-la-gratar-cu-legume" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/pui-gratar.jpg" alt="Pui la grătar cu legume" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/pui-gratar.jpg" alt="Курица на гриле с овощами" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=pui-la-gratar-cu-legume">Pui la grătar cu legume</a></span>
+          <span class="menu-item__name"><a href="/dish?item=pui-la-gratar-cu-legume">Курица на гриле с овощами</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1331,15 +1331,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">650 g</span>
           <span class="menu-item__price">270<small> mdl</small></span>
-         <button class="add-btn" data-id="grill-special:Pui la grătar cu legume" data-name="Pui la grătar cu legume" data-detail="650 g" data-price="270" aria-label="+">+</button>
+         <button class="add-btn" data-id="grill-special:Курица на гриле с овощами" data-name="Курица на гриле с овощами" data-detail="650 g" data-price="270" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=costite-de-porc" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/costite-porc.jpg" alt="Costițe de porc" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/costite-porc.jpg" alt="Свиные рёбрышки" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=costite-de-porc">Costițe de porc</a></span>
+          <span class="menu-item__name"><a href="/dish?item=costite-de-porc">Свиные рёбрышки</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1348,7 +1348,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">400 g</span>
           <span class="menu-item__price">200<small> mdl</small></span>
-         <button class="add-btn" data-id="grill-special:Costițe de porc" data-name="Costițe de porc" data-detail="400 g" data-price="200" aria-label="+">+</button>
+         <button class="add-btn" data-id="grill-special:Свиные рёбрышки" data-name="Свиные рёбрышки" data-detail="400 g" data-price="200" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -1497,10 +1497,10 @@
       <div class="menu-section__items">
         
     <div data-href="/dish?item=legume-la-gratar" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/legume.jpg" alt="Legume la grătar" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/legume.jpg" alt="Овощи на гриле" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=legume-la-gratar">Legume la grătar</a></span>
+          <span class="menu-item__name"><a href="/dish?item=legume-la-gratar">Овощи на гриле</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1509,7 +1509,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">300 g</span>
           <span class="menu-item__price">150<small> mdl</small></span>
-         <button class="add-btn" data-id="garnish:Legume la grătar" data-name="Legume la grătar" data-detail="300 g" data-price="150" aria-label="+">+</button>
+         <button class="add-btn" data-id="garnish:Овощи на гриле" data-name="Овощи на гриле" data-detail="300 g" data-price="150" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -1531,10 +1531,10 @@
       </div>
     </div>
     <div data-href="/dish?item=felii-de-cartofi-cu-usturoi" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/cartofi-felii.jpg" alt="Felii de cartofi cu usturoi" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/cartofi-felii.jpg" alt="Картофель дольками с чесноком" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=felii-de-cartofi-cu-usturoi">Felii de cartofi cu usturoi</a></span>
+          <span class="menu-item__name"><a href="/dish?item=felii-de-cartofi-cu-usturoi">Картофель дольками с чесноком</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1543,15 +1543,15 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">150 g</span>
           <span class="menu-item__price">55<small> mdl</small></span>
-         <button class="add-btn" data-id="garnish:Felii de cartofi cu usturoi" data-name="Felii de cartofi cu usturoi" data-detail="150 g" data-price="55" aria-label="+">+</button>
+         <button class="add-btn" data-id="garnish:Картофель дольками с чесноком" data-name="Картофель дольками с чесноком" data-detail="150 g" data-price="55" aria-label="+">+</button>
         </div>
       </div>
     </div>
     <div data-href="/dish?item=cartofi-pai" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/cartofi-pai.jpg" alt="Cartofi pai" loading="lazy" /></div>
+      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/cartofi-pai.jpg" alt="Картофель фри" loading="lazy" /></div>
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish?item=cartofi-pai">Cartofi pai</a></span>
+          <span class="menu-item__name"><a href="/dish?item=cartofi-pai">Картофель фри</a></span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1560,7 +1560,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">150 g</span>
           <span class="menu-item__price">50<small> mdl</small></span>
-         <button class="add-btn" data-id="garnish:Cartofi pai" data-name="Cartofi pai" data-detail="150 g" data-price="50" aria-label="+">+</button>
+         <button class="add-btn" data-id="garnish:Картофель фри" data-name="Картофель фри" data-detail="150 g" data-price="50" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -1679,7 +1679,7 @@
       
       <div class="menu-item__body">
         <div class="menu-item__head">
-          <span class="menu-item__name">Coptură cu mac</span>
+          <span class="menu-item__name">Маковый рулет</span>
           <i class="menu-item__orn" aria-hidden="true"></i>
         </div>
         
@@ -1688,7 +1688,7 @@
         <div class="menu-item__foot">
           <span class="menu-item__meta">130 g</span>
           <span class="menu-item__price">75<small> mdl</small></span>
-         <button class="add-btn" data-id="desserts:Coptură cu mac" data-name="Coptură cu mac" data-detail="130 g" data-price="75" aria-label="+">+</button>
+         <button class="add-btn" data-id="desserts:Маковый рулет" data-name="Маковый рулет" data-detail="130 g" data-price="75" aria-label="+">+</button>
         </div>
       </div>
     </div>
@@ -1740,14 +1740,14 @@
     <div class="ornament-band" aria-hidden="true"></div>
     <div class="footer__row">
       <span data-i18n="footerCopy">© 2026 Gamarjoba · Кишинёв</span>
-      <a href="index.html" data-i18n="footerHome">gamarjoba — на главную</a>
+      <a href="/" data-i18n="footerHome">gamarjoba — на главную</a>
     </div>
   </footer>
 
-  <script src="js/i18n.js?v=33"></script>
-  <script src="js/menu-data.js?v=33"></script>
-  <script src="js/menu-template.js?v=33"></script>
-  <script src="js/cart.js?v=33"></script>
-  <script src="js/menu.js?v=33"></script>
+  <script src="js/i18n.js?v=37"></script>
+  <script src="js/menu-data.js?v=37"></script>
+  <script src="js/menu-template.js?v=37"></script>
+  <script src="js/cart.js?v=37"></script>
+  <script src="js/menu.js?v=37"></script>
 </body>
 </html>

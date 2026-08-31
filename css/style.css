@@ -234,6 +234,28 @@ main, footer, header { position: relative; z-index: 3; }
   .nav { mix-blend-mode: normal; }
 }
 
+/* Узкие экраны: логотип занимает 220 px, и управляющие элементы —
+   переключатель языка, бургер, «Назад» — рядом уже не помещаются
+   и уходят за край. Переносим их на вторую строку.
+   Логотип при этом не меняется: ни размер, ни положение, ни стили.
+   Порог 420 px — ширина, ниже которой шапке главной и страницы блюда
+   перестаёт хватать места (220 + 95 + 42 + отступы ≈ 418 px). */
+@media (max-width: 420px) {
+  .nav { flex-wrap: wrap; row-gap: 0.5rem; padding-top: 1rem; padding-bottom: 0.7rem; }
+  .nav__right { margin-left: auto; }
+  .nav__burger { margin-left: 0.5rem; }
+}
+/* У страницы меню кнопка «На главную» длиннее, поэтому шапке нужно ≈490 px.
+   Её собственное правило прокручивает шапку вбок при нехватке места, но
+   полоса прокрутки скрыта — «EN» и «На главную» просто не видны. */
+@media (max-width: 490px) {
+  .menu-page .nav {
+    flex-wrap: wrap; overflow-x: visible;
+    row-gap: 0.5rem; padding-top: 1rem; padding-bottom: 0.7rem;
+  }
+  .menu-page .nav__right { margin-left: auto; }
+}
+
 /* ── HERO ── */
 .hero {
   min-height: 100svh;
