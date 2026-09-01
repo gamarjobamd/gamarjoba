@@ -197,6 +197,10 @@ function restaurantLd(priceRange) {
    ни то ни другое не описывает цену обычного заказа. */
 const PRICE_RANGE_SKIP = ["sets", "garnish", "bread"];
 
+/* Позиции, у которых цена стоит за 100 г, а не за порцию: в диапазоне
+   они выглядят как самое дешёвое блюдо кухни, хотя порция стоит дороже. */
+const PRICE_RANGE_SKIP_ITEMS = ["tsitsila-tabaka"];
+
 /* Цены позиции: одна или по вариантам. Пустой массив — цены нет (её и не пишем). */
 function pricesOf(item) {
   if (item.variants) return item.variants.filter((v) => v.p != null).map((v) => v.p);
@@ -316,7 +320,7 @@ function build() {
 
   /* ── Schema.org ── */
   const dishPrices = MENU.filter((sec) => !PRICE_RANGE_SKIP.includes(sec.id)).flatMap((sec) =>
-    sec.items.flatMap(pricesOf)
+    sec.items.filter((it) => !PRICE_RANGE_SKIP_ITEMS.includes(tpl.itemSlug(it))).flatMap(pricesOf)
   );
   if (dishPrices.length < 50) fail(`для priceRange нашлось всего ${dishPrices.length} цен`);
   const priceRange = `${Math.min(...dishPrices)}–${Math.max(...dishPrices)} MDL`;
