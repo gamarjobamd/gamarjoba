@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gamarjoba">
+  <!-- Собран из того же флага, что стоит рядом с логотипом в шапке.
+       Фон — кремовый (cream) из css/style.css, флаг растянут почти на всю
+       ширину: на 16 px тонкая серая обводка и поля превращали крест в кашу. -->
+  <rect width="64" height="64" fill="#f7efe3"/>
+  <g transform="translate(2 10.67)">
+    <rect x="0" y="0" width="60" height="40" fill="#fff"/>
+    <rect x="26" y="0" width="8" height="40" fill="#d40e2f"/>
+    <rect x="0" y="16" width="60" height="8" fill="#d40e2f"/>
+    <path d="M12 5 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+    <path d="M45 5 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+    <path d="M12 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+    <path d="M45 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+  </g>
+</svg>
