@@ -192,6 +192,11 @@ function restaurantLd(priceRange) {
   });
 }
 
+/* Разделы, по которым считается priceRange. Хлеб, соусы и гарниры занижают
+   нижнюю границу до 10 лей, сеты на компанию задирают верхнюю до 1400 —
+   ни то ни другое не описывает цену обычного заказа. */
+const PRICE_RANGE_SKIP = ["sets", "garnish", "bread"];
+
 /* Цены позиции: одна или по вариантам. Пустой массив — цены нет (её и не пишем). */
 function pricesOf(item) {
   if (item.variants) return item.variants.filter((v) => v.p != null).map((v) => v.p);
@@ -310,9 +315,11 @@ function build() {
   if (pages.size !== slugs.length) fail("часть страниц не собралась");
 
   /* ── Schema.org ── */
-  const kitchenPrices = MENU.flatMap((sec) => sec.items.flatMap(pricesOf));
-  if (!kitchenPrices.length) fail("не нашлось ни одной цены");
-  const priceRange = `${Math.min(...kitchenPrices)}–${Math.max(...kitchenPrices)} MDL`;
+  const dishPrices = MENU.filter((sec) => !PRICE_RANGE_SKIP.includes(sec.id)).flatMap((sec) =>
+    sec.items.flatMap(pricesOf)
+  );
+  if (dishPrices.length < 50) fail(`для priceRange нашлось всего ${dishPrices.length} цен`);
+  const priceRange = `${Math.min(...dishPrices)}–${Math.max(...dishPrices)} MDL`;
 
   const home = restaurantLd(priceRange);
   const menu = menuLd([...MENU, ...BAR], tpl, tpl.T, MENU_FULL || {});
