@@ -217,6 +217,7 @@
   <script src="js/cart.js?v=38"></script>
   <script src="js/reveal.js?v=38"></script>
   <script src="js/main.js?v=38"></script>
+  <!-- BEGIN:home-jsonld -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -226,25 +227,35 @@
     "image": "https://gamarjoba.md/assets/hero-georgia.jpg",
     "telephone": "+37369904304",
     "servesCuisine": "Georgian",
+    "priceRange": "10–1400 MDL",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Aleea Mircea cel B\u0103tr\u00e2n 6",
-      "addressLocality": "Chi\u0219in\u0103u",
+      "streetAddress": "Aleea Mircea cel Bătrân 6",
+      "addressLocality": "Chișinău",
       "addressCountry": "MD"
     },
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": [
-          "Monday", "Tuesday", "Wednesday", "Thursday",
-          "Friday", "Saturday", "Sunday"
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
         ],
         "opens": "11:00",
         "closes": "23:00"
       }
     ],
-    "sameAs": ["https://instagram.com/gamarjoba.md"]
+    "hasMenu": "https://gamarjoba.md/menu",
+    "sameAs": [
+      "https://instagram.com/gamarjoba.md"
+    ]
   }
   </script>
+  <!-- END:home-jsonld -->
 </body>
 </html>

@@ -4,7 +4,9 @@
    а всё содержимое подставлял скрипт: краулеры и мессенджеры видели пустышку.
    Скрипт берёт данные из js/menu-data.js, js/data.js и js/menu-full.js, разметку —
    из js/dish-template.js, каркас страницы — из dish.html, и пишет по странице
-   на блюдо в dish/<slug>/index.html. Заодно пересобирает sitemap.xml.
+   на блюдо в dish/<slug>/index.html. Заодно пересобирает sitemap.xml и разметку
+   Schema.org: Restaurant на главной и Menu на /menu — из тех же данных, чтобы
+   разметка не разъезжалась с меню.
 
    Всё это те же файлы, что исполняет браузер: второй копии шаблона не существует.
 
@@ -27,6 +29,20 @@ const SITE = "https://gamarjoba.md";
 const LANG = "ru"; /* язык статики: у краулера нет localStorage, значит ru */
 const VISIBLE = " is-visible"; /* .reveal без него остаётся при opacity: 0 */
 const CHECK = process.argv.includes("--check");
+
+/* Данные ресторана для Schema.org. Меняются только здесь. */
+const PLACE = {
+  name: "Gamarjoba",
+  telephone: "+37369904304",
+  street: "Aleea Mircea cel Bătrân 6",
+  city: "Chișinău",
+  country: "MD",
+  opens: "11:00",
+  closes: "23:00",
+  cuisine: "Georgian",
+  instagram: "https://instagram.com/gamarjoba.md",
+  image: "/assets/hero-georgia.jpg",
+};
 
 const read = (rel) => readFileSync(join(ROOT, rel), "utf8");
 
@@ -89,7 +105,7 @@ function splice(html, name, body) {
   const close = `<!-- END:${name} -->`;
   const a = html.indexOf(open);
   const b = html.indexOf(close);
-  if (a === -1 || b === -1 || b < a) fail(`маркеры ${name} не найдены в dish.html`);
+  if (a === -1 || b === -1 || b < a) fail(`маркеры ${name} не найдены`);
   return html.slice(0, a + open.length) + body + html.slice(b);
 }
 
@@ -130,6 +146,99 @@ function headBlock({ title, description, url, image }) {
   <meta name="twitter:description" content="${d}" />
   <meta name="twitter:image" content="${image}" />
 `;
+}
+
+/* ── Schema.org ──
+   Ровно те же данные, что и в разметке страниц: цены, граммовки и описания
+   берутся из menu-data.js и menu-full.js, а не переписываются руками. */
+
+const WEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+function jsonLd(data) {
+  /* два пробела отступа — как у остальной разметки в index.html */
+  const body = JSON.stringify(data, null, 2)
+    .split("\n")
+    .map((line) => "  " + line)
+    .join("\n");
+  return `\n  <script type="application/ld+json">\n${body}\n  </script>\n  `;
+}
+
+function restaurantLd(priceRange) {
+  return jsonLd({
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    name: PLACE.name,
+    url: `${SITE}/`,
+    image: SITE + PLACE.image,
+    telephone: PLACE.telephone,
+    servesCuisine: PLACE.cuisine,
+    priceRange,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: PLACE.street,
+      addressLocality: PLACE.city,
+      addressCountry: PLACE.country,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: WEEK,
+        opens: PLACE.opens,
+        closes: PLACE.closes,
+      },
+    ],
+    hasMenu: `${SITE}/menu`,
+    sameAs: [PLACE.instagram],
+  });
+}
+
+/* Цены позиции: одна или по вариантам. Пустой массив — цены нет (её и не пишем). */
+function pricesOf(item) {
+  if (item.variants) return item.variants.filter((v) => v.p != null).map((v) => v.p);
+  return item.p != null ? [item.p] : [];
+}
+
+function menuLd(sections, tpl, T, menuFull) {
+  const offer = (price, name) => ({
+    "@type": "Offer",
+    ...(name ? { name } : {}),
+    price: String(price),
+    priceCurrency: "MDL",
+  });
+
+  const hasMenuSection = sections.map((sec) => ({
+    "@type": "MenuSection",
+    name: T(sec.title),
+    hasMenuItem: sec.items.map((item) => {
+      const slug = tpl.itemSlug(item);
+      const full = menuFull[`${sec.id}:${typeof item.name === "string" ? item.name : item.name.ro}`];
+      const description = (full && T(full)) || T(item.ru);
+      const offers = item.variants
+        ? item.variants.filter((v) => v.p != null).map((v) => offer(v.p, T(v.v)))
+        : item.p != null
+          ? offer(item.p)
+          : null;
+      return {
+        "@type": "MenuItem",
+        name: T(item.name),
+        ...(description ? { description } : {}),
+        ...(slug ? { url: `${SITE}/dish/${slug}/` } : {}),
+        ...(item.img ? { image: SITE + tpl.asset(item.img) } : {}),
+        ...(item.w ? { nutrition: { "@type": "NutritionInformation", servingSize: item.w } } : {}),
+        ...(offers ? { offers } : {}),
+      };
+    }),
+  }));
+
+  return jsonLd({
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "@id": `${SITE}/menu#menu`,
+    name: "Меню — Gamarjoba",
+    url: `${SITE}/menu`,
+    inLanguage: LANG,
+    hasMenuSection,
+  });
 }
 
 function build() {
@@ -199,7 +308,26 @@ function build() {
   }
 
   if (pages.size !== slugs.length) fail("часть страниц не собралась");
-  return { pages, slugs };
+
+  /* ── Schema.org ── */
+  const kitchenPrices = MENU.flatMap((sec) => sec.items.flatMap(pricesOf));
+  if (!kitchenPrices.length) fail("не нашлось ни одной цены");
+  const priceRange = `${Math.min(...kitchenPrices)}–${Math.max(...kitchenPrices)} MDL`;
+
+  const home = restaurantLd(priceRange);
+  const menu = menuLd([...MENU, ...BAR], tpl, tpl.T, MENU_FULL || {});
+
+  const items = JSON.parse(menu.match(/<script[^>]*>([\s\S]*)<\/script>/)[1]).hasMenuSection.flatMap(
+    (s2) => s2.hasMenuItem
+  );
+  const expected = [...MENU, ...BAR].reduce((n, sec) => n + sec.items.length, 0);
+  if (items.length !== expected) fail(`в разметке меню ${items.length} позиций, ожидалось ${expected}`);
+  if (items.some((i) => !i.name)) fail("в разметке меню есть позиция без названия");
+  if (!JSON.parse(home.match(/<script[^>]*>([\s\S]*)<\/script>/)[1]).address.streetAddress) {
+    fail("в разметке ресторана нет адреса");
+  }
+
+  return { pages, slugs, home, menu };
 }
 
 /* ── sitemap: главная, меню и все страницы блюд ── */
@@ -223,7 +351,7 @@ function sitemap(slugs) {
 /* ── Запись ──
    Каталог dish/ полностью пересобирается: страницы удалённых блюд
    не должны пережить сборку и остаться в индексе. */
-const { pages, slugs } = build();
+const { pages, slugs, home, menu } = build();
 /* lastmod меняется каждый день, поэтому в --check сравниваем только адреса */
 const sitemapUrls = (xml) => (xml.match(/<loc>[^<]+<\/loc>/g) || []).join("\n");
 const nextSitemap = sitemap(slugs);
@@ -241,6 +369,8 @@ if (CHECK) {
     }
   }
   if (sitemapUrls(read("sitemap.xml")) !== sitemapUrls(nextSitemap)) stale.push("sitemap.xml");
+  if (splice(read("index.html"), "home-jsonld", home) !== read("index.html")) stale.push("index.html (Schema.org)");
+  if (splice(read("menu.html"), "menu-jsonld", menu) !== read("menu.html")) stale.push("menu.html (Schema.org)");
   if (stale.length) {
     console.error(
       `страницы блюд разошлись с данными (${stale.length}):\n  ` +
@@ -259,5 +389,10 @@ if (CHECK) {
     writeFileSync(path, html);
   }
   writeFileSync(join(ROOT, "sitemap.xml"), nextSitemap);
-  console.log(`собрано страниц блюд: ${pages.size}; sitemap.xml: ${slugs.length + 2} адреса`);
+  writeFileSync(join(ROOT, "index.html"), splice(read("index.html"), "home-jsonld", home));
+  writeFileSync(join(ROOT, "menu.html"), splice(read("menu.html"), "menu-jsonld", menu));
+  console.log(
+    `собрано страниц блюд: ${pages.size}; sitemap.xml: ${slugs.length + 2} адреса; ` +
+      "Schema.org: Restaurant + Menu"
+  );
 }
