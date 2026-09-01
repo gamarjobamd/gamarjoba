@@ -120,6 +120,7 @@ const UI = {
     "We go for the ingredients ourselves. The meat for mtsvadi and khinkali comes from trusted farms, the herbs and vegetables are fresh, the spices are brought in. Before a dish reaches your table, we know where it came from. That's why the taste turns out exactly as it should."
   ),
   bookCta: L("Забронировать стол", "Rezervă o masă", "Book a table"),
+  bookWhatsApp: L("Написать в WhatsApp", "Scrie pe WhatsApp", "Message on WhatsApp"),
 
   introText: L(
     "<strong>Хачапури</strong> из глиняной печи, <strong>хинкали</strong> с горячим бульоном, <strong>мясо на живых углях</strong> и вино из квеври. Мы готовим так, как готовят дома в Грузии, — <em>щедро и без спешки.</em>",
@@ -149,6 +150,7 @@ const UI = {
   visitBook: L("Бронь стола", "Rezervări", "Book a table"),
 
   footerCopy: L("© 2026 Gamarjoba · Кишинёв", "© 2026 Gamarjoba · Chișinău", "© 2026 Gamarjoba · Chișinău"),
+
   footerHome: L("gamarjoba — на главную", "gamarjoba — acasă", "gamarjoba — home"),
 
   menuEyebrow: L("Все цены — в леях · RO · RU · EN", "Toate prețurile — în lei · RO · RU · EN", "All prices in MDL · RO · RU · EN"),
