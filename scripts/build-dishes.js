@@ -326,12 +326,14 @@ function build() {
   const priceRange = `${Math.min(...dishPrices)}–${Math.max(...dishPrices)} MDL`;
 
   const home = restaurantLd(priceRange);
-  const menu = menuLd([...MENU, ...BAR], tpl, tpl.T, MENU_FULL || {});
+  /* только кухня: барная карта добавляла 77 КБ к самой посещаемой странице,
+     а искать по названиям напитков всё равно никто не будет */
+  const menu = menuLd(MENU, tpl, tpl.T, MENU_FULL || {});
 
   const items = JSON.parse(menu.match(/<script[^>]*>([\s\S]*)<\/script>/)[1]).hasMenuSection.flatMap(
     (s2) => s2.hasMenuItem
   );
-  const expected = [...MENU, ...BAR].reduce((n, sec) => n + sec.items.length, 0);
+  const expected = MENU.reduce((n, sec) => n + sec.items.length, 0);
   if (items.length !== expected) fail(`в разметке меню ${items.length} позиций, ожидалось ${expected}`);
   if (items.some((i) => !i.name)) fail("в разметке меню есть позиция без названия");
   if (!JSON.parse(home.match(/<script[^>]*>([\s\S]*)<\/script>/)[1]).address.streetAddress) {
