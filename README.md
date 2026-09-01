@@ -43,7 +43,7 @@ Cloudflare Pages отдаёт `menu.html` по адресу `/menu` сам: «ч
 
 ```bash
 node tools/build-menu.mjs      # пересобирает разделы внутри menu.html
-node scripts/build-dishes.js   # пересобирает dish/<slug>/index.html и sitemap.xml
+node scripts/build-dishes.js   # страницы блюд, sitemap.xml и разметку Schema.org
 ```
 
 У каждого есть режим проверки — он ничего не пишет и падает с кодом 1,
@@ -67,7 +67,23 @@ node tools/build-menu.mjs --check && node scripts/build-dishes.js --check
 разметка — из `js/dish-template.js`, данные — из файлов выше.
 
 Каталог `dish/` пересобирается целиком: страницы удалённых блюд не переживают
-сборку и не остаются в индексе. Заодно переписывается `sitemap.xml`.
+сборку и не остаются в индексе. Заодно переписываются `sitemap.xml` и разметка
+Schema.org — `Restaurant` на главной и `Menu` на `/menu`, обе из тех же данных,
+чтобы цены в разметке не разъезжались с ценами в меню.
+
+### Тексты на вычитку
+
+```bash
+node scripts/export-translations.js
+```
+
+Собирает `content/translations-template.csv` — все 539 строк сайта
+(интерфейс, названия и описания блюд) в колонках `key, ru, ro, en`.
+Файл нужен, чтобы отдать тексты носителю языка; правки возвращаются
+руками в JS-файлы с данными, источник остаётся там. Флаг `--blank`
+очищает колонки `ro` и `en`.
+
+План языковых версий — в `content/i18n-plan.md`.
 
 ## Локальный просмотр
 
