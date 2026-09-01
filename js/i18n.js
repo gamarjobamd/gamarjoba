@@ -54,7 +54,19 @@ const UI = {
     "Meniul complet al restaurantului Gamarjoba: hachapuri, hinkali, grătar, supe, salate și deserturi. Toate prețurile în lei.",
     "The full Gamarjoba menu: khachapuri, khinkali, grill, soups, salads and desserts. All prices in lei."
   ),
+  /* og:title у меню длиннее <title>: в ленте мессенджера у ссылки нет
+     контекста сайта, поэтому в превью нужен и род занятий, и город. */
+  seoMenuOgTitle: L(
+    "Меню — Gamarjoba, грузинский ресторан в Кишинёве",
+    "Meniu — Gamarjoba, restaurant georgian în Chișinău",
+    "Menu — Gamarjoba, Georgian restaurant in Chișinău"
+  ),
   seoDishTitle: L("Блюдо — Gamarjoba", "Preparat — Gamarjoba", "Dish — Gamarjoba"),
+  seoDishDesc: L(
+    "Блюдо из меню Gamarjoba — ресторана традиционной грузинской кухни в Кишинёве.",
+    "Un preparat din meniul Gamarjoba — restaurant de bucătărie georgiană tradițională în Chișinău.",
+    "A dish from the Gamarjoba menu — a traditional Georgian restaurant in Chișinău."
+  ),
   seoLocale: L("ru_RU", "ro_RO", "en_US"),
   heroEyebrow: L("Грузинская кухня · Кишинёв", "Bucătărie georgiană · Chișinău", "Georgian cuisine · Chișinău"),
   heroSub: L(
@@ -251,14 +263,16 @@ document.querySelectorAll("[data-wordmark]").forEach((el) => {
       : "Home";
   const title = tr("seo" + page + "Title");
   const desc = tr("seo" + page + "Desc");
+  /* у превью в мессенджерах бывает свой, более развёрнутый заголовок */
+  const ogTitle = tr("seo" + page + "OgTitle") || title;
   const set = (sel, value) => {
     const el = document.querySelector(sel);
     if (el && value) el.setAttribute("content", value);
   };
   if (title) {
     document.title = title;
-    set('meta[property="og:title"]', title);
-    set('meta[name="twitter:title"]', title);
+    set('meta[property="og:title"]', ogTitle);
+    set('meta[name="twitter:title"]', ogTitle);
   }
   if (desc) {
     set('meta[name="description"]', desc);
