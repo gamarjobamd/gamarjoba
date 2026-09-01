@@ -182,7 +182,7 @@ const MENU = [
     title: L("Горячие блюда", "Feluri principale", "Main courses"),
     ro: "Feluri principale",
     items: [
-      { name: "Chakapuli", ru: L("Ягнёнок с тархуном и ткемали", "Miel cu tarhon și tkemali", "Lamb with tarragon and tkemali"), w: "300 g", p: 180, link: "chakapuli" },
+      { img: "assets/chakapuli.jpg", name: "Chakapuli", ru: L("Ягнёнок с тархуном и ткемали", "Miel cu tarhon și tkemali", "Lamb with tarragon and tkemali"), w: "300 g", p: 180, link: "chakapuli" },
       {
         img: "assets/menu/odjahuri.jpg", slug: "odjahuri", name: "Odjahuri", ru: L("Оджахури — жаркое «по-домашнему»", "Odjahuri — mâncare „ca acasă”", "Ojakhuri — a homestyle roast"), w: "250 g",
         variants: [
