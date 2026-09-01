@@ -72,7 +72,7 @@ function build() {
 
   /* ── Проверки: лучше упасть, чем записать неполное ── */
   const items = MENU.reduce((n, s) => n + s.items.length, 0);
-  const links = [...sections.matchAll(/href="\/dish\?item=([^"]+)"/g)].map((m) => m[1]);
+  const links = [...sections.matchAll(/href="\/dish\/([^"]+)\/"/g)].map((m) => m[1]);
   const expected = MENU.flatMap((s) => s.items.filter((i) => i.slug || i.link));
 
   const fail = (msg) => {
@@ -85,7 +85,7 @@ function build() {
     fail(`ссылок ${links.length}, ожидалось ${expected.length * 2}`);
   }
   if (links.some((s) => !s)) fail("есть пустой slug");
-  if (/dish\.html|\?mi=/.test(sections)) fail("в разметке остались dish.html или ?mi=");
+  if (/dish\.html|\?mi=|\/dish\?item=/.test(sections)) fail("в разметке остались старые адреса блюд");
   if (/class="[^"]*\breveal\b(?![^"]*\bis-visible\b)/.test(sections)) {
     fail("есть .reveal без is-visible — контент будет скрыт");
   }

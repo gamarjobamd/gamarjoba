@@ -1,12 +1,18 @@
 /* Gamarjoba — страница блюда.
-   Два режима:
-   ?id=<dish>            — 6 фирменных блюд с полным описанием (DISHES)
-   ?mi=<sectionId>:<idx> — любая позиция полного меню (MENU/BAR)
-   &back=menu            — кнопка «Назад» ведёт в меню, на место клика */
+
+   Канонический адрес — /dish/<slug>/: статическая страница, собранная
+   scripts/build-dishes.js. Разметку рисует общий модуль dish-template.js —
+   тот же код, что использует сборка; второй копии шаблона нет.
+
+   Старые адреса вида /dish?item=… продолжают работать: слаг резолвится
+   здесь же и страница перенаправляется на канонический адрес.
+     ?item=<slug>          — прежний канонический адрес
+     ?id=<dish>            — ещё более ранний адрес фирменных блюд
+     ?mi=<sectionId>:<idx> — самый ранний, нестабильный: позиция по индексу
+     ?back=menu            — кнопка «Назад» ведёт в меню, на место клика */
 
 const params = new URLSearchParams(window.location.search);
 const fromMenu = params.get("back") === "menu";
-const backSuffix = fromMenu ? "&back=menu" : "";
 
 /* «Назад» — в меню, если пришли из меню */
 if (fromMenu) {
@@ -14,216 +20,74 @@ if (fromMenu) {
   if (backLink) backLink.href = "/menu";
 }
 
-const ALL_SECTIONS = [...MENU, ...BAR];
+const TPL = createDishTemplate({
+  lang: LANG,
+  ui: UI,
+  allergens: ALLERGEN_T,
+  dishes: DISHES,
+  dishOrder: DISH_ORDER,
+  sections: [...MENU, ...BAR],
+  menuFull: typeof MENU_FULL !== "undefined" ? MENU_FULL : null,
+  dishFull: typeof DISH_FULL !== "undefined" ? DISH_FULL : null,
+});
 
-function findMenuItem(mi) {
-  const [secId, idxStr] = (mi || "").split(":");
-  const sec = ALL_SECTIONS.find((s) => s.id === secId);
-  if (!sec) return null;
-  const item = sec.items[Number(idxStr)];
-  return item ? { sec, item, idx: Number(idxStr) } : null;
+/* ── Какое блюдо показываем ──
+   На /dish/<slug>/ слаг лежит в адресе, на старых /dish?… — в параметрах. */
+function slugFromPath() {
+  const m = window.location.pathname.match(/^\/dish\/([^/]+)\/?$/);
+  return m ? decodeURIComponent(m[1]) : "";
 }
 
-/* стабильный идентификатор позиции: своё поле slug либо id фирменного блюда */
-function itemSlug(item) {
-  return (item && (item.slug || item.link)) || "";
+function slugFromQuery() {
+  const direct = params.get("item") || params.get("id");
+  if (direct) return direct;
+  const mi = params.get("mi");
+  if (!mi) return "";
+  const [secId, idxStr] = mi.split(":");
+  const sec = [...MENU, ...BAR].find((s) => s.id === secId);
+  const item = sec && sec.items[Number(idxStr)];
+  return item ? TPL.itemSlug(item) : "";
 }
 
-/* поиск позиции по слагу — первое совпадение; дубли (Shurpa, Adjaruli,
-   Mtsvadi встречаются в двух разделах) намеренно ведут на одну страницу */
-function findBySlug(slug) {
-  if (!slug) return null;
-  for (const sec of ALL_SECTIONS) {
-    const idx = sec.items.findIndex((it) => itemSlug(it) === slug);
-    if (idx !== -1) return { sec, item: sec.items[idx], idx };
-  }
-  return null;
+const pathSlug = slugFromPath();
+const slug = pathSlug || slugFromQuery();
+
+/* Старый адрес — уводим на канонический, чтобы у блюда был один URL.
+   replace, а не assign: старая страница не должна оставаться в истории. */
+if (!pathSlug) {
+  const target = slug && TPL.metaBySlug(slug) ? TPL.dishHref(slug, fromMenu) : "/404.html";
+  window.location.replace(target);
 }
 
 const main = document.getElementById("dishMain");
+const rendered = pathSlug ? TPL.renderBySlug(slug, { fromMenu }) : null;
 
-/* ── Полное описание из печатного меню: RO / RU / EN подряд ── */
-function fullBlock(data) {
-  if (!data) return "";
-  const rows = [["RO", data.ro], ["RU", data.ru], ["EN", data.en]]
-    .filter(([, text]) => text)
-    .map(
-      ([code, text]) => `
-        <div class="dish-full__row">
-          <span class="dish-full__lang">${code}</span>
-          <p class="dish-full__text">${text}</p>
-        </div>`
-    )
-    .join("");
-  return rows ? `<div class="dish-full reveal">${rows}</div>` : "";
-}
+if (rendered) {
+  document.title = `${TPL.metaBySlug(slug).name} — Gamarjoba`;
+  main.innerHTML = rendered.html;
 
-/* ── Режим 1: фирменное блюдо с полным описанием ── */
-function renderRich(dish) {
-  document.title = `${dish.name} — Gamarjoba`;
-  const idx = DISH_ORDER.indexOf(dish.id);
-  const next = getDish(DISH_ORDER[(idx + 1) % DISH_ORDER.length]);
-
-  const allergens = dish.allergens.length
-    ? `<div class="dish-allergens">${dish.allergens.map((a) => `<span>${T(ALLERGEN_T[a]) || a}</span>`).join("")}</div>`
-    : `<div class="dish-allergens"><span>${tr("dishNoAllergens")}</span></div>`;
-
-  main.innerHTML = `
-  <section class="dish-hero">
-    <div class="dish-hero__art" id="dishArt"><img src="${dish.img}" alt="${dish.name} — ${T(dish.tagline)}" /></div>
-    <div>
-      <p class="dish-hero__cat reveal">${T(dish.category)} · № ${String(idx + 1).padStart(2, "0")}</p>
-      <h1 class="dish-hero__name reveal">${dish.name}</h1>
-      <p class="dish-hero__ru reveal" lang="ka">${dish.ka}</p>
-      <p class="dish-hero__tagline reveal">${T(dish.tagline)}</p>
-      ${fullBlock(typeof DISH_FULL !== "undefined" ? DISH_FULL[dish.id] : null)}
-      <div class="dish-hero__meta reveal">
-        <div><span>${tr("dishWeight")}</span><strong>${dish.weight}</strong></div>
-        <div><span>${tr("dishPrice")}</span><strong>${dish.price}</strong></div>
-      </div>
-      <button class="dish-hero__add reveal" id="dishAdd">${tr("dishAdd")} · ${dish.price}</button>
-    </div>
-  </section>
-
-  <section class="dish-body">
-    <div class="dish-body__desc reveal-lines">
-      <h2>${tr("dishAbout")}</h2>
-      <p>${T(dish.description)}</p>
-      ${allergens}
-    </div>
-    <div class="dish-body__ritual reveal">
-      <h2>${tr("dishHow")}</h2>
-      <p>${T(dish.ritual)}</p>
-    </div>
-  </section>
-
-  <a class="dish-next" href="/dish?item=${next.id}${backSuffix}">
-    <span>${tr("dishNext")}</span>
-    <strong>${next.name} →</strong>
-  </a>`;
-
-  document.getElementById("dishAdd").addEventListener("click", () => {
-    Cart.add({
-      id: `dish:${dish.id}`,
-      name: dish.name,
-      detail: T(dish.tagline),
-      price: parseInt(dish.price.replace(/\D+/g, ""), 10) || 0,
-    });
-  });
-}
-
-/* ── Режим 2: любая позиция меню ── */
-function renderMenuItem(sec, item, idx) {
-  const name = T(item.name);
-  document.title = `${name} — Gamarjoba`;
-  const desc = T(item.ru);
-  /* ключ полного описания — «раздел:название», как в menu-full.js.
-     Берём исходное (румынское) написание, а не перевод: ключ не должен
-     зависеть от выбранного языка. */
-  const fullKey = `${sec.id}:${typeof item.name === "string" ? item.name : item.name.ro}`;
-  const full = typeof MENU_FULL !== "undefined" ? MENU_FULL[fullKey] : null;
-
-  /* следующее блюдо с фото в этом же разделе */
-  let nextHtml = "";
-  const n = sec.items.length;
-  for (let step = 1; step < n; step++) {
-    const j = (idx + step) % n;
-    if (sec.items[j].img) {
-      nextHtml = `
-      <a class="dish-next" href="/dish?item=${itemSlug(sec.items[j])}${backSuffix}">
-        <span>${tr("dishNext")}</span>
-        <strong>${T(sec.items[j].name)} →</strong>
-      </a>`;
-      break;
-    }
+  /* «В корзину» у самого блюда: у фирменных цена строкой, у позиций меню — числом */
+  const addBtn = document.getElementById("dishAdd");
+  if (addBtn) {
+    const payload =
+      rendered.kind === "rich"
+        ? {
+            id: `dish:${rendered.dish.id}`,
+            name: rendered.dish.name,
+            detail: TPL.T(rendered.dish.tagline),
+            price: parseInt(rendered.dish.price.replace(/\D+/g, ""), 10) || 0,
+          }
+        : {
+            id: `${rendered.sec.id}:${TPL.T(rendered.item.name)}`,
+            name: TPL.T(rendered.item.name),
+            detail: rendered.item.w || "",
+            price: rendered.item.p,
+          };
+    addBtn.addEventListener("click", () => Cart.add(payload));
   }
-
-  const meta = `
-    <div class="dish-hero__meta reveal">
-      ${item.w ? `<div><span>${tr("dishWeight")}</span><strong>${item.w}</strong></div>` : ""}
-      ${item.p != null ? `<div><span>${tr("dishPrice")}</span><strong>${item.p} MDL</strong></div>` : ""}
-    </div>`;
-
-  const addBtn =
-    item.p != null
-      ? `<button class="dish-hero__add reveal" id="dishAdd">${tr("dishAdd")} · ${item.p} MDL</button>`
-      : "";
-
-  const variants = item.variants
-    ? `
-  <section class="dish-body dish-body--single">
-    <div class="dish-body__desc reveal">
-      <h2>${tr("dishVariants")}</h2>
-      <ul class="menu-item__variants">
-        ${item.variants
-          .map((v) => {
-            const vv = T(v.v);
-            return `<li>
-              <span>${vv}</span><i class="menu-item__dots"></i><b>${v.p}</b>
-              <button class="add-btn" data-id="${sec.id}:${name} — ${vv}" data-name="${name}" data-detail="${vv}" data-price="${v.p}" aria-label="+">+</button>
-            </li>`;
-          })
-          .join("")}
-      </ul>
-    </div>
-  </section>`
-    : "";
-
-  main.innerHTML = `
-  <section class="dish-hero">
-    <div class="dish-hero__art" id="dishArt">${item.img ? `<img src="${item.img}" alt="${name}" />` : ""}</div>
-    <div>
-      <p class="dish-hero__cat reveal">${T(sec.title)}</p>
-      <h1 class="dish-hero__name reveal">${name}</h1>
-      ${desc ? `<p class="dish-hero__tagline reveal">${desc}</p>` : ""}
-      ${fullBlock(full)}
-      ${meta}
-      ${addBtn}
-    </div>
-  </section>
-  ${variants}
-  ${nextHtml}`;
-
-  const btn = document.getElementById("dishAdd");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      Cart.add({
-        id: `${sec.id}:${name}`,
-        name,
-        detail: item.w || "",
-        price: item.p,
-      });
-    });
-  }
-}
-
-/* ── Выбор режима ──
-   ?item=<slug>       — канонический адрес
-   ?id=<slug>         — прежний адрес фирменных блюд, работает как раньше
-   ?mi=<раздел:номер> — прежний нестабильный адрес: находим позицию по индексу,
-                        определяем её слаг и подменяем адрес на канонический */
-let slug = params.get("item") || params.get("id") || "";
-let byIndex = null;
-
-if (!slug && params.get("mi")) {
-  byIndex = findMenuItem(params.get("mi"));
-  if (byIndex) slug = itemSlug(byIndex.item);
-}
-
-/* старая ссылка ?mi= — чистим адресную строку без перезагрузки страницы */
-if (params.get("mi") && slug) {
-  history.replaceState(null, "", `${location.pathname}?item=${encodeURIComponent(slug)}${backSuffix}`);
-}
-
-const rich = slug ? getDish(slug) : null;
-const found = rich ? null : findBySlug(slug) || byIndex;
-
-if (rich) {
-  renderRich(rich);
-} else if (found) {
-  renderMenuItem(found.sec, found.item, found.idx);
-} else {
-  renderRich(DISHES[0]);
+} else if (pathSlug) {
+  /* адрес вида /dish/<slug>/ есть, а блюда такого нет */
+  window.location.replace("/404.html");
 }
 
 /* ── Клики по «+» у вариантов ── */

@@ -118,7 +118,7 @@ document.addEventListener("click", (e) => {
   /* на названии блюда теперь настоящая <a> — гасим её переход, иначе браузер
      уйдёт сразу и мы потеряем анимацию и запоминание позиции скролла */
   e.preventDefault();
-  const href = `${clickable.dataset.href}&back=menu`;
+  const href = `${clickable.dataset.href}?back=menu`;
   /* запоминаем вкладку и позицию скролла для возврата */
   sessionStorage.setItem(
     "gamarjoba-menu-return",

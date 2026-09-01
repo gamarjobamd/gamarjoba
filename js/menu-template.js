@@ -32,7 +32,7 @@ function createMenuTemplate({ lang, langs, ui, badges }) {
     /* канонический адрес страницы блюда — по стабильному слагу, а не по индексу.
        Один источник и для data-href, и для настоящей <a> на названии. */
     const slug = item.slug || item.link || "";
-    const dishHref = slug ? `/dish?item=${slug}` : "";
+    const dishHref = slug ? `/dish/${slug}/` : "";
     const linkAttr = item.link ? ` data-href="${dishHref}"` : "";
     const name = T(item.name);
     const ru = T(item.ru);

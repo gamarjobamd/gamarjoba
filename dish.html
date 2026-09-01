@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- BEGIN:dish-head -->
   <title>Блюдо — Gamarjoba</title>
   <meta name="description" content="Блюдо из меню Gamarjoba — ресторана традиционной грузинской кухни в Кишинёве." />
   <link rel="canonical" href="https://gamarjoba.md/menu" />
@@ -22,6 +23,7 @@
   <meta name="twitter:title" content="Блюдо — Gamarjoba" />
   <meta name="twitter:description" content="Блюдо из меню Gamarjoba — ресторана традиционной грузинской кухни в Кишинёве." />
   <meta name="twitter:image" content="https://gamarjoba.md/assets/hero-georgia.jpg" />
+  <!-- END:dish-head -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -54,9 +56,7 @@
     </div>
   </header>
 
-  <main id="dishMain">
-    <!-- контент рендерит dish.js -->
-  </main>
+  <main id="dishMain"><!-- BEGIN:dish-main --><!-- контент рендерит dish.js; на /dish/<slug>/ он уже собран scripts/build-dishes.js --><!-- END:dish-main --></main>
 
   <footer class="footer footer--compact">
     <div class="ornament-band" aria-hidden="true"></div>
@@ -71,6 +71,7 @@
   <script src="js/menu-data.js?v=37"></script>
   <script src="js/menu-full.js?v=37"></script>
   <script src="js/cart.js?v=37"></script>
+  <script src="js/dish-template.js?v=37"></script>
   <script src="js/dish.js?v=37"></script>
 </body>
 </html>
