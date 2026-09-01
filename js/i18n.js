@@ -67,6 +67,16 @@ const UI = {
     "Un preparat din meniul Gamarjoba — restaurant de bucătărie georgiană tradițională în Chișinău.",
     "A dish from the Gamarjoba menu — a traditional Georgian restaurant in Chișinău."
   ),
+  seoNotFoundTitle: L(
+    "Страница не найдена — Gamarjoba",
+    "Pagina nu a fost găsită — Gamarjoba",
+    "Page not found — Gamarjoba"
+  ),
+  seoNotFoundDesc: L(
+    "Такой страницы на сайте Gamarjoba нет. Вернитесь на главную или откройте меню ресторана.",
+    "Această pagină nu există pe site-ul Gamarjoba. Reveniți la pagina principală sau deschideți meniul.",
+    "There is no such page on the Gamarjoba site. Go back home or open the restaurant menu."
+  ),
   seoLocale: L("ru_RU", "ro_RO", "en_US"),
   heroEyebrow: L("Грузинская кухня · Кишинёв", "Bucătărie georgiană · Chișinău", "Georgian cuisine · Chișinău"),
   heroSub: L(
@@ -151,6 +161,19 @@ const UI = {
 
   footerCopy: L("© 2026 Gamarjoba · Кишинёв", "© 2026 Gamarjoba · Chișinău", "© 2026 Gamarjoba · Chișinău"),
 
+  /* ── Страница 404 ── */
+  notFoundLabel: L("Ошибка 404", "Eroare 404", "Error 404"),
+  notFoundTitle: L(
+    "Такой страницы<br /><em>у нас нет</em>",
+    "Această pagină<br /><em>nu există</em>",
+    "This page<br /><em>doesn't exist</em>"
+  ),
+  notFoundText: L(
+    "Возможно, блюдо переехало в другой раздел меню или в ссылке опечатка. Хачапури, впрочем, на месте — загляните в меню.",
+    "Poate că preparatul s-a mutat în alt capitol al meniului sau linkul are o greșeală. Khachapuri, oricum, e la locul lui — aruncați o privire în meniu.",
+    "The dish may have moved to another part of the menu, or the link has a typo. The khachapuri, however, is right where it was — take a look at the menu."
+  ),
+  notFoundHome: L("На главную", "Acasă", "Home"),
   footerHome: L("gamarjoba — на главную", "gamarjoba — acasă", "gamarjoba — home"),
 
   menuEyebrow: L("Все цены — в леях · RO · RU · EN", "Toate prețurile — în lei · RO · RU · EN", "All prices in MDL · RO · RU · EN"),
@@ -258,11 +281,14 @@ document.querySelectorAll("[data-wordmark]").forEach((el) => {
    Страницу определяем по классу body, который уже есть в разметке.
    На странице блюда dish.js позже подставит название блюда. ── */
 (() => {
-  const page = document.body.classList.contains("menu-page")
-    ? "Menu"
-    : document.body.classList.contains("dish-page")
-      ? "Dish"
-      : "Home";
+  const has = (c) => document.body.classList.contains(c);
+  const page = has("notfound-page")
+    ? "NotFound"
+    : has("menu-page")
+      ? "Menu"
+      : has("dish-page")
+        ? "Dish"
+        : "Home";
   const title = tr("seo" + page + "Title");
   const desc = tr("seo" + page + "Desc");
   /* у превью в мессенджерах бывает свой, более развёрнутый заголовок */
