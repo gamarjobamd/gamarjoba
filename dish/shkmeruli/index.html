@@ -25,10 +25,15 @@
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css?v=38" />
+  <!-- Два начертания первого экрана: крупная вордмарка Fraunces и кириллический
+       Jost, которым набран весь интерфейс в языке по умолчанию. Без preload
+       браузер узнаёт о них только после разбора fonts.css — на шаг позже.
+       Остальные пять грузятся обычным порядком: preload на всё превратил бы
+       подсказку в шум и отобрал бы полосу у картинок первого экрана. -->
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fraunces-normal-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/jost-normal-cyrillic.woff2" crossorigin />
+  <link rel="stylesheet" href="/css/fonts.css?v=39" />
+  <link rel="stylesheet" href="/css/style.css?v=39" />
 </head>
 <body class="dish-page">
 
@@ -99,12 +104,12 @@
     </div>
   </footer>
 
-  <script src="/js/i18n.js?v=38"></script>
-  <script src="/js/data.js?v=38"></script>
-  <script src="/js/menu-data.js?v=38"></script>
-  <script src="/js/menu-full.js?v=38"></script>
-  <script src="/js/cart.js?v=38"></script>
-  <script src="/js/dish-template.js?v=38"></script>
-  <script src="/js/dish.js?v=38"></script>
+  <script src="/js/i18n.js?v=39"></script>
+  <script src="/js/data.js?v=39"></script>
+  <script src="/js/menu-data.js?v=39"></script>
+  <script src="/js/menu-full.js?v=39"></script>
+  <script src="/js/cart.js?v=39"></script>
+  <script src="/js/dish-template.js?v=39"></script>
+  <script src="/js/dish.js?v=39"></script>
 </body>
 </html>
