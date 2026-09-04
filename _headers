@@ -1,0 +1,42 @@
+# Gamarjoba — заголовки ответа для Cloudflare Pages.
+#
+# ВНИМАНИЕ: на проде уже отдаются x-content-type-options и referrer-policy,
+# но в репозитории их не было — значит, они приходят откуда-то ещё
+# (панель Cloudflare, Transform Rules). Здесь они намеренно НЕ продублированы:
+# два источника одного заголовка дают два значения в ответе.
+
+/*
+  # Всё своё. После переноса шрифтов на свой домен сторонних источников
+  # не осталось ни одного, поэтому политика максимально узкая.
+  #
+  # script-src 'self'   — все скрипты подключаются файлами; единственный
+  #                       инлайн — <script type="application/ld+json">,
+  #                       он не исполняется и под CSP не подпадает.
+  # style-src  'self'   — стили только файлами: fonts.css, style.css, cookies.css.
+  #                       Инлайновых style-атрибутов в разметке нет ни одного:
+  #                       переменные декоративного слоя меню лежат в style.css
+  #                       классами .decor__item--01…14. Поэтому style-src-attr
+  #                       не нужен — а он из CSP Level 3, и браузер, который её
+  #                       не знает, откатился бы на style-src 'self' и молча
+  #                       погасил бы весь декор.
+  # img-src 'self' data:
+  #                     — три орнамента в style.css заданы через data:image/svg+xml.
+  # font-src 'self'     — шрифты лежат в /assets/fonts/.
+  # connect-src 'none'  — сайт не делает ни одного fetch, XHR или WebSocket.
+  # form-action 'none'  — форм на сайте нет.
+  # frame-src 'none', media-src 'none', object-src 'none'
+  #                     — встраиваний, видео и плагинов нет.
+  # frame-ancestors 'none'
+  #                     — сайт нельзя открыть в чужом фрейме.
+  # base-uri 'none'     — тега <base> нет, подменить базовый адрес нельзя.
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; frame-src 'none'; media-src 'none'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; upgrade-insecure-requests
+
+  # Дубль frame-ancestors для старых браузеров, не знающих CSP3.
+  X-Frame-Options: DENY
+
+  # Сайту не нужны ни камера, ни микрофон, ни геолокация — отключаем явно.
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+
+# Шрифты неизменяемы: имя файла меняется только вместе с содержимым.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
