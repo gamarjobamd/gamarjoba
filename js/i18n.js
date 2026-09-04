@@ -174,6 +174,166 @@ const UI = {
     "The dish may have moved to another part of the menu, or the link has a typo. The khachapuri, however, is right where it was — take a look at the menu."
   ),
   notFoundHome: L("На главную", "Acasă", "Home"),
+
+  /* ── Страница политики cookie ── */
+  navCookies: L("Настройки cookie", "Setări cookie", "Cookie settings"),
+  footerCookies: L("Cookie и данные", "Cookie și date", "Cookies and data"),
+
+  ckLabel: L("Правовая информация", "Informații juridice", "Legal information"),
+  ckTitle: L(
+    "Cookie<br /><em>и ваши данные</em>",
+    "Cookie<br /><em>și datele dvs.</em>",
+    "Cookies<br /><em>and your data</em>"
+  ),
+  ckIntro: L(
+    "Коротко: этот сайт не ставит ни одной cookie, не использует аналитику, счётчики и рекламные пиксели и не передаёт данные посетителей третьим лицам. Ниже — что именно сохраняется в вашем браузере, зачем и как это удалить.",
+    "Pe scurt: acest site nu plasează niciun cookie, nu folosește analitică, contoare sau pixeli publicitari și nu transmite datele vizitatorilor către terți. Mai jos — ce anume se păstrează în browserul dvs., de ce și cum se șterge.",
+    "In short: this site sets no cookies, uses no analytics, counters or advertising pixels, and shares no visitor data with third parties. Below is exactly what is stored in your browser, why, and how to delete it."
+  ),
+
+  ckOperatorH: L("Кто обрабатывает данные", "Cine prelucrează datele", "Who processes the data"),
+  ckOperatorText: L(
+    "Оператором сайта и оператором персональных данных выступает:",
+    "Operatorul site-ului și al datelor cu caracter personal este:",
+    "The site and data controller is:"
+  ),
+  ckOperatorName: L("Наименование", "Denumire", "Company"),
+  ckOperatorAddress: L("Адрес", "Adresa", "Address"),
+  ckOperatorEmail: L("E-mail для обращений", "E-mail pentru solicitări", "E-mail for requests"),
+
+  ckWhatH: L("Что такое cookie", "Ce sunt cookie-urile", "What cookies are"),
+  ckWhatText: L(
+    "Cookie — небольшой файл, который сайт сохраняет в браузере, чтобы узнавать устройство при следующем заходе. Рядом с cookie браузеры дают сайтам ещё два хранилища — localStorage и sessionStorage. Закон не делает между ними разницы: любое сохранение информации на вашем устройстве регулируется одинаково, поэтому здесь раскрыты все три.",
+    "Un cookie este un fișier mic pe care site-ul îl salvează în browser pentru a recunoaște dispozitivul la următoarea vizită. Alături de cookie-uri, browserele oferă site-urilor încă două spații de stocare — localStorage și sessionStorage. Legea nu face distincție între ele: orice stocare de informații pe dispozitivul dvs. este reglementată la fel, de aceea sunt divulgate toate trei.",
+    "A cookie is a small file a site saves in your browser to recognise your device on your next visit. Alongside cookies, browsers give sites two more stores — localStorage and sessionStorage. The law draws no distinction: any storage of information on your device is regulated the same way, so all three are disclosed here."
+  ),
+
+  ckCategoriesH: L("Категории", "Categorii", "Categories"),
+  ckCatNecessaryT: L("Строго необходимые", "Strict necesare", "Strictly necessary"),
+  ckCatNecessary: L(
+    "Без них не работают функции, которые вы сами запросили: корзина, выбор языка, возврат в меню на то же место. Согласия не требуют — именно потому, что без них сайт не выполнит вашу же просьбу. Всё, что перечислено в таблице ниже, относится к этой категории.",
+    "Fără ele nu funcționează lucrurile pe care le-ați cerut chiar dvs.: coșul, alegerea limbii, revenirea în meniu în același loc. Nu necesită consimțământ — tocmai pentru că fără ele site-ul nu ar îndeplini propria dvs. solicitare. Tot ce este enumerat în tabelul de mai jos ține de această categorie.",
+    "Without them the things you asked for yourself do not work: the cart, the language choice, returning to the same spot in the menu. They require no consent — precisely because without them the site cannot do what you asked. Everything listed in the table below falls into this category."
+  ),
+  ckCatOtherT: L("Аналитика, маркетинг, встраивания", "Analitică, marketing, conținut încorporat", "Analytics, marketing, embeds"),
+  ckCatOther: L(
+    "Не используются. На сайте нет Google Analytics, Google Tag Manager, Meta Pixel и любых других счётчиков и рекламных систем, нет встроенных карт, видео и виджетов. Шрифты, которыми набран сайт, лежат на нашем же домене, а не подгружаются со стороннего сервиса. Поэтому баннера согласия здесь нет: соглашаться не на что.",
+    "Nu sunt utilizate. Site-ul nu are Google Analytics, Google Tag Manager, Meta Pixel sau alte contoare și sisteme publicitare, nu are hărți, video sau widget-uri încorporate. Fonturile cu care este cules site-ul se află pe domeniul nostru, nu sunt încărcate de la un serviciu terț. De aceea aici nu există banner de consimțământ: nu este la ce consimți.",
+    "Not used. The site has no Google Analytics, Google Tag Manager, Meta Pixel or any other counters and advertising systems, and no embedded maps, videos or widgets. The fonts the site is set in live on our own domain rather than being loaded from a third-party service. That is why there is no consent banner here: there is nothing to consent to."
+  ),
+
+  ckTableH: L("Что сохраняется в вашем браузере", "Ce se păstrează în browserul dvs.", "What is stored in your browser"),
+  ckTableNote: L(
+    "Cookie в строгом смысле слова сайт не устанавливает ни одной. Ниже — все значения, которые он сохраняет в браузере.",
+    "Site-ul nu plasează niciun cookie în sensul strict al cuvântului. Mai jos sunt toate valorile pe care le salvează în browser.",
+    "The site sets no cookies in the strict sense. Below are all the values it stores in your browser."
+  ),
+  ckThName: L("Имя", "Nume", "Name"),
+  ckThProvider: L("Поставщик", "Furnizor", "Provider"),
+  ckThPurpose: L("Назначение", "Scop", "Purpose"),
+  ckThTtl: L("Срок", "Durată", "Duration"),
+
+  ckOrderH: L("Имя и телефон в заказе", "Numele și telefonul din comandă", "Name and phone in an order"),
+  ckOrderText: L(
+    "Если вы заполняете имя и телефон в корзине, они сохраняются только в вашем браузере и не отправляются на наши серверы — их у сайта попросту нет. Данные покидают устройство лишь в тот момент, когда вы сами нажимаете «Заказать в WhatsApp»: тогда состав заказа, имя, телефон и комментарий передаются в WhatsApp и попадают к нам обычным сообщением. Передача происходит по вашей инициативе и в объёме, который вы видите в тексте сообщения до отправки. Обработка этих данных в WhatsApp регулируется правилами самого сервиса.",
+    "Dacă completați numele și telefonul în coș, acestea se păstrează doar în browserul dvs. și nu sunt trimise pe serverele noastre — site-ul nici nu are așa ceva. Datele părăsesc dispozitivul abia în momentul în care apăsați chiar dvs. „Comandă pe WhatsApp”: atunci conținutul comenzii, numele, telefonul și comentariul sunt transmise în WhatsApp și ajung la noi ca mesaj obișnuit. Transmiterea are loc la inițiativa dvs. și în volumul pe care îl vedeți în textul mesajului înainte de trimitere. Prelucrarea acestor date în WhatsApp este guvernată de regulile serviciului respectiv.",
+    "If you fill in your name and phone in the cart, they are stored only in your browser and are not sent to our servers — the site has none. The data leaves your device only when you yourself press “Order via WhatsApp”: at that point the order, your name, phone and note are passed to WhatsApp and reach us as an ordinary message. The transfer happens at your initiative and in the volume you can see in the message text before sending. Processing of that data within WhatsApp is governed by that service's own rules."
+  ),
+
+  ckBasisH: L("Правовое основание", "Temeiul juridic", "Legal basis"),
+  ckBasisText: L(
+    "Хранение строго необходимых значений на вашем устройстве не требует согласия: оно нужно для оказания услуги, которую вы запросили сами. Обработка имени и телефона при оформлении заказа основана на вашем обращении к нам и необходима, чтобы принять и подтвердить заказ. Обработка ведётся в соответствии с Legea nr. 195/2024 privind protecția datelor cu caracter personal и Регламентом (ЕС) 2016/679 (GDPR).",
+    "Stocarea valorilor strict necesare pe dispozitivul dvs. nu necesită consimțământ: ea este indispensabilă pentru prestarea serviciului pe care l-ați solicitat chiar dvs. Prelucrarea numelui și a telefonului la plasarea comenzii se întemeiază pe solicitarea dvs. și este necesară pentru a primi și confirma comanda. Prelucrarea se face în conformitate cu Legea nr. 195/2024 privind protecția datelor cu caracter personal și Regulamentul (UE) 2016/679 (GDPR).",
+    "Storing strictly necessary values on your device requires no consent: it is essential to provide the service you requested yourself. Processing your name and phone when placing an order is based on your own request and is necessary to receive and confirm that order. Processing is carried out in accordance with Legea nr. 195/2024 privind protecția datelor cu caracter personal and Regulation (EU) 2016/679 (GDPR)."
+  ),
+
+  ckRightsH: L("Ваши права", "Drepturile dvs.", "Your rights"),
+  ckRightsText: L(
+    "По Legea nr. 195/2024 и GDPR вы вправе:",
+    "Conform Legea nr. 195/2024 și GDPR aveți dreptul:",
+    "Under Legea nr. 195/2024 and the GDPR you have the right:"
+  ),
+  ckRight1: L(
+    "знать, обрабатываем ли мы ваши данные, и получить их копию;",
+    "să știți dacă vă prelucrăm datele și să primiți o copie a acestora;",
+    "to know whether we process your data and to receive a copy of it;"
+  ),
+  ckRight2: L(
+    "потребовать исправить неточные данные;",
+    "să cereți rectificarea datelor inexacte;",
+    "to have inaccurate data corrected;"
+  ),
+  ckRight3: L(
+    "потребовать удалить данные и ограничить их обработку;",
+    "să cereți ștergerea datelor și restricționarea prelucrării;",
+    "to have data erased and processing restricted;"
+  ),
+  ckRight4: L(
+    "возразить против обработки;",
+    "să vă opuneți prelucrării;",
+    "to object to processing;"
+  ),
+  ckRight5: L(
+    "получить данные в машиночитаемом виде и передать их другому оператору;",
+    "să primiți datele într-un format prelucrabil automat și să le transferați altui operator;",
+    "to receive your data in a machine-readable format and transfer it to another controller;"
+  ),
+  ckRight6: L(
+    "отозвать согласие там, где обработка на нём основана, — отзыв не затрагивает законность обработки до отзыва;",
+    "să retrageți consimțământul acolo unde prelucrarea se întemeiază pe el — retragerea nu afectează legalitatea prelucrării de până atunci;",
+    "to withdraw consent where processing is based on it — withdrawal does not affect the lawfulness of processing before it;"
+  ),
+  ckRight7: L(
+    "подать жалобу в надзорный орган.",
+    "să depuneți o plângere la autoritatea de supraveghere.",
+    "to lodge a complaint with the supervisory authority."
+  ),
+  ckRightsHow: L(
+    "Чтобы воспользоваться любым из этих прав, напишите нам на адрес, указанный выше. Мы ответим в срок, установленный законом.",
+    "Pentru a exercita oricare dintre aceste drepturi, scrieți-ne la adresa indicată mai sus. Vă vom răspunde în termenul prevăzut de lege.",
+    "To exercise any of these rights, write to us at the address above. We will reply within the period set by law."
+  ),
+
+  ckClearH: L("Как удалить сохранённое", "Cum ștergeți datele salvate", "How to delete what is stored"),
+  ckClearText: L(
+    "Согласия сайт не собирает, поэтому отзывать нечего. Но всё, что он сохранил в вашем браузере, вы можете стереть — прямо здесь или средствами самого браузера в разделе настроек сайта.",
+    "Site-ul nu colectează consimțământ, deci nu este ce retrage. Dar tot ce a salvat în browserul dvs. poate fi șters — chiar de aici sau din setările browserului pentru acest site.",
+    "The site collects no consent, so there is nothing to withdraw. But everything it stored in your browser can be erased — right here, or from your browser's own settings for this site."
+  ),
+  ckClearBtn: L("Удалить сохранённые данные", "Șterge datele salvate", "Delete stored data"),
+  ckClearDone: L("Удалено", "Șters", "Deleted"),
+  ckClearEmpty: L("Сохранённых данных не было", "Nu existau date salvate", "There was nothing stored"),
+  ckClearAfter: L(
+    "Удаление очистит корзину, сохранённые имя и телефон и выбранный язык. Сам сайт продолжит работать.",
+    "Ștergerea golește coșul, numele și telefonul salvate și limba aleasă. Site-ul va continua să funcționeze.",
+    "Deleting clears the cart, the saved name and phone, and the chosen language. The site itself keeps working."
+  ),
+
+  ckLinksH: L("Переходы на сторонние сайты", "Accesarea site-urilor terțe", "Links to third-party sites"),
+  ckLinksText: L(
+    "На сайте есть ссылки на Instagram, WhatsApp и Google Maps. Пока вы по ним не нажали, никакие запросы туда не уходят. После перехода вы оказываетесь на стороннем сайте, и там действуют его собственные правила обработки данных — мы на них не влияем.",
+    "Pe site există linkuri către Instagram, WhatsApp și Google Maps. Până nu le accesați, nu pleacă nicio cerere într-acolo. După accesare ajungeți pe un site terț, unde se aplică propriile lui reguli de prelucrare a datelor — noi nu le influențăm.",
+    "The site links to Instagram, WhatsApp and Google Maps. Until you click them, no requests go there. Once you follow a link you are on a third-party site, where its own data rules apply — we have no influence over them."
+  ),
+
+  ckComplaintH: L("Жалоба в надзорный орган", "Plângere la autoritatea de supraveghere", "Complaint to the supervisory authority"),
+  ckComplaintText: L(
+    "Если вы считаете, что мы обрабатываем ваши персональные данные с нарушением закона, вы вправе обратиться к нам напрямую по адресу выше — и в любом случае вправе подать жалобу в надзорный орган Республики Молдова:",
+    "Dacă considerați că vă prelucrăm datele cu caracter personal cu încălcarea legii, aveți dreptul să ne contactați direct la adresa de mai sus — și, în orice caz, aveți dreptul să depuneți o plângere la autoritatea de supraveghere din Republica Moldova:",
+    "If you believe we process your personal data in breach of the law, you may contact us directly at the address above — and in any case you have the right to lodge a complaint with the supervisory authority of the Republic of Moldova:"
+  ),
+  ckUpdated: L("Последнее обновление", "Ultima actualizare", "Last updated"),
+
+  seoCookiesTitle: L(
+    "Cookie и данные — Gamarjoba",
+    "Cookie și date — Gamarjoba",
+    "Cookies and data — Gamarjoba"
+  ),
+  seoCookiesDesc: L(
+    "Какие данные сайт Gamarjoba сохраняет в вашем браузере, зачем и как их удалить. Cookie, аналитика и трекеры не используются.",
+    "Ce date păstrează site-ul Gamarjoba în browserul dvs., de ce și cum le ștergeți. Nu folosim cookie-uri, analitică sau trackere.",
+    "What the Gamarjoba site stores in your browser, why, and how to delete it. No cookies, analytics or trackers are used."
+  ),
   footerHome: L("gamarjoba — на главную", "gamarjoba — acasă", "gamarjoba — home"),
 
   menuEyebrow: L("Все цены — в леях · RO · RU · EN", "Toate prețurile — în lei · RO · RU · EN", "All prices in MDL · RO · RU · EN"),
@@ -284,11 +444,13 @@ document.querySelectorAll("[data-wordmark]").forEach((el) => {
   const has = (c) => document.body.classList.contains(c);
   const page = has("notfound-page")
     ? "NotFound"
-    : has("menu-page")
-      ? "Menu"
-      : has("dish-page")
-        ? "Dish"
-        : "Home";
+    : has("cookies-page")
+      ? "Cookies"
+      : has("menu-page")
+        ? "Menu"
+        : has("dish-page")
+          ? "Dish"
+          : "Home";
   const title = tr("seo" + page + "Title");
   const desc = tr("seo" + page + "Desc");
   /* у превью в мессенджерах бывает свой, более развёрнутый заголовок */

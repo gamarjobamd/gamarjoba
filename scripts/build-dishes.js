@@ -356,6 +356,8 @@ function sitemap(slugs) {
       url(`${SITE}/`, "1.0", today),
       url(`${SITE}/menu`, "0.9", today),
       ...slugs.map((s) => url(`${SITE}/dish/${s}/`, "0.6", today)),
+      /* правовая страница: индексируется, но веса ей не нужно */
+      url(`${SITE}/cookies/`, "0.3", today),
     ].join("\n") +
     "\n</urlset>\n"
   );
@@ -405,7 +407,7 @@ if (CHECK) {
   writeFileSync(join(ROOT, "index.html"), splice(read("index.html"), "home-jsonld", home));
   writeFileSync(join(ROOT, "menu.html"), splice(read("menu.html"), "menu-jsonld", menu));
   console.log(
-    `собрано страниц блюд: ${pages.size}; sitemap.xml: ${slugs.length + 2} адреса; ` +
+    `собрано страниц блюд: ${pages.size}; sitemap.xml: ${slugs.length + 3} адреса; ` +
       "Schema.org: Restaurant + Menu"
   );
 }

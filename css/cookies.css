@@ -1,0 +1,190 @@
+/* Gamarjoba — страница политики cookie.
+   Подключается только на /cookies/: на остальных страницах эти правила
+   не нужны и не грузятся. Ни одного нового цвета, шрифта или радиуса —
+   всё из :root в style.css. */
+
+.ck {
+  max-width: 46rem;
+  margin: 0 auto;
+  /* .nav фиксированная и занимает 86px, поэтому у верхнего отступа есть пол:
+     на низком окне одного 11vh не хватает и заголовок уезжает под шапку. */
+  padding: max(clamp(4rem, 11vh, 7rem), 7rem) clamp(1.4rem, 6vw, 5rem) clamp(3rem, 8vh, 5rem);
+}
+.ck__intro {
+  margin-top: clamp(1.6rem, 4vh, 2.4rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.22rem);
+  line-height: 1.7;
+  color: var(--red-deep);
+}
+.ck__updated {
+  margin-top: 3rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+/* ── Раздел ── */
+.ck-section { margin-top: clamp(2.6rem, 7vh, 4rem); }
+.ck-section > h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.15;
+  color: var(--red-dark);
+}
+.ck-section > h3 {
+  margin-top: 1.6rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.ck-section p {
+  margin-top: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--red-deep);
+}
+.ck-section a { border-bottom: 1px solid rgba(212, 14, 47, 0.4); }
+.ck-section a:hover { border-bottom-color: var(--red); }
+
+.ck-list { margin-top: 0.9rem; padding-left: 1.2rem; }
+.ck-list li {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--red-deep);
+}
+.ck-list li::marker { color: var(--red); }
+
+/* ── Реквизиты оператора ── */
+.ck-card {
+  margin-top: 1.2rem;
+  border: 1px solid rgba(212, 14, 47, 0.28);
+  border-radius: 10px;
+  background: var(--cream-soft);
+  padding: clamp(1.1rem, 3vw, 1.6rem);
+}
+.ck-card__row {
+  display: grid;
+  grid-template-columns: minmax(9rem, 12rem) 1fr;
+  gap: 0.4rem 1.2rem;
+  padding: 0.55rem 0;
+  border-top: 1px solid rgba(212, 14, 47, 0.14);
+}
+.ck-card__row:first-child { border-top: 0; padding-top: 0; }
+.ck-card dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  padding-top: 0.15rem;
+}
+.ck-card dd { font-size: 1rem; line-height: 1.6; color: var(--red-deep); }
+
+/* ── Таблица хранимых значений ── */
+.ck-table-wrap { margin-top: 1.2rem; overflow-x: auto; }
+.ck-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  color: var(--red-deep);
+}
+.ck-table th {
+  text-align: left;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  padding: 0 0.9rem 0.6rem 0;
+  border-bottom: 1px solid rgba(212, 14, 47, 0.3);
+  white-space: nowrap;
+}
+.ck-table td {
+  padding: 0.85rem 0.9rem 0.85rem 0;
+  border-bottom: 1px solid rgba(212, 14, 47, 0.14);
+  line-height: 1.55;
+  vertical-align: top;
+}
+.ck-table code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.86em;
+  word-break: break-word;
+}
+.ck-table small {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.76em;
+  opacity: 0.7;
+}
+
+/* На узком экране таблица разворачивается в карточки:
+   горизонтальная прокрутка на четырёх колонках нечитаема. */
+@media (max-width: 620px) {
+  /* на узком экране шапка переносится в две строки и занимает уже 103px */
+  .ck { padding-top: 8.5rem; }
+
+  /* подпись над значением, а не рядом: колонка в 12rem не оставляет
+     месту под адрес и почту ничего, кроме переносов по одному слову */
+  .ck-card__row { grid-template-columns: 1fr; gap: 0.3rem; }
+
+  .ck-table, .ck-table tbody, .ck-table tr, .ck-table td { display: block; width: 100%; }
+  /* Строки становятся карточками, подпись колонки уходит в ::before каждой
+     ячейки — сам thead в таком виде только мешает. Роли table/row/cell
+     проставлены явно, потому что display: block стирает семантику таблицы. */
+  .ck-table thead { display: none; }
+  .ck-table tr {
+    border: 1px solid rgba(212, 14, 47, 0.28);
+    border-radius: 10px;
+    background: var(--cream-soft);
+    padding: 0.4rem 0.9rem;
+    margin-top: 0.8rem;
+  }
+  .ck-table td { border-bottom: 1px solid rgba(212, 14, 47, 0.14); padding: 0.6rem 0; }
+  .ck-table tr td:last-child { border-bottom: 0; }
+  .ck-table td::before {
+    content: attr(data-th);
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+}
+
+/* ── Кнопка удаления данных ── */
+.ck-actions {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+}
+.ck-actions .hero__cta { margin-top: 0; }
+.ck-status {
+  font-size: 0.88rem;
+  color: var(--green);
+  font-weight: 500;
+}
+.ck-note { margin-top: 0.8rem; font-size: 0.88rem; opacity: 0.8; }
+
+/* ── Фокус с клавиатуры: видимый на кремовом фоне ── */
+.ck a:focus-visible,
+.ck button:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ck *, .ck *::before, .ck *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

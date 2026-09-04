@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie и данные — Gamarjoba</title>
+  <meta name="description" content="Какие данные сайт Gamarjoba сохраняет в вашем браузере, зачем и как их удалить. Cookie, аналитика и трекеры не используются." />
+  <link rel="canonical" href="https://gamarjoba.md/cookies/" />
+
+  <!-- Open Graph — превью при отправке ссылки в мессенджеры и соцсети -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Cookie и данные — Gamarjoba" />
+  <meta property="og:description" content="Какие данные сайт Gamarjoba сохраняет в вашем браузере, зачем и как их удалить. Cookie, аналитика и трекеры не используются." />
+  <meta property="og:url" content="https://gamarjoba.md/cookies/" />
+  <meta property="og:image" content="https://gamarjoba.md/assets/hero-georgia.jpg" />
+  <meta property="og:locale" content="ru_RU" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cookie и данные — Gamarjoba" />
+  <meta name="twitter:description" content="Какие данные сайт Gamarjoba сохраняет в вашем браузере, зачем и как их удалить. Cookie, аналитика и трекеры не используются." />
+  <meta name="twitter:image" content="https://gamarjoba.md/assets/hero-georgia.jpg" />
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <!-- Два начертания первого экрана: крупная вордмарка Fraunces и кириллический
+       Jost, которым набран весь интерфейс в языке по умолчанию. Без preload
+       браузер узнаёт о них только после разбора fonts.css — на шаг позже.
+       Остальные пять грузятся обычным порядком: preload на всё превратил бы
+       подсказку в шум и отобрал бы полосу у картинок первого экрана. -->
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fraunces-normal-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/jost-normal-cyrillic.woff2" crossorigin />
+  <link rel="stylesheet" href="/css/fonts.css?v=39" />
+  <link rel="stylesheet" href="/css/style.css?v=39" />
+  <link rel="stylesheet" href="/css/cookies.css?v=39" />
+</head>
+<body class="dish-page cookies-page">
+
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <header class="nav">
+    <a class="nav__logo" href="/">
+      <span class="logo-text notranslate" translate="no"><b>Gamarjoba</b><i>georgian cuisine</i></span>
+      <svg class="logo-flag" viewBox="0 0 60 40" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="59" height="39" fill="#fff" stroke="#c9c9c9" stroke-width="1"/>
+        <rect x="26" y="0" width="8" height="40" fill="#d40e2f"/>
+        <rect x="0" y="16" width="60" height="8" fill="#d40e2f"/>
+        <path d="M12 5 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M45 5 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M12 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+        <path d="M45 26 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 Z" fill="#d40e2f"/>
+      </svg>
+    </a>
+    <nav class="nav__links">
+      <a href="/menu" data-i18n="navMenu">Меню</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang-switch" aria-label="Language"></div>
+      <a class="nav__back" href="/" data-i18n="navHome">← На главную</a>
+    </div>
+  </header>
+
+  <main class="ck">
+    <p class="section-label" data-i18n="ckLabel">Правовая информация</p>
+    <h1 class="section-title" data-i18n="ckTitle">Cookie<br /><em>и ваши данные</em></h1>
+    <p class="ck__intro" data-i18n="ckIntro">Коротко: этот сайт не ставит ни одной cookie, не использует аналитику, счётчики и рекламные пиксели и не передаёт данные посетителей третьим лицам. Ниже — что именно сохраняется в вашем браузере, зачем и как это удалить.</p>
+
+    <section class="ck-section">
+      <h2 data-i18n="ckOperatorH">Кто обрабатывает данные</h2>
+      <p data-i18n="ckOperatorText">Оператором сайта и оператором персональных данных выступает:</p>
+      <!-- Реквизиты собираются из COMPANY в js/cookies.js — единственного места,
+           где они заданы. Руками здесь ничего не дублируется. -->
+      <dl class="ck-card" id="operatorCard"></dl>
+    </section>
+
+    <section class="ck-section">
+      <h2 data-i18n="ckWhatH">Что такое cookie</h2>
+      <p data-i18n="ckWhatText">Cookie — небольшой файл, который сайт сохраняет в браузере, чтобы узнавать устройство при следующем заходе. Рядом с cookie браузеры дают сайтам ещё два хранилища — localStorage и sessionStorage. Закон не делает между ними разницы: любое сохранение информации на вашем устройстве регулируется одинаково, поэтому здесь раскрыты все три.</p>
+    </section>
+
+    <section class="ck-section">
+      <h2 data-i18n="ckCategoriesH">Категории</h2>
+      <h3 data-i18n="ckCatNecessaryT">Строго необходимые</h3>
+      <p data-i18n="ckCatNecessary">Без них не работают функции, которые вы сами запросили: корзина, выбор языка, возврат в меню на то же место. Согласия не требуют — именно потому, что без них сайт не выполнит вашу же просьбу. Всё, что перечислено в таблице ниже, относится к этой категории.</p>
+      <h3 data-i18n="ckCatOtherT">Аналитика, маркетинг, встраивания</h3>
+      <p data-i18n="ckCatOther">Не используются. На сайте нет Google Analytics, Google Tag Manager, Meta Pixel и любых других счётчиков и рекламных систем, нет встроенных карт, видео и виджетов. Шрифты, которыми набран сайт, лежат на нашем же домене, а не подгружаются со стороннего сервиса. Поэтому баннера согласия здесь нет: соглашаться не на что.</p>
+    </section>
+
+    <section class="ck-section">
+      <h2 data-i18n="ckTableH">Что сохраняется в вашем браузере</h2>
+      <p data-i18n="ckTableNote">Cookie в строгом смысле слова сайт не устанавливает ни одной. Ниже — все значения, которые он сохраняет в браузере.</p>
+      <div class="ck-table-wrap">
+        <table class="ck-table" role="table">
+          <thead>
+            <tr role="row">
+              <th role="columnheader" scope="col" data-i18n="ckThName">Имя</th>
+              <th role="columnheader" scope="col" data-i18n="ckThProvider">Поставщик</th>
+              <th role="columnheader" scope="col" data-i18n="ckThPurpose">Назначение</th>
+              <th role="columnheader" scope="col" data-i18n="ckThTtl">Срок</th>
+            </tr>
+          </thead>
+          <!-- Строки собираются из STORAGE_ITEMS в js/cookies.js -->
+          <tbody role="rowgroup" id="storageRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="ck-section">
+      <h2 data-i18n="ckOrderH">Имя и телефон в заказе</h2>
+      <p data-i18n="ckOrderText">Если вы заполняете имя и телефон в корзине, они сохраняются только в вашем браузере и не отправляются на наши серверы — их у сайта попросту нет. Данные покидают устройство лишь в тот момент, когда вы сами нажимаете «Заказать в WhatsApp»: тогда состав заказа, имя, телефон и комментарий передаются в WhatsApp и попадают к нам обычным сообщением. Передача происходит по вашей инициативе и в объёме, который вы видите в тексте сообщения до отправки. Обработка этих данных в WhatsApp регулируется правилами самого сервиса.</p>
+    </section>
+
+    <section class="ck-section">
+      <h2 data-i18n="ckBasisH">Правовое основание</h2>
+      <p data-i18n="ckBasisText">Хранение строго необходимых значений на вашем устройстве не требует согласия: оно нужно для оказания услуги, которую вы запросили сами. Обработка имени и телефона при оформлении заказа основана на вашем обращении к нам и необходима, чтобы принять и подтвердить заказ. Обработка ведётся в соответствии с Legea nr. 195/2024 privind protecția datelor cu caracter personal и Регламентом (ЕС) 2016/679 (GDPR).</p>
+    </section>
+
+    <section class="ck-section">
+      <h2 data-i18n="ckRightsH">Ваши права</h2>
+      <p data-i18n="ckRightsText">По Legea nr. 195/2024 и GDPR вы вправе:</p>
+      <ul class="ck-list">
+        <li data-i18n="ckRight1">знать, обрабатываем ли мы ваши данные, и получить их копию;</li>
+        <li data-i18n="ckRight2">потребовать исправить неточные данные;</li>
+        <li data-i18n="ckRight3">потребовать удалить данные и ограничить их обработку;</li>
+        <li data-i18n="ckRight4">возразить против обработки;</li>
+        <li data-i18n="ckRight5">получить данные в машиночитаемом виде и передать их другому оператору;</li>
+        <li data-i18n="ckRight6">отозвать согласие там, где обработка на нём основана, — отзыв не затрагивает законность обработки до отзыва;</li>
+        <li data-i18n="ckRight7">подать жалобу в надзорный орган.</li>
+      </ul>
+      <p data-i18n="ckRightsHow">Чтобы воспользоваться любым из этих прав, напишите нам на адрес, указанный выше. Мы ответим в срок, установленный законом.</p>
+    </section>
+
+    <section class="ck-section">
+      <h2 data-i18n="ckClearH">Как удалить сохранённое</h2>
+      <p data-i18n="ckClearText">Согласия сайт не собирает, поэтому отзывать нечего. Но всё, что он сохранил в вашем браузере, вы можете стереть — прямо здесь или средствами самого браузера в разделе настроек сайта.</p>
+      <div class="ck-actions">
+        <button class="hero__cta" type="button" id="ckClear">
+          <span data-i18n="ckClearBtn">Удалить сохранённые данные</span>
+        </button>
+        <p class="ck-status" id="ckClearStatus" role="status" aria-live="polite" hidden></p>
+      </div>
+      <p class="ck-note" data-i18n="ckClearAfter">Удаление очистит корзину, сохранённые имя и телефон и выбранный язык. Сам сайт продолжит работать.</p>
+    </section>
+
+    <section class="ck-section">
+      <h2 data-i18n="ckLinksH">Переходы на сторонние сайты</h2>
+      <p data-i18n="ckLinksText">На сайте есть ссылки на Instagram, WhatsApp и Google Maps. Пока вы по ним не нажали, никакие запросы туда не уходят. После перехода вы оказываетесь на стороннем сайте, и там действуют его собственные правила обработки данных — мы на них не влияем.</p>
+    </section>
+
+    <section class="ck-section">
+      <h2 data-i18n="ckComplaintH">Жалоба в надзорный орган</h2>
+      <p data-i18n="ckComplaintText">Если вы считаете, что мы обрабатываем ваши персональные данные с нарушением закона, вы вправе обратиться к нам напрямую по адресу выше — и в любом случае вправе подать жалобу в надзорный орган Республики Молдова:</p>
+      <!-- Название и ссылка берутся из SUPERVISOR в js/cookies.js -->
+      <p id="supervisorLink"></p>
+    </section>
+
+    <p class="ck__updated"><span data-i18n="ckUpdated">Последнее обновление</span>: 2026-09-05</p>
+  </main>
+
+  <footer class="footer footer--compact">
+    <div class="ornament-band" aria-hidden="true"></div>
+    <div class="footer__row">
+      <span data-i18n="footerCopy">© 2026 Gamarjoba · Кишинёв</span>
+      <a href="/" data-i18n="footerHome">gamarjoba — на главную</a>
+    </div>
+  </footer>
+
+  <script src="/js/i18n.js?v=39"></script>
+  <script src="/js/cookies.js?v=39"></script>
+</body>
+</html>
