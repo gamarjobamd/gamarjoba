@@ -1,7 +1,14 @@
 /* Gamarjoba — корзина. Хранится в localStorage, доступна на всех страницах.
    Оформление заказа: собирает сообщение и открывает его в WhatsApp ресторана.
 
-   API: Cart.add({ id, name, detail, price }), Cart.open() */
+   API: Cart.add({ id, name, detail, price, options }), Cart.open()
+        Cart.line(secId, name, item, vIndex | { c }) — строка заказа из
+        позиции меню: id, подпись, цена и, если у позиции есть выбор
+        (тип мяса, размер, рыба, соус), список вариантов. Выбор потом
+        меняется прямо в корзине.
+
+   Формат id один на весь сайт: одна и та же позиция, добавленная из меню
+   и со страницы блюда, попадает в одну строку заказа. */
 
 const Cart = (() => {
   const KEY = "gamarjoba-cart";
@@ -132,7 +139,20 @@ const Cart = (() => {
       <div class="cart-item">
         <div class="cart-item__info">
           <b>${i.name}</b>
-          ${i.detail ? `<small>${detailOf(i).slice(1, -1)}</small>` : ""}
+          ${
+            i.options
+              ? `<select class="cart-item__pick" data-i="${idx}" aria-label="${tr("dishVariants")}">
+                  ${i.options
+                    .map(
+                      (o) =>
+                        `<option value="${o.i}"${o.id === i.id ? " selected" : ""}>${o.detail} · ${o.price} mdl</option>`
+                    )
+                    .join("")}
+                </select>`
+              : i.detail
+                ? `<small>${detailOf(i).slice(1, -1)}</small>`
+                : ""
+          }
           <span>${i.price} mdl</span>
         </div>
         <div class="cart-item__qty">
@@ -159,15 +179,78 @@ const Cart = (() => {
     document.body.style.overflow = "";
   }
 
-  function add({ id, name, detail, price }) {
+  function add({ id, name, detail, price, options }) {
     const found = items.find((i) => i.id === id);
     if (found) found.qty += 1;
-    else items.push({ id, name, detail: detail || "", price: Number(price) || 0, qty: 1 });
+    else
+      items.push({
+        id,
+        name,
+        detail: detail || "",
+        price: Number(price) || 0,
+        qty: 1,
+        ...(options && options.length > 1 ? { options } : {}),
+      });
     save();
     render();
     fab.classList.remove("is-pop");
     void fab.offsetWidth; /* перезапуск анимации */
     fab.classList.add("is-pop");
+  }
+
+  /* ── Строка заказа из позиции меню ──
+     Здесь же собирается список вариантов: у мцвади и люля это тип мяса,
+     у хинкали и хачапури — размер порции, у рыбы — сорт, у соусов — сам
+     соус. Список кладётся в строку корзины, поэтому выбор меняется в
+     заказе, а не переигрыванием через меню. */
+  function line(secId, name, item, choice) {
+    const child = choice && typeof choice === "object" ? choice.c : null;
+
+    if (child != null) {
+      const options = (item.children || []).map((ch, i) => ({
+        i,
+        detail: ch.name,
+        price: Number(item.p),
+        id: `${secId}:${name} — ${ch.name}`,
+      }));
+      const cur = options[child];
+      return cur && { id: cur.id, name, detail: cur.detail, price: cur.price, options };
+    }
+
+    if (item.variants && choice != null) {
+      const detailOf = (v) => [v.label, v.w || item.w].filter(Boolean).join(" · ");
+      const options = item.variants.map((v, i) => ({
+        i,
+        detail: detailOf(v),
+        price: Number(v.p),
+        id: `${secId}:${name}${detailOf(v) ? ` — ${detailOf(v)}` : ""}`,
+      }));
+      const cur = options[choice];
+      return cur && { id: cur.id, name, detail: cur.detail, price: cur.price, options };
+    }
+
+    if (item.p == null) return null;
+    return { id: `${secId}:${name}`, name, detail: item.w || "", price: Number(item.p) };
+  }
+
+  /* Смена варианта в корзине: количество переносим, а если такой вариант
+     уже заказан отдельной строкой — складываем строки, чтобы в заказе не
+     оказалось двух одинаковых позиций. */
+  function pick(index, optionIndex) {
+    const it = items[index];
+    const opt = it && it.options && it.options[optionIndex];
+    if (!opt || opt.id === it.id) return;
+    const twin = items.findIndex((x, i) => i !== index && x.id === opt.id);
+    if (twin !== -1) {
+      items[twin].qty += it.qty;
+      items.splice(index, 1);
+    } else {
+      it.id = opt.id;
+      it.detail = opt.detail;
+      it.price = opt.price;
+    }
+    save();
+    render();
   }
 
   /* ── Поля заказа: подставляем сохранённое и обновляем ссылку на лету ── */
@@ -210,6 +293,11 @@ const Cart = (() => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") close();
   });
+  body.addEventListener("change", (e) => {
+    const sel = e.target.closest(".cart-item__pick");
+    if (!sel) return;
+    pick(Number(sel.dataset.i), Number(sel.value));
+  });
   body.addEventListener("click", (e) => {
     const btn = e.target.closest("button[data-act]");
     if (!btn) return;
@@ -224,5 +312,5 @@ const Cart = (() => {
   });
 
   render();
-  return { add, open };
+  return { add, line, open };
 })();

@@ -63,35 +63,11 @@ function findItem(spot) {
   const sec = MENU.find((s) => s.id === spot.sec);
   const item = sec && sec.items.find((it) => it.name === spot.name);
   if (!item) return null;
-  if (spot.v == null && spot.c == null) {
-    if (item.p == null) return null;
-    return {
-      id: `${spot.sec}:${item.name}`,
-      name: item.name,
-      detail: item.w || "",
-      price: item.p,
-    };
-  }
-  if (spot.c != null) {
-    /* соусы: цена у списка общая, но в заказе должно стоять имя соуса */
-    const child = (item.children || [])[spot.c];
-    if (!child || item.p == null) return null;
-    return {
-      id: `${spot.sec}:${item.name} — ${child.name}`,
-      name: item.name,
-      detail: child.name,
-      price: item.p,
-    };
-  }
-  const v = (item.variants || [])[spot.v];
-  if (!v) return null;
-  const detail = [v.label, v.w || item.w].filter(Boolean).join(" · ");
-  return {
-    id: `${spot.sec}:${item.name}${detail ? ` — ${detail}` : ""}`,
-    name: item.name,
-    detail,
-    price: v.p,
-  };
+  /* строку заказа собирает корзина: формат id один для меню и страниц блюд,
+     а у позиций с выбором в строку кладётся список вариантов */
+  if (spot.c != null) return Cart.line(spot.sec, item.name, item, { c: spot.c });
+  if (spot.v != null) return Cart.line(spot.sec, item.name, item, spot.v);
+  return Cart.line(spot.sec, item.name, item);
 }
 
 function buildHotspots() {

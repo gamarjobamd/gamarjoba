@@ -68,6 +68,8 @@ if (rendered) {
   /* «В корзину» у самого блюда: у фирменных цена строкой, у позиций меню — числом */
   const addBtn = document.getElementById("dishAdd");
   if (addBtn) {
+    /* Страница варианта (рыба на гриле) заказывается как вариант родителя:
+       та же строка, что из меню, и с выбором сорта прямо в корзине. */
     const payload =
       rendered.kind === "rich"
         ? {
@@ -76,12 +78,14 @@ if (rendered) {
             detail: TPL.T(rendered.dish.tagline),
             price: parseInt(rendered.dish.price.replace(/\D+/g, ""), 10) || 0,
           }
-        : {
-            id: `${rendered.sec.id}:${TPL.T(rendered.item.name)}`,
-            name: TPL.T(rendered.item.name),
-            detail: rendered.item.w || "",
-            price: rendered.item.p,
-          };
+        : rendered.parent
+          ? Cart.line(
+              rendered.sec.id,
+              TPL.T(rendered.parent.name),
+              rendered.parent,
+              rendered.vIndex
+            )
+          : Cart.line(rendered.sec.id, TPL.T(rendered.item.name), rendered.item);
     addBtn.addEventListener("click", () => Cart.add(payload));
   }
 } else if (pathSlug) {
@@ -89,16 +93,26 @@ if (rendered) {
   window.location.replace("/404.html");
 }
 
-/* ── Клики по «+» у вариантов ── */
+/* ── Клики по «+» у вариантов ──
+   Позицию собираем из данных, а не из атрибутов кнопки: тогда в строку
+   попадает список вариантов и выбор можно поменять в корзине. */
 document.addEventListener("click", (e) => {
   const addBtn = e.target.closest(".add-btn");
   if (!addBtn) return;
-  Cart.add({
-    id: addBtn.dataset.id,
-    name: addBtn.dataset.name,
-    detail: addBtn.dataset.detail,
-    price: addBtn.dataset.price,
-  });
+  const li = addBtn.closest(".menu-item__variants li");
+  const list = li && li.parentElement;
+  const item = rendered && rendered.kind === "item" ? rendered.item : null;
+  const vIndex = list && item && item.variants ? [...list.children].indexOf(li) : -1;
+  Cart.add(
+    vIndex >= 0
+      ? Cart.line(rendered.sec.id, TPL.T(item.name), item, vIndex)
+      : {
+          id: addBtn.dataset.id,
+          name: addBtn.dataset.name,
+          detail: addBtn.dataset.detail,
+          price: addBtn.dataset.price,
+        }
+  );
   addBtn.classList.remove("is-added");
   void addBtn.offsetWidth;
   addBtn.classList.add("is-added");

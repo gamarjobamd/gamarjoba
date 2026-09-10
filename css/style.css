@@ -1503,6 +1503,9 @@ body.gr-dark .nav__burger span { background: var(--cream); }
   padding: 0.9rem 0;
   border-bottom: 1px solid rgba(200, 16, 46, 0.2);
 }
+/* колонка с названием должна уметь сжиматься: у длинных подписей вариантов
+   иначе распирает ящик корзины вбок */
+.cart-item__info { min-width: 0; flex: 1; }
 .cart-item__info b {
   display: block;
   font-family: var(--serif); font-weight: 600;
@@ -1519,6 +1522,36 @@ body.gr-dark .nav__burger span { background: var(--cream); }
   font-size: 0.85rem;
   color: var(--red);
   font-weight: 500;
+}
+/* Выбор варианта у блюд, где он есть: тип мяса, размер порции, сорт рыбы,
+   соус. Стоит на месте подписи и выглядит как подпись, а не как форма, —
+   чтобы не спорить с остальной корзиной. */
+.cart-item__pick {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0.1rem 0 0.15rem;
+  padding: 0.15rem 1.5rem 0.15rem 0.4rem;
+  font: inherit;
+  font-size: 0.82rem;
+  color: var(--red-deep);
+  background: rgba(200, 16, 46, 0.05);
+  border: 1px solid rgba(200, 16, 46, 0.25);
+  border-radius: 6px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23a8172a' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+}
+.cart-item__pick:hover { border-color: var(--red); }
+.cart-item__pick:focus-visible { outline: 2px solid var(--red); outline-offset: 1px; }
+/* на телефоне выбор нажимают пальцем — делаем строку выше */
+@media (max-width: 700px) {
+  .cart-item__pick { padding-top: 0.35rem; padding-bottom: 0.35rem; }
 }
 .cart-item__qty {
   display: flex; align-items: center; gap: 0.6rem;

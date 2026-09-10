@@ -52,6 +52,8 @@ function createDishTemplate({ lang, ui, allergens, dishes, dishOrder, sections, 
         return {
           sec,
           idx: i,
+          parent,
+          vIndex: (parent.variants || []).indexOf(v),
           item: {
             slug,
             name: v.label != null ? v.label : T(v.v),
@@ -176,7 +178,7 @@ function createDishTemplate({ lang, ui, allergens, dishes, dishOrder, sections, 
         ${item.variants
           .map((v) => {
             const label = v.label != null ? v.label : T(v.v);
-            const detail = [label, v.w].filter(Boolean).join(" · ");
+            const detail = [label, v.w || item.w].filter(Boolean).join(" · ");
             return `<li>
               <span>${label || v.w || ""}</span><i class="menu-item__dots"></i><b>${v.p}</b>
               <button class="add-btn" data-id="${sec.id}:${name} — ${detail}" data-name="${name}" data-detail="${detail}" data-price="${v.p}" aria-label="+">+</button>
