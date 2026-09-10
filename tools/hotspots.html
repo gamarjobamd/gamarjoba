@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Разметка областей меню — служебная</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    /* Служебный инструмент, а не страница сайта: стили сайта сюда
+       не подключаются намеренно — здесь важна плотность, а не вид. */
+    :root {
+      --ink: #1d1b1a;
+      --red: #a8172a;
+      --line: #d8d0c4;
+      --bg: #f4f1ea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 380px;
+      height: 100vh;
+      font: 14px/1.45 -apple-system, "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    /* ── Холст ── */
+    .canvas { overflow: auto; padding: 16px; }
+    .stage { position: relative; margin: 0 auto; user-select: none; }
+    .stage img { display: block; width: 100%; height: auto; }
+    .box {
+      position: absolute;
+      border: 1.5px solid var(--red);
+      background: rgba(168, 23, 42, 0.16);
+      cursor: pointer;
+    }
+    .box.is-selected { background: rgba(168, 23, 42, 0.3); box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--red); }
+    .box__tag {
+      position: absolute;
+      left: 0; top: -18px;
+      padding: 0 4px;
+      font-size: 11px; line-height: 17px; white-space: nowrap;
+      color: #fff; background: var(--red); border-radius: 3px 3px 0 0;
+    }
+    .draft { position: absolute; border: 1.5px dashed var(--red); background: rgba(168, 23, 42, 0.1); pointer-events: none; }
+
+    /* ── Панель ── */
+    .side {
+      border-left: 1px solid var(--line);
+      background: #fff;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .side > * { padding: 10px 14px; }
+    .side h1 { margin: 0; font-size: 15px; }
+    .side h1 small { display: block; font-weight: 400; color: #6b645c; font-size: 12px; margin-top: 2px; }
+    .row { display: flex; gap: 8px; align-items: center; border-bottom: 1px solid var(--line); }
+    .row label { font-size: 12px; color: #6b645c; }
+    select, input[type="number"], button, textarea { font: inherit; }
+    select, input[type="number"] { padding: 4px 6px; border: 1px solid var(--line); border-radius: 4px; background: #fff; }
+    button {
+      padding: 5px 10px; border: 1px solid var(--line); border-radius: 4px;
+      background: #fff; cursor: pointer;
+    }
+    button:hover { border-color: var(--red); color: var(--red); }
+    button.primary { background: var(--red); border-color: var(--red); color: #fff; }
+    .list { flex: 1; overflow: auto; border-bottom: 1px solid var(--line); }
+    .list ol { margin: 0; padding-left: 22px; }
+    .list li { padding: 3px 0; cursor: pointer; }
+    .list li.is-selected { color: var(--red); font-weight: 600; }
+    .list li small { color: #6b645c; font-weight: 400; }
+    .list .empty { color: #6b645c; }
+    textarea {
+      width: 100%; height: 150px; resize: vertical;
+      border: 1px solid var(--line); border-radius: 4px; padding: 8px;
+      font-family: ui-monospace, Menlo, monospace; font-size: 12px;
+    }
+    .hint { font-size: 12px; color: #6b645c; border-bottom: 1px solid var(--line); }
+    kbd {
+      font: inherit; font-size: 11px; padding: 0 4px;
+      border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 3px; background: #f7f5f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="stage" id="stage"><img id="page" alt="" /></div>
+  </div>
+
+  <aside class="side">
+    <h1>Разметка областей меню
+      <small>Служебная страница. Обведите блок «название + описание + цена», выберите позицию — область появится в списке.</small>
+    </h1>
+
+    <div class="row">
+      <label for="pageNum">Страница</label>
+      <button id="prev" type="button">←</button>
+      <input id="pageNum" type="number" min="1" max="99" value="3" style="width: 64px" />
+      <button id="next" type="button">→</button>
+      <label for="zoom" style="margin-left:auto">Масштаб</label>
+      <input id="zoom" type="number" min="20" max="200" step="10" value="100" style="width: 64px" />%
+    </div>
+
+    <div class="row">
+      <label for="dish" style="flex:none">Позиция</label>
+      <select id="dish" style="flex:1; min-width:0"></select>
+    </div>
+
+    <p class="hint">
+      Обвести мышью — новая область. <kbd>←→↑↓</kbd> двигают выбранную,
+      с <kbd>Shift</kbd> — меняют размер, <kbd>Backspace</kbd> удаляет.
+      Клик по области — выбрать, двойной клик — сменить позицию на выбранную в списке.
+    </p>
+
+    <div class="list" id="list"></div>
+
+    <div class="row" style="border-bottom:none">
+      <button id="copy" class="primary" type="button">Скопировать кусок</button>
+      <button id="copyAll" type="button">Все страницы</button>
+      <button id="clear" type="button">Очистить страницу</button>
+    </div>
+    <div style="padding-top:0"><textarea id="out" readonly></textarea></div>
+  </aside>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/menu-data.js"></script>
+  <script src="../js/menu-hotspots.js"></script>
+  <script>
+    /* Инструмент правит копию MENU_HOTSPOTS в памяти и отдаёт текст —
+       в js/menu-hotspots.js разметка переносится руками. */
+    const state = JSON.parse(JSON.stringify(typeof MENU_HOTSPOTS === "object" ? MENU_HOTSPOTS : {}));
+
+    const stage = document.getElementById("stage");
+    const img = document.getElementById("page");
+    const pageNum = document.getElementById("pageNum");
+    const zoom = document.getElementById("zoom");
+    const dishSel = document.getElementById("dish");
+    const listEl = document.getElementById("list");
+    const out = document.getElementById("out");
+
+    let selected = -1;
+
+    const key = () => String(pageNum.value).padStart(2, "0");
+    const spots = () => (state[key()] = state[key()] || []);
+    const round = (n) => Math.round(n * 10) / 10;
+
+    /* ── Список позиций: каждая строка вариантов отдельным пунктом ── */
+    function fillDishes() {
+      MENU.forEach((sec) => {
+        const g = document.createElement("optgroup");
+        g.label = sec.title.ro;
+        sec.items.forEach((item) => {
+          const push = (label, v) => {
+            const o = document.createElement("option");
+            o.value = JSON.stringify({ sec: sec.id, name: item.name, v });
+            o.textContent = label;
+            g.appendChild(o);
+          };
+          if (item.variants) {
+            item.variants.forEach((variant, i) => {
+              const bit = variant.label || variant.w || `вариант ${i + 1}`;
+              push(`${item.name} — ${bit} · ${variant.p} mdl`, i);
+            });
+          } else if (item.p != null) {
+            push(`${item.name} · ${item.w || ""} ${item.p} mdl`, undefined);
+          }
+        });
+        dishSel.appendChild(g);
+      });
+    }
+
+    /* ── Подпись области: берём из menu-data.js, а не из разметки ── */
+    function labelOf(spot) {
+      const sec = MENU.find((s) => s.id === spot.sec);
+      const item = sec && sec.items.find((it) => it.name === spot.name);
+      if (!item) return `${spot.name} — НЕТ В ДАННЫХ`;
+      if (spot.v == null) return `${item.name} · ${item.p} mdl`;
+      const v = (item.variants || [])[spot.v];
+      return v ? `${item.name} — ${v.label || v.w || spot.v} · ${v.p} mdl` : `${item.name} — вариант ${spot.v}?`;
+    }
+
+    /* ── Отрисовка ── */
+    function render() {
+      [...stage.querySelectorAll(".box")].forEach((b) => b.remove());
+      spots().forEach((spot, i) => {
+        const box = document.createElement("div");
+        box.className = "box" + (i === selected ? " is-selected" : "");
+        box.style.left = spot.l + "%";
+        box.style.top = spot.t + "%";
+        box.style.width = spot.w + "%";
+        box.style.height = spot.h + "%";
+        box.innerHTML = `<span class="box__tag">${i + 1}. ${labelOf(spot)}</span>`;
+        box.addEventListener("mousedown", (e) => {
+          e.stopPropagation();
+          selected = i;
+          render();
+        });
+        box.addEventListener("dblclick", () => {
+          Object.assign(spot, JSON.parse(dishSel.value));
+          if (spot.v === undefined) delete spot.v;
+          render();
+        });
+        stage.appendChild(box);
+      });
+      renderList();
+      renderOut();
+    }
+
+    function renderList() {
+      const items = spots();
+      if (!items.length) {
+        listEl.innerHTML = '<p class="empty">На этой странице областей пока нет.</p>';
+        return;
+      }
+      listEl.innerHTML =
+        "<ol>" +
+        items
+          .map(
+            (s, i) =>
+              `<li class="${i === selected ? "is-selected" : ""}" data-i="${i}">${labelOf(s)}<br />
+               <small>${s.l}% ${s.t}% · ${s.w}×${s.h}%</small></li>`
+          )
+          .join("") +
+        "</ol>";
+      listEl.querySelectorAll("li").forEach((li) =>
+        li.addEventListener("click", () => {
+          selected = Number(li.dataset.i);
+          render();
+        })
+      );
+    }
+
+    /* ── Текст для js/menu-hotspots.js ── */
+    function pageSnippet(k) {
+      const rows = (state[k] || [])
+        .map(
+          (s) =>
+            `    { l: ${s.l}, t: ${s.t}, w: ${s.w}, h: ${s.h}, sec: "${s.sec}", name: ${JSON.stringify(
+              s.name
+            )}${s.v == null ? "" : `, v: ${s.v}`} },`
+        )
+        .join("\n");
+      return `  "${k}": [\n${rows}\n  ],`;
+    }
+    function renderOut() {
+      out.value = pageSnippet(key());
+    }
+
+    /* ── Рисование рамки мышью ── */
+    let draft = null;
+    let start = null;
+
+    stage.addEventListener("mousedown", (e) => {
+      if (e.button !== 0) return;
+      const r = stage.getBoundingClientRect();
+      start = { x: e.clientX - r.left, y: e.clientY - r.top, w: r.width, h: r.height };
+      draft = document.createElement("div");
+      draft.className = "draft";
+      stage.appendChild(draft);
+      e.preventDefault();
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!draft) return;
+      const r = stage.getBoundingClientRect();
+      const x = Math.max(0, Math.min(r.width, e.clientX - r.left));
+      const y = Math.max(0, Math.min(r.height, e.clientY - r.top));
+      const l = Math.min(x, start.x);
+      const t = Math.min(y, start.y);
+      draft.style.left = l + "px";
+      draft.style.top = t + "px";
+      draft.style.width = Math.abs(x - start.x) + "px";
+      draft.style.height = Math.abs(y - start.y) + "px";
+    });
+
+    window.addEventListener("mouseup", (e) => {
+      if (!draft) return;
+      const r = stage.getBoundingClientRect();
+      const x = Math.max(0, Math.min(r.width, e.clientX - r.left));
+      const y = Math.max(0, Math.min(r.height, e.clientY - r.top));
+      const box = {
+        l: round((Math.min(x, start.x) / r.width) * 100),
+        t: round((Math.min(y, start.y) / r.height) * 100),
+        w: round((Math.abs(x - start.x) / r.width) * 100),
+        h: round((Math.abs(y - start.y) / r.height) * 100),
+      };
+      draft.remove();
+      draft = null;
+      /* случайный клик — не область */
+      if (box.w < 1 || box.h < 0.5) return;
+      const dish = JSON.parse(dishSel.value);
+      const spot = { ...box, sec: dish.sec, name: dish.name };
+      if (dish.v != null) spot.v = dish.v;
+      spots().push(spot);
+      selected = spots().length - 1;
+      render();
+    });
+
+    /* ── Клавиши: сдвиг, размер, удаление ── */
+    window.addEventListener("keydown", (e) => {
+      if (e.target.matches("input, select, textarea")) return;
+      const spot = spots()[selected];
+      if (!spot) return;
+      const step = e.altKey ? 0.1 : 0.5;
+      const move = { ArrowLeft: ["l", -step], ArrowRight: ["l", step], ArrowUp: ["t", -step], ArrowDown: ["t", step] };
+      const size = { ArrowLeft: ["w", -step], ArrowRight: ["w", step], ArrowUp: ["h", -step], ArrowDown: ["h", step] };
+      const map = e.shiftKey ? size : move;
+      if (map[e.key]) {
+        const [field, delta] = map[e.key];
+        spot[field] = round(Math.max(0, spot[field] + delta));
+        e.preventDefault();
+        render();
+        return;
+      }
+      if (e.key === "Backspace" || e.key === "Delete") {
+        spots().splice(selected, 1);
+        selected = -1;
+        e.preventDefault();
+        render();
+      }
+    });
+
+    /* ── Страница и масштаб ── */
+    function loadPage() {
+      const k = key();
+      img.src = `../assets/menu-pages/${k}.webp`;
+      img.alt = `Страница ${k}`;
+      selected = -1;
+      render();
+    }
+    function applyZoom() {
+      stage.style.width = `${Math.max(20, Number(zoom.value) || 100)}%`;
+    }
+
+    pageNum.addEventListener("change", loadPage);
+    document.getElementById("prev").addEventListener("click", () => {
+      pageNum.value = Math.max(1, Number(pageNum.value) - 1);
+      loadPage();
+    });
+    document.getElementById("next").addEventListener("click", () => {
+      pageNum.value = Number(pageNum.value) + 1;
+      loadPage();
+    });
+    zoom.addEventListener("input", applyZoom);
+
+    document.getElementById("copy").addEventListener("click", () => {
+      out.value = pageSnippet(key());
+      out.select();
+      navigator.clipboard.writeText(out.value).catch(() => document.execCommand("copy"));
+    });
+    document.getElementById("copyAll").addEventListener("click", () => {
+      out.value = Object.keys(state)
+        .sort()
+        .filter((k) => state[k] && state[k].length)
+        .map(pageSnippet)
+        .join("\n");
+      out.select();
+      navigator.clipboard.writeText(out.value).catch(() => document.execCommand("copy"));
+    });
+    document.getElementById("clear").addEventListener("click", () => {
+      if (!confirm(`Убрать все области со страницы ${key()}?`)) return;
+      state[key()] = [];
+      selected = -1;
+      render();
+    });
+
+    fillDishes();
+    applyZoom();
+    loadPage();
+  </script>
+</body>
+</html>

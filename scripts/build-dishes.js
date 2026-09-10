@@ -93,7 +93,7 @@ function loadData() {
   /* top-level const/let из скрипта живут в лексической области контекста,
      а не как свойства sandbox — забираем их выражением в том же контексте */
   return runInContext(
-    "({ MENU, BAR, DISHES, DISH_ORDER, MENU_FULL, DISH_FULL, UI, ALLERGEN_T, createDishTemplate })",
+    "({ MENU, BAR, DISHES, DISH_ORDER, DISH_FULL, UI, ALLERGEN_T, createDishTemplate })",
     ctx,
     { filename: "collect-globals" }
   );
@@ -207,7 +207,7 @@ function pricesOf(item) {
   return item.p != null ? [item.p] : [];
 }
 
-function menuLd(sections, tpl, T, menuFull) {
+function menuLd(sections, tpl, T) {
   const offer = (price, name) => ({
     "@type": "Offer",
     ...(name ? { name } : {}),
@@ -220,10 +220,10 @@ function menuLd(sections, tpl, T, menuFull) {
     name: T(sec.title),
     hasMenuItem: sec.items.map((item) => {
       const slug = tpl.itemSlug(item);
-      const full = menuFull[`${sec.id}:${typeof item.name === "string" ? item.name : item.name.ro}`];
+      const full = item.desc;
       const description = (full && T(full)) || T(item.ru);
       const offers = item.variants
-        ? item.variants.filter((v) => v.p != null).map((v) => offer(v.p, T(v.v)))
+        ? item.variants.filter((v) => v.p != null).map((v) => offer(v.p, v.label != null ? v.label : T(v.v)))
         : item.p != null
           ? offer(item.p)
           : null;
@@ -251,7 +251,7 @@ function menuLd(sections, tpl, T, menuFull) {
 }
 
 function build() {
-  const { MENU, BAR, DISHES, DISH_ORDER, MENU_FULL, DISH_FULL, UI, ALLERGEN_T, createDishTemplate } =
+  const { MENU, BAR, DISHES, DISH_ORDER, DISH_FULL, UI, ALLERGEN_T, createDishTemplate } =
     loadData();
 
   if (!Array.isArray(MENU) || MENU.length === 0) fail("MENU пуст или не массив");
@@ -265,7 +265,6 @@ function build() {
     dishes: DISHES,
     dishOrder: DISH_ORDER,
     sections: [...MENU, ...BAR],
-    menuFull: MENU_FULL,
     dishFull: DISH_FULL,
   });
 
@@ -276,6 +275,10 @@ function build() {
     for (const item of sec.items) {
       const slug = tpl.itemSlug(item);
       if (slug && !slugs.includes(slug)) slugs.push(slug);
+      /* у вариантов бывают свои адреса — рыба на гриле */
+      for (const v of item.variants || []) {
+        if (v.slug && !slugs.includes(v.slug)) slugs.push(v.slug);
+      }
     }
   }
   /* фирменные блюда обязаны иметь страницу, даже если в меню их нет */
@@ -328,7 +331,7 @@ function build() {
   const home = restaurantLd(priceRange);
   /* только кухня: барная карта добавляла 77 КБ к самой посещаемой странице,
      а искать по названиям напитков всё равно никто не будет */
-  const menu = menuLd(MENU, tpl, tpl.T, MENU_FULL || {});
+  const menu = menuLd(MENU, tpl, tpl.T);
 
   const items = JSON.parse(menu.match(/<script[^>]*>([\s\S]*)<\/script>/)[1]).hasMenuSection.flatMap(
     (s2) => s2.hasMenuItem

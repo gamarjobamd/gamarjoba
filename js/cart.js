@@ -1,5 +1,6 @@
 /* Gamarjoba — корзина. Хранится в localStorage, доступна на всех страницах.
    Оформление заказа: собирает сообщение и открывает его в WhatsApp ресторана.
+
    API: Cart.add({ id, name, detail, price }), Cart.open() */
 
 const Cart = (() => {
@@ -79,11 +80,21 @@ const Cart = (() => {
     return items.reduce((s, i) => s + i.qty * i.price, 0);
   }
 
+  /* Уточнение позиции в скобках после названия. Подпись варианта в печатном
+     меню сама бывает в скобках — «(la tigaie) · 270g»; тогда свои скобки не
+     ставим второй раз, иначе в заказе получается «((la tigaie) · 270g)».
+     Разворачиваем только целиком обёрнутое начало: «PUI (Chicken / курица)»
+     трогать нельзя — там скобки внутри подписи. */
+  function detailOf(item) {
+    if (!item.detail) return "";
+    return `(${String(item.detail).replace(/^\(([^()]*)\)/, "$1")})`;
+  }
+
   /* ── Текст заказа для WhatsApp ── */
   function buildMessage() {
     const lines = [`*${tr("waTitle")}*`, "", `*${tr("waOrder")}:*`];
     items.forEach((i, idx) => {
-      const detail = i.detail ? ` (${i.detail})` : "";
+      const detail = i.detail ? ` ${detailOf(i)}` : "";
       lines.push(`${idx + 1}. ${i.name}${detail} — ${i.qty} × ${i.price} = ${i.qty * i.price} mdl`);
     });
     lines.push("", `*${tr("waTotal")}: ${total()} mdl*`);
@@ -110,17 +121,18 @@ const Cart = (() => {
     countEl.textContent = n;
     totalEl.textContent = `${total()} mdl`;
     updateOrderLink();
-    if (!items.length) {
-      body.innerHTML = `<p class="cart-empty">${tr("cartEmpty")}</p>`;
-      return;
-    }
+    if (items.length) renderItems();
+    else body.innerHTML = `<p class="cart-empty">${tr("cartEmpty")}</p>`;
+  }
+
+  function renderItems() {
     body.innerHTML = items
       .map(
         (i, idx) => `
       <div class="cart-item">
         <div class="cart-item__info">
           <b>${i.name}</b>
-          ${i.detail ? `<small>${i.detail}</small>` : ""}
+          ${i.detail ? `<small>${detailOf(i).slice(1, -1)}</small>` : ""}
           <span>${i.price} mdl</span>
         </div>
         <div class="cart-item__qty">

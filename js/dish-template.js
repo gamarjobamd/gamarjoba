@@ -5,15 +5,16 @@
    второй копии шаблона нет.
 
    createDishTemplate({ lang, ui, allergens, dishes, dishOrder, sections,
-                        menuFull, dishFull })
+                        dishFull })
      lang       — "ru" | "ro" | "en"
      ui         — объект UI из i18n.js
      allergens  — ALLERGEN_T из i18n.js
      dishes     — DISHES из data.js, dishOrder — DISH_ORDER оттуда же
      sections   — [...MENU, ...BAR] из menu-data.js
-     menuFull   — MENU_FULL, dishFull — DISH_FULL из menu-full.js */
+     dishFull   — DISH_FULL из menu-full.js
+   Описания позиций меню приходят прямо из данных: item.desc — {ro,ru,en}. */
 
-function createDishTemplate({ lang, ui, allergens, dishes, dishOrder, sections, menuFull, dishFull }) {
+function createDishTemplate({ lang, ui, allergens, dishes, dishOrder, sections, dishFull }) {
   /* те же T() и tr(), что в i18n.js, но с явным языком вместо глобали */
   const T = (v) => (v == null ? "" : typeof v === "string" ? v : (v[lang] ?? v.ru ?? ""));
   const tr = (key) => T(ui[key]);
@@ -33,25 +34,42 @@ function createDishTemplate({ lang, ui, allergens, dishes, dishOrder, sections, 
   }
 
   /* поиск позиции по слагу — первое совпадение; дубли (Shurpa, Adjaruli,
-     Mtsvadi встречаются в двух разделах) намеренно ведут на одну страницу */
+     Badrijani встречаются в двух разделах) намеренно ведут на одну страницу.
+     Вариант со своим слагом (рыба на гриле) отдаётся как отдельная позиция:
+     название и цена — его собственные, описание и аллергены — родителя.
+     Эти адреса существовали до перехода на печатный макет и сохраняются. */
   function findBySlug(slug) {
     if (!slug) return null;
     for (const sec of sections) {
       const idx = sec.items.findIndex((it) => itemSlug(it) === slug);
       if (idx !== -1) return { sec, item: sec.items[idx], idx };
     }
+    for (const sec of sections) {
+      for (let i = 0; i < sec.items.length; i++) {
+        const parent = sec.items[i];
+        const v = (parent.variants || []).find((x) => x.slug === slug);
+        if (!v) continue;
+        return {
+          sec,
+          idx: i,
+          item: {
+            slug,
+            name: v.label != null ? v.label : T(v.v),
+            img: v.img || parent.img,
+            a: parent.a,
+            desc: parent.desc,
+            ru: parent.ru,
+            w: v.w || parent.w,
+            p: v.p,
+          },
+        };
+      }
+    }
     return null;
   }
 
   function getDish(id) {
     return dishes.find((d) => d.id === id) || null;
-  }
-
-  /* ключ полного описания — «раздел:название», как в menu-full.js.
-     Берём исходное (румынское) написание, а не перевод: ключ не должен
-     зависеть от выбранного языка. */
-  function fullKey(sec, item) {
-    return `${sec.id}:${typeof item.name === "string" ? item.name : item.name.ro}`;
   }
 
   /* ── Полное описание из печатного меню: RO / RU / EN подряд ── */
@@ -119,8 +137,9 @@ function createDishTemplate({ lang, ui, allergens, dishes, dishOrder, sections, 
   /* ── Режим 2: любая позиция меню ── */
   function renderMenuItem(sec, item, idx, { fromMenu = false, extraClass = "" } = {}) {
     const name = T(item.name);
-    const desc = T(item.ru);
-    const full = menuFull ? menuFull[fullKey(sec, item)] : null;
+    /* печатное описание — единственное: RO / RU / EN блоком, как в макете.
+       Отдельной короткой строки-тизера у позиций меню больше нет. */
+    const full = item.desc || item.ru || null;
 
     /* следующее блюдо с фото в этом же разделе */
     let nextHtml = "";
@@ -156,10 +175,11 @@ function createDishTemplate({ lang, ui, allergens, dishes, dishOrder, sections, 
       <ul class="menu-item__variants">
         ${item.variants
           .map((v) => {
-            const vv = T(v.v);
+            const label = v.label != null ? v.label : T(v.v);
+            const detail = [label, v.w].filter(Boolean).join(" · ");
             return `<li>
-              <span>${vv}</span><i class="menu-item__dots"></i><b>${v.p}</b>
-              <button class="add-btn" data-id="${sec.id}:${name} — ${vv}" data-name="${name}" data-detail="${vv}" data-price="${v.p}" aria-label="+">+</button>
+              <span>${label || v.w || ""}</span><i class="menu-item__dots"></i><b>${v.p}</b>
+              <button class="add-btn" data-id="${sec.id}:${name} — ${detail}" data-name="${name}" data-detail="${detail}" data-price="${v.p}" aria-label="+">+</button>
             </li>`;
           })
           .join("")}
@@ -174,7 +194,6 @@ function createDishTemplate({ lang, ui, allergens, dishes, dishOrder, sections, 
     <div>
       <p class="dish-hero__cat reveal${extraClass}">${T(sec.title)}</p>
       <h1 class="dish-hero__name reveal${extraClass}">${name}</h1>
-      ${desc ? `<p class="dish-hero__tagline reveal${extraClass}">${desc}</p>` : ""}
       ${fullBlock(full, extraClass)}
       ${meta}
       ${addBtn}
@@ -213,7 +232,7 @@ function createDishTemplate({ lang, ui, allergens, dishes, dishOrder, sections, 
     }
     const found = findBySlug(slug);
     if (!found) return null;
-    const full = menuFull && menuFull[fullKey(found.sec, found.item)];
+    const full = found.item.desc;
     return {
       name: T(found.item.name),
       description: (full && T(full)) || T(found.item.ru),

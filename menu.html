@@ -30,8 +30,8 @@
        подсказку в шум и отобрал бы полосу у картинок первого экрана. -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fraunces-normal-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/jost-normal-cyrillic.woff2" crossorigin />
-  <link rel="stylesheet" href="css/fonts.css?v=39" />
-  <link rel="stylesheet" href="css/style.css?v=39" />
+  <link rel="stylesheet" href="css/fonts.css?v=40" />
+  <link rel="stylesheet" href="css/style.css?v=40" />
 </head>
 <body class="menu-page">
 
@@ -57,82 +57,6 @@
     </div>
   </header>
 
-  <!-- Декоративный слой: продукты грузинской кухни.
-       aria-hidden + pointer-events:none — не читается скринридерами
-       и не перехватывает клики. -->
-  <div class="decor" aria-hidden="true">
-      <picture>
-        <source srcset="assets/deco/chili-5.webp" type="image/webp" />
-        <img class="decor__item decor__item--r decor__item--01" src="assets/deco/chili-5.png" alt="" width="216" height="133"
-             loading="lazy" decoding="async" data-speed="0.045" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/parsley.webp" type="image/webp" />
-        <img class="decor__item decor__item--l is-tablet is-mobile decor__item--02" src="assets/deco/parsley.png" alt="" width="190" height="221"
-             loading="lazy" decoding="async" data-speed="0.03" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/grapes.webp" type="image/webp" />
-        <img class="decor__item decor__item--r decor__item--03" src="assets/deco/grapes.png" alt="" width="235" height="317"
-             loading="lazy" decoding="async" data-speed="0.055" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/walnuts.webp" type="image/webp" />
-        <img class="decor__item decor__item--l decor__item--04" src="assets/deco/walnuts.png" alt="" width="204" height="215"
-             loading="lazy" decoding="async" data-speed="0.035" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/pomegranate-half.webp" type="image/webp" />
-        <img class="decor__item decor__item--r is-tablet decor__item--05" src="assets/deco/pomegranate-half.png" alt="" width="251" height="256"
-             loading="lazy" decoding="async" data-speed="0.04" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/chili-1.webp" type="image/webp" />
-        <img class="decor__item decor__item--l decor__item--06" src="assets/deco/chili-1.png" alt="" width="117" height="188"
-             loading="lazy" decoding="async" data-speed="0.05" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/tomatoes.webp" type="image/webp" />
-        <img class="decor__item decor__item--r is-tablet decor__item--07" src="assets/deco/tomatoes.png" alt="" width="302" height="241"
-             loading="lazy" decoding="async" data-speed="0.03" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/garlic.webp" type="image/webp" />
-        <img class="decor__item decor__item--l decor__item--08" src="assets/deco/garlic.png" alt="" width="225" height="191"
-             loading="lazy" decoding="async" data-speed="0.045" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/chili-green.webp" type="image/webp" />
-        <img class="decor__item decor__item--r decor__item--09" src="assets/deco/chili-green.png" alt="" width="242" height="129"
-             loading="lazy" decoding="async" data-speed="0.038" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/walnut-half.webp" type="image/webp" />
-        <img class="decor__item decor__item--l decor__item--10" src="assets/deco/walnut-half.png" alt="" width="421" height="126"
-             loading="lazy" decoding="async" data-speed="0.05" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/pomegranate.webp" type="image/webp" />
-        <img class="decor__item decor__item--r is-tablet is-mobile decor__item--11" src="assets/deco/pomegranate.png" alt="" width="173" height="173"
-             loading="lazy" decoding="async" data-speed="0.035" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/chili-2.webp" type="image/webp" />
-        <img class="decor__item decor__item--l decor__item--12" src="assets/deco/chili-2.png" alt="" width="140" height="143"
-             loading="lazy" decoding="async" data-speed="0.055" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/tomatoes2.webp" type="image/webp" />
-        <img class="decor__item decor__item--r is-tablet decor__item--13" src="assets/deco/tomatoes2.png" alt="" width="186" height="165"
-             loading="lazy" decoding="async" data-speed="0.04" />
-      </picture>
-      <picture>
-        <source srcset="assets/deco/chili-3.webp" type="image/webp" />
-        <img class="decor__item decor__item--l is-tablet is-mobile decor__item--14" src="assets/deco/chili-3.png" alt="" width="86" height="200"
-             loading="lazy" decoding="async" data-speed="0.045" />
-      </picture>
-  </div>
-
   <main>
     <section class="menu-hero">
       <p class="hero__eyebrow reveal" data-i18n="menuEyebrow">Все цены — в леях · RO · RU · EN</p>
@@ -149,1595 +73,229 @@
       <button type="button" data-group="bar" data-i18n="tabBar">Бар</button>
     </div>
 
-    <nav class="menu-nav" id="menuNav" aria-label="Разделы меню">
-      <!-- BEGIN:menu-nav --><a class="menu-nav__chip" href="#chef" data-section="chef">Выбор шеф-повара</a><a class="menu-nav__chip" href="#sets" data-section="sets">Мясные сеты для компаний</a><a class="menu-nav__chip" href="#cold" data-section="cold">Холодные закуски</a><a class="menu-nav__chip" href="#hot-starters" data-section="hot-starters">Горячие закуски</a><a class="menu-nav__chip" href="#salads" data-section="salads">Салаты</a><a class="menu-nav__chip" href="#soups" data-section="soups">Первые блюда</a><a class="menu-nav__chip" href="#hinkali" data-section="hinkali">Хинкали</a><a class="menu-nav__chip" href="#khachapuri" data-section="khachapuri">Хачапури</a><a class="menu-nav__chip" href="#mangal" data-section="mangal">Мангал</a><a class="menu-nav__chip" href="#fish" data-section="fish">Рыба на гриле</a><a class="menu-nav__chip" href="#grill-special" data-section="grill-special">Особые блюда на гриле</a><a class="menu-nav__chip" href="#mains" data-section="mains">Горячие блюда</a><a class="menu-nav__chip" href="#garnish" data-section="garnish">Гарниры</a><a class="menu-nav__chip" href="#bread" data-section="bread">Хлеб и соусы</a><a class="menu-nav__chip" href="#desserts" data-section="desserts">Десерты</a><!-- END:menu-nav -->
-    </nav>
+    <!-- Лента разделов принадлежит барной карте: её наполняет menu.js.
+         У кухни разделов нет — там страницы печатного меню картинками. -->
+    <nav class="menu-nav" id="menuNav" aria-label="Разделы бара" hidden></nav>
 
-    <div class="menu-sections" id="menuSections">
-      <!-- BEGIN:menu-sections -->
-    <section class="menu-section" id="chef">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">01</span>
-          <h2 class="menu-section__title">Выбор шеф-повара</h2>
-          <p class="menu-section__ro">Recomandările șefului • Chef's choice</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/shurpa/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/shurpa.jpg" alt="Shurpa" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/shurpa/">Shurpa</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        <span class="menu-item__badge">Особый выбор</span>
-        <p class="menu-item__ru">Шурпа — густой суп из ягнёнка</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">120<small> mdl</small></span>
-         <button class="add-btn" data-id="chef:Shurpa" data-name="Shurpa" data-detail="400 g" data-price="120" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/adjaruli/" class="menu-item reveal is-visible menu-item--link menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/adjaruli.jpg" alt="Adjaruli" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/adjaruli/">Adjaruli</a><span class="menu-item__star">✳</span></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        <span class="menu-item__badge">Легенда Грузии</span>
-        <p class="menu-item__ru">Хачапури-лодочка с яйцом</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">450 g</span>
-          <span class="menu-item__price">155<small> mdl</small></span>
-         <button class="add-btn" data-id="chef:Adjaruli" data-name="Adjaruli" data-detail="450 g" data-price="155" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/badrijani/" class="menu-item reveal is-visible menu-item--link menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/badrijani.jpg" alt="Badrijani" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/badrijani/">Badrijani</a><span class="menu-item__star">✳</span></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        <span class="menu-item__badge">Вечная классика</span>
-        <p class="menu-item__ru">Рулетики из баклажана с орехом</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">200 g</span>
-          <span class="menu-item__price">80<small> mdl</small></span>
-         <button class="add-btn" data-id="chef:Badrijani" data-name="Badrijani" data-detail="200 g" data-price="80" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/mtsvadi/" class="menu-item reveal is-visible menu-item--link menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/mtsvadi.jpg" alt="Mtsvadi из телятины" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/mtsvadi/">Mtsvadi из телятины</a><span class="menu-item__star">✳</span></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        <span class="menu-item__badge">Хит продаж</span>
-        <p class="menu-item__ru">Телятина на углях</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">180<small> mdl</small></span>
-         <button class="add-btn" data-id="chef:Mtsvadi из телятины" data-name="Mtsvadi из телятины" data-detail="250 g" data-price="180" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="sets">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">02</span>
-          <h2 class="menu-section__title">Мясные сеты для компаний</h2>
-          <p class="menu-section__ro">Platouri pentru companii • Family platters</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/set-din-carne-mix/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-mix.jpg" alt="Мясной сет «Микс»" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/set-din-carne-mix/">Мясной сет «Микс»</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Ягнёнок, телятина, свинина: рёбрышки, кебаб, шашлык, абхазура</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">1800 g</span>
-          <span class="menu-item__price">1350<small> mdl</small></span>
-         <button class="add-btn" data-id="sets:Мясной сет «Микс»" data-name="Мясной сет «Микс»" data-detail="1800 g" data-price="1350" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/set-din-carne-de-miel/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-miel.jpg" alt="Сет из ягнёнка" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/set-din-carne-de-miel/">Сет из ягнёнка</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        <span class="menu-item__badge">Хит продаж</span>
-        <p class="menu-item__ru">Пир из ягнёнка: каре, шашлык, люля, вырезка</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">1150 g</span>
-          <span class="menu-item__price">1400<small> mdl</small></span>
-         <button class="add-btn" data-id="sets:Сет из ягнёнка" data-name="Сет из ягнёнка" data-detail="1150 g" data-price="1400" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/set-din-carne-de-porc/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-porc.jpg" alt="Сет из свинины" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/set-din-carne-de-porc/">Сет из свинины</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Свиной сет: рёбрышки, шашлык, люля-кебаб</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">1450 g</span>
-          <span class="menu-item__price">900<small> mdl</small></span>
-         <button class="add-btn" data-id="sets:Сет из свинины" data-name="Сет из свинины" data-detail="1450 g" data-price="900" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/set-din-carne-de-pui/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/set-pui.jpg" alt="Сет из курицы" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/set-din-carne-de-pui/">Сет из курицы</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Куриный сет: крылышки, голени, бёдра с овощами гриль</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">1600 g</span>
-          <span class="menu-item__price">850<small> mdl</small></span>
-         <button class="add-btn" data-id="sets:Сет из курицы" data-name="Сет из курицы" data-detail="1600 g" data-price="850" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="cold">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">03</span>
-          <h2 class="menu-section__title">Холодные закуски</h2>
-          <p class="menu-section__ro">Gustări reci • Cold starters</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/mtsnili/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/mtsnili.jpg" alt="Mtsnili" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/mtsnili/">Mtsnili</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Грузинские соленья: зелёные помидоры, огурцы, чеснок, капуста</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">120<small> mdl</small></span>
-         <button class="add-btn" data-id="cold:Mtsnili" data-name="Mtsnili" data-detail="400 g" data-price="120" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/kveli/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/kveli.jpg" alt="Kveli" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/kveli/">Kveli</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Тарелка крафтовых сыров: сулугуни, имеретинский, копчёный, с орехами</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">220<small> mdl</small></span>
-         <button class="add-btn" data-id="cold:Kveli" data-name="Kveli" data-detail="300 g" data-price="220" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/tevzis-assorti/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/tevzis.jpg" alt="Tevzis Assorti" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/tevzis-assorti/">Tevzis Assorti</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Рыбное ассорти: лосось, масляная, скумбрия</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">230<small> mdl</small></span>
-         <button class="add-btn" data-id="cold:Tevzis Assorti" data-name="Tevzis Assorti" data-detail="300 g" data-price="230" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/khortcis-assorti/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/khortcis.jpg" alt="Khortcis Assorti" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/khortcis-assorti/">Khortcis Assorti</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Мясная тарелка: сало, колбаска, пастрома, почеревка</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">190<small> mdl</small></span>
-         <button class="add-btn" data-id="cold:Khortcis Assorti" data-name="Khortcis Assorti" data-detail="250 g" data-price="190" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/mokharshuli-ena/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/mokharshuli.jpg" alt="Mokharshuli Ena" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/mokharshuli-ena/">Mokharshuli Ena</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Отварной говяжий язык с хреном и горчицей</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">200 g</span>
-          <span class="menu-item__price">160<small> mdl</small></span>
-         <button class="add-btn" data-id="cold:Mokharshuli Ena" data-name="Mokharshuli Ena" data-detail="200 g" data-price="160" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/bulgaruli/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/bulgaruli.jpg" alt="Bulgaruli" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/bulgaruli/">Bulgaruli</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Запечённый перец с ореховой начинкой</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">150<small> mdl</small></span>
-         <button class="add-btn" data-id="cold:Bulgaruli" data-name="Bulgaruli" data-detail="250 g" data-price="150" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/heringi-kartophilit/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/heringi.jpg" alt="Heringi Kartophilit" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/heringi-kartophilit/">Heringi Kartophilit</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Сельдь с золотистым запечённым картофелем</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">110<small> mdl</small></span>
-         <button class="add-btn" data-id="cold:Heringi Kartophilit" data-name="Heringi Kartophilit" data-detail="250 g" data-price="110" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/bostneulis-assorti/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/bostneulis.jpg" alt="Bostneulis Assorti" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/bostneulis-assorti/">Bostneulis Assorti</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Свежие садовые овощи и много зелени</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">100<small> mdl</small></span>
-         <button class="add-btn" data-id="cold:Bostneulis Assorti" data-name="Bostneulis Assorti" data-detail="400 g" data-price="100" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="hot-starters">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">04</span>
-          <h2 class="menu-section__title">Горячие закуски</h2>
-          <p class="menu-section__ro">Gustări calde • Hot starters</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/creveti-cu-spanac/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/creveti.jpg" alt="Креветки со шпинатом" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/creveti-cu-spanac/">Креветки со шпинатом</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Креветки со шпинатом</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">250<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Креветки со шпинатом" data-name="Креветки со шпинатом" data-detail="300 g" data-price="250" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/shkmeruli/" class="menu-item reveal is-visible menu-item--link menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/shkmeruli.jpg" alt="Shkmeruli" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/shkmeruli/">Shkmeruli</a><span class="menu-item__star">✳</span></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Цыплёнок в чесночно-сливочном соусе</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">350 g</span>
-          <span class="menu-item__price">170<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Shkmeruli" data-name="Shkmeruli" data-detail="350 g" data-price="170" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/djigari/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/djigari.jpg" alt="Djigari" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/djigari/">Djigari</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Джигари — жаркое из печени</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">160<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Djigari" data-name="Djigari" data-detail="300 g" data-price="160" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/kucimaci/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/kucimaci.jpg" alt="Kucimaci" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/kucimaci/">Kucimaci</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Кучмачи — потроха с орехами и специями</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">150<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Kucimaci" data-name="Kucimaci" data-detail="300 g" data-price="150" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div class="menu-item reveal is-visible">
-      
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name">Бараньи семенники</span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Бараньи семенники на углях</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">145<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Бараньи семенники" data-name="Бараньи семенники" data-detail="250 g" data-price="145" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/dolma/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/dolma.jpg" alt="Dolma" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/dolma/">Dolma</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Долма — виноградные листья с мясом</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">120<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Dolma" data-name="Dolma" data-detail="300 g" data-price="120" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/soko-ketze/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/soko.jpg" alt="Soko Ketze" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/soko-ketze/">Soko Ketze</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Грибы под сулугуни на кеци</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">120<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Soko Ketze" data-name="Soko Ketze" data-detail="300 g" data-price="120" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/lobio-cu-nuci/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/lobio-nuci.jpg" alt="Lobio с орехами" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/lobio-cu-nuci/">Lobio с орехами</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Лобио с орехами</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">85<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Lobio с орехами" data-name="Lobio с орехами" data-detail="300 g" data-price="85" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/lobio/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/lobio.jpg" alt="Lobio" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/lobio/">Lobio</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Лобио — томлёная фасоль со специями</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">80<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Lobio" data-name="Lobio" data-detail="300 g" data-price="80" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/tsitsila-tabaka/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/tsitsila.jpg" alt="Tsitsila Tabaka" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/tsitsila-tabaka/">Tsitsila Tabaka</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Цыплёнок табака (цена за 100 г)</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">100 g</span>
-          <span class="menu-item__price">45<small> mdl</small></span>
-         <button class="add-btn" data-id="hot-starters:Tsitsila Tabaka" data-name="Tsitsila Tabaka" data-detail="100 g" data-price="45" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="salads">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">05</span>
-          <h2 class="menu-section__title">Салаты</h2>
-          <p class="menu-section__ro">Salate • Salads</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/salata-gamarjoba/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-gamarjoba.jpg" alt="Салат «Gamarjoba»" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/salata-gamarjoba/">Салат «Gamarjoba»</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Фирменный салат</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">210<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Салат «Gamarjoba»" data-name="Салат «Gamarjoba»" data-detail="250 g" data-price="210" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/salata-cu-limba/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-limba.jpg" alt="Салат с языком" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/salata-cu-limba/">Салат с языком</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Салат с языком</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">170<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Салат с языком" data-name="Салат с языком" data-detail="250 g" data-price="170" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/salata-kahetiana/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-kahetiana.jpg" alt="Кахетинский салат" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/salata-kahetiana/">Кахетинский салат</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Кахетинский салат</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">100<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Кахетинский салат" data-name="Кахетинский салат" data-detail="250 g" data-price="100" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/atsatsili-de-vinete/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/atsatsili.jpg" alt="Atsatsili из баклажанов" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/atsatsili-de-vinete/">Atsatsili из баклажанов</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Ацацили: печёные баклажаны, орех, кинза</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">90<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Atsatsili из баклажанов" data-name="Atsatsili из баклажанов" data-detail="250 g" data-price="90" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/salata-guriana/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-guriana.jpg" alt="Гурийский салат" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/salata-guriana/">Гурийский салат</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Гурийский: с грецким орехом и киндзой</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">85<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Гурийский салат" data-name="Гурийский салат" data-detail="250 g" data-price="85" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/salata-georgiana/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sal-georgiana.jpg" alt="Грузинский салат" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/salata-georgiana/">Грузинский салат</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Грузинский: помидоры, огурцы, базилик</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          <span class="menu-item__price">75<small> mdl</small></span>
-         <button class="add-btn" data-id="salads:Грузинский салат" data-name="Грузинский салат" data-detail="250 g" data-price="75" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="soups">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">06</span>
-          <h2 class="menu-section__title">Первые блюда</h2>
-          <p class="menu-section__ro">Primele feluri • Soups</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/shurpa/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/shurpa.jpg" alt="Shurpa" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/shurpa/">Shurpa</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Наваристый суп из ягнёнка</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">120<small> mdl</small></span>
-         <button class="add-btn" data-id="soups:Shurpa" data-name="Shurpa" data-detail="400 g" data-price="120" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/bors-rosu/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/bors.jpg" alt="Красный борщ" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/bors-rosu/">Красный борщ</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Красный борщ</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">120<small> mdl</small></span>
-         <button class="add-btn" data-id="soups:Красный борщ" data-name="Красный борщ" data-detail="400 g" data-price="120" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/chikhirtma-cu-hinkali/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/chikh-hinkali.jpg" alt="Chikhirtma с хинкали" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/chikhirtma-cu-hinkali/">Chikhirtma с хинкали</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Белый куриный суп с маленькими хинкали</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">105<small> mdl</small></span>
-         <button class="add-btn" data-id="soups:Chikhirtma с хинкали" data-name="Chikhirtma с хинкали" data-detail="400 g" data-price="105" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/solyanka/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/solyanka.jpg" alt="Solyanka" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/solyanka/">Solyanka</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Солянка: пять видов мяса, солёные огурчики, маслины, лимон</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">100<small> mdl</small></span>
-         <button class="add-btn" data-id="soups:Solyanka" data-name="Solyanka" data-detail="400 g" data-price="100" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/chikhirtma-cu-carne-de-pui/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/chikh-pui.jpg" alt="Chikhirtma с курицей" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/chikhirtma-cu-carne-de-pui/">Chikhirtma с курицей</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Чихиртма — бархатный белый куриный суп</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">100<small> mdl</small></span>
-         <button class="add-btn" data-id="soups:Chikhirtma с курицей" data-name="Chikhirtma с курицей" data-detail="400 g" data-price="100" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/kharcho/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/kharcho.jpg" alt="Kharcho" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/kharcho/">Kharcho</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Харчо — острый суп с говядиной и рисом</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">100<small> mdl</small></span>
-         <button class="add-btn" data-id="soups:Kharcho" data-name="Kharcho" data-detail="400 g" data-price="100" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="hinkali">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">07</span>
-          <h2 class="menu-section__title">Хинкали</h2>
-          <p class="menu-section__ro">Hinkali • Khinkali</p>
-        </div>
-      </header>
-      <p class="menu-section__note reveal is-visible">Обычные — 3 шт. Любые хинкали можно взять жареными (la tigaie) — +5 лей.</p>
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/mama-hinkali/" class="menu-item reveal is-visible menu-item--link menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/mama-hinkali.jpg" alt="Mama Hinkali" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/mama-hinkali/">Mama Hinkali</a><span class="menu-item__star">✳</span></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        <span class="menu-item__badge">Особый выбор</span>
-        <p class="menu-item__ru">Гигантский хинкали на всю компанию</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">800 g</span>
-          <span class="menu-item__price">150<small> mdl</small></span>
-         <button class="add-btn" data-id="hinkali:Mama Hinkali" data-name="Mama Hinkali" data-detail="800 g" data-price="150" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/hinkali-cu-carne-de-vita/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-vita.jpg" alt="Hinkali с говядиной" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/hinkali-cu-carne-de-vita/">Hinkali с говядиной</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">С говядиной</p>
-        <ul class="menu-item__variants"><li>
-            <span>Отварные</span><i class="menu-item__dots"></i><b>80</b>
-            <button class="add-btn" data-id="hinkali:Hinkali с говядиной — Отварные" data-name="Hinkali с говядиной" data-detail="Отварные" data-price="80" aria-label="+">+</button>
-          </li><li>
-            <span>Жареные</span><i class="menu-item__dots"></i><b>85</b>
-            <button class="add-btn" data-id="hinkali:Hinkali с говядиной — Жареные" data-name="Hinkali с говядиной" data-detail="Жареные" data-price="85" aria-label="+">+</button>
-          </li></ul>
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">270 g · 3 x</span>
-          
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/hinkali-mixt-porc-vita/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-mixt.jpg" alt="Hinkali из свинины и говядины" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/hinkali-mixt-porc-vita/">Hinkali из свинины и говядины</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Свинина-говядина</p>
-        <ul class="menu-item__variants"><li>
-            <span>Отварные</span><i class="menu-item__dots"></i><b>80</b>
-            <button class="add-btn" data-id="hinkali:Hinkali из свинины и говядины — Отварные" data-name="Hinkali из свинины и говядины" data-detail="Отварные" data-price="80" aria-label="+">+</button>
-          </li><li>
-            <span>Жареные</span><i class="menu-item__dots"></i><b>85</b>
-            <button class="add-btn" data-id="hinkali:Hinkali из свинины и говядины — Жареные" data-name="Hinkali из свинины и говядины" data-detail="Жареные" data-price="85" aria-label="+">+</button>
-          </li></ul>
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">270 g · 3 x</span>
-          
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/hinkali-cu-carne-de-miel/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-miel.jpg" alt="Hinkali с ягнёнком" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/hinkali-cu-carne-de-miel/">Hinkali с ягнёнком</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">С ягнёнком</p>
-        <ul class="menu-item__variants"><li>
-            <span>Отварные</span><i class="menu-item__dots"></i><b>80</b>
-            <button class="add-btn" data-id="hinkali:Hinkali с ягнёнком — Отварные" data-name="Hinkali с ягнёнком" data-detail="Отварные" data-price="80" aria-label="+">+</button>
-          </li><li>
-            <span>Жареные</span><i class="menu-item__dots"></i><b>85</b>
-            <button class="add-btn" data-id="hinkali:Hinkali с ягнёнком — Жареные" data-name="Hinkali с ягнёнком" data-detail="Жареные" data-price="85" aria-label="+">+</button>
-          </li></ul>
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">270 g · 3 x</span>
-          
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/hinkali-cu-cascaval/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/hinkali-cascaval.jpg" alt="Hinkali с сыром" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/hinkali-cu-cascaval/">Hinkali с сыром</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">С сыром</p>
-        <ul class="menu-item__variants"><li>
-            <span>Отварные</span><i class="menu-item__dots"></i><b>80</b>
-            <button class="add-btn" data-id="hinkali:Hinkali с сыром — Отварные" data-name="Hinkali с сыром" data-detail="Отварные" data-price="80" aria-label="+">+</button>
-          </li><li>
-            <span>Жареные</span><i class="menu-item__dots"></i><b>85</b>
-            <button class="add-btn" data-id="hinkali:Hinkali с сыром — Жареные" data-name="Hinkali с сыром" data-detail="Жареные" data-price="85" aria-label="+">+</button>
-          </li></ul>
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">270 g · 3 x</span>
-          
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="khachapuri">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">08</span>
-          <h2 class="menu-section__title">Хачапури</h2>
-          <p class="menu-section__ro">Haceapuri • Khachapuri</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/adjaruli/" class="menu-item reveal is-visible menu-item--link menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/adjaruli.jpg" alt="Adjaruli" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/adjaruli/">Adjaruli</a><span class="menu-item__star">✳</span></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        <span class="menu-item__badge">Легенда Грузии</span>
-        <p class="menu-item__ru">Лодочка с сыром, яйцом и маслом · гигант 1700 г — 680</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">450 g</span>
-          <span class="menu-item__price">155<small> mdl</small></span>
-         <button class="add-btn" data-id="khachapuri:Adjaruli" data-name="Adjaruli" data-detail="450 g" data-price="155" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/megruli/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/megruli.jpg" alt="Megruli" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/megruli/">Megruli</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Мегрули — с сыром сверху и внутри · большой 750 г — 250</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">450 g</span>
-          <span class="menu-item__price">175<small> mdl</small></span>
-         <button class="add-btn" data-id="khachapuri:Megruli" data-name="Megruli" data-detail="450 g" data-price="175" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/regal/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/regal.jpg" alt="Regal" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/regal/">Regal</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Королевское: двойная порция сыра</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">650 g</span>
-          <span class="menu-item__price">240<small> mdl</small></span>
-         <button class="add-btn" data-id="khachapuri:Regal" data-name="Regal" data-detail="650 g" data-price="240" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/kubdari/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/kubdari.jpg" alt="Kubdari" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/kubdari/">Kubdari</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Кубдари — сванский, с мясом</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">550 g</span>
-          <span class="menu-item__price">190<small> mdl</small></span>
-         <button class="add-btn" data-id="khachapuri:Kubdari" data-name="Kubdari" data-detail="550 g" data-price="190" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/imeruli/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/imeruli.jpg" alt="Imeruli" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/imeruli/">Imeruli</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Имерули — классический круглый</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">650 g</span>
-          <span class="menu-item__price">225<small> mdl</small></span>
-         <button class="add-btn" data-id="khachapuri:Imeruli" data-name="Imeruli" data-detail="650 g" data-price="225" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/adjaruli-cu-ceashushuli/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/adjaruli-ceashushuli.jpg" alt="Adjaruli с Ceashushuli" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/adjaruli-cu-ceashushuli/">Adjaruli с Ceashushuli</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Лодочка с чашушули из телятины или ягнёнка</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">550 g</span>
-          <span class="menu-item__price">200<small> mdl</small></span>
-         <button class="add-btn" data-id="khachapuri:Adjaruli с Ceashushuli" data-name="Adjaruli с Ceashushuli" data-detail="550 g" data-price="200" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/phlovani/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/phlovani.jpg" alt="Phlovani" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/phlovani/">Phlovani</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Пховани — со шпинатом и сыром</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">190<small> mdl</small></span>
-         <button class="add-btn" data-id="khachapuri:Phlovani" data-name="Phlovani" data-detail="400 g" data-price="190" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/penovani/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/penovani.jpg" alt="Penovani" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/penovani/">Penovani</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Пеновани — слоёный</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">140<small> mdl</small></span>
-         <button class="add-btn" data-id="khachapuri:Penovani" data-name="Penovani" data-detail="300 g" data-price="140" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="mangal">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">09</span>
-          <h2 class="menu-section__title">Мангал</h2>
-          <p class="menu-section__ro">Mangal • Charcoal grill</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/mtsvadi/" class="menu-item reveal is-visible menu-item--link menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/mtsvadi.jpg" alt="Mtsvadi" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/mtsvadi/">Mtsvadi</a><span class="menu-item__star">✳</span></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Шашлык на живых углях</p>
-        <ul class="menu-item__variants"><li>
-            <span>Курица</span><i class="menu-item__dots"></i><b>140</b>
-            <button class="add-btn" data-id="mangal:Mtsvadi — Курица" data-name="Mtsvadi" data-detail="Курица" data-price="140" aria-label="+">+</button>
-          </li><li>
-            <span>Свинина</span><i class="menu-item__dots"></i><b>140</b>
-            <button class="add-btn" data-id="mangal:Mtsvadi — Свинина" data-name="Mtsvadi" data-detail="Свинина" data-price="140" aria-label="+">+</button>
-          </li><li>
-            <span>Телятина</span><i class="menu-item__dots"></i><b>190</b>
-            <button class="add-btn" data-id="mangal:Mtsvadi — Телятина" data-name="Mtsvadi" data-detail="Телятина" data-price="190" aria-label="+">+</button>
-          </li><li>
-            <span>Ягнёнок</span><i class="menu-item__dots"></i><b>195</b>
-            <button class="add-btn" data-id="mangal:Mtsvadi — Ягнёнок" data-name="Mtsvadi" data-detail="Ягнёнок" data-price="195" aria-label="+">+</button>
-          </li></ul>
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/liulea-kebab/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/liulea.jpg" alt="Liulea-kebab" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/liulea-kebab/">Liulea-kebab</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Рубленое мясо с травами, на шампуре</p>
-        <ul class="menu-item__variants"><li>
-            <span>Курица · 250 г</span><i class="menu-item__dots"></i><b>130</b>
-            <button class="add-btn" data-id="mangal:Liulea-kebab — Курица · 250 г" data-name="Liulea-kebab" data-detail="Курица · 250 г" data-price="130" aria-label="+">+</button>
-          </li><li>
-            <span>Ягнёнок · 250 г</span><i class="menu-item__dots"></i><b>140</b>
-            <button class="add-btn" data-id="mangal:Liulea-kebab — Ягнёнок · 250 г" data-name="Liulea-kebab" data-detail="Ягнёнок · 250 г" data-price="140" aria-label="+">+</button>
-          </li><li>
-            <span>Свинина-телятина · 250 г</span><i class="menu-item__dots"></i><b>140</b>
-            <button class="add-btn" data-id="mangal:Liulea-kebab — Свинина-телятина · 250 г" data-name="Liulea-kebab" data-detail="Свинина-телятина · 250 г" data-price="140" aria-label="+">+</button>
-          </li><li>
-            <span>Свинина-телятина с сыром · 250 г</span><i class="menu-item__dots"></i><b>140</b>
-            <button class="add-btn" data-id="mangal:Liulea-kebab — Свинина-телятина с сыром · 250 г" data-name="Liulea-kebab" data-detail="Свинина-телятина с сыром · 250 г" data-price="140" aria-label="+">+</button>
-          </li><li>
-            <span>Курица с сыром · 300 г</span><i class="menu-item__dots"></i><b>190</b>
-            <button class="add-btn" data-id="mangal:Liulea-kebab — Курица с сыром · 300 г" data-name="Liulea-kebab" data-detail="Курица с сыром · 300 г" data-price="190" aria-label="+">+</button>
-          </li><li>
-            <span>By Chef · 400 г</span><i class="menu-item__dots"></i><b>180</b>
-            <button class="add-btn" data-id="mangal:Liulea-kebab — By Chef · 400 г" data-name="Liulea-kebab" data-detail="By Chef · 400 г" data-price="180" aria-label="+">+</button>
-          </li></ul>
-        
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="fish">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">10</span>
-          <h2 class="menu-section__title">Рыба на гриле</h2>
-          <p class="menu-section__ro">Pește la grătar • Grilled fish</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/steak-sturion/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/sturion.jpg" alt="Стейк из осетра" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/steak-sturion/">Стейк из осетра</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Стейк из осетра</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250/60 g</span>
-          <span class="menu-item__price">340<small> mdl</small></span>
-         <button class="add-btn" data-id="fish:Стейк из осетра" data-name="Стейк из осетра" data-detail="250/60 g" data-price="340" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/dorada/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/dorada.jpg" alt="Dorada" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/dorada/">Dorada</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Дорада</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">330/60 g</span>
-          <span class="menu-item__price">190<small> mdl</small></span>
-         <button class="add-btn" data-id="fish:Dorada" data-name="Dorada" data-detail="330/60 g" data-price="190" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/steak-somon/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/somon.jpg" alt="Стейк из лосося" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/steak-somon/">Стейк из лосося</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Стейк из сёмги</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">150/60 g</span>
-          <span class="menu-item__price">240<small> mdl</small></span>
-         <button class="add-btn" data-id="fish:Стейк из лосося" data-name="Стейк из лосося" data-detail="150/60 g" data-price="240" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/pastrav/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/pastrav.jpg" alt="Форель" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/pastrav/">Форель</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Форель</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250/60 g</span>
-          <span class="menu-item__price">225<small> mdl</small></span>
-         <button class="add-btn" data-id="fish:Форель" data-name="Форель" data-detail="250/60 g" data-price="225" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="grill-special">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">11</span>
-          <h2 class="menu-section__title">Особые блюда на гриле</h2>
-          <p class="menu-section__ro">Specialități la grătar • Grill specialties</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/costite-de-miel/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/costite-miel.jpg" alt="Рёбрышки ягнёнка" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/costite-de-miel/">Рёбрышки ягнёнка</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Каре ягнёнка</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">220 g</span>
-          <span class="menu-item__price">385<small> mdl</small></span>
-         <button class="add-btn" data-id="grill-special:Рёбрышки ягнёнка" data-name="Рёбрышки ягнёнка" data-detail="220 g" data-price="385" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/pui-la-gratar-cu-legume/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/pui-gratar.jpg" alt="Курица на гриле с овощами" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/pui-la-gratar-cu-legume/">Курица на гриле с овощами</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Целый цыплёнок с овощами гриль</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">650 g</span>
-          <span class="menu-item__price">270<small> mdl</small></span>
-         <button class="add-btn" data-id="grill-special:Курица на гриле с овощами" data-name="Курица на гриле с овощами" data-detail="650 g" data-price="270" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/costite-de-porc/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/costite-porc.jpg" alt="Свиные рёбрышки" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/costite-de-porc/">Свиные рёбрышки</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Свиные рёбрышки с хрустящей корочкой</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">400 g</span>
-          <span class="menu-item__price">200<small> mdl</small></span>
-         <button class="add-btn" data-id="grill-special:Свиные рёбрышки" data-name="Свиные рёбрышки" data-detail="400 g" data-price="200" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/abhazura/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/abhazura.jpg" alt="Abhazura" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/abhazura/">Abhazura</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Абхазура — пикантные мясные шарики в жировой сетке</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">220 g</span>
-          <span class="menu-item__price">160<small> mdl</small></span>
-         <button class="add-btn" data-id="grill-special:Abhazura" data-name="Abhazura" data-detail="220 g" data-price="160" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="mains">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">12</span>
-          <h2 class="menu-section__title">Горячие блюда</h2>
-          <p class="menu-section__ro">Feluri principale • Main courses</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/chakapuli/" class="menu-item reveal is-visible menu-item--link menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/chakapuli.jpg" alt="Chakapuli" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/chakapuli/">Chakapuli</a><span class="menu-item__star">✳</span></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Ягнёнок с тархуном и ткемали</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">180<small> mdl</small></span>
-         <button class="add-btn" data-id="mains:Chakapuli" data-name="Chakapuli" data-detail="300 g" data-price="180" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/odjahuri/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/odjahuri.jpg" alt="Odjahuri" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/odjahuri/">Odjahuri</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Оджахури — жаркое «по-домашнему»</p>
-        <ul class="menu-item__variants"><li>
-            <span>Свинина</span><i class="menu-item__dots"></i><b>170</b>
-            <button class="add-btn" data-id="mains:Odjahuri — Свинина" data-name="Odjahuri" data-detail="Свинина" data-price="170" aria-label="+">+</button>
-          </li><li>
-            <span>Телятина</span><i class="menu-item__dots"></i><b>180</b>
-            <button class="add-btn" data-id="mains:Odjahuri — Телятина" data-name="Odjahuri" data-detail="Телятина" data-price="180" aria-label="+">+</button>
-          </li><li>
-            <span>Ягнёнок</span><i class="menu-item__dots"></i><b>220</b>
-            <button class="add-btn" data-id="mains:Odjahuri — Ягнёнок" data-name="Odjahuri" data-detail="Ягнёнок" data-price="220" aria-label="+">+</button>
-          </li><li>
-            <span>Грибы</span><i class="menu-item__dots"></i><b>130</b>
-            <button class="add-btn" data-id="mains:Odjahuri — Грибы" data-name="Odjahuri" data-detail="Грибы" data-price="130" aria-label="+">+</button>
-          </li></ul>
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/ceashushuli/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/ceashushuli.jpg" alt="Ceashushuli" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/ceashushuli/">Ceashushuli</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Чашушули — острое томлёное мясо</p>
-        <ul class="menu-item__variants"><li>
-            <span>Телятина</span><i class="menu-item__dots"></i><b>155</b>
-            <button class="add-btn" data-id="mains:Ceashushuli — Телятина" data-name="Ceashushuli" data-detail="Телятина" data-price="155" aria-label="+">+</button>
-          </li><li>
-            <span>Ягнёнок</span><i class="menu-item__dots"></i><b>150</b>
-            <button class="add-btn" data-id="mains:Ceashushuli — Ягнёнок" data-name="Ceashushuli" data-detail="Ягнёнок" data-price="150" aria-label="+">+</button>
-          </li></ul>
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">250 g</span>
-          
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/chakhokhbili/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/chakhokhbili.jpg" alt="Chakhokhbili" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/chakhokhbili/">Chakhokhbili</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Чахохбили — курица в томатах с зеленью</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">150<small> mdl</small></span>
-         <button class="add-btn" data-id="mains:Chakhokhbili" data-name="Chakhokhbili" data-detail="300 g" data-price="150" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/tvini/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/tvini.jpg" alt="Tvini" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/tvini/">Tvini</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Твини — мозги, томлённые в масле</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">320 g</span>
-          <span class="menu-item__price">135<small> mdl</small></span>
-         <button class="add-btn" data-id="mains:Tvini" data-name="Tvini" data-detail="320 g" data-price="135" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="garnish">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">13</span>
-          <h2 class="menu-section__title">Гарниры</h2>
-          <p class="menu-section__ro">Garnituri • Side dishes</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/legume-la-gratar/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/legume.jpg" alt="Овощи на гриле" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/legume-la-gratar/">Овощи на гриле</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Сезонные овощи на открытом огне</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">300 g</span>
-          <span class="menu-item__price">150<small> mdl</small></span>
-         <button class="add-btn" data-id="garnish:Овощи на гриле" data-name="Овощи на гриле" data-detail="300 g" data-price="150" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/gomi/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/gomi.jpg" alt="Gomi" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/gomi/">Gomi</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Гоми — кукурузная каша, символ гостеприимства</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">200 g</span>
-          <span class="menu-item__price">65<small> mdl</small></span>
-         <button class="add-btn" data-id="garnish:Gomi" data-name="Gomi" data-detail="200 g" data-price="65" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/felii-de-cartofi-cu-usturoi/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/cartofi-felii.jpg" alt="Картофель дольками с чесноком" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/felii-de-cartofi-cu-usturoi/">Картофель дольками с чесноком</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Дольки картофеля с чесноком и зеленью</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">150 g</span>
-          <span class="menu-item__price">55<small> mdl</small></span>
-         <button class="add-btn" data-id="garnish:Картофель дольками с чесноком" data-name="Картофель дольками с чесноком" data-detail="150 g" data-price="55" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/cartofi-pai/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/cartofi-pai.jpg" alt="Картофель фри" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/cartofi-pai/">Картофель фри</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Картофель пай</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">150 g</span>
-          <span class="menu-item__price">50<small> mdl</small></span>
-         <button class="add-btn" data-id="garnish:Картофель фри" data-name="Картофель фри" data-detail="150 g" data-price="50" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="bread">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">14</span>
-          <h2 class="menu-section__title">Хлеб и соусы</h2>
-          <p class="menu-section__ro">Pâine și sosuri • Bread and sauces</p>
-        </div>
-      </header>
-      <p class="menu-section__note reveal is-visible">Все соусы — 50 г · 25 лей: аджика, сацебели, мацони, ткемали, сметана/кетчуп.</p>
-      <div class="menu-section__items">
-        
-    <div class="menu-item reveal is-visible">
-      
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name">Șoti</span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Шоти — хлеб со стен глиняной печи (тандыр)</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">100 g</span>
-          <span class="menu-item__price">10<small> mdl</small></span>
-         <button class="add-btn" data-id="bread:Șoti" data-name="Șoti" data-detail="100 g" data-price="10" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div class="menu-item reveal is-visible">
-      
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name">Lavaș</span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Тонкий лаваш для шашлыка</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">20 g</span>
-          <span class="menu-item__price">10<small> mdl</small></span>
-         <button class="add-btn" data-id="bread:Lavaș" data-name="Lavaș" data-detail="20 g" data-price="10" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div class="menu-item reveal is-visible">
-      
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name">Adjika · Satsebeli · Matsoni · Tkemali</span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Домашние соусы к мясу и хлебу</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">50 g</span>
-          <span class="menu-item__price">25<small> mdl</small></span>
-         <button class="add-btn" data-id="bread:Adjika · Satsebeli · Matsoni · Tkemali" data-name="Adjika · Satsebeli · Matsoni · Tkemali" data-detail="50 g" data-price="25" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
-    <section class="menu-section" id="desserts">
-      <header class="menu-section__head reveal is-visible">
-        <div class="menu-section__band">
-          <span class="menu-section__num">15</span>
-          <h2 class="menu-section__title">Десерты</h2>
-          <p class="menu-section__ro">Deserturi • Desserts</p>
-        </div>
-      </header>
-      
-      <div class="menu-section__items">
-        
-    <div data-href="/dish/napoleon/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/napoleon.jpg" alt="Napoleon" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/napoleon/">Napoleon</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Многослойный, с нежным ванильным кремом</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">130 g</span>
-          <span class="menu-item__price">80<small> mdl</small></span>
-         <button class="add-btn" data-id="desserts:Napoleon" data-name="Napoleon" data-detail="130 g" data-price="80" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div data-href="/dish/karakum/" class="menu-item reveal is-visible menu-item--photo menu-item--has-img">
-      <div class="menu-item__media"><img class="menu-item__thumb" src="assets/menu/karakum.jpg" alt="Karakum" loading="lazy" /></div>
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name"><a href="/dish/karakum/">Karakum</a></span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Каракум — шоколад, орехи, вкус детства</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">150 g</span>
-          <span class="menu-item__price">80<small> mdl</small></span>
-         <button class="add-btn" data-id="desserts:Karakum" data-name="Karakum" data-detail="150 g" data-price="80" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div class="menu-item reveal is-visible">
-      
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name">Маковый рулет</span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Домашняя выпечка с маковой начинкой</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">130 g</span>
-          <span class="menu-item__price">75<small> mdl</small></span>
-         <button class="add-btn" data-id="desserts:Маковый рулет" data-name="Маковый рулет" data-detail="130 g" data-price="75" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div class="menu-item reveal is-visible">
-      
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name">Înghețată</span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Крафтовое мороженое, сорта в ассортименте</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">150 g</span>
-          <span class="menu-item__price">70<small> mdl</small></span>
-         <button class="add-btn" data-id="desserts:Înghețată" data-name="Înghețată" data-detail="150 g" data-price="70" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-    <div class="menu-item reveal is-visible">
-      
-      <div class="menu-item__body">
-        <div class="menu-item__head">
-          <span class="menu-item__name">Matzoni</span>
-          <i class="menu-item__orn" aria-hidden="true"></i>
-        </div>
-        
-        <p class="menu-item__ru">Мацони с мёдом и грецким орехом</p>
-        
-        <div class="menu-item__foot">
-          <span class="menu-item__meta">150 g</span>
-          <span class="menu-item__price">50<small> mdl</small></span>
-         <button class="add-btn" data-id="desserts:Matzoni" data-name="Matzoni" data-detail="150 g" data-price="50" aria-label="+">+</button>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section><!-- END:menu-sections -->
-    </div>
+    <!-- Одна подсказка на всё меню: у блюд подписей нет -->
+    <p class="menu-hint" data-i18n="menuHint">Нажмите на блюдо, чтобы добавить его в корзину</p>
+
+    <!-- Кухня: страницы бумажного меню, одна под другой.
+         Разметку собирает tools/build-menu-pages.mjs из assets/menu-pages/ —
+         картинки лежат в HTML, а не подставляются скриптом. -->
+    <div class="menu-pages" id="menuPages"><!-- BEGIN:menu-pages -->
+      <div class="menu-pages__page" data-page="01">
+        <picture>
+          <source srcset="assets/menu-pages/01.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/01.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 1 из 26" data-i18n-alt="menuPageAlt" data-page="1" data-page-total="26"
+               loading="eager" decoding="async" fetchpriority="high" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="02">
+        <picture>
+          <source srcset="assets/menu-pages/02.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/02.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 2 из 26" data-i18n-alt="menuPageAlt" data-page="2" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="03">
+        <picture>
+          <source srcset="assets/menu-pages/03.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/03.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 3 из 26" data-i18n-alt="menuPageAlt" data-page="3" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="04">
+        <picture>
+          <source srcset="assets/menu-pages/04.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/04.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 4 из 26" data-i18n-alt="menuPageAlt" data-page="4" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="05">
+        <picture>
+          <source srcset="assets/menu-pages/05.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/05.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 5 из 26" data-i18n-alt="menuPageAlt" data-page="5" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="06">
+        <picture>
+          <source srcset="assets/menu-pages/06.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/06.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 6 из 26" data-i18n-alt="menuPageAlt" data-page="6" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="07">
+        <picture>
+          <source srcset="assets/menu-pages/07.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/07.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 7 из 26" data-i18n-alt="menuPageAlt" data-page="7" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="08">
+        <picture>
+          <source srcset="assets/menu-pages/08.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/08.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 8 из 26" data-i18n-alt="menuPageAlt" data-page="8" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="09">
+        <picture>
+          <source srcset="assets/menu-pages/09.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/09.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 9 из 26" data-i18n-alt="menuPageAlt" data-page="9" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="10">
+        <picture>
+          <source srcset="assets/menu-pages/10.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/10.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 10 из 26" data-i18n-alt="menuPageAlt" data-page="10" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="11">
+        <picture>
+          <source srcset="assets/menu-pages/11.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/11.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 11 из 26" data-i18n-alt="menuPageAlt" data-page="11" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="12">
+        <picture>
+          <source srcset="assets/menu-pages/12.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/12.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 12 из 26" data-i18n-alt="menuPageAlt" data-page="12" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="13">
+        <picture>
+          <source srcset="assets/menu-pages/13.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/13.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 13 из 26" data-i18n-alt="menuPageAlt" data-page="13" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="14">
+        <picture>
+          <source srcset="assets/menu-pages/14.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/14.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 14 из 26" data-i18n-alt="menuPageAlt" data-page="14" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="15">
+        <picture>
+          <source srcset="assets/menu-pages/15.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/15.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 15 из 26" data-i18n-alt="menuPageAlt" data-page="15" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="16">
+        <picture>
+          <source srcset="assets/menu-pages/16.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/16.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 16 из 26" data-i18n-alt="menuPageAlt" data-page="16" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="17">
+        <picture>
+          <source srcset="assets/menu-pages/17.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/17.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 17 из 26" data-i18n-alt="menuPageAlt" data-page="17" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="18">
+        <picture>
+          <source srcset="assets/menu-pages/18.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/18.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 18 из 26" data-i18n-alt="menuPageAlt" data-page="18" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="19">
+        <picture>
+          <source srcset="assets/menu-pages/19.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/19.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 19 из 26" data-i18n-alt="menuPageAlt" data-page="19" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="20">
+        <picture>
+          <source srcset="assets/menu-pages/20.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/20.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 20 из 26" data-i18n-alt="menuPageAlt" data-page="20" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="21">
+        <picture>
+          <source srcset="assets/menu-pages/21.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/21.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 21 из 26" data-i18n-alt="menuPageAlt" data-page="21" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="22">
+        <picture>
+          <source srcset="assets/menu-pages/22.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/22.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 22 из 26" data-i18n-alt="menuPageAlt" data-page="22" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="23">
+        <picture>
+          <source srcset="assets/menu-pages/23.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/23.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 23 из 26" data-i18n-alt="menuPageAlt" data-page="23" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="24">
+        <picture>
+          <source srcset="assets/menu-pages/24.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/24.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 24 из 26" data-i18n-alt="menuPageAlt" data-page="24" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="25">
+        <picture>
+          <source srcset="assets/menu-pages/25.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/25.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 25 из 26" data-i18n-alt="menuPageAlt" data-page="25" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="menu-pages__page" data-page="26">
+        <picture>
+          <source srcset="assets/menu-pages/26.webp" type="image/webp" />
+          <img class="menu-pages__img" src="assets/menu-pages/26.jpg" width="1600" height="2015"
+               alt="Меню Gamarjoba — страница 26 из 26" data-i18n-alt="menuPageAlt" data-page="26" data-page-total="26"
+               loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <!-- END:menu-pages --></div>
+
+    <!-- Барная карта: карточки рисует menu.js при переходе на вкладку -->
+    <div class="menu-sections" id="menuSections" hidden></div>
 
     <section class="menu-outro">
       <p class="menu-outro__text reveal-lines" data-i18n="menuOutro"></p>
@@ -1766,17 +324,17 @@
     "hasMenuSection": [
       {
         "@type": "MenuSection",
-        "name": "Выбор шеф-повара",
+        "name": "ВЫБОР ШЕФ-ПОВАРА",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Shurpa",
-            "description": "Традиционный грузинский суп из мяса козленка, славящийся своим насыщенным и восстанавливающим вкусом.",
+            "name": "SHURPA",
+            "description": "Традиционный грузинский суп из мяса ягненка, славящийся своим насыщенным и восстанавливающим вкусом.",
             "url": "https://gamarjoba.md/dish/shurpa/",
             "image": "https://gamarjoba.md/assets/menu/shurpa.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "400 g"
+              "servingSize": "400g"
             },
             "offers": {
               "@type": "Offer",
@@ -1786,13 +344,13 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Adjaruli",
+            "name": "ADJARULI",
             "description": "Знаменитая аджарская лодочка с тягучим сыром и яйцом. Легендарный вкус Грузии.",
             "url": "https://gamarjoba.md/dish/adjaruli/",
             "image": "https://gamarjoba.md/assets/menu/adjaruli.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "450 g"
+              "servingSize": "450g"
             },
             "offers": {
               "@type": "Offer",
@@ -1802,13 +360,13 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Badrijani",
+            "name": "BADRIJANI",
             "description": "Рулетики из баклажанов с ореховой пастой, грузинскими специями и зернами граната.",
             "url": "https://gamarjoba.md/dish/badrijani/",
             "image": "https://gamarjoba.md/assets/menu/badrijani.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "200 g"
+              "servingSize": "200g"
             },
             "offers": {
               "@type": "Offer",
@@ -1818,17 +376,17 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Mtsvadi из телятины",
+            "name": "MTSVARI VIȚEL",
             "description": "Отборная телятина, маринованная со специями и обжаренная на углях до идеальной нежности.",
             "url": "https://gamarjoba.md/dish/mtsvadi/",
             "image": "https://gamarjoba.md/assets/menu/mtsvadi.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "250 g"
+              "servingSize": "250g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "180",
+              "price": "190",
               "priceCurrency": "MDL"
             }
           }
@@ -1836,12 +394,12 @@
       },
       {
         "@type": "MenuSection",
-        "name": "Мясные сеты для компаний",
+        "name": "МЯСНЫЕ СЕТЫ ДЛЯ КОМПАНИЙ",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Мясной сет «Микс»",
-            "description": "Щедрый выбор: рёбрышки ягненка, люля-кебаб из ягненка и свинины-телятины, шашлык из телятины, ягненка и свинины, абхазура и золотистые дольки картофеля.",
+            "name": "SET DIN CARNE MIX / МЯСНОЙ СЕТ МИКС",
+            "description": "Щедрый выбор: ребрышки ягненка, люля-кебаб из ягненка и свинины-телятины, шашлык из телятины, ягненка и свинины, абхазура и золотистые дольки картофеля.",
             "url": "https://gamarjoba.md/dish/set-din-carne-mix/",
             "image": "https://gamarjoba.md/assets/menu/set-mix.jpg",
             "nutrition": {
@@ -1856,29 +414,13 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Сет из ягнёнка",
-            "description": "Пир из ягненка: рёбрышки, шашлык, люля-кебаб, корейка и вырезка ягненка. Подается с дольками картофеля и овощами гриль.",
-            "url": "https://gamarjoba.md/dish/set-din-carne-de-miel/",
-            "image": "https://gamarjoba.md/assets/menu/set-miel.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "1150 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "1400",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Сет из свинины",
-            "description": "Вкусный микс: свиные рёбрышки, шашлык, люля-кебаб свинина-телятина (классический и с сыром), абхазура и дольки картофеля.",
+            "name": "SET DIN CARNE DE PORC / СВИНОЙ СЕТ",
+            "description": "Вкусный микс: свиные ребрышки, шашлык, люля-кебаб свинина-телятина (классический и с сыром), абхазура и дольки картофеля.",
             "url": "https://gamarjoba.md/dish/set-din-carne-de-porc/",
             "image": "https://gamarjoba.md/assets/menu/set-porc.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "1450 g"
+              "servingSize": "1450g"
             },
             "offers": {
               "@type": "Offer",
@@ -1888,99 +430,51 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Сет из курицы",
-            "description": "Всё лучшее из курицы: крылышки, голени, бёдра, люля-кебаб с сыром и шашлык из курицы. Подается с овощами гриль и дольками картофеля.",
+            "name": "SET DIN CARNE DE PUI / КУРИНЫЙ СЕТ",
+            "description": "Всё лучшее из курицы: крылышки, голени, бедра, люля-кебаб с сыром и шашлык из курицы. Подается с овощами гриль и дольками картофеля.",
             "url": "https://gamarjoba.md/dish/set-din-carne-de-pui/",
             "image": "https://gamarjoba.md/assets/menu/set-pui.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "1600 g"
+              "servingSize": "1600g"
             },
             "offers": {
               "@type": "Offer",
               "price": "850",
               "priceCurrency": "MDL"
             }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "SET DIN CARNE DE MIEL / СЕТ ИЗ ЯГНЕНКА",
+            "description": "Пир из ягненка: каре ягненка, шашлык, люля-кебаб, спинки молодого ягненка и вырезка ягненка. Подается с дольками картофеля и овощами гриль.",
+            "url": "https://gamarjoba.md/dish/set-din-carne-de-miel/",
+            "image": "https://gamarjoba.md/assets/menu/set-miel.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "1150g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "1400",
+              "priceCurrency": "MDL"
+            }
           }
         ]
       },
       {
         "@type": "MenuSection",
-        "name": "Холодные закуски",
+        "name": "ХОЛОДНЫЕ ЗАКУСКИ",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Mtsnili",
-            "description": "Грузинские соленья: зелёные помидоры, огурцы, чеснок, капуста",
-            "url": "https://gamarjoba.md/dish/mtsnili/",
-            "image": "https://gamarjoba.md/assets/menu/mtsnili.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "400 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "120",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Kveli",
-            "description": "Тарелка крафтовых сыров: сулугуни, имеретинский, копчёный, с орехами",
-            "url": "https://gamarjoba.md/dish/kveli/",
-            "image": "https://gamarjoba.md/assets/menu/kveli.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "300 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "220",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Tevzis Assorti",
-            "description": "Рыбное ассорти: лосось, масляная, скумбрия",
-            "url": "https://gamarjoba.md/dish/tevzis-assorti/",
-            "image": "https://gamarjoba.md/assets/menu/tevzis.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "300 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "230",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Khortcis Assorti",
-            "description": "Мясная тарелка: сало, колбаска, пастрома, почеревка",
-            "url": "https://gamarjoba.md/dish/khortcis-assorti/",
-            "image": "https://gamarjoba.md/assets/menu/khortcis.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "250 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "190",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Mokharshuli Ena",
+            "name": "MOKHARSHULI ENA",
             "description": "Нежный отварной говяжий язык со специями, подается с хреном и горчицей.",
             "url": "https://gamarjoba.md/dish/mokharshuli-ena/",
             "image": "https://gamarjoba.md/assets/menu/mokharshuli.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "200 g"
+              "servingSize": "200g"
             },
             "offers": {
               "@type": "Offer",
@@ -1990,193 +484,13 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Bulgaruli",
-            "description": "Запеченный болгарский перец с пикантной начинкой из грецкого ореха, чеснока и зелени.",
-            "url": "https://gamarjoba.md/dish/bulgaruli/",
-            "image": "https://gamarjoba.md/assets/menu/bulgaruli.jpg",
+            "name": "BADRIJANI",
+            "description": "Рулетики из баклажанов с ореховой пастой, чесноком, грузинскими специями и гранатом.",
+            "url": "https://gamarjoba.md/dish/badrijani/",
+            "image": "https://gamarjoba.md/assets/menu/badrijani.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "250 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "150",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Heringi Kartophilit",
-            "description": "Сельдь с золотистым запечённым картофелем",
-            "url": "https://gamarjoba.md/dish/heringi-kartophilit/",
-            "image": "https://gamarjoba.md/assets/menu/heringi.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "250 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "110",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Bostneulis Assorti",
-            "description": "Свежие садовые овощи и много зелени",
-            "url": "https://gamarjoba.md/dish/bostneulis-assorti/",
-            "image": "https://gamarjoba.md/assets/menu/bostneulis.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "400 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "100",
-              "priceCurrency": "MDL"
-            }
-          }
-        ]
-      },
-      {
-        "@type": "MenuSection",
-        "name": "Горячие закуски",
-        "hasMenuItem": [
-          {
-            "@type": "MenuItem",
-            "name": "Креветки со шпинатом",
-            "description": "Современная интерпретация: очищенные креветки в легендарном сливочно-чесночном соусе.",
-            "url": "https://gamarjoba.md/dish/creveti-cu-spanac/",
-            "image": "https://gamarjoba.md/assets/menu/creveti.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "300 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "250",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Shkmeruli",
-            "description": "Цыплёнок в чесночно-сливочном соусе",
-            "url": "https://gamarjoba.md/dish/shkmeruli/",
-            "image": "https://gamarjoba.md/assets/menu/shkmeruli.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "350 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "170",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Djigari",
-            "description": "Джигари — жаркое из печени",
-            "url": "https://gamarjoba.md/dish/djigari/",
-            "image": "https://gamarjoba.md/assets/menu/djigari.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "300 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "160",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Kucimaci",
-            "description": "Куриные потрошки, обжаренные с зернами граната, грецким орехом и пикантными специями.",
-            "url": "https://gamarjoba.md/dish/kucimaci/",
-            "image": "https://gamarjoba.md/assets/menu/kucimaci.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "300 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "150",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Бараньи семенники",
-            "description": "Мелкие кусочки нежных рёбрышек ягненка, обжаренные до золотистой хрустящей корочки с добавлением сванской соли.",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "250 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "145",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Dolma",
-            "description": "Долма — виноградные листья с мясом",
-            "url": "https://gamarjoba.md/dish/dolma/",
-            "image": "https://gamarjoba.md/assets/menu/dolma.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "300 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "120",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Soko Ketze",
-            "description": "Грибы под сулугуни на кеци",
-            "url": "https://gamarjoba.md/dish/soko-ketze/",
-            "image": "https://gamarjoba.md/assets/menu/soko.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "300 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "120",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Lobio с орехами",
-            "description": "Лобио с орехами",
-            "url": "https://gamarjoba.md/dish/lobio-cu-nuci/",
-            "image": "https://gamarjoba.md/assets/menu/lobio-nuci.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "300 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "85",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Lobio",
-            "description": "Лобио — томлёная фасоль со специями",
-            "url": "https://gamarjoba.md/dish/lobio/",
-            "image": "https://gamarjoba.md/assets/menu/lobio.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "300 g"
+              "servingSize": "200g"
             },
             "offers": {
               "@type": "Offer",
@@ -2186,17 +500,113 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Tsitsila Tabaka",
-            "description": "Цыплёнок табака (цена за 100 г)",
-            "url": "https://gamarjoba.md/dish/tsitsila-tabaka/",
-            "image": "https://gamarjoba.md/assets/menu/tsitsila.jpg",
+            "name": "BULGARULI",
+            "description": "Запеченный болгарский перец с пикантной начинкой из грецкого ореха, чеснока и зелени.",
+            "url": "https://gamarjoba.md/dish/bulgaruli/",
+            "image": "https://gamarjoba.md/assets/menu/bulgaruli.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "100 g"
+              "servingSize": "250g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "45",
+              "price": "150",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "MTSNILI",
+            "description": "Ассорти традиционных солений: зеленые помидоры, огурцы, чеснок и гурийская капуста.",
+            "url": "https://gamarjoba.md/dish/mtsnili/",
+            "image": "https://gamarjoba.md/assets/menu/mtsnili.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "400g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "120",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "KVELI",
+            "description": "Тарелка крафтовых сыров: Сулугуни, Имеретинский и копченый сыр, подается с орехами.",
+            "url": "https://gamarjoba.md/dish/kveli/",
+            "image": "https://gamarjoba.md/assets/menu/kveli.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "220",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "TEVZIS ASSORTI",
+            "description": "Изысканное рыбное ассорти: лосось, масляная рыба, филе скумбрии копченое и слабосоленое, подается с лимоном.",
+            "url": "https://gamarjoba.md/dish/tevzis-assorti/",
+            "image": "https://gamarjoba.md/assets/menu/tevzis.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "230",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "KHORTCIS ASSORTI",
+            "description": "Мясная тарелка: домашнее сало, сырокопченая колбаска, домашняя пастрама и почеревка.",
+            "url": "https://gamarjoba.md/dish/khortcis-assorti/",
+            "image": "https://gamarjoba.md/assets/menu/khortcis.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "250g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "190",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "BOSTNEULIS ASSORTI",
+            "description": "Свежие садовые овощи: помидоры, огурцы, болгарский перец и много зелени.",
+            "url": "https://gamarjoba.md/dish/bostneulis-assorti/",
+            "image": "https://gamarjoba.md/assets/menu/bostneulis.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "400g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "100",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "HERINGI KARTOPHILIT",
+            "description": "Филе маринованной сельди с золотистым запеченным картофелем, красным луком и лимоном.",
+            "url": "https://gamarjoba.md/dish/heringi-kartophilit/",
+            "image": "https://gamarjoba.md/assets/menu/heringi.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "250g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "110",
               "priceCurrency": "MDL"
             }
           }
@@ -2204,33 +614,81 @@
       },
       {
         "@type": "MenuSection",
-        "name": "Салаты",
+        "name": "ГОРЯЧИЕ ЗАКУСКИ",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Салат «Gamarjoba»",
-            "description": "Тёплый салат с нежной телятиной, миксом свежей зелени и фирменным соусом «Gamarjoba».",
-            "url": "https://gamarjoba.md/dish/salata-gamarjoba/",
-            "image": "https://gamarjoba.md/assets/menu/sal-gamarjoba.jpg",
+            "name": "TSITSILA TABAKA",
+            "description": "Молодой цыпленок, обжаренный под прессом до золотистой хрустящей корочки.",
+            "url": "https://gamarjoba.md/dish/tsitsila-tabaka/",
+            "image": "https://gamarjoba.md/assets/menu/tsitsila.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "250 g"
+              "servingSize": "100g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "210",
+              "price": "45.00",
               "priceCurrency": "MDL"
             }
           },
           {
             "@type": "MenuItem",
-            "name": "Салат с языком",
-            "description": "Нежный говяжий язык, морковь и маринованные огурчики с чесноком, укропом и майонезом.",
-            "url": "https://gamarjoba.md/dish/salata-cu-limba/",
-            "image": "https://gamarjoba.md/assets/menu/sal-limba.jpg",
+            "name": "DOLMA",
+            "description": "Листья винограда, фаршированные мясным фаршем и рисом, подаются с нежным чесночным соусом.",
+            "url": "https://gamarjoba.md/dish/dolma/",
+            "image": "https://gamarjoba.md/assets/menu/dolma.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "250 g"
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "120.00",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "SOKO KETZE",
+            "description": "Шампиньоны, запеченные в кеци под слоем тягучего сыра сулугуни.",
+            "url": "https://gamarjoba.md/dish/soko-ketze/",
+            "image": "https://gamarjoba.md/assets/menu/soko.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "120.00",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "DJIGARI",
+            "description": "Говяжья печень и сердце, обжаренные с вином, луком и грузинскими специями.",
+            "url": "https://gamarjoba.md/dish/djigari/",
+            "image": "https://gamarjoba.md/assets/menu/djigari.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "160",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "SHKMERULI",
+            "description": "Сочный цыпленок в насыщенном сливочно-чесночном соусе, подается шкворчащим в кеци.",
+            "url": "https://gamarjoba.md/dish/shkmeruli/",
+            "image": "https://gamarjoba.md/assets/menu/shkmeruli.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "350g"
             },
             "offers": {
               "@type": "Offer",
@@ -2240,7 +698,139 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Кахетинский салат",
+            "name": "LOBIO",
+            "description": "Красная фасоль, томленая в горшочке с ароматной зеленью и традиционными специями.",
+            "url": "https://gamarjoba.md/dish/lobio/",
+            "image": "https://gamarjoba.md/assets/menu/lobio.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "80",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "LOBIO CU NUCI",
+            "description": "Традиционное лобио, приготовленное с добавлением грецкого ореха для насыщенного вкуса.",
+            "url": "https://gamarjoba.md/dish/lobio-cu-nuci/",
+            "image": "https://gamarjoba.md/assets/menu/lobio-nuci.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "85",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "CREVEȚI CU SPANAC",
+            "description": "Современная интерпретация: очищенные креветки в легендарном сливочно-чесночном соусе.",
+            "url": "https://gamarjoba.md/dish/creveti-cu-spanac/",
+            "image": "https://gamarjoba.md/assets/menu/creveti.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "250",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "CUCIMACI",
+            "description": "Куриные потрошки, обжаренные с зернами граната и пикантными специями.",
+            "url": "https://gamarjoba.md/dish/kucimaci/",
+            "image": "https://gamarjoba.md/assets/menu/kucimaci.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "150",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "SEMINȚE DE MIEL",
+            "description": "Мелкие кусочки нежных ребрышек ягненка, обжаренные до золотистой хрустящей корочки с добавлением сванской соли.",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "250g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "145",
+              "priceCurrency": "MDL"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "САЛАТЫ",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "SALATĂ GEORGIANĂ",
+            "description": "Традиционная свежесть: помидоры, огурцы, красный лук, базилик и петрушка с ароматным домашним маслом.",
+            "url": "https://gamarjoba.md/dish/salata-georgiana/",
+            "image": "https://gamarjoba.md/assets/menu/sal-georgiana.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "250g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "75",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "SALATĂ GURIANĂ",
+            "description": "Помидоры, огурцы и красный лук с добавлением грецкого ореха, кинзы и винного уксуса.",
+            "url": "https://gamarjoba.md/dish/salata-guriana/",
+            "image": "https://gamarjoba.md/assets/menu/sal-guriana.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "250g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "85",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "ATSATSILI DE VINETE",
+            "description": "Запеченные баклажаны, красный лук, грецкий орех и чеснок с кинзой и уксусом.",
+            "url": "https://gamarjoba.md/dish/atsatsili-de-vinete/",
+            "image": "https://gamarjoba.md/assets/menu/atsatsili.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "250g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "90",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "SALATĂ KAHETIANĂ",
             "description": "Богатый микс из баклажанов, сладкого перца, черри, огурцов и лука с чесноком, укропом и майонезом.",
             "url": "https://gamarjoba.md/dish/salata-kahetiana/",
             "image": "https://gamarjoba.md/assets/menu/sal-kahetiana.jpg",
@@ -2256,49 +846,33 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Atsatsili из баклажанов",
-            "description": "Запеченные баклажаны, красный лук, грецкий орех и чеснок с кинзой и уксусом.",
-            "url": "https://gamarjoba.md/dish/atsatsili-de-vinete/",
-            "image": "https://gamarjoba.md/assets/menu/atsatsili.jpg",
+            "name": "SALATĂ CU LIMBĂ",
+            "description": "Нежный говяжий язык, морковь и маринованные огурчики с чесноком, укропом и майонезом.",
+            "url": "https://gamarjoba.md/dish/salata-cu-limba/",
+            "image": "https://gamarjoba.md/assets/menu/sal-limba.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "250 g"
+              "servingSize": "250g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "90",
+              "price": "170",
               "priceCurrency": "MDL"
             }
           },
           {
             "@type": "MenuItem",
-            "name": "Гурийский салат",
-            "description": "Помидоры, огурцы и красный лук с добавлением грецкого ореха, кинзы и винного уксуса.",
-            "url": "https://gamarjoba.md/dish/salata-guriana/",
-            "image": "https://gamarjoba.md/assets/menu/sal-guriana.jpg",
+            "name": "SALATĂ GAMARJOBA",
+            "description": "Теплый салат с нежной телятиной, миксом свежей зелени и фирменным соусом «Гамарджоба».",
+            "url": "https://gamarjoba.md/dish/salata-gamarjoba/",
+            "image": "https://gamarjoba.md/assets/menu/sal-gamarjoba.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "250 g"
+              "servingSize": "250g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "85",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Грузинский салат",
-            "description": "Традиционная свежесть: помидоры, огурцы, красный лук, базилик и петрушка с ароматным домашним маслом.",
-            "url": "https://gamarjoba.md/dish/salata-georgiana/",
-            "image": "https://gamarjoba.md/assets/menu/sal-georgiana.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "250 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "75",
+              "price": "210",
               "priceCurrency": "MDL"
             }
           }
@@ -2306,17 +880,33 @@
       },
       {
         "@type": "MenuSection",
-        "name": "Первые блюда",
+        "name": "ПЕРВЫЕ БЛЮДА",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Shurpa",
-            "description": "Традиционный грузинский суп из мяса козленка, славящийся своим насыщенным и восстанавливающим вкусом.",
+            "name": "KHARCHO",
+            "description": "Пряный наваристый суп из телятины с рисом, зеленью и традиционными грузинскими специями.",
+            "url": "https://gamarjoba.md/dish/kharcho/",
+            "image": "https://gamarjoba.md/assets/menu/kharcho.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "400g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "100",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "SHURPA",
+            "description": "Традиционный грузинский суп из мяса ягненка, славящийся своим насыщенным и восстанавливающим вкусом.",
             "url": "https://gamarjoba.md/dish/shurpa/",
             "image": "https://gamarjoba.md/assets/menu/shurpa.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "400 g"
+              "servingSize": "400g"
             },
             "offers": {
               "@type": "Offer",
@@ -2326,13 +916,13 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Красный борщ",
+            "name": "BORȘ ROȘU",
             "description": "Классический красный борщ со свежей капустой и нежной телятиной, приготовленный в лучших традициях.",
             "url": "https://gamarjoba.md/dish/bors-rosu/",
             "image": "https://gamarjoba.md/assets/menu/bors.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "400 g"
+              "servingSize": "400g"
             },
             "offers": {
               "@type": "Offer",
@@ -2342,23 +932,7 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Chikhirtma с хинкали",
-            "description": "Оригинальная вариация белого куриного супа, подается с аппетитными хинкали и свежей зеленью.",
-            "url": "https://gamarjoba.md/dish/chikhirtma-cu-hinkali/",
-            "image": "https://gamarjoba.md/assets/menu/chikh-hinkali.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "400 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "105",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Solyanka",
+            "name": "SOLYANKA",
             "description": "Густой суп с пятью видами мясных изделий и маринованными огурчиками. Подается со сметаной, маслинами и лимоном.",
             "url": "https://gamarjoba.md/dish/solyanka/",
             "image": "https://gamarjoba.md/assets/menu/solyanka.jpg",
@@ -2374,13 +948,13 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Chikhirtma с курицей",
+            "name": "CHIKHIRTMA CU CARNE DE PUI",
             "description": "Бархатистый белый куриный суп с добавлением ароматной зелени и грузинских специй.",
             "url": "https://gamarjoba.md/dish/chikhirtma-cu-carne-de-pui/",
             "image": "https://gamarjoba.md/assets/menu/chikh-pui.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "400 g"
+              "servingSize": "400g"
             },
             "offers": {
               "@type": "Offer",
@@ -2390,17 +964,17 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Kharcho",
-            "description": "Пряный наваристый суп из телятины с рисом, зеленью и традиционными грузинскими специями.",
-            "url": "https://gamarjoba.md/dish/kharcho/",
-            "image": "https://gamarjoba.md/assets/menu/kharcho.jpg",
+            "name": "CHIKHIRTMA CU HINKALI",
+            "description": "Оригинальная вариация белого куриного супа, подается с аппетитными хинкали и свежей зеленью.",
+            "url": "https://gamarjoba.md/dish/chikhirtma-cu-hinkali/",
+            "image": "https://gamarjoba.md/assets/menu/chikh-hinkali.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "400 g"
+              "servingSize": "400g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "100",
+              "price": "105",
               "priceCurrency": "MDL"
             }
           }
@@ -2408,11 +982,11 @@
       },
       {
         "@type": "MenuSection",
-        "name": "Хинкали",
+        "name": "ХИНКАЛИ",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Mama Hinkali",
+            "name": "MAMA HINKALI",
             "description": "Гастрономическое шоу: пять сочных хинкали, спрятанных внутри одной гигантской «Мамы».",
             "url": "https://gamarjoba.md/dish/mama-hinkali/",
             "image": "https://gamarjoba.md/assets/menu/mama-hinkali.jpg",
@@ -2428,99 +1002,99 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Hinkali с говядиной",
-            "description": "Традиционные хинкали с телятиной и отборными грузинскими специями.",
-            "url": "https://gamarjoba.md/dish/hinkali-cu-carne-de-vita/",
-            "image": "https://gamarjoba.md/assets/menu/hinkali-vita.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "270 g · 3 x"
-            },
-            "offers": [
-              {
-                "@type": "Offer",
-                "name": "Отварные",
-                "price": "80",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "Жареные",
-                "price": "85",
-                "priceCurrency": "MDL"
-              }
-            ]
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Hinkali из свинины и говядины",
-            "description": "Классический рецепт с фаршем из свинины и телятины, горными травами и обилием горячего бульона.",
-            "url": "https://gamarjoba.md/dish/hinkali-mixt-porc-vita/",
-            "image": "https://gamarjoba.md/assets/menu/hinkali-mixt.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "270 g · 3 x"
-            },
-            "offers": [
-              {
-                "@type": "Offer",
-                "name": "Отварные",
-                "price": "80",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "Жареные",
-                "price": "85",
-                "priceCurrency": "MDL"
-              }
-            ]
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Hinkali с ягнёнком",
-            "description": "Насыщенный аутентичный вкус ягненка, дополненный кинзой и ароматными кавказскими травами.",
-            "url": "https://gamarjoba.md/dish/hinkali-cu-carne-de-miel/",
-            "image": "https://gamarjoba.md/assets/menu/hinkali-miel.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "270 g · 3 x"
-            },
-            "offers": [
-              {
-                "@type": "Offer",
-                "name": "Отварные",
-                "price": "80",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "Жареные",
-                "price": "85",
-                "priceCurrency": "MDL"
-              }
-            ]
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Hinkali с сыром",
+            "name": "HINKALI CU CAȘCAVAL",
             "description": "Нежные хинкали с обильной начинкой из смеси тягучих грузинских сыров.",
             "url": "https://gamarjoba.md/dish/hinkali-cu-cascaval/",
             "image": "https://gamarjoba.md/assets/menu/hinkali-cascaval.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "270 g · 3 x"
+              "servingSize": "270g"
             },
             "offers": [
               {
                 "@type": "Offer",
-                "name": "Отварные",
+                "name": "(3 buc)",
                 "price": "80",
                 "priceCurrency": "MDL"
               },
               {
                 "@type": "Offer",
-                "name": "Жареные",
+                "name": "(la tigaie)",
+                "price": "85",
+                "priceCurrency": "MDL"
+              }
+            ]
+          },
+          {
+            "@type": "MenuItem",
+            "name": "HINKALI MIXT PORC-VITĂ",
+            "description": "Классический рецепт с фаршем из свинины и телятины, горными травами и обилием горячего бульона.",
+            "url": "https://gamarjoba.md/dish/hinkali-mixt-porc-vita/",
+            "image": "https://gamarjoba.md/assets/menu/hinkali-mixt.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "270g"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "(3 buc)",
+                "price": "80",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "(la tigaie)",
+                "price": "85",
+                "priceCurrency": "MDL"
+              }
+            ]
+          },
+          {
+            "@type": "MenuItem",
+            "name": "HINKALI CU CARNE DE VITĂ",
+            "description": "Традиционные хинкали с телятиной и отборными грузинскими специями.",
+            "url": "https://gamarjoba.md/dish/hinkali-cu-carne-de-vita/",
+            "image": "https://gamarjoba.md/assets/menu/hinkali-vita.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "270g"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "(3 buc)",
+                "price": "80",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "(la tigaie)",
+                "price": "85",
+                "priceCurrency": "MDL"
+              }
+            ]
+          },
+          {
+            "@type": "MenuItem",
+            "name": "HINKALI CU CARNE DE MIEL",
+            "description": "Насыщенный аутентичный вкус ягненка, дополненный кинзой и ароматными кавказскими травами.",
+            "url": "https://gamarjoba.md/dish/hinkali-cu-carne-de-miel/",
+            "image": "https://gamarjoba.md/assets/menu/hinkali-miel.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "270g"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "(3 buc)",
+                "price": "80",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "(la tigaie)",
                 "price": "85",
                 "priceCurrency": "MDL"
               }
@@ -2530,123 +1104,65 @@
       },
       {
         "@type": "MenuSection",
-        "name": "Хачапури",
+        "name": "ХАЧАПУРИ",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Adjaruli",
+            "name": "ADJARULI",
             "description": "Знаменитая аджарская лодочка с тягучим сыром и яйцом. Легендарный вкус Грузии.",
             "url": "https://gamarjoba.md/dish/adjaruli/",
             "image": "https://gamarjoba.md/assets/menu/adjaruli.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "450 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "155",
-              "priceCurrency": "MDL"
-            }
+            "offers": [
+              {
+                "@type": "Offer",
+                "price": "155",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "price": "680",
+                "priceCurrency": "MDL"
+              }
+            ]
           },
           {
             "@type": "MenuItem",
-            "name": "Megruli",
+            "name": "MEGRULI",
             "description": "Традиционная лепешка с сыром внутри и дополнительным слоем запеченного сыра сверху.",
             "url": "https://gamarjoba.md/dish/megruli/",
             "image": "https://gamarjoba.md/assets/menu/megruli.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "450 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "175",
-              "priceCurrency": "MDL"
-            }
+            "offers": [
+              {
+                "@type": "Offer",
+                "price": "175",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "price": "250",
+                "priceCurrency": "MDL"
+              }
+            ]
           },
           {
             "@type": "MenuItem",
-            "name": "Regal",
-            "description": "Королевское хачапури с двойной порцией сыра и премиальными ингредиентами.",
-            "url": "https://gamarjoba.md/dish/regal/",
-            "image": "https://gamarjoba.md/assets/menu/regal.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "650 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "240",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Kubdari",
+            "name": "KUBDARI",
             "description": "Гордость Сванетии — лепешка с мелко рубленным мясом и особым набором сванских специй.",
             "url": "https://gamarjoba.md/dish/kubdari/",
             "image": "https://gamarjoba.md/assets/menu/kubdari.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "550 g"
+              "servingSize": "550g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "190",
+              "price": "230",
               "priceCurrency": "MDL"
             }
           },
           {
             "@type": "MenuItem",
-            "name": "Imeruli",
-            "description": "Классическое круглое хачапури из Имеретии с обильной начинкой из молодого сыра.",
-            "url": "https://gamarjoba.md/dish/imeruli/",
-            "image": "https://gamarjoba.md/assets/menu/imeruli.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "650 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "225",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Adjaruli с Ceashushuli",
-            "description": "Оригинальная лодочка, наполненная пряным чашушули из телятины или ягненка вместо яйца.",
-            "url": "https://gamarjoba.md/dish/adjaruli-cu-ceashushuli/",
-            "image": "https://gamarjoba.md/assets/menu/adjaruli-ceashushuli.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "550 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "200",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Phlovani",
-            "description": "Традиционная лепешка с полезной начинкой из свежего шпината и сыра.",
-            "url": "https://gamarjoba.md/dish/phlovani/",
-            "image": "https://gamarjoba.md/assets/menu/phlovani.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "400 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "190",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Penovani",
+            "name": "PENOVANI",
             "description": "Хрустящее слоеное хачапури с начинкой из горячего сыра сулугуни.",
             "url": "https://gamarjoba.md/dish/penovani/",
             "image": "https://gamarjoba.md/assets/menu/penovani.jpg",
@@ -2659,142 +1175,16 @@
               "price": "140",
               "priceCurrency": "MDL"
             }
-          }
-        ]
-      },
-      {
-        "@type": "MenuSection",
-        "name": "Мангал",
-        "hasMenuItem": [
-          {
-            "@type": "MenuItem",
-            "name": "Mtsvadi",
-            "description": "Нежное мясо, маринованное по старинным рецептам и обжаренное на углях.",
-            "url": "https://gamarjoba.md/dish/mtsvadi/",
-            "image": "https://gamarjoba.md/assets/menu/mtsvadi.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "250 g"
-            },
-            "offers": [
-              {
-                "@type": "Offer",
-                "name": "Курица",
-                "price": "140",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "Свинина",
-                "price": "140",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "Телятина",
-                "price": "190",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "Ягнёнок",
-                "price": "195",
-                "priceCurrency": "MDL"
-              }
-            ]
           },
           {
             "@type": "MenuItem",
-            "name": "Liulea-kebab",
-            "description": "Рубленое мясо с ароматными травами, приготовленное на шампуре над открытым огнем.",
-            "url": "https://gamarjoba.md/dish/liulea-kebab/",
-            "image": "https://gamarjoba.md/assets/menu/liulea.jpg",
-            "offers": [
-              {
-                "@type": "Offer",
-                "name": "Курица · 250 г",
-                "price": "130",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "Ягнёнок · 250 г",
-                "price": "140",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "Свинина-телятина · 250 г",
-                "price": "140",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "Свинина-телятина с сыром · 250 г",
-                "price": "140",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "Курица с сыром · 300 г",
-                "price": "190",
-                "priceCurrency": "MDL"
-              },
-              {
-                "@type": "Offer",
-                "name": "By Chef · 400 г",
-                "price": "180",
-                "priceCurrency": "MDL"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "@type": "MenuSection",
-        "name": "Рыба на гриле",
-        "hasMenuItem": [
-          {
-            "@type": "MenuItem",
-            "name": "Стейк из осетра",
-            "description": "Благородная рыба на гриле, подается с лимоном и фирменным соусом.",
-            "url": "https://gamarjoba.md/dish/steak-sturion/",
-            "image": "https://gamarjoba.md/assets/menu/sturion.jpg",
+            "name": "REGAL",
+            "description": "Королевское хачапури с двойной порцией сыра и премиальными ингредиентами.",
+            "url": "https://gamarjoba.md/dish/regal/",
+            "image": "https://gamarjoba.md/assets/menu/regal.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "250/60 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "340",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Dorada",
-            "description": "Благородная рыба на гриле, подается с лимоном и фирменным соусом.",
-            "url": "https://gamarjoba.md/dish/dorada/",
-            "image": "https://gamarjoba.md/assets/menu/dorada.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "330/60 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "190",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Стейк из лосося",
-            "description": "Благородная рыба на гриле, подается с лимоном и фирменным соусом.",
-            "url": "https://gamarjoba.md/dish/steak-somon/",
-            "image": "https://gamarjoba.md/assets/menu/somon.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "150/60 g"
+              "servingSize": "650g"
             },
             "offers": {
               "@type": "Offer",
@@ -2804,67 +1194,29 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Форель",
-            "description": "Благородная рыба на гриле, подается с лимоном и фирменным соусом.",
-            "url": "https://gamarjoba.md/dish/pastrav/",
-            "image": "https://gamarjoba.md/assets/menu/pastrav.jpg",
+            "name": "IMERULI",
+            "description": "Классическое круглое хачапури из Имеретии с обильной начинкой из молодого сыра.",
+            "url": "https://gamarjoba.md/dish/imeruli/",
+            "image": "https://gamarjoba.md/assets/menu/imeruli.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "250/60 g"
+              "servingSize": "650g"
             },
             "offers": {
               "@type": "Offer",
               "price": "225",
               "priceCurrency": "MDL"
             }
-          }
-        ]
-      },
-      {
-        "@type": "MenuSection",
-        "name": "Особые блюда на гриле",
-        "hasMenuItem": [
-          {
-            "@type": "MenuItem",
-            "name": "Рёбрышки ягнёнка",
-            "description": "Сочные рёбрышки с хрустящей корочкой, пропитанные ароматом дымка.",
-            "url": "https://gamarjoba.md/dish/costite-de-miel/",
-            "image": "https://gamarjoba.md/assets/menu/costite-miel.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "220 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "385",
-              "priceCurrency": "MDL"
-            }
           },
           {
             "@type": "MenuItem",
-            "name": "Курица на гриле с овощами",
-            "description": "Целый цыплёнок с золотистой корочкой в дуэте с сочными овощами гриль.",
-            "url": "https://gamarjoba.md/dish/pui-la-gratar-cu-legume/",
-            "image": "https://gamarjoba.md/assets/menu/pui-gratar.jpg",
+            "name": "ADJARULI CU CEASHUSHULI DIN VIȚEL / MIEL",
+            "description": "Оригинальная лодочка, наполненная пряным чашушули из телятины или ягненка вместо яйца.",
+            "url": "https://gamarjoba.md/dish/adjaruli-cu-ceashushuli/",
+            "image": "https://gamarjoba.md/assets/menu/adjaruli-ceashushuli.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "650 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "270",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Свиные рёбрышки",
-            "description": "Сочные рёбрышки с хрустящей корочкой, пропитанные ароматом дымка.",
-            "url": "https://gamarjoba.md/dish/costite-de-porc/",
-            "image": "https://gamarjoba.md/assets/menu/costite-porc.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "400 g"
+              "servingSize": "550g"
             },
             "offers": {
               "@type": "Offer",
@@ -2874,17 +1226,17 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Abhazura",
-            "description": "Пикантные мясные шарики в жировой сетке — традиционный деликатес из Абхазии.",
-            "url": "https://gamarjoba.md/dish/abhazura/",
-            "image": "https://gamarjoba.md/assets/menu/abhazura.jpg",
+            "name": "PHLOVANI",
+            "description": "Традиционная лепешка с полезной начинкой из свежего шпината и сыра.",
+            "url": "https://gamarjoba.md/dish/phlovani/",
+            "image": "https://gamarjoba.md/assets/menu/phlovani.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "220 g"
+              "servingSize": "400 g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "160",
+              "price": "190",
               "priceCurrency": "MDL"
             }
           }
@@ -2892,56 +1244,244 @@
       },
       {
         "@type": "MenuSection",
-        "name": "Горячие блюда",
+        "name": "МАНГАЛ",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Chakapuli",
-            "description": "Ароматное рагу из мяса ягненка, томленое в белом вине с обилием тархуна и зеленой алычи.",
-            "url": "https://gamarjoba.md/dish/chakapuli/",
-            "image": "https://gamarjoba.md/assets/chakapuli.jpg",
+            "name": "MTSVADI",
+            "description": "Нежное мясо, маринованное по старинным рецептам и обжаренное на углях.",
+            "url": "https://gamarjoba.md/dish/mtsvadi/",
+            "image": "https://gamarjoba.md/assets/menu/mtsvadi.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "300 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "180",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Odjahuri",
-            "description": "«Домашнее» блюдо из мяса или грибов, обжаренное с картофелем, луком и грузинскими специями.",
-            "url": "https://gamarjoba.md/dish/odjahuri/",
-            "image": "https://gamarjoba.md/assets/menu/odjahuri.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "250 g"
+              "servingSize": "250g"
             },
             "offers": [
               {
                 "@type": "Offer",
-                "name": "Свинина",
+                "name": "PUI (Chicken / курица)",
+                "price": "140",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "PORC (Pork / свинина)",
+                "price": "185",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "VIȚEL (Veal / телятина)",
+                "price": "190",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "MIEL (Lamb / ягненок)",
+                "price": "195",
+                "priceCurrency": "MDL"
+              }
+            ]
+          },
+          {
+            "@type": "MenuItem",
+            "name": "LIULEA-KEBAB",
+            "description": "Рубленое мясо с ароматными травами, приготовленное на шампуре над открытым огнем.",
+            "url": "https://gamarjoba.md/dish/liulea-kebab/",
+            "image": "https://gamarjoba.md/assets/menu/liulea.jpg",
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "PUI (Chicken / курица)",
+                "price": "140",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "PUI CU CAȘCAVAL (Chicken with cheese / Курица с сыром)",
                 "price": "170",
                 "priceCurrency": "MDL"
               },
               {
                 "@type": "Offer",
-                "name": "Телятина",
-                "price": "180",
+                "name": "MIX PORC-VIȚEL (pork-veal / Свинина-телятина)",
+                "price": "165",
                 "priceCurrency": "MDL"
               },
               {
                 "@type": "Offer",
-                "name": "Ягнёнок",
-                "price": "220",
+                "name": "MIX PORC-VIȚEL CU CAȘCAVAL (pork-veal with cheese / Свинина-телятина с сыром)",
+                "price": "185",
                 "priceCurrency": "MDL"
               },
               {
                 "@type": "Offer",
-                "name": "Грибы",
+                "name": "MIEL (Lamb / ягненок)",
+                "price": "185",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "LIULEA-KEBAB BY CHEF",
+                "price": "210",
+                "priceCurrency": "MDL"
+              }
+            ]
+          },
+          {
+            "@type": "MenuItem",
+            "name": "PEȘTE LA GRĂTAR",
+            "description": "Благородная рыба на гриле, подается с лимоном и фирменным соусом.",
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "PĂSTRĂV (Trout / Форель)",
+                "price": "225",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "STEAK SOMON (Salmon steak / Стейк из семги)",
+                "price": "240",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "DORADA (Dorada / Дорада)",
+                "price": "320",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "STEAK STURION (Sturgeon steak / Стейк из осетра)",
+                "price": "340",
+                "priceCurrency": "MDL"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "ОСОБЫЕ БЛЮДА НА ГРИЛЕ",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "ABHAZURA",
+            "description": "Пикантные мясные шарики в жировой сетке — традиционный деликатес из Абхазии.",
+            "url": "https://gamarjoba.md/dish/abhazura/",
+            "image": "https://gamarjoba.md/assets/menu/abhazura.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "220g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "160",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "COSTIȚE DE PORC (Pork ribs / Свиные ребрышки)",
+            "description": "Сочные ребрышки с хрустящей корочкой, пропитанные ароматом дымка.",
+            "url": "https://gamarjoba.md/dish/costite-de-porc/",
+            "image": "https://gamarjoba.md/assets/menu/costite-porc.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "400g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "225",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "COSTIȚE DE MIEL (Square of lamb / Каре ягненка)",
+            "url": "https://gamarjoba.md/dish/costite-de-miel/",
+            "image": "https://gamarjoba.md/assets/menu/costite-miel.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "220g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "385",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "PUI LA GRĂTAR CU LEGUME",
+            "description": "Целый цыпленок с золотистой корочкой в дуэте с сочными овощами гриль.",
+            "url": "https://gamarjoba.md/dish/pui-la-gratar-cu-legume/",
+            "image": "https://gamarjoba.md/assets/menu/pui-gratar.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "650g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "350",
+              "priceCurrency": "MDL"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "ГОРЯЧИЕ БЛЮДА",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "TVINI",
+            "description": "Деликатес из телячьих мозгов, томленый на сковороде со сливочным маслом и пряными травами.",
+            "url": "https://gamarjoba.md/dish/tvini/",
+            "image": "https://gamarjoba.md/assets/menu/tvini.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "145",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "ODJAHURI",
+            "description": "«Домашнее» блюдо из мяса или грибов, обжаренное с картофелем, луком и грузинскими специями.",
+            "url": "https://gamarjoba.md/dish/odjahuri/",
+            "image": "https://gamarjoba.md/assets/menu/odjahuri.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "250g"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "PORC (Свинина)",
+                "price": "170",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "VIȚEL (Телятина)",
+                "price": "190",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "MIEL (Ягненок)",
+                "price": "210",
+                "priceCurrency": "MDL"
+              },
+              {
+                "@type": "Offer",
+                "name": "CIUPERCI (Грибы)",
                 "price": "130",
                 "priceCurrency": "MDL"
               }
@@ -2949,58 +1489,58 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Ceashushuli",
+            "name": "CEASHUSHULI",
             "description": "Нежное мясо, томленое в густом томатном соусе с болгарским перцем, чесноком и зеленью.",
             "url": "https://gamarjoba.md/dish/ceashushuli/",
             "image": "https://gamarjoba.md/assets/menu/ceashushuli.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "250 g"
+              "servingSize": "250g"
             },
             "offers": [
               {
                 "@type": "Offer",
-                "name": "Телятина",
-                "price": "155",
+                "name": "VIȚEL (Veal / Телятина)",
+                "price": "165",
                 "priceCurrency": "MDL"
               },
               {
                 "@type": "Offer",
-                "name": "Ягнёнок",
-                "price": "150",
+                "name": "MIEL (Lamb / Ягненок)",
+                "price": "180",
                 "priceCurrency": "MDL"
               }
             ]
           },
           {
             "@type": "MenuItem",
-            "name": "Chakhokhbili",
-            "description": "Кусочки курицы, тушенные в насыщенном соусе из томатов с луком, базиликом и кавказскими специями.",
-            "url": "https://gamarjoba.md/dish/chakhokhbili/",
-            "image": "https://gamarjoba.md/assets/menu/chakhokhbili.jpg",
+            "name": "CHAKAPULI",
+            "description": "Ароматное рагу из мяса ягненка, томленое в белом вине с обилием тархуна и зеленой алычой.",
+            "url": "https://gamarjoba.md/dish/chakapuli/",
+            "image": "https://gamarjoba.md/assets/chakapuli.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "300 g"
+              "servingSize": "300g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "150",
+              "price": "210",
               "priceCurrency": "MDL"
             }
           },
           {
             "@type": "MenuItem",
-            "name": "Tvini",
-            "description": "Деликатес из телячьих мозгов, томленый на сковороде со сливочным маслом и пряными травами.",
-            "url": "https://gamarjoba.md/dish/tvini/",
-            "image": "https://gamarjoba.md/assets/menu/tvini.jpg",
+            "name": "CHAKHOKHBILI",
+            "description": "Кусочки курицы, тушенные в насыщенном соусе из помидоров с луком, базиликом и грузинскими специями.",
+            "url": "https://gamarjoba.md/dish/chakhokhbili/",
+            "image": "https://gamarjoba.md/assets/menu/chakhokhbili.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "320 g"
+              "servingSize": "300g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "135",
+              "price": "150",
               "priceCurrency": "MDL"
             }
           }
@@ -3008,33 +1548,17 @@
       },
       {
         "@type": "MenuSection",
-        "name": "Гарниры",
+        "name": "ГАРНИРЫ",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Овощи на гриле",
-            "description": "Микс сезонных овощей (перец, кабачки, баклажаны, грибы), запеченных на открытом огне с ароматом дымка.",
-            "url": "https://gamarjoba.md/dish/legume-la-gratar/",
-            "image": "https://gamarjoba.md/assets/menu/legume.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "300 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "150",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Gomi",
+            "name": "GOMI",
             "description": "Традиционная каша из кукурузной муки крупного и мелкого помола — нежная, густая и очень сытная.",
             "url": "https://gamarjoba.md/dish/gomi/",
             "image": "https://gamarjoba.md/assets/menu/gomi.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "200 g"
+              "servingSize": "200g"
             },
             "offers": {
               "@type": "Offer",
@@ -3044,13 +1568,29 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Картофель дольками с чесноком",
+            "name": "LEGUME LA GRĂTAR",
+            "description": "Микс сезонных овощей (перец, кабачки, баклажаны, грибы), запеченных на открытом огне с ароматом дымка.",
+            "url": "https://gamarjoba.md/dish/legume-la-gratar/",
+            "image": "https://gamarjoba.md/assets/menu/legume.jpg",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "300g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "150",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "FELII DE CARTOFI CU USTUROI",
             "description": "Золотистые дольки картофеля, обжаренные с пикантным чесноком и свежей зеленью.",
             "url": "https://gamarjoba.md/dish/felii-de-cartofi-cu-usturoi/",
             "image": "https://gamarjoba.md/assets/menu/cartofi-felii.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "150 g"
+              "servingSize": "150g"
             },
             "offers": {
               "@type": "Offer",
@@ -3060,13 +1600,13 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Картофель фри",
+            "name": "CARTOFI PAI",
             "description": "Хрустящий картофель, нарезанный соломкой и обжаренный до золотистой корочки.",
             "url": "https://gamarjoba.md/dish/cartofi-pai/",
             "image": "https://gamarjoba.md/assets/menu/cartofi-pai.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "150 g"
+              "servingSize": "150g"
             },
             "offers": {
               "@type": "Offer",
@@ -3078,15 +1618,15 @@
       },
       {
         "@type": "MenuSection",
-        "name": "Хлеб и соусы",
+        "name": "ХЛЕБ И СОУСЫ",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Șoti",
-            "description": "Традиционный грузинский хлеб, испечённый на стенках глиняной печи (тандыр).",
+            "name": "ȘOTI",
+            "description": "Традиционный грузинский хлеб, испеченный на стенках глиняной печи (тандыр).",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "100 g"
+              "servingSize": "100g"
             },
             "offers": {
               "@type": "Offer",
@@ -3096,11 +1636,11 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Lavaș",
+            "name": "LAVAȘ",
             "description": "Тонкий бездрожжевой лаваш, идеально подходящий к сочному шашлыку.",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "20 g"
+              "servingSize": "20g"
             },
             "offers": {
               "@type": "Offer",
@@ -3110,11 +1650,10 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Adjika · Satsebeli · Matsoni · Tkemali",
-            "description": "Adjica — Острая паста с перцем и чесноком. Sațebeli — Томатный соус со специями и кинзой. Mațoni — Кисломолочный соус с чесноком. Tkemali — Пикантный соус из зеленой алычи. Smântână / Ketchup — Сметана / Кетчуп.",
+            "name": "SOSURI / СОУСЫ / SAUCES",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "50 g"
+              "servingSize": "50g"
             },
             "offers": {
               "@type": "Offer",
@@ -3126,17 +1665,17 @@
       },
       {
         "@type": "MenuSection",
-        "name": "Десерты",
+        "name": "ДЕСЕРТЫ",
         "hasMenuItem": [
           {
             "@type": "MenuItem",
-            "name": "Napoleon",
+            "name": "NAPOLEON",
             "description": "Классический многослойный десерт из хрустящего слоеного теста с нежным ванильным кремом.",
             "url": "https://gamarjoba.md/dish/napoleon/",
             "image": "https://gamarjoba.md/assets/menu/napoleon.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "130 g"
+              "servingSize": "130g"
             },
             "offers": {
               "@type": "Offer",
@@ -3146,27 +1685,11 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Karakum",
-            "description": "Хрустящий десерт с шоколадом и орехами, вдохновленный вкусами детства.",
-            "url": "https://gamarjoba.md/dish/karakum/",
-            "image": "https://gamarjoba.md/assets/menu/karakum.jpg",
-            "nutrition": {
-              "@type": "NutritionInformation",
-              "servingSize": "150 g"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "80",
-              "priceCurrency": "MDL"
-            }
-          },
-          {
-            "@type": "MenuItem",
-            "name": "Маковый рулет",
+            "name": "COPTURĂ CU MAC",
             "description": "Домашняя выпечка с обильной маковой начинкой, приготовленная по традиционному рецепту.",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "130 g"
+              "servingSize": "130g"
             },
             "offers": {
               "@type": "Offer",
@@ -3176,29 +1699,45 @@
           },
           {
             "@type": "MenuItem",
-            "name": "Înghețată",
-            "description": "Ассорти из различных сортов крафтового мороженого для прохладного завершения трапезы.",
+            "name": "KARAKUM",
+            "description": "Хрустящий десерт с шоколадом и орехами, вдохновленный вкусами детства.",
+            "url": "https://gamarjoba.md/dish/karakum/",
+            "image": "https://gamarjoba.md/assets/menu/karakum.jpg",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "150 g"
+              "servingSize": "150g"
             },
             "offers": {
               "@type": "Offer",
-              "price": "70",
+              "price": "80",
               "priceCurrency": "MDL"
             }
           },
           {
             "@type": "MenuItem",
-            "name": "Matzoni",
-            "description": "Традиционный грузинский йогурт, полезный и освежающий, подается с ягодами.",
+            "name": "MATZONI",
+            "description": "Традиционный грузинский йогурт, полезный и освежающий, подается с клубникой.",
             "nutrition": {
               "@type": "NutritionInformation",
-              "servingSize": "150 g"
+              "servingSize": "150g"
             },
             "offers": {
               "@type": "Offer",
               "price": "50",
+              "priceCurrency": "MDL"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "ÎNGHEȚATĂ",
+            "description": "Ассорти из различных сортов крафтового мороженого для прохладного завершения трапезы.",
+            "nutrition": {
+              "@type": "NutritionInformation",
+              "servingSize": "150g"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "70",
               "priceCurrency": "MDL"
             }
           }
@@ -3209,10 +1748,11 @@
   </script>
   <!-- END:menu-jsonld -->
 
-  <script src="js/i18n.js?v=39"></script>
-  <script src="js/menu-data.js?v=39"></script>
-  <script src="js/menu-template.js?v=39"></script>
-  <script src="js/cart.js?v=39"></script>
-  <script src="js/menu.js?v=39"></script>
+  <script src="js/i18n.js?v=40"></script>
+  <script src="js/menu-data.js?v=40"></script>
+  <script src="js/menu-hotspots.js?v=40"></script>
+  <script src="js/menu-template.js?v=40"></script>
+  <script src="js/cart.js?v=40"></script>
+  <script src="js/menu.js?v=40"></script>
 </body>
 </html>

@@ -1031,6 +1031,107 @@ body.gr-dark .nav__burger span { background: var(--cream); }
   border-color: var(--red);
 }
 
+/* ── Кухня: страницы бумажного меню одна под другой ──
+   Ширину задаёт контейнер, картинка занимает её целиком. Никаких
+   промежутков между страницами: развороты идут встык, как в книжке. */
+.menu-pages {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+  /* фон под картинками — тот же кремовый, что и у страниц меню: если на
+     дробном масштабе браузера между ними и проступит стык, он не будет
+     виден */
+  background: var(--cream);
+  font-size: 0;  /* без этого строчная вёрстка добавляет зазор */
+  line-height: 0;
+}
+/* Страницы идут встык: ни полей, ни рамок, ни теней, ни скруглений.
+   Нижний отрицательный отступ в один пиксель съедает щель, которая
+   появляется от округления дробной высоты картинки при зуме. */
+.menu-pages__page {
+  position: relative;
+  margin: 0 0 -1px;
+  padding: 0;
+  border: 0;
+  font-size: 0;
+  line-height: 0;
+}
+.menu-pages picture {
+  display: block;
+  font-size: 0;
+  line-height: 0;
+}
+.menu-pages__img {
+  display: block;
+  vertical-align: bottom;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ── Строка-подсказка над меню ──
+   Одна на всю страницу: у блюд подписей нет, меню остаётся чистым. */
+.menu-hint {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0.9rem clamp(1rem, 4vw, 2rem) 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  color: #8b1019;
+  opacity: 0.75;
+}
+
+/* ── Области заказа поверх страницы ──
+   Прозрачные кнопки на месте блюд: координаты в процентах, поэтому они
+   держатся за картинку на любой ширине экрана. Пока по ним не попали
+   и на них не навели — не рисуют ничего. */
+.hotspot {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  font: inherit;
+  color: inherit;
+  z-index: 3;
+}
+@media (hover: hover) {
+  .hotspot:hover { background: rgba(200, 16, 46, 0.1); }
+}
+/* клавиатуре нужна видимая рамка — мышь её не получает */
+.hotspot:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+  background: rgba(200, 16, 46, 0.08);
+}
+/* отклик на тап: короткая вспышка, дальше говорит уведомление корзины */
+.hotspot.is-added { animation: hotspotFlash 0.6s var(--ease); }
+@keyframes hotspotFlash {
+  0% { background: rgba(200, 16, 46, 0.35); }
+  100% { background: rgba(200, 16, 46, 0); }
+}
+
+/* Первый заход: области один раз мягко проступают и гаснут — чтобы гость
+   увидел, что по блюдам можно нажимать. Дальше класс не выдаётся. */
+.hotspot.is-hinted { animation: hotspotHint 1.4s var(--ease) 0.45s 1; }
+@keyframes hotspotHint {
+  0% { background: rgba(200, 16, 46, 0); box-shadow: 0 0 0 0 rgba(200, 16, 46, 0); }
+  35% { background: rgba(200, 16, 46, 0.16); box-shadow: 0 0 0 2px rgba(200, 16, 46, 0.28); }
+  70% { background: rgba(200, 16, 46, 0.16); box-shadow: 0 0 0 2px rgba(200, 16, 46, 0.28); }
+  100% { background: rgba(200, 16, 46, 0); box-shadow: 0 0 0 0 rgba(200, 16, 46, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hotspot.is-added,
+  .hotspot.is-hinted { animation: none; }
+}
+
 .menu-sections { padding: 1rem clamp(1.2rem, 5vw, 5rem) 3rem; max-width: 1060px; margin: 0 auto; }
 .menu-section { padding: clamp(3rem, 7vh, 5rem) 0 1rem; scroll-margin-top: 5.5rem; }
 .menu-section__head {
@@ -1606,84 +1707,6 @@ body.dish-page {
   .dish-page::before, .dish-page::after { display: none; }
 }
 
-/* ── Декоративный слой: грузинские продукты ──
-   Отдельный слой под контентом. Гранат, перец, зелень, орехи,
-   чеснок, виноград, черри — вырезаны заливкой от краёв кадра.
-   Позиции в % высоты страницы и vw, привязаны к полям: центральная
-   колонка с текстом остаётся чистой, поэтому контраст не страдает. */
-.decor {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.decor__item {
-  position: absolute;
-  top: var(--t);
-  width: var(--w);
-  height: auto;
-  opacity: var(--o);
-  pointer-events: none;
-  user-select: none;
-  will-change: transform;
-}
-.decor__item--l { left: var(--x); }
-.decor__item--r { right: var(--x); }
-
-/* Положение, размер и прозрачность каждого элемента декора.
-   Раньше эти четыре переменные стояли атрибутом style="" прямо в menu.html.
-   Вынесены сюда, чтобы CSP обходилась без style-src-attr: эта директива
-   из CSP Level 3, и браузер, который её не знает, откатится на
-   style-src 'self' и молча погасит весь декоративный слой. */
-.decor__item--01 { --t: 3.0%; --x: 1.5vw; --w: 170px; --o: 0.8; }
-.decor__item--02 { --t: 6.5%; --x: 1.0vw; --w: 150px; --o: 0.75; }
-.decor__item--03 { --t: 11.5%; --x: 2.0vw; --w: 130px; --o: 0.78; }
-.decor__item--04 { --t: 16.5%; --x: 2.0vw; --w: 130px; --o: 0.68; }
-.decor__item--05 { --t: 21.0%; --x: 1.0vw; --w: 165px; --o: 0.8; }
-.decor__item--06 { --t: 27.0%; --x: 1.5vw; --w: 95px; --o: 0.75; }
-.decor__item--07 { --t: 33.0%; --x: 1.5vw; --w: 175px; --o: 0.76; }
-.decor__item--08 { --t: 39.5%; --x: 1.0vw; --w: 140px; --o: 0.7; }
-.decor__item--09 { --t: 46.0%; --x: 2.0vw; --w: 175px; --o: 0.74; }
-.decor__item--10 { --t: 53.0%; --x: 1.0vw; --w: 190px; --o: 0.62; }
-.decor__item--11 { --t: 60.0%; --x: 1.5vw; --w: 120px; --o: 0.8; }
-.decor__item--12 { --t: 67.5%; --x: 2.0vw; --w: 110px; --o: 0.75; }
-.decor__item--13 { --t: 75.0%; --x: 1.0vw; --w: 145px; --o: 0.76; }
-.decor__item--14 { --t: 83.0%; --x: 1.5vw; --w: 75px; --o: 0.8; }
-
-/* Планшет: меньше элементов и мельче.
-   Диапазон закрыт снизу — иначе на мобильном сработали бы оба правила
-   и элемент с одним is-mobile спрятался бы планшетным :not(.is-tablet). */
-@media (min-width: 768px) and (max-width: 1179px) {
-  .decor__item { width: calc(var(--w) * 0.72); opacity: calc(var(--o) * 0.85); }
-  .decor__item:not(.is-tablet) { display: none; }
-}
-/* Мобильный: 3 мелких элемента по краям. Полей здесь нет, элементы
-   неизбежно попадают под колонку текста — поэтому уводим их в
-   «фоновую» прозрачность 0.12–0.25, где контраст текста не страдает. */
-@media (max-width: 767px) {
-  .decor__item { width: calc(var(--w) * 0.55); opacity: 0.16; }
-  .decor__item:not(.is-mobile) { display: none; }
-}
-/* Параллакс отключаем, если система просит меньше движения */
-@media (prefers-reduced-motion: reduce) {
-  .decor__item { transform: none !important; transition: none !important; }
-}
-
-/* ── Гарниры: фото мельче и квадратные ──
-   Гарнир — простое блюдо в круглой тарелке, крупный портретный кадр
-   ему не нужен: даём квадрат поменьше, чтобы раздел читался легче. */
-.menu-page #garnish .menu-item--has-img { grid-template-columns: minmax(0, 210px) minmax(0, 1fr); }
-.menu-page #garnish .menu-item--has-img:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 210px); }
-.menu-page #garnish .menu-item__thumb { aspect-ratio: 1 / 1; }
-@media (max-width: 700px) {
-  .menu-page #garnish .menu-item--has-img,
-  .menu-page #garnish .menu-item--has-img:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
-  .menu-page #garnish .menu-item__thumb { aspect-ratio: 4 / 3; }
-}
-
 /* ── Разделитель между разделами: вышивка, как в печати ── */
 .menu-page .menu-section + .menu-section::before {
   content: "";
@@ -1803,13 +1826,6 @@ body.dish-page {
   background-position: left center;
   opacity: 0.85;
 }
-.menu-item__badge {
-  display: inline-block;
-  margin-top: 0.4rem;
-  font-size: 0.66rem; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  color: #8b1019;
-}
 .menu-page .menu-item__ru {
   margin-top: 0.5rem;
   font-size: 0.95rem;
@@ -1875,3 +1891,59 @@ body.dish-page {
   .supra__manifest span { opacity: 1; transform: none; }
   .footer__big span { transform: none; }
 }
+
+/* ═══════════════════════════════════════════════
+   МЕНЮ ПО ПЕЧАТНОМУ МАКЕТУ
+   Аллергены, легенда-фильтр, поиск, сноски, подпункты
+   и завершающий блок «Oaspetul este un dar de la Dumnezeu».
+   ═══════════════════════════════════════════════ */
+
+/* ── Значок аллергена: белый контур в бордовом круге, как в макете ── */
+.allerg {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: #9d1220;
+  color: var(--white);
+  flex: none;
+}
+.allerg svg { width: 16px; height: 16px; }
+
+/* ── Граммовка над списком вариантов и вес внутри варианта ── */
+.menu-page .menu-item__meta--pre {
+  margin: 0.7rem 0 0.1rem;
+  font-family: var(--serif); font-weight: 600;
+  font-size: 0.92rem; color: #8b1019;
+  text-transform: none; letter-spacing: 0;
+}
+.menu-item__vw {
+  font-style: normal; font-size: 0.82rem;
+  color: var(--red-deep); opacity: 0.6;
+  white-space: nowrap;
+}
+.menu-item__variants li a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(200, 16, 46, 0.35); }
+.menu-item__variants li a:hover { color: var(--red); }
+
+/* ── Плейсхолдер вместо фото, которого пока нет ──
+   Занимает ту же колонку и те же пропорции, что и снимок: карточка
+   не выпадает из чередования «фото слева / фото справа». ── */
+.menu-item__media--empty {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: rgba(200, 16, 46, 0.045);
+  border: 1px dashed rgba(200, 16, 46, 0.25);
+  border-radius: 3px;
+}
+.menu-item__ph {
+  width: 46%; height: 26px;
+  background-image: var(--ornament-red);
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.4;
+}
+@media (max-width: 700px) {
+  .menu-item__media--empty { aspect-ratio: 16 / 7; }
+}
+
+

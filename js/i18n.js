@@ -361,10 +361,27 @@ const UI = {
   dishVariants: L("Варианты", "Variante", "Options"),
 
   /* ── бейджи-отличия из печатного меню ── */
+  /* Плашки-отличия печатаются как в макете («PREMIUM / ОСОБЫЙ ВЫБОР») и лежат
+     в menu-data.js. Эти ключи остались для страниц блюд и старой барной карты. */
   badgePremium: L("Особый выбор", "Premium", "Premium"),
   badgeLegend: L("Легенда Грузии", "Legendar", "Legendary"),
   badgeClassic: L("Вечная классика", "Clasic", "Timeless classic"),
   badgeBestseller: L("Хит продаж", "Best seller", "Best seller"),
+
+  /* ── Меню: одна строка-подсказка над страницами ── */
+  menuHint: L(
+    "Нажмите на блюдо, чтобы добавить его в корзину",
+    "Apăsați pe un preparat ca să-l adăugați în coș",
+    "Tap a dish to add it to your cart"
+  ),
+
+  /* ── Меню: подпись к странице бумажного меню ──
+     {n} и {total} подставляются номером страницы при применении. */
+  menuPageAlt: L(
+    "Меню Gamarjoba — страница {n} из {total}",
+    "Meniu Gamarjoba — pagina {n} din {total}",
+    "Gamarjoba menu — page {n} of {total}"
+  ),
 
   cartTitle: L("Корзина", "Coș", "Cart"),
   cartEmpty: L(
@@ -426,6 +443,17 @@ const ALLERGEN_T = {
 /* ── Применение к статичной разметке ── */
 document.querySelectorAll("[data-i18n]").forEach((el) => {
   el.innerHTML = tr(el.dataset.i18n);
+});
+document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+  const text = tr(el.dataset.i18nPlaceholder);
+  el.placeholder = text;
+  el.setAttribute("aria-label", text);
+});
+/* alt с номером страницы: строка одна, номер приходит из разметки */
+document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+  el.alt = tr(el.dataset.i18nAlt)
+    .replace("{n}", el.dataset.page || "")
+    .replace("{total}", el.dataset.pageTotal || "");
 });
 
 /* ── Вордмарки, разбитые на буквы: переводим текст, разбивку сохраняем.

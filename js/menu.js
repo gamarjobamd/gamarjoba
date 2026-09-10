@@ -1,49 +1,208 @@
-/* Gamarjoba — страница полного меню: вкладки Кухня/Бар, корзина, скролл-анимации */
+/* Gamarjoba — страница полного меню.
+
+   Кухня — страницы бумажного меню картинками: они лежат в menu.html
+   статически (tools/build-menu-pages.mjs), сама картинка не меняется.
+   Поверх неё скрипт раскладывает прозрачные области по координатам из
+   js/menu-hotspots.js: тап по блюду кладёт его в корзину.
+
+   Барная карта не менялась: карточки рисует menu-template.js. */
 
 const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const GROUPS = { kitchen: MENU, bar: BAR };
 let activeGroup = location.hash === "#bar" ? "bar" : "kitchen";
 
-/* разметку строит общий модуль menu-template.js — тот же код,
-   что использует сборка статики; здесь только язык и словари */
-const TPL = createMenuTemplate({ lang: LANG, langs: I18N_LANGS, ui: UI, badges: BADGE_T });
+/* карточная разметка бара */
+const TPL = createMenuTemplate({
+  lang: LANG,
+  langs: I18N_LANGS,
+  ui: UI,
+  allergens: ALLERGENS,
+});
 
-/* ── Рендер группы (кухня или бар) ── */
 const navEl = document.getElementById("menuNav");
+const pagesEl = document.getElementById("menuPages");
 const sectionsEl = document.getElementById("menuSections");
+const hintEl = document.querySelector(".menu-hint");
 let io, sectionIO;
 
-function renderGroup(group) {
+/* ── Переключение кухня / бар ──
+   Кухня уже в разметке — её только показываем. Бар рисуем при первом
+   переходе и оставляем в DOM: возврат на вкладку не должен ничего ждать. */
+let barRendered = false;
+
+function showGroup(group) {
   activeGroup = group;
-  const data = GROUPS[group];
   const isBar = group === "bar";
 
   document.querySelectorAll(".menu-tabs button").forEach((b) =>
     b.classList.toggle("is-active", b.dataset.group === group)
   );
 
-  navEl.innerHTML = TPL.renderNav(data, isBar);
-  sectionsEl.innerHTML = TPL.renderSections(data, isBar);
+  if (isBar && !barRendered) {
+    navEl.innerHTML = TPL.renderNav(BAR, true);
+    sectionsEl.innerHTML = TPL.renderSections(BAR, true);
+    barRendered = true;
+  }
 
-  wireObservers();
+  pagesEl.hidden = isBar;
+  sectionsEl.hidden = !isBar;
+  navEl.hidden = !isBar;
+  /* подсказка про тап по блюду — про страницы кухни; у бара свои карточки */
+  if (hintEl) hintEl.hidden = isBar;
+
+  if (isBar) wireObservers();
 }
 
-/* ── Наблюдатели: reveal + активный раздел ── */
-function wireObservers() {
-  if (io) io.disconnect();
-  if (sectionIO) sectionIO.disconnect();
+/* ── Области заказа поверх страниц меню ──
+   Координаты из menu-hotspots.js задают прозрачную кнопку на месте блюда:
+   тап кладёт его в корзину. Ничего постоянного поверх страницы не рисуется —
+   подсветка только под курсором, вспышка на тап и одно короткое проступание
+   всех областей при первом заходе, чтобы гость понял, что тут можно нажимать. */
+const HINT_KEY = "gamarjoba-menu-hinted";
 
-  io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        io.unobserve(entry.target);
+function findItem(spot) {
+  const sec = MENU.find((s) => s.id === spot.sec);
+  const item = sec && sec.items.find((it) => it.name === spot.name);
+  if (!item) return null;
+  if (spot.v == null && spot.c == null) {
+    if (item.p == null) return null;
+    return {
+      id: `${spot.sec}:${item.name}`,
+      name: item.name,
+      detail: item.w || "",
+      price: item.p,
+    };
+  }
+  if (spot.c != null) {
+    /* соусы: цена у списка общая, но в заказе должно стоять имя соуса */
+    const child = (item.children || [])[spot.c];
+    if (!child || item.p == null) return null;
+    return {
+      id: `${spot.sec}:${item.name} — ${child.name}`,
+      name: item.name,
+      detail: child.name,
+      price: item.p,
+    };
+  }
+  const v = (item.variants || [])[spot.v];
+  if (!v) return null;
+  const detail = [v.label, v.w || item.w].filter(Boolean).join(" · ");
+  return {
+    id: `${spot.sec}:${item.name}${detail ? ` — ${detail}` : ""}`,
+    name: item.name,
+    detail,
+    price: v.p,
+  };
+}
+
+function buildHotspots() {
+  if (typeof MENU_HOTSPOTS === "undefined") return;
+  const add = tr("dishAdd");
+  let made = 0;
+
+  document.querySelectorAll(".menu-pages__page").forEach((page) => {
+    const spots = MENU_HOTSPOTS[page.dataset.page];
+    if (!spots || page.querySelector(".hotspot")) return;
+
+    spots.forEach((spot) => {
+      const dish = findItem(spot);
+      if (!dish) return;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "hotspot";
+      btn.style.left = `${spot.l}%`;
+      btn.style.top = `${spot.t}%`;
+      btn.style.width = `${spot.w}%`;
+      btn.style.height = `${spot.h}%`;
+      btn.setAttribute(
+        "aria-label",
+        `${add}: ${dish.name}${dish.detail ? `, ${dish.detail}` : ""}, ${dish.price} mdl`
+      );
+      btn.addEventListener("click", () => {
+        Cart.add(dish);
+        btn.classList.remove("is-added");
+        void btn.offsetWidth;
+        btn.classList.add("is-added");
       });
-    },
-    { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
-  );
-  document.querySelectorAll(".reveal, .reveal-lines").forEach((el) => io.observe(el));
+      page.appendChild(btn);
+      made++;
+    });
+  });
+
+  if (made) showHintOnce();
+}
+
+/* Первый заход: области один раз проступают и гаснут. Дальше не повторяем —
+   иначе подсказка превращается в мельтешение при каждом открытии меню.
+
+   Ждём первую страницу меню: если подсветка вспыхнет на пустом месте, пока
+   картинка ещё грузится, гость её просто не свяжет с блюдами. Если картинка
+   почему-то не пришла за четыре секунды, показываем всё равно — подсказка
+   важнее идеального момента. */
+function showHintOnce() {
+  let seen = false;
+  try {
+    seen = localStorage.getItem(HINT_KEY) === "1";
+  } catch (_) {
+    seen = true; /* приватный режим: лучше не мигать вовсе */
+  }
+  if (seen) return;
+
+  const play = () => {
+    document.querySelectorAll(".hotspot").forEach((el) => el.classList.add("is-hinted"));
+    try {
+      localStorage.setItem(HINT_KEY, "1");
+    } catch (_) {}
+  };
+
+  const img = document.querySelector(".menu-pages__img");
+  if (!img) return play();
+
+  let fired = false;
+  const once = () => {
+    if (fired) return;
+    fired = true;
+    clearTimeout(timer);
+    play();
+  };
+  const timer = setTimeout(once, 4000);
+
+  if (img.decode) {
+    /* decode() ждёт не только загрузку, но и готовность к отрисовке */
+    img.decode().then(once, once);
+  } else if (img.complete) {
+    once();
+  } else {
+    img.addEventListener("load", once, { once: true });
+    img.addEventListener("error", once, { once: true });
+  }
+}
+
+/* ── Проявление при прокрутке ──
+   Обложка и подпись под ней размечены .reveal и без наблюдателя остались
+   бы прозрачными, поэтому он работает всегда, а не только на баре. */
+function revealAll() {
+  if (!io) {
+    io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
+    );
+  }
+  document
+    .querySelectorAll(".reveal:not(.is-visible), .reveal-lines:not(.is-visible)")
+    .forEach((el) => io.observe(el));
+}
+
+/* ── Наблюдатель бара: активный чип раздела ── */
+function wireObservers() {
+  if (sectionIO) sectionIO.disconnect();
+  revealAll();
 
   document.querySelectorAll(".menu-section").forEach((sec) => {
     sec.querySelectorAll(".menu-item").forEach((it, i) => {
@@ -52,6 +211,13 @@ function wireObservers() {
   });
 
   const chips = [...document.querySelectorAll(".menu-nav__chip")];
+  /* Активный чип подводим сдвигом самой ленты. scrollIntoView здесь не
+     годится: лента липкая, и браузер тащит к её нелипкой позиции всю
+     страницу — меню отскакивало бы к началу при каждом новом разделе. */
+  const centerChip = (chip) => {
+    const left = chip.offsetLeft - (navEl.clientWidth - chip.offsetWidth) / 2;
+    navEl.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+  };
   sectionIO = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -60,7 +226,7 @@ function wireObservers() {
           c.classList.toggle("is-active", c.dataset.section === entry.target.id)
         );
         const active = chips.find((c) => c.classList.contains("is-active"));
-        if (active) active.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+        if (active) centerChip(active);
       });
     },
     { rootMargin: "-20% 0px -70% 0px" }
@@ -72,8 +238,8 @@ function wireObservers() {
 document.querySelectorAll(".menu-tabs button").forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.dataset.group === activeGroup) return;
-    renderGroup(btn.dataset.group);
-    document.getElementById("menuNav").scrollIntoView({ behavior: "smooth", block: "start" });
+    showGroup(btn.dataset.group);
+    document.querySelector(".menu-tabs").scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
 
@@ -84,10 +250,10 @@ const savedReturn = (() => {
     return null;
   }
 })();
-if (savedReturn && savedReturn.group && GROUPS[savedReturn.group]) {
-  activeGroup = savedReturn.group;
-}
-renderGroup(activeGroup);
+if (savedReturn && savedReturn.group === "bar") activeGroup = "bar";
+showGroup(activeGroup);
+revealAll();
+buildHotspots();
 if (savedReturn) {
   sessionStorage.removeItem("gamarjoba-menu-return");
   requestAnimationFrame(() => {
@@ -95,8 +261,27 @@ if (savedReturn) {
   });
 }
 
-/* ── Клики: корзина и переходы на страницы блюд ── */
+/* ── Клики: корзина бара и переходы на страницы блюд ── */
 const transition = document.getElementById("pageTransition");
+
+function goToDish(href) {
+  /* запоминаем вкладку и позицию скролла для возврата */
+  sessionStorage.setItem(
+    "gamarjoba-menu-return",
+    JSON.stringify({ group: activeGroup, y: window.scrollY })
+  );
+  const url = `${href}?back=menu`;
+  if (REDUCED || !transition) {
+    window.location.href = url;
+    return;
+  }
+  transition.classList.remove("page-transition--out");
+  transition.classList.add("is-active");
+  setTimeout(() => {
+    window.location.href = url;
+  }, 560);
+}
+
 document.addEventListener("click", (e) => {
   const addBtn = e.target.closest(".add-btn");
   if (addBtn) {
@@ -113,26 +298,13 @@ document.addEventListener("click", (e) => {
     addBtn.classList.add("is-added");
     return;
   }
-  const clickable = e.target.closest(".menu-item--photo[data-href], .menu-item--link[data-href]");
+
+  const clickable =
+    e.target.closest(".menu-item__variants li[data-href]") ||
+    e.target.closest(".menu-item--link[data-href]");
   if (!clickable) return;
-  /* на названии блюда теперь настоящая <a> — гасим её переход, иначе браузер
-     уйдёт сразу и мы потеряем анимацию и запоминание позиции скролла */
   e.preventDefault();
-  const href = `${clickable.dataset.href}?back=menu`;
-  /* запоминаем вкладку и позицию скролла для возврата */
-  sessionStorage.setItem(
-    "gamarjoba-menu-return",
-    JSON.stringify({ group: activeGroup, y: window.scrollY })
-  );
-  if (REDUCED || !transition) {
-    window.location.href = href;
-    return;
-  }
-  transition.classList.remove("page-transition--out");
-  transition.classList.add("is-active");
-  setTimeout(() => {
-    window.location.href = href;
-  }, 560);
+  goToDish(clickable.dataset.href);
 });
 
 /* ── Прогресс-бар + параллакс заголовка ── */
@@ -160,56 +332,3 @@ window.addEventListener(
   },
   { passive: true }
 );
-
-
-/* ── Параллакс декоративного слоя ──
-   Двигаем только transform, амплитуда до 6% высоты экрана.
-   При prefers-reduced-motion не трогаем элементы вовсе. */
-(() => {
-  if (REDUCED) return;
-  const items = [...document.querySelectorAll(".decor__item")];
-  if (!items.length) return;
-
-  let anchors = [];
-  const measure = () => {
-    anchors = items.map((el) => {
-      el.style.transform = "";
-      return el.getBoundingClientRect().top + window.scrollY;
-    });
-  };
-
-  let queued = false;
-  const apply = () => {
-    queued = false;
-    const vh = window.innerHeight;
-    const mid = window.scrollY + vh / 2;
-    items.forEach((el, i) => {
-      if (!el.offsetParent) return; /* скрыт на этой ширине */
-      /* rel = 0, когда элемент по центру экрана; ±1 — экран в сторону.
-         Ограничиваем одним экраном, иначе сдвиг сразу упирается в потолок. */
-      const rel = Math.max(-1, Math.min(1, (mid - anchors[i]) / vh));
-      const amp = vh * (parseFloat(el.dataset.speed) || 0.03); /* 2–6% высоты экрана */
-      el.style.transform = `translate3d(0, ${(rel * amp).toFixed(1)}px, 0)`;
-    });
-  };
-  const onScroll = () => {
-    if (queued) return;
-    queued = true;
-    requestAnimationFrame(apply);
-  };
-
-  measure();
-  apply();
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", () => {
-    clearTimeout(window.__decorT);
-    window.__decorT = setTimeout(() => {
-      measure();
-      apply();
-    }, 150);
-  });
-  /* позиции зависят от высоты страницы — пересчитываем после смены вкладки */
-  document.querySelectorAll(".menu-tabs button").forEach((b) =>
-    b.addEventListener("click", () => setTimeout(measure, 60))
-  );
-})();

@@ -27,7 +27,6 @@ const TPL = createDishTemplate({
   dishes: DISHES,
   dishOrder: DISH_ORDER,
   sections: [...MENU, ...BAR],
-  menuFull: typeof MENU_FULL !== "undefined" ? MENU_FULL : null,
   dishFull: typeof DISH_FULL !== "undefined" ? DISH_FULL : null,
 });
 

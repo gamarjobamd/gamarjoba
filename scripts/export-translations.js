@@ -32,8 +32,8 @@ const ctx = createContext(sb);
 for (const f of ["js/i18n.js", "js/menu-data.js", "js/data.js", "js/menu-full.js"]) {
   runInContext(read(f), ctx, { filename: f });
 }
-const { UI, MENU, BAR, DISHES, MENU_FULL, DISH_FULL } = runInContext(
-  "({ UI, MENU, BAR, DISHES, MENU_FULL, DISH_FULL })", ctx);
+const { UI, MENU, BAR, DISHES, DISH_FULL } = runInContext(
+  "({ UI, MENU, BAR, DISHES, DISH_FULL })", ctx);
 
 const rows = [];
 const add = (key, v) => {
@@ -51,12 +51,19 @@ const group = (data, prefix) => {
     add(`${prefix}.${sec.id}.title`, sec.title);
     if (sec.note) add(`${prefix}.${sec.id}.note`, sec.note);
     sec.items.forEach((item, i) => {
-      const slug = item.slug || item.link || String(i);
+      const slug = item.slug || String(i);
       const base = `${prefix}.${sec.id}.${slug}`;
       add(`${base}.name`, item.name);
-      add(`${base}.desc`, item.ru);
+      add(`${base}.desc`, item.desc || item.ru);
+      if (item.note) add(`${base}.note`, item.note);
       if (item.alt) add(`${base}.alt`, item.alt);
-      (item.variants || []).forEach((v, j) => add(`${base}.variant.${j}`, v.v));
+      (item.children || []).forEach((c, j) => {
+        add(`${base}.child.${j}.name`, c.name);
+        add(`${base}.child.${j}.desc`, c.desc || c.ru);
+      });
+      (item.variants || []).forEach((v, j) =>
+        add(`${base}.variant.${j}`, v.label != null ? v.label : v.v)
+      );
     });
   }
 };
@@ -71,8 +78,7 @@ for (const d of DISHES) {
   add(`dish.${d.id}.ritual`, d.ritual);
 }
 
-/* ── полные описания из печатного меню ── */
-for (const [k, v] of Object.entries(MENU_FULL)) add(`full.menu.${k}`, v);
+/* ── полные описания фирменных блюд ── */
 for (const [k, v] of Object.entries(DISH_FULL)) add(`full.dish.${k}`, v);
 
 /* ── CSV (RFC 4180: CRLF, кавычки удваиваются) ── */
