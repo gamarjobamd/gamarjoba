@@ -46,8 +46,8 @@ const pages = readdirSync(join(ROOT, "assets/menu-pages"))
   .map((f) => f.replace(/\.webp$/, ""))
   .sort();
 
-/* Страницы без блюд: обложка, легенда аллергенов, финал и задняя обложка */
-const NO_DISHES = new Set(["01", "02", "25", "26"]);
+/* Страницы без блюд: обложка, легенда аллергенов и финальная страница */
+const NO_DISHES = new Set(["01", "02", "25"]);
 
 const errors = [];
 const overlap = (a, b) =>
