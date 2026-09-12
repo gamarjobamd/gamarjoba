@@ -119,22 +119,22 @@ const MENU_HOTSPOTS = {
      на каждую строку своя область, иначе непонятно, что кладём. */
   "15": [
     { l: 61.0, t: 15.5, w: 30.0, h: 19.0, sec: "hinkali", name: "MAMA HINKALI" },
-    { l: 56.0, t: 45.0, w: 35.0, h: 15.2, sec: "hinkali", name: "HINKALI CU CAȘCAVAL", v: 0 },
-    { l: 56.0, t: 60.4, w: 35.0, h: 3.4, sec: "hinkali", name: "HINKALI CU CAȘCAVAL", v: 1 },
-    { l: 12.0, t: 43.5, w: 42.0, h: 15.3, sec: "hinkali", name: "HINKALI MIXT PORC-VITĂ", v: 0 },
-    { l: 12.0, t: 59.0, w: 42.0, h: 2.4, sec: "hinkali", name: "HINKALI MIXT PORC-VITĂ", v: 1 },
-    { l: 12.0, t: 61.6, w: 42.0, h: 13.9, sec: "hinkali", name: "HINKALI CU CARNE DE VITĂ", v: 0 },
-    { l: 12.0, t: 75.7, w: 42.0, h: 2.6, sec: "hinkali", name: "HINKALI CU CARNE DE VITĂ", v: 1 },
-    { l: 12.0, t: 79.0, w: 42.0, h: 14.2, sec: "hinkali", name: "HINKALI CU CARNE DE MIEL", v: 0 },
-    { l: 12.0, t: 93.4, w: 42.0, h: 3.0, sec: "hinkali", name: "HINKALI CU CARNE DE MIEL", v: 1 },
+    { l: 56.0, t: 37.6, w: 35.0, h: 11.2, ax: 91.0, sec: "hinkali", name: "HINKALI CU CAȘCAVAL", v: 0 },
+    { l: 56.0, t: 48.9, w: 35.0, h: 2.4, ax: 91.0, sec: "hinkali", name: "HINKALI CU CAȘCAVAL", v: 1 },
+    { l: 12.0, t: 43.5, w: 42.0, h: 15.3, ax: 47.5, sec: "hinkali", name: "HINKALI MIXT PORC-VITĂ", v: 0 },
+    { l: 12.0, t: 59.0, w: 42.0, h: 2.4, ax: 47.5, sec: "hinkali", name: "HINKALI MIXT PORC-VITĂ", v: 1 },
+    { l: 12.0, t: 61.6, w: 42.0, h: 13.9, ax: 47.5, sec: "hinkali", name: "HINKALI CU CARNE DE VITĂ", v: 0 },
+    { l: 12.0, t: 75.7, w: 42.0, h: 2.6, ax: 47.5, sec: "hinkali", name: "HINKALI CU CARNE DE VITĂ", v: 1 },
+    { l: 12.0, t: 79.0, w: 42.0, h: 14.2, ax: 47.5, sec: "hinkali", name: "HINKALI CU CARNE DE MIEL", v: 0 },
+    { l: 12.0, t: 93.4, w: 42.0, h: 3.0, ax: 47.5, sec: "hinkali", name: "HINKALI CU CARNE DE MIEL", v: 1 },
   ],
 
   /* 16 — HACEAPURI */
   "16": [
-    { l: 6.0, t: 11.8, w: 82.0, h: 13.2, sec: "khachapuri", name: "ADJARULI", v: 0 },
-    { l: 6.0, t: 25.2, w: 82.0, h: 2.4, sec: "khachapuri", name: "ADJARULI", v: 1 },
-    { l: 6.0, t: 32.2, w: 82.0, h: 13.1, sec: "khachapuri", name: "MEGRULI", v: 0 },
-    { l: 6.0, t: 45.4, w: 82.0, h: 2.6, sec: "khachapuri", name: "MEGRULI", v: 1 },
+    { l: 6.0, t: 11.8, w: 82.0, h: 13.2, ax: 47.5, sec: "khachapuri", name: "ADJARULI", v: 0 },
+    { l: 6.0, t: 25.2, w: 82.0, h: 2.4, ax: 47.5, sec: "khachapuri", name: "ADJARULI", v: 1 },
+    { l: 6.0, t: 32.2, w: 82.0, h: 13.1, ax: 74.5, sec: "khachapuri", name: "MEGRULI", v: 0 },
+    { l: 6.0, t: 45.4, w: 82.0, h: 2.6, ax: 74.5, sec: "khachapuri", name: "MEGRULI", v: 1 },
     { l: 12.0, t: 57.5, w: 36.0, h: 14.2, sec: "khachapuri", name: "KUBDARI" },
     { l: 41.5, t: 79.8, w: 34.0, h: 16.2, sec: "khachapuri", name: "PENOVANI" },
   ],
@@ -150,20 +150,20 @@ const MENU_HOTSPOTS = {
   /* 18 — MANGAL. Строки вариантов идут плотно: у первой области под ней
      заголовок и описание, у остальных — только своя строка цены. */
   "18": [
-    { l: 6.0, t: 12.5, w: 83.0, h: 11.28, sec: "mangal", name: "MTSVADI", v: 0 },
-    { l: 6.0, t: 23.8, w: 83.0, h: 2.1, sec: "mangal", name: "MTSVADI", v: 1 },
-    { l: 6.0, t: 25.92, w: 83.0, h: 2.1, sec: "mangal", name: "MTSVADI", v: 2 },
-    { l: 6.0, t: 28.04, w: 83.0, h: 4.96, sec: "mangal", name: "MTSVADI", v: 3 },
-    { l: 6.0, t: 40.0, w: 83.0, h: 12.2, sec: "mangal", name: "LIULEA-KEBAB", v: 0 },
-    { l: 6.0, t: 52.3, w: 83.0, h: 2.7, sec: "mangal", name: "LIULEA-KEBAB", v: 1 },
-    { l: 6.0, t: 55.1, w: 83.0, h: 2.7, sec: "mangal", name: "LIULEA-KEBAB", v: 2 },
-    { l: 6.0, t: 57.9, w: 83.0, h: 4.6, sec: "mangal", name: "LIULEA-KEBAB", v: 3 },
-    { l: 6.0, t: 62.6, w: 83.0, h: 2.2, sec: "mangal", name: "LIULEA-KEBAB", v: 4 },
-    { l: 6.0, t: 64.9, w: 83.0, h: 5.0, sec: "mangal", name: "LIULEA-KEBAB", v: 5 },
-    { l: 6.0, t: 76.0, w: 83.0, h: 12.2, sec: "mangal", name: "PEȘTE LA GRĂTAR", v: 0 },
-    { l: 6.0, t: 88.3, w: 83.0, h: 3.2, sec: "mangal", name: "PEȘTE LA GRĂTAR", v: 1 },
-    { l: 6.0, t: 91.6, w: 83.0, h: 3.2, sec: "mangal", name: "PEȘTE LA GRĂTAR", v: 2 },
-    { l: 6.0, t: 94.9, w: 83.0, h: 3.1, sec: "mangal", name: "PEȘTE LA GRĂTAR", v: 3 },
+    { l: 6.0, t: 12.5, w: 83.0, h: 11.28, ax: 44.5, sec: "mangal", name: "MTSVADI", v: 0 },
+    { l: 6.0, t: 23.8, w: 83.0, h: 2.1, ax: 44.5, sec: "mangal", name: "MTSVADI", v: 1 },
+    { l: 6.0, t: 25.92, w: 83.0, h: 2.1, ax: 44.5, sec: "mangal", name: "MTSVADI", v: 2 },
+    { l: 6.0, t: 28.04, w: 83.0, h: 4.96, ax: 44.5, sec: "mangal", name: "MTSVADI", v: 3 },
+    { l: 6.0, t: 40.0, w: 83.0, h: 12.2, ax: 79.5, sec: "mangal", name: "LIULEA-KEBAB", v: 0 },
+    { l: 6.0, t: 52.3, w: 83.0, h: 2.7, ax: 79.5, sec: "mangal", name: "LIULEA-KEBAB", v: 1 },
+    { l: 6.0, t: 55.1, w: 83.0, h: 2.7, ax: 79.5, sec: "mangal", name: "LIULEA-KEBAB", v: 2 },
+    { l: 6.0, t: 57.9, w: 83.0, h: 4.6, ax: 79.5, sec: "mangal", name: "LIULEA-KEBAB", v: 3 },
+    { l: 6.0, t: 62.6, w: 83.0, h: 2.2, ax: 79.5, sec: "mangal", name: "LIULEA-KEBAB", v: 4 },
+    { l: 6.0, t: 64.9, w: 83.0, h: 5.0, ax: 79.5, sec: "mangal", name: "LIULEA-KEBAB", v: 5 },
+    { l: 6.0, t: 76.0, w: 83.0, h: 12.2, ax: 42.5, sec: "mangal", name: "PEȘTE LA GRĂTAR", v: 0 },
+    { l: 6.0, t: 88.3, w: 83.0, h: 3.2, ax: 42.5, sec: "mangal", name: "PEȘTE LA GRĂTAR", v: 1 },
+    { l: 6.0, t: 91.6, w: 83.0, h: 3.2, ax: 42.5, sec: "mangal", name: "PEȘTE LA GRĂTAR", v: 2 },
+    { l: 6.0, t: 94.9, w: 83.0, h: 3.1, ax: 42.5, sec: "mangal", name: "PEȘTE LA GRĂTAR", v: 3 },
   ],
   /* 19 — SPECIALITĂȚI LA GRĂTAR */
   "19": [
@@ -176,16 +176,16 @@ const MENU_HOTSPOTS = {
   /* 20 — FELURI PRINCIPALE */
   "20": [
     { l: 8.5, t: 16.3, w: 28.5, h: 14.5, sec: "mains", name: "TVINI" },
-    { l: 6.0, t: 62.0, w: 85.0, h: 19.3, sec: "mains", name: "ODJAHURI", v: 0 },
-    { l: 6.0, t: 81.4, w: 85.0, h: 2.2, sec: "mains", name: "ODJAHURI", v: 1 },
-    { l: 6.0, t: 83.7, w: 85.0, h: 2.2, sec: "mains", name: "ODJAHURI", v: 2 },
-    { l: 6.0, t: 86.0, w: 85.0, h: 3.5, sec: "mains", name: "ODJAHURI", v: 3 },
+    { l: 6.0, t: 62.0, w: 85.0, h: 19.3, ax: 79.5, sec: "mains", name: "ODJAHURI", v: 0 },
+    { l: 6.0, t: 81.4, w: 85.0, h: 2.2, ax: 79.5, sec: "mains", name: "ODJAHURI", v: 1 },
+    { l: 6.0, t: 83.7, w: 85.0, h: 2.2, ax: 79.5, sec: "mains", name: "ODJAHURI", v: 2 },
+    { l: 6.0, t: 86.0, w: 85.0, h: 3.5, ax: 79.5, sec: "mains", name: "ODJAHURI", v: 3 },
   ],
 
   /* 21 — FELURI PRINCIPALE */
   "21": [
-    { l: 8.0, t: 7.5, w: 80.0, h: 15.5, sec: "mains", name: "CEASHUSHULI", v: 0 },
-    { l: 8.0, t: 23.1, w: 80.0, h: 3.4, sec: "mains", name: "CEASHUSHULI", v: 1 },
+    { l: 8.0, t: 7.5, w: 80.0, h: 15.5, ax: 88.5, sec: "mains", name: "CEASHUSHULI", v: 0 },
+    { l: 8.0, t: 23.1, w: 80.0, h: 3.4, ax: 88.5, sec: "mains", name: "CEASHUSHULI", v: 1 },
     { l: 21.7, t: 38.8, w: 35.0, h: 15.7, sec: "mains", name: "CHAKAPULI" },
     { l: 55.0, t: 73.8, w: 33.0, h: 15.2, sec: "mains", name: "CHAKHOKHBILI" },
   ],

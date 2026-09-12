@@ -58,6 +58,85 @@ function showGroup(group) {
    подсветка только под курсором, вспышка на тап и одно короткое проступание
    всех областей при первом заходе, чтобы гость понял, что тут можно нажимать. */
 const HINT_KEY = "gamarjoba-menu-hinted";
+/* Размеры кнопок в процентах листа — те же, что в CSS. Высота считается
+   из пропорции страницы: лист печатного меню 1600 × 2015. */
+const BADGE = 6.4;
+const BADGE_TIGHT = 2.5;
+const PAGE_RATIO = 1600 / 2015;
+
+/* ── Куда поставить кнопку ──
+   Правило одно: кнопка стоит у цены своего блюда — под правым нижним углом
+   блока, а у строки варианта сразу за её ценой. Дальше идут запасные точки:
+   скрипт берёт первую, где кнопка никому не мешает. Проверяется три вещи —
+   не вышла ли за край листа, не легла ли на блок другого блюда и не
+   столкнулась ли с уже поставленной кнопкой. */
+function badgeSpots(spot) {
+  const d = spot.v != null ? BADGE_TIGHT : BADGE;
+  const dy = d * PAGE_RATIO;
+  const right = spot.l + spot.w;
+  const bottom = spot.t + spot.h;
+
+  if (spot.v != null) {
+    /* Строка варианта: вплотную за колонкой цен, дальше — правее и ещё
+       правее. По вертикали держимся последней строки области: у первой
+       строки блока над ценой ещё заголовок с описанием, и середина области
+       пришлась бы на текст, а не на цену. */
+    /* отступ от цены — постоянный, не зависит от размера кнопки: тогда все
+       строки одного блюда встают ровно в одну линию */
+    const x = (spot.ax != null ? spot.ax : right) + 1.7;
+    /* Где в области её цена: у первой строки блока над ценой ещё заголовок
+       с описанием, значит цена внизу. У остальных строка цены сверху —
+       последняя в списке дотянута вниз до свободного места. */
+    const y = spot.h > 6 ? bottom - 1 : spot.t + 1.1;
+    /* основная точка — сразу за ценой; запасные уходят правее или чуть
+       выше, но нужны редко: в один столбец кнопки помещаются сами */
+    return [
+      [0, 0], [1.2, 0], [2.4, 0], [0, -1.3], [1.2, -1.3], [-1.6, 0],
+    ].map(([k, shift]) => ({ x: x + d * k, y: y + shift, d, dy }));
+  }
+  /* блюдо с одной ценой: под углом блока, потом левее по нижнему краю,
+     потом сбоку от угла */
+  return [
+    { x: right - d * 0.2, y: bottom + dy * 0.6, d, dy },
+    { x: right - d * 1.4, y: bottom + dy * 0.6, d, dy },
+    { x: right - d * 2.6, y: bottom + dy * 0.6, d, dy },
+    { x: right + d * 0.7, y: bottom - dy * 0.1, d, dy },
+    { x: right + d * 0.7, y: bottom - dy * 1.1, d, dy },
+    { x: right - d * 0.2, y: bottom - dy * 0.7, d, dy },
+  ];
+}
+
+const sameDish = (a, b) => a.sec === b.sec && a.name === b.name;
+
+function placeBadges(spots, placed) {
+  const taken = [];
+  placed.forEach(({ spot, btn }) => {
+    const options = badgeSpots(spot);
+    /* волосок пересечения — не помеха: иначе кнопка прыгает на запасную
+       точку из-за десятой доли процента */
+    const EPS = 0.3;
+    const fits = (o) => {
+      const box = {
+        l: o.x - o.d / 2 + EPS, r: o.x + o.d / 2 - EPS,
+        t: o.y - o.dy / 2 + EPS, b: o.y + o.dy / 2 - EPS,
+      };
+      if (box.l < 0 || box.r > 100 || box.t < 0 || box.b > 100) return false;
+      /* чужой блок с названием, описанием и ценой закрывать нельзя */
+      const onText = spots.some(
+        (s) => !sameDish(s, spot) && box.l < s.l + s.w && s.l < box.r && box.t < s.t + s.h && s.t < box.b
+      );
+      if (onText) return false;
+      return !taken.some((t) => box.l < t.r && t.l < box.r && box.t < t.b && t.t < box.b);
+    };
+    const pick = options.find(fits) || options[0];
+    taken.push({
+      l: pick.x - pick.d / 2, r: pick.x + pick.d / 2,
+      t: pick.y - pick.dy / 2, b: pick.y + pick.dy / 2,
+    });
+    btn.style.setProperty("--badge-x", `${((pick.x - spot.l) / spot.w) * 100}%`);
+    btn.style.setProperty("--badge-y", `${((pick.y - spot.t) / spot.h) * 100}%`);
+  });
+}
 
 function findItem(spot) {
   const sec = MENU.find((s) => s.id === spot.sec);
@@ -78,6 +157,8 @@ function buildHotspots() {
   document.querySelectorAll(".menu-pages__page").forEach((page) => {
     const spots = MENU_HOTSPOTS[page.dataset.page];
     if (!spots || page.querySelector(".hotspot")) return;
+
+    const placed = [];
 
     spots.forEach((spot) => {
       const dish = findItem(spot);
@@ -100,9 +181,25 @@ function buildHotspots() {
         void btn.offsetWidth;
         btn.classList.add("is-added");
       });
+
+      /* Видимая кнопка живёт внутри области: у блюда остаётся один
+         обработчик и одна остановка табуляции, а плюс лишь показывает,
+         куда жать. Размер и отступы — в долях листа, поэтому кнопка
+         одинаково выглядит и на широком экране, и на телефоне. */
+      const badge = document.createElement("span");
+      badge.className = "qty-badge";
+      badge.setAttribute("aria-hidden", "true");
+      btn.appendChild(badge);
+
+      /* строка варианта — узкая полоса, там кнопка мельче */
+      if (spot.v != null) btn.classList.add("hotspot--tight");
+      placed.push({ spot, btn, badge });
+
       page.appendChild(btn);
       made++;
     });
+
+    placeBadges(spots, placed);
   });
 
   if (made) showHintOnce();

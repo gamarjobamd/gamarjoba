@@ -1050,6 +1050,9 @@ body.gr-dark .nav__burger span { background: var(--cream); }
    появляется от округления дробной высоты картинки при зуме. */
 .menu-pages__page {
   position: relative;
+  /* лист меню — контейнер для кнопок: их размер задан в cqw, то есть в долях
+     ширины листа, и растёт вместе с картинкой на любом экране */
+  container-type: inline-size;
   margin: 0 0 -1px;
   padding: 0;
   border: 0;
@@ -1111,6 +1114,52 @@ body.gr-dark .nav__burger span { background: var(--cream); }
   outline-offset: 2px;
   background: rgba(200, 16, 46, 0.08);
 }
+/* отклик на тап: короткая вспышка, дальше говорит уведомление корзины */
+/* ── Видимая кнопка «в корзину» ──
+   Живёт внутри самой области, поэтому у блюда один обработчик и одна
+   остановка табуляции. Размер — в cqw, то есть в долях ширины листа:
+   на любом экране кнопка занимает одну и ту же часть страницы меню.
+   Точку ставит menu.js: он же следит, чтобы кнопка не легла на соседний
+   блок и не вышла за край листа. */
+.menu-pages { --qty: 6.4cqw; --qty-tight: 2.5cqw; }
+.qty-badge {
+  position: absolute;
+  left: var(--badge-x);
+  top: var(--badge-y);
+  width: var(--qty);
+  height: var(--qty);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #8b1019;
+  box-shadow: 0 0.3cqw 0.9cqw rgba(60, 6, 14, 0.4), 0 0 0 0.16cqw rgba(255, 255, 255, 0.6);
+  /* кнопка свисает за пределы области, но остаётся её частью: нажатие по
+     самому кружку всплывает на область и кладёт блюдо в корзину */
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+}
+/* белый плюс: обе перекладины в долях кнопки, значит масштабируются с ней */
+.qty-badge::before,
+.qty-badge::after {
+  content: "";
+  position: absolute;
+  background: var(--white);
+  border-radius: 0.1cqw;
+}
+.qty-badge::before { left: 27%; right: 27%; top: 45.5%; bottom: 45.5%; }
+.qty-badge::after { top: 27%; bottom: 27%; left: 45.5%; right: 45.5%; }
+
+/* У блюда с вариантами строки цен идут через 2 % высоты листа. Кнопка там
+   мельче ровно настолько, чтобы соседние не соприкасались, — и все они
+   стоят в одну линию, столбиком за колонкой цен. */
+.hotspot--tight .qty-badge {
+  width: var(--qty-tight);
+  height: var(--qty-tight);
+  box-shadow: 0 0.2cqw 0.6cqw rgba(60, 6, 14, 0.4), 0 0 0 0.14cqw rgba(255, 255, 255, 0.6);
+}
+
+@media (hover: hover) {
+  .hotspot:hover .qty-badge { background: var(--red); transform: translate(-50%, -50%) scale(1.1); }
+}
+
 /* отклик на тап: короткая вспышка, дальше говорит уведомление корзины */
 .hotspot.is-added { animation: hotspotFlash 0.6s var(--ease); }
 @keyframes hotspotFlash {
